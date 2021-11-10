@@ -1,15 +1,15 @@
 # Introduction and Setup
 
 ## Intro
-**Ruby on Rails**
-According to the official [Ruby on Rails docs](https://guides.rubyonrails.org/getting_started.html), 
+**Ruby on Rails** <br>
+According to the official [Ruby on Rails docs](https://guides.rubyonrails.org/getting_started.html), <br>
 ```Rails is a web application framework running on the Ruby programming language. If you have no prior experience with Ruby, you will find a very steep learning curve diving straight into Rails.```
 
 Ruby on Rails is a framework that allows us to build full stack web applications and RESTful APIs easily! 
 
 ## Setup
 
-**IDEs**
+**IDEs**<br>
 There are various of IDEs that you can use such as VS Code, Atom, Sublime and more. In this specific course, we like to use VS Code because of the live share extension. This helps for pair programming in a remote setting.
 
 For now, we will be using [Repl](https://replit.com/). An online IDE that allows you execute/compile ruby(and other various of programming languages: JavaScript, Python, C++, and more).
