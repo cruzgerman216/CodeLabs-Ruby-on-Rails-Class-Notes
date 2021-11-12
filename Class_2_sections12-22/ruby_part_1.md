@@ -13,7 +13,7 @@
 
 
 ## USA Covid CLI Tracker Part 1
-What is a gem? [source](https://medium.com/@morgannegagne/what-is-a-ruby-gem-1eec2684e68)
+What is a gem? [source](https://medium.com/@morgannegagne/what-is-a-ruby-gem-1eec2684e68) <br>
 They are simply open source libraries that contain Ruby code and are packaged with a little extra data. Using a gem allows a programmer to use the code within the gem in their own program, without explicitly inserting that code. Gems can be used for all sorts of purposes...Rails is a gem!
 
 Let's create a gem that is a CLI (Command Line Interface) that scrapes covid-19 stats and prints them onto the console.
@@ -97,4 +97,85 @@ class CLI
         puts "Welcome to the Covid-19 CLI Tracker!"
     end
 end
+```
+
+- in run, include system("clear") to clear the console when the program starts
+- call the greeting method after system("clear")
+
+```ruby
+class CLI
+    def run
+        system('clear')
+        greeting
+    end
+
+    def greeting
+        puts "Welcome to the Covid-19 CLI Tracker!"
+    end
+end
+```
+
+- define another method called end_program
+- in the program, print out "See ya latter!"
+- Inlude it in the run method
+
+```ruby
+class CLI
+    def run
+        system('clear')
+        greeting
+        end_program
+    end
+
+    def greeting
+        puts "Welcome to the Covid-19 CLI Tracker!"
+    end
+
+    def end_program
+        puts "See ya later!"
+    end
+end
+```
+
+- define a method called menu
+- store user input in a variable called input
+- call menu inside of the run method between greeting and end_program
+
+```ruby
+    def run
+        system('clear')
+        greeting
+        menu  # <------ here
+        end_program
+    end
+.
+.
+.
+    def menu
+        input = gets.chomp.downcase
+    end
+```
+
+- define a method called list_options
+  - use <<- and regex to print a multi-line string
+- call list_options in menu
+
+```ruby
+    def menu
+        list_options
+        input = gets.chomp.downcase
+    end
+    def list_options
+    # <<- targets a multi-line string with a reference of DOC (DOC is an alias)
+    # gsub allows for pattern replacement and regular expressions
+    # /^\s*/ means target every white space before the the first character
+    # the '' means replace every white space with an empty quote
+    # try replacing '' with '_'
+        puts <<-DOC.gsub /^\s*/, '' 
+            1.
+            2.
+            3.
+            Which one would you prefer?
+        DOC
+    end
 ```
