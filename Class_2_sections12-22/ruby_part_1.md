@@ -24,9 +24,9 @@ Let's create a gem that is a CLI (Command Line Interface) that scrapes covid-19 
 - In the console, enter
 ```bundle gem USA_COVID_19_Tracker```
 
-```Do you want to generate tests with your gem?``` enter no
-```Do you want to license your code permissively under the MIT license?``` enter y
-```Do you want to include a code of conduct in gems you generate?``` enter y
+```Do you want to generate tests with your gem?``` enter no <br>
+```Do you want to license your code permissively under the MIT license?``` enter y <br>
+```Do you want to include a code of conduct in gems you generate?``` enter y <br>
 
 - cd into project folder
 - create a file called tracker.rb under bin
@@ -179,3 +179,5 @@ end
         DOC
     end
 ```
+
+enter ```ruby bin/tracker``` in the terminal
