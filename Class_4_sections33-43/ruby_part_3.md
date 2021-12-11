@@ -14,7 +14,7 @@
 
 ## USA Covid CLI Tracker Part 3
 
-### Scrapping Setup
+### Scraping Setup
 
 1. create a file called scraper.rb under the lib directory. Include the file in the USA_Covid_19_Tracker.rb file
 
