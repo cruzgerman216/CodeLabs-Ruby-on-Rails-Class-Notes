@@ -12,6 +12,7 @@
 ### Scraping state statistics
 
 1. In the scraper.rb file, inside of the class method scrape_states, scrape all 50 states from the provided URL. Inspect the elements from the page we are scraping and indicate the specific elements we want to scrape data from.
+- Inside the scrape_usa method, print to the console "Scraping USA stats". (When we later call this scrape method, we will let the user know that scraping data is currently undergoing)
 ```ruby
     def self.scrape_states
         puts "Scraping States stats"
@@ -20,7 +21,7 @@
     end
 ```
 
-- Inside the scrape_usa method, print to the console "Scraping USA stats"
+
 
 1. Iterate through from 1 to 51 of the array (skipping 0 due to it being the column headers). And get the content from each element 
 ```ruby
