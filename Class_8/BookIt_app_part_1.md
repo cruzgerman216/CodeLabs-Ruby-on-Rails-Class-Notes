@@ -28,7 +28,7 @@
 
 #### Generating a new Rails app
 
-1. In an Code Editor (such as VS code), in the terminal, generate a new rails app 
+1. In a Code Editor (such as VS code), in the terminal, generate a new rails app 
 
 ```rails new book-it```
   - Run ```rails s```  and go to "localhost:3000" to check if successfully created
