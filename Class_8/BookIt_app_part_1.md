@@ -1,4 +1,5 @@
-  # Ruby on Rails - CRUD Operations
+  # Ruby on Rails - CRUD Operations Part 1
+  ## BookIt App Part 1
 
 ## Topics covered
 - **<em>Resource naming conventions</em>** 
