@@ -164,6 +164,7 @@ There's a much more easier way to create a view, model and controller.
 **NOTE: To show routes in a much more clearer way, you can type in a random path that doesn't exist and rails will show you the specific routes that exist in the application.**
 
 16. Go through the application ```rails s```
+
 #### References
 - https://github.com/ruby/ruby
 - https://www.tutorialspoint.com/mvc_framework/mvc_framework_introduction.htm
