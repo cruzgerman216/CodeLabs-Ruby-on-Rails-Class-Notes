@@ -5,7 +5,7 @@
   - Resource example
     - Model name: article
     - Article model file name: article.rb
-    - Article model class name: Artoc;e
+    - Article model class name: Article
     - Table name: articles
   - **<em>rails db:migrate</em>** - will update the schema file for any new migration files
   - **<em>rails db:rollback</em>** - to revert such mistakes we use db:rollback , which restores the database to a state, before the latest migration was run. 

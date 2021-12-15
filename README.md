@@ -6,3 +6,4 @@
   - [Class 5 Ruby Part 4](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_5_sections44-52/ruby_part_4.md)
   - [Class 6 Ruby part 5](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/tree/main/Class_6)
   - [Class 7 Intro to Ruby on Rails](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_7_Intro_to_Ruby_on_Rails/ruby_on_rails_notes.md)
+  - [Class 8 CRUD Operations Part 1 + bookIt App Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_8/BookIt_app_part_1.md)
