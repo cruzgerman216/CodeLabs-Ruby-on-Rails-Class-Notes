@@ -9,7 +9,7 @@
     - Article model class name: Article
     - Table name: articles
   - **<em>rails db:migrate</em>** - will update the schema file for any new migration files
-  - **<em>rails db:rollback</em>** - to revert such mistakes we use db:rollback , which restores the database to a state, before the latest migration was run. 
+  - **<em>(rails db:rollback)[https://blog.saeloun.com/2020/04/21/rails-adds-support-for-db-rollback-name-for-multiple-database-applications.html#:~:text=To%20revert%20such%20mistakes%20we,the%20latest%20migration%20was%20run.&text=We%20can%20also%20pass%20STEP,number%20of%20migrations%20to%20revert]</em>** - to revert such mistakes we use db:rollback , which restores the database to a state, before the latest migration was run. 
   - **<em>rails c</em>** 
     - Once in the terminal, you can exit the console by entering ```exit```
     - rails console allows you to test your tables or models such as ```Article.all```
@@ -106,7 +106,7 @@ end
     book = Book.first 
     book.title = "Updated title"
     book.save # saves updated attributes
-    book.last.destroy # deletes last instance from the Book Table
+    book.last.destroy # deletes last record from the Book Table
 ```
 
 #### adding validations
@@ -126,84 +126,11 @@ class Book < ApplicationRecord
 end
 ```
 
-#### Adding a Book Controller + Views 
-10. In the terminal, use the scaffold argument to generate the book controller and views
-
-```rails g scaffold_controller Book```
-
-- Couple things we need to update due to generating the model and view/controller at separate times. Scafold isn't smart enough to generate the attributes to the corresponding view/controllers. We must update them ourself.
-
-11. Navigate to books/index.html.erb, create elements that correspond to the attributes of the Book Model as we iterate through the Books table 
-
-- update the table headers
-  ```html
-    <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-  ```
-- output attributes title and description
-```html
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.description %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-```
-
-
-
-12.  Navigate to books/_form.html.erb, create fields that correspond to the attributes of the Book Model as create the form.
-
-```html
-    <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-```
-
-13. Navigate to books/show.html.erb, outpute the attributes from the Book table
-
-```html
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @book.description %>
-</p>
-```
-14. Navigate to the books controller, under private, update the book_params to the following 
-```ruby
-    def book_params
-      params.require(:book).permit(:title, :description)
-    end
-```
-- permit limits the required parameters being passed in, for more additional info click [here](https://apidock.com/rails/ActionController/Parameters/permit)
-
-- **<em>EXPLAIN</em> each defined method in the books controller and test out certain ORM methods in the rails console. 
-
 #### Pages controller 
-15. Generate a controller called pages 
+10. Generate a controller called pages 
 ```rails g controller Pages```
 
-16. Define methods home and about in the pages controller 
+11. Define methods home and about in the pages controller 
 
 ```ruby 
     def home
@@ -215,19 +142,14 @@ end
     end
 ```
 
-17. Create a root path that corresponds to the home method that exists in the book controller
+12. Create a root path that corresponds to the home method and the about method that exists in the pages controller
 
 ```ruby 
 Rails.application.routes.draw do
   root 'pages#home'
-  resources :books
+  get 'about', to: 'pages#about'
 end
 
-```
-
-```ruby 
-  root 'pages#home'
-  get 'about', to: 'pages#about'
 ```
 
 18. Create views for corresponding methods in the pages controller
@@ -237,24 +159,153 @@ end
 - run ```rails s``` in the terminal
 
 **<em>NOTE</em> We don't have to render anything in the home and about methods, rails is smart enough to match the method names with the corresponding view file names in the file structure**
-
-
-
-#### using byebug for debugging 
-19. In the books controller, under the show method, include the byebug keyword (Note: We are able to use byebug because we have the byebug gem in our gemfile)
-
-```ruby
-  def show
-    byebug
-  end
-```
-20. Run the server, enter the following
-  - localhost:4200/books
-  - Select a book or create one if you don't see any
-  - go to show and you should see your server pause in the terminal
-  - In the terminal enter ```@book``` and you should see the contents of your book.
-
-
 #### References
-- https://blog.saeloun.com/2020/04/21/rails-adds-support-for-db-rollback-name-for-multiple-database-applications.html#:~:text=To%20revert%20such%20mistakes%20we,the%20latest%20migration%20was%20run.&text=We%20can%20also%20pass%20STEP,number%20of%20migrations%20to%20revert.
+
+#### Books Controller + Routes + Views
+19. Add a book resource under the routes file.
+
+```ruby 
+Rails.application.routes.draw do
+  root 'pages#home'
+  get 'about', to:'pages#about'
+  resources :books
+end
+```
+
+20. Create a file called books_controller.rb under controllers
+21. Define a BooksController class that inherits ApplicationController
+
+```ruby 
+class BooksController < ApplicationController
+end
+```
+
+22. Define the show action under the books controller
+```ruby 
+class BooksController < ApplicationController
+    def show
+    end
+end
+```
+
+23. Create a folder called books under the views directory. Create a file under books called show.html.erb.
+    - In show.html.erb, create an h1 element with content ```Showing book details```
+```html 
+<h1>Showing article details</h1>
+```
+24. Run rails s and go to the route ```localhost/3000/books/1```
+- **NOTE** Be sure the instance that has this id exists. iI not, use another id in the route.
+- **EXPLANATION** 
+```ruby
+  resources :books
+```
+- Resources define routes to certain actions from the given controller. 
+  - For Example, the /books/:id route only refers to the show method
+
+- run ```rails routes``` in the console. Scroll up to see each given route and their actions provided by this application.
+- resources is a quick way to implement common CRUD operations for routes. Otherwise, we would have to define these routes and actions ourselves.
+
+1.  Under the show method in the books_controller.rb file, retrieve the specific article using the params 
+```ruby 
+    def show
+        book = Book.find(params[:id])
+    end
+```
+26. Declare book as an instance variable so our view can access it 
+```ruby 
+        @book = Book.find(params[:id])
+```
+27. In show.html.erb under the books directory, include the following 
+
+```html 
+  <h1>Showing article details</h1>
+
+  <p><strong>Title: </strong></p>
+  <p><strong>Description: </strong></p>
+```
+
+28. Use embedded tags to access info from the book instance
+```html
+<h1>Showing article details</h1>
+
+<p><strong>Title: </strong><%= @book.title %></p>
+<p><strong>Description: </strong><%= @book.description %></p>
+```
+
+#### byebug demonstration
+29. In the books controller, use byebug to test the route/access variables
+
+- the byebug gem should be included in your gemfile, if not be sure to add it under development and test
+
+```ruby 
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+```
+- under the show method, include byebug
+```ruby
+    def show
+        byebug
+        @book = Book.find(params[:id])
+    end
+```
+- reload the page to the /books/:id route and your terminal should pause. Enter params and you should see key pair values such as id.
+- type continue to continue the action. Remove byebug as we don't need it for now.
+
+#### Index page for Books
+
+30. In the books controller class, define a index method 
+```ruby 
+    def show
+        @book = Book.find(params[:id])
+    end
+
+    def index 
+        
+    end
+```
+31. Create a erb view for index called index.html.erb under views/books directory. Include the following
+
+```html
+<h1>Books isting page</h1>
+```
+- run rails s and enter the ```localhost:3000/books``` in the url bar to test the route
+
+32.  Under the index method, store all Books from the database in an instance variable called books
+
+```ruby 
+    def index 
+        @books = Book.all
+    end
+```
+
+33. In index.html.erb, iterate through @books and print out each content
+
+
+```html 
+<h1>Books isting page</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @books.each do |book| %>
+            <tr>
+                <td><%= book.title%></td>
+                <td><%= book.description%></td>
+                <td>placeholder</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+```
+
+- https://blog.saeloun.com/2020/04/21/rails-adds-support-for-db-rollback-name-for-multiple-database-applications.html#:~:text=To%20revert%20such%20mistakes%20we,the%20latest%20migration%20was%20run.&text=We%20can%20also%20pass%20STEP,number%20of%20migrations%20to%20revert
 - <em>byebug</em> https://github.com/deivid-rodriguez/byebug
