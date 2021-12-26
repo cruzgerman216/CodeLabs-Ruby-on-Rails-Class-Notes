@@ -8,3 +8,4 @@
   - [Class 7 Intro to Ruby on Rails](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_7_Intro_to_Ruby_on_Rails/ruby_on_rails_notes.md)
   - [Class 8 CRUD Operations Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_8/BookIt_app_part_1.md)
   - [Class 9 CRUD Operations Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_9/BookIt_app_part_2.md)
+  - [Class 10 CRUD Operations Part 3](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_10/BookIt_app_part_3.md)
