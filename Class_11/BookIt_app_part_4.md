@@ -677,7 +677,7 @@ end
 </div>
 ```
 
-- instead of iterating through @books, replace @books with the get_books method. This will allows us to iterate through the first 8 records that exists in the database.
+- instead of iterating through @books, replace @books with the get_books method. This will allow us to iterate through the first 8 records that exists in the database.
 
 ```html
 <div class="container" style="padding: 5% 0%">
