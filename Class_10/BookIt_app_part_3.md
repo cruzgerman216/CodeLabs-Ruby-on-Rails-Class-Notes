@@ -232,7 +232,7 @@ end
 21.   Install the Heroku CLI
 22.   Enter `heroku login` to login to your heroku account from the browser
 23.   Enter `heroku create`
-24.   Make sure you push everything to GitHub. Run `git push heroku master`. 
+24.   Make sure you push everything to GitHub. Run `git push heroku main`. or `git push heroku master` depending on what branch you are in.
 - You may get an error such as 
 
 ```remote:        Bundler Output: Your bundle only supports platforms ["x86_64-darwin-20"] but your local platform remote: is x86_64-linux. Add the current platform to the lockfile with `bundle lock remote:        --add-platform x86_64-linux` and try again. remote: ```
