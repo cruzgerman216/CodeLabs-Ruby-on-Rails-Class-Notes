@@ -431,7 +431,7 @@ import 'bootstrap'
         <%= form.text_field :title, class:"form-control" %>
         </div>
         <div class="mb-3">
-        <%= form.label :title, "Description:", class:"form-label" %>
+        <%= form.label :description, "Description:", class:"form-label" %>
         <%= form.text_area :description, class:"form-control" %>
         </div>
         <%= form.submit "Update Book", class:"btn btn-primary" %>
@@ -566,3 +566,123 @@ body{
           </ul>
 ```
 - get rid of the books nav link
+
+#### Adding the image attribute to the books table
+
+31. In the terminal, generate a migration file that adds the image_path attribute to the books table.
+
+```rails generate migration add_imagePath_to_books image_path:string```
+- run ```rails db:migrate```
+
+32. Navigate to the books_controllers.rb file, include the image_path attribute in the required params.
+
+```
+    def book_params
+        params.require(:book).permit(:title, :description, :image_path)
+    end
+```
+
+33. Navigate to views/books/_form.html.erb, add a label and field for the image_path attribute.
+
+```html
+  <div class="mb-3">
+    <%= form.label :image_path, "Image URL:", class:"form-label" %> <%=
+    form.text_area :image_path, class:"form-control" %>
+  </div>
+```
+34. Navigate to index.html.erb, and get rid of the img element. Use the built in rails image_tag to produce the img element follow by the image source and class.
+
+```html
+          <%= image_tag book.image_path, class: "card-img-top" %>
+```
+- You will get errors in case your image_path is nil, reset your db by running `rails db:reset` follow by `rails db:migrate`.
+
+35. In books_controller.rb, check to see if the image url is valid using `net/http`. Create a method called image_exists? that has one paramter called image_path. In this method, use `net/http` to check the image_path is a valid URL as well as its content to be an image.
+
+```ruby
+  def image_exists?(image_path)
+    require "net/http"
+    if(image_path == nil || image_path.starts_with?("http") == false || image_path.starts_with?("https") == false)
+        return false
+    end
+    url = URI.parse(image_path)
+    req = Net::HTTP.new(url.host, url.port)
+    if (image_path.starts_with?("https"))
+      req.use_ssl = true
+    end
+    res = req.request_head(url.path)
+    return res.code == "200" && res.content_type.starts_with?("image")
+  end
+```
+
+36. In the create method, check to see if the image path is valid if not, store a valid image as its replacement.
+
+```ruby
+  def create
+    @book = Book.new(book_params)
+    if(image_exists?(book_params[:image_path]) == false)
+        @book.image_path = "https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg"
+    end
+```
+
+37. Navigate to views/books/show.html.erb, replace the img element with the built in image_tag provided by rails.
+
+```ruby
+    <%= image_tag @book.image_path, class: "card-img-top" %>
+
+```
+
+#### Updating the home page books
+
+38. Navigate to helpers/pages_helper.rb. In module PagesHelper, define a method called get_books that will return the first 8 books from the books table.
+
+```ruby
+module PagesHelper
+    def get_books
+        return Book.first(8)
+    end
+end
+```
+
+39. Navigate to views/layouts/pages/home.html.erb, get rid of the card selection and instead copy and paste the following from your index.html.erb:
+
+```html
+<div class="container" style="padding: 5% 0%">
+  <div class="row">
+    <% @books.each do |book| %>
+    <div class="col-md-3">
+      <div class="card">
+          <%= image_tag book.image_path, class: "card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= book.title%></h5>
+          <p class="card-text"><%= book.description%></p>
+          <button class="btn btn-primary">
+            <%= link_to 'Edit', edit_book_path(book), class:"link" %>
+          </button>
+          <button class="btn btn-secondary">
+            <%= link_to 'Show', book_path(book), class:"link" %>
+          </button>
+          <button class="btn btn-danger">
+            <%= link_to 'Delete', book_path(book), method: :delete, class:"link"
+            %>
+          </button>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+```
+
+- instead of iterating through @books, replace @books with the get_books method. This will allows us to iterate through the first 8 records that exists in the database.
+
+```html
+<div class="container" style="padding: 5% 0%">
+  <div class="row">
+    <% get_books().each do |book| %>
+    <div class="col-md-3">
+      <div class="card">
+```
