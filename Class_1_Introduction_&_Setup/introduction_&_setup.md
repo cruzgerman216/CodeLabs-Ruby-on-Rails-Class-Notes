@@ -12,7 +12,7 @@ Ruby on Rails is a framework that allows us to build full stack web applications
 **IDEs**<br>
 There are various of IDEs that you can use such as VS Code, Atom, Sublime and more. In this specific course, we like to use VS Code because of the live share extension. This helps for pair programming in a remote setting.
 
-For now, we will be using [Repl](https://replit.com/). An online IDE that allows you execute/compile ruby(and other various of programming languages: JavaScript, Python, C++, and more).
+For now, we will be using [Repl](https://replit.com/). An online IDE that allows you to execute/compile ruby(and other various of programming languages: JavaScript, Python, C++, and more).
 
 ## Course Structure 
 The span of this course be will be about 20 weeks. We will go over the following: 
