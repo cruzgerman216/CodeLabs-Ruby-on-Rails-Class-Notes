@@ -639,12 +639,40 @@ body{
 ```ruby
 module PagesHelper
     def get_books
-        return Book.first(8)
+return  Book.first(8)
     end
 end
 ```
+- we can be more creative with this and get 8 random books from our database
 
-39. Navigate to views/layouts/pages/home.html.erb, get rid of the card selection and instead copy and paste the following from your index.html.erb:
+```ruby
+  def get_books
+    return 8.times.map { Book.all[Random.rand(Book.count)] }
+  end
+```
+- What happens if our Database is inintally empty? We like to return an empty array if that is the case 
+```ruby
+    if Book.all.count == 0
+        return []
+    elsif
+        return  8.times.map { Book.all[Random.rand(Book.count)]}
+    end
+```
+- In a another use case, what happens if we have more than 1 and less than 8 book records? Our logic wouldn't make sense. So let's return books if it fits that condition.
+```ruby
+    if Book.all.count == 0
+        return []
+    elsif Book.all.count < 9 
+        return Book.all.count.times.map{Book.all[Random.rand(Book.count)]}
+    else
+        return  8.times.map { Book.all[Random.rand(Book.count)]}
+    end
+```
+- Try refactoring this as an exercise!
+
+1.   Navigate to views/layouts/pages/home.html.erb, get rid of the card selection and instead copy and paste the following from your index.html.erb:
+
+- Get rid of button elements
 
 ```html
 <div class="container" style="padding: 5% 0%">
@@ -656,16 +684,6 @@ end
         <div class="card-body">
           <h5 class="card-title"><%= book.title%></h5>
           <p class="card-text"><%= book.description%></p>
-          <button class="btn btn-primary">
-            <%= link_to 'Edit', edit_book_path(book), class:"link" %>
-          </button>
-          <button class="btn btn-secondary">
-            <%= link_to 'Show', book_path(book), class:"link" %>
-          </button>
-          <button class="btn btn-danger">
-            <%= link_to 'Delete', book_path(book), method: :delete, class:"link"
-            %>
-          </button>
         </div>
         <div class="card-footer">
           <small class="text-muted">Last updated 3 mins ago</small>
@@ -686,3 +704,70 @@ end
     <div class="col-md-3">
       <div class="card">
 ```
+
+#### Deploying changes
+- You can always add automatic builds to your repo's main branch. Here we will use the command line to push those changes
+
+1.  Enter `git push heroku master`
+2.  Enter `heroku run rails db:migrate`
+3.  Let's wipe out the database to accomodate the new attribute image_path and include a seed file.
+- Enter `heroku run rails c`, this will allow you to run ORM commands in the terminal that has your production database on Heroku.
+- enter `Book.destroy_all` this will destroy all the books (NOTE: This is only for demonstration purposes, normally you do NOT do this for production).
+- exit the terminal
+
+#### Seed file 
+- I want to be able to output many records without manually doing it. I will use programming basics to iterate from 1 - 100 to create book records in db/seeds.rb. I will use the faker gem to help me store data.
+
+43. Navigate to the Gemfile and include the faker gem in development and test. Run `bundle install`
+
+```ruby
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3', '~> 1.4'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+end
+```
+
+44. Navigate to db/seeds.rb. Require faker at the top of the file
+
+```ruby
+require 'faker'
+```
+
+45. Create a local variable called images that contain 4 image address(you can google these).
+
+```ruby
+require 'faker'
+images = [
+    "https://image.shutterstock.com/image-photo/blue-background-texture-260nw-1552346156.jpg",
+    "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?size=626&ext=jpg",
+    "https://thumbs.dreamstime.com/z/beautiful-autumn-foliage-background-brunches-falling-tree-leaves-sky-bokeh-98280795.jpg",
+    "https://i.pinimg.com/474x/80/38/ea/8038ea15024f5c34926bf7418999b573.jpg",
+]
+```
+
+46. Iterate from 1 to 100 and create a Book record using Faker. Use the built in Random class to randomly get an image address for each record.
+
+```ruby
+require 'faker'
+images = [
+    "https://image.shutterstock.com/image-photo/blue-background-texture-260nw-1552346156.jpg",
+    "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?size=626&ext=jpg",
+    "https://thumbs.dreamstime.com/z/beautiful-autumn-foliage-background-brunches-falling-tree-leaves-sky-bokeh-98280795.jpg",
+    "https://i.pinimg.com/474x/80/38/ea/8038ea15024f5c34926bf7418999b573.jpg",
+]
+(1..100).each do |n|
+    Book.create(title: Faker::Book.title, description: Faker::Lorem.paragraph, image_path: images[Random.rand(4)] )
+end
+```
+
+- run `rails db:seed`
+
+47. Push your changes to github and heroku `git push heroku master`
+48. Run `heroku run bundle install` 
+49. Seed the heroku db by running `heroku run rails db:seed`
+- You will get an error due to faker being available to test and development. You can change this to production to run this command. However, I will keep it this way to set an example.
+
+
