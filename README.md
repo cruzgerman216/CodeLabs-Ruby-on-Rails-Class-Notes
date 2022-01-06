@@ -9,3 +9,5 @@
   - [Class 8 CRUD Operations Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_8/BookIt_app_part_1.md)
   - [Class 9 CRUD Operations Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_9/BookIt_app_part_2.md)
   - [Class 10 CRUD Operations Part 3](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_10/BookIt_app_part_3.md)
+  - [Class 12 Styling with Bootstrap](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_11/BookIt_app_part_4.md)
+- ``

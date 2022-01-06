@@ -708,9 +708,9 @@ end
 #### Deploying changes
 - You can always add automatic builds to your repo's main branch. Here we will use the command line to push those changes
 
-1.  Enter `git push heroku master`
-2.  Enter `heroku run rails db:migrate`
-3.  Let's wipe out the database to accomodate the new attribute image_path and include a seed file.
+  - Enter `git push heroku master`
+  - Enter `heroku run rails db:migrate`
+  - Let's wipe out the database to accomodate the new attribute image_path and include a seed file.
 - Enter `heroku run rails c`, this will allow you to run ORM commands in the terminal that has your production database on Heroku.
 - enter `Book.destroy_all` this will destroy all the books (NOTE: This is only for demonstration purposes, normally you do NOT do this for production).
 - exit the terminal
