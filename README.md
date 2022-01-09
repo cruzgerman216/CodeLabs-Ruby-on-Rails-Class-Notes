@@ -10,4 +10,6 @@
   - [Class 9 CRUD Operations Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_9/BookIt_app_part_2.md)
   - [Class 10 CRUD Operations Part 3](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_10/BookIt_app_part_3.md)
   - [Class 12 Styling with Bootstrap](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_11/BookIt_app_part_4.md)
-- ``
+  - [Class 13 Associations and Authentication Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_13/BookIt_app_part_5.md)
+  - [Class 14 Associations and Authentication Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_14/BookIt_app_part_6.md)
+  - [Class 15 Many to Many Associations and Automated Testing](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_15/BookIt_app_part_7.md)
