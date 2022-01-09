@@ -49,7 +49,9 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'bootstrap'
 ```
-5. Navigate to app/assets/stylesheets and create custom.css.scss. To overwrite bootstrap classes, include 
+
+
+5. **<em>OPTIONAL</em>** Navigate to app/assets/stylesheets and create custom.css.scss. To overwrite bootstrap classes, include 
 ```css
  @import 'bootstrap/dist/css/bootstrap';
 ```
