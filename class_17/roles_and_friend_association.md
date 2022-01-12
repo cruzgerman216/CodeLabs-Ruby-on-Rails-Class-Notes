@@ -1,5 +1,5 @@
-  # Ruby on Rails - Devise and Project Setup
-  ## PetMe Social Media App Part 1 Rails 6
+  # Ruby on Rails - Roles and friend associations
+  ## PetMe Social Media App Part 2 Rails 6
 
 ## Topics Covered
 - Creating Roles with many to many associations
@@ -300,6 +300,7 @@ end
 ```html
               <p class="card-text"><%= user.friends.count %> friends</p>
 ```
+
 
 1. 
 ```ruby 
