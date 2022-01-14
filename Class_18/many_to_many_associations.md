@@ -187,10 +187,3 @@ end
 
 ```
 
-websocket
-
-rails g channel chatroom
-
-routes mount
-
-create messsage broadcast channel
