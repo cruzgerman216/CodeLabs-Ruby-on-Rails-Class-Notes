@@ -1,9 +1,6 @@
   # Ruby on Rails - More many to many associations and Uploading
   ## PetMe Social Media App Part 4 Rails 6
 
-
-### Generate 
-
 ### Setup channel and actioncable
 1. Use the rails generator to generate files that configure the channel implementation of your application by entering `rails g channel chatroom`
 2. Navigate to routes.rb and include the following in your routes 
@@ -189,5 +186,150 @@ resources :chatrooms, only: [:create, :show]
 </div>
 ```
 
-### Updating view for chatroom
-1. Navigate to chatrooms/show.html.erb. Let's add html and css to display a chatbox style
+### Chatroom View and Messages
+1. Navigate to chatrooms/show.html.erb. Let's add html and css to display a chatbox style.
+
+```html
+<h1 class="text-center">Chatroom</h1>
+
+<div class="w-50" style="margin: 0 25%">
+  <div
+    style="
+      height: 50vh;
+      border: 1px solid black;
+      overflow-y: scroll;
+      padding: 1%;
+    "
+  >
+    <p>Email: Message</p>
+  </div>
+  <div>
+    <textarea style="width: 100%"></textarea>
+    <button class="btn btn-primary" style="margin: 0 40%">Send message</button>
+  </div>
+</div>
+```
+
+2. Under the chatbox, create a form that sends a post request to messages controller. We want to also attach a input from the user.
+      <%= form_for(@message) do |form| %> 
+        <%= form.text_field :body, class: "form-control" %>
+        <%= hidden_field_tag 'chatroom_id', @chatroom.id  %>
+        <%= form.submit "Send Message", class: "btn btn-success" %>
+      <% end %>
+
+- In order for the messages controller to be aware of the chatroom, we must send a hidden fild tage to do this. 
+- In order for the form to use @message, we need to declare it in our show method
+
+```ruby
+class ChatroomsController < ApplicationController
+    def show 
+        @chatroom = Chatroom.find(params[:id])
+        @message = Message.new
+    end
+  ```
+
+3. Navigate to messages_controller.rb. Define the creatte and messages_params methods. Use the build method to create a nested relationship between the user and message record.
+
+```ruby
+    def create 
+        @message = current_user.messages.build(body: message_params[:body], chatroom_id: params[:chatroom_id])
+        if @message.save
+            @chatroom = Chatroom.find(params[:chatroom_id])
+            redirect_to chatroom_path(@chatroom)
+        end
+    end
+
+    private 
+
+    def message_params 
+        params.require(:message).permit(:body)
+    end
+```
+
+4. Navigate to chatrooms/show.html.erb. Iterate through messages and display the email of the user belonging to the message as well as the body of the message.
+
+```html
+    <% @chatroom.messages.each do |message| %>
+    <p><b><%=message.user.email%></b>: <%= message.body %> </p>
+    <% end %>
+```
+
+### Implementing channel feature
+1. Navigate to channels/chatroom_channel.rb. Uncomment the stream_from comment, change the string to "chatroom_1". The string can be anything but be aware this name will be used in other parts of our application.
+
+```ruby
+class ChatroomChannel < ApplicationCable::Channel
+  def subscribed
+    stream_from "chatroom_channel"
+  end
+
+  def unsubscribed
+    # Any cleanup needed when channel is unsubscribed
+  end
+end
+```
+2. Navigate to javascript/channels/chatroom_channel.js. Let's console log in the connected method `Connected to chatroom channel`
+
+```js
+consumer.subscriptions.create("ChatroomChannel", {
+  connected() {
+    console.log("Connected to chatroom channel")
+  },
+```
+
+3. In the recieved method, we are going to console log the data parameter being passed in
+
+```js
+  received(data) {
+    console.log(data)
+  }
+```
+
+4. Navigate to messages_controller.rb. We need to use ActionCable to broadcast this message to the stream instead of having to relod the page. Anyone else who is on the stream will also get the messages instantaneously.
+
+```ruby
+        if @message.save
+            ActionCable.server.broadcast("chatroom_channel", { body: @message.body, user: @message.user.email})
+        end
+```
+
+- Test this out in the web application. You should see whatever you entered to be log to the dev tools console and also your email. Open a new browser, log in as the other user in the chatroom. You can see, he also gets the message. 
+
+### Adding messages to the DOM
+1. Navigate to chatroom/show.html.erb. Now that we have this instant message working. Let's now do some DOM manipulation to add this message to the box container. We must first give the box an id to access it.
+
+```html
+  <div
+    style="
+      height: 50vh;
+      border: 1px solid black;
+      overflow-y: scroll;
+      padding: 1%;
+    "
+    id="message-container"
+  >
+```
+
+2. Navigate to javascript/channels/chatroom_channel.rb. Use javascript to add elements to message-container.
+
+```js
+  received(data) {
+    document.getElementById("message-container").innerHTML += `<p><b>${data.user.email}</b>: ${data.body}</p>`
+  }
+```
+
+3. Let's also enable the button. Right now, it get's disabled after submitting. Navigate to show.html.erb, and give the submit button an id of chatroom-button.
+```html
+    <%= form.submit "Send Message", class: "btn btn-success", id: "chatroom-button" %>
+  <% end %>
+```
+
+
+4. In chatroom_chanell.rb, get the specific button from the DOM using getElementById. Enable the button by setting disable to true.
+
+```js
+  received(data) {
+    document.getElementById('chatroom-button').disabled = false;
+    document.getElementById("message-container").innerHTML += `<p><b>${data.user}</b>: ${data.body}</p>`;
+  }
+```
