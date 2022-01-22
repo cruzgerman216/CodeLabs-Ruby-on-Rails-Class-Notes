@@ -26,7 +26,7 @@ The span of this course will be 20 weeks. We will go over the following:
 - Associations & Authentication Systems
 - Many-to-many Associations & Automated Testing
 - Course Project
-- Rails API
+- Rails Base API
 - Employer Project 
 
 #### The Ruby Programming Language
@@ -48,15 +48,31 @@ In this class, students will have installed Rails and understand the core concep
 Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. 
 
 #### Styling in Rails
-In the course videos provided, it's important to note that Bootstrap 4 will be used. Since the release of [version 5](https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)#:~:text=Bootstrap%205%20was%20officially%20released,in%20favor%20of%20vanilla%20JavaScript), these notes will be based on Bootstrap 5.
+In the course videos provided, it's important to note that Bootstrap 4 will be used. Since the release of [version 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) in May 2021, these notes will be based on Bootstrap 5.
 
 #### Associations & Authentication Systems
-An association involves a relationship between two models. Rails incorporates different types of associations that describe this relationship. What's the point of an association? An association provides the coder commonly used model operations without directly using SQL. 
+An association involves a relationship between two models. Rails incorporates different types of associations that describe this connection. What's the point of an association? An association provides the coder commonly used model operations without directly using SQL. 
 
-Previously in the Front End, we used the Firebase api as our main authentication system. In Rails, we will use the Bcrypt Gem to develope an authnetication system. We also explore different alternatives such Devise. Devise incorporates an already coded authentication system in our application so we don't have to. Why not start with devise? It's a matter of use case of whether you need a custom authentication system or perhaps a quick and commonly used set up that is devise. In Rails, you will find out that by just a few command lines, you can scaffold an entire base line of an application in minutes. However, this does not teach you how to create these applications and more importantly understand them. 
+Furuthermore, we will explore authentication. Previously in the Front End, we used the Firebase API as our main authentication system. In Rails, we will use the Bcrypt Gem to develop an authentication system. We also explore different alternatives such Devise. Devise incorporates an already coded authentication system in our application so we don't have to. Why not start with devise? It's a matter of use case of whether you need a custom authentication system or perhaps a quick and commonly used set up that is devise. In Rails, you will find out that by just a few command lines, you can scaffold an entire base line of an application in minutes. However, this does not teach you how to create these applications and more importantly understand them. 
 
 ####  Many-to-many Associations & Automated Testing
+Many to Many associations involve the connection between multiple records of two specific models. The connection also involves a third model in which connects these two models. 
 
+We also explore automated testing in Rails. Automated testing is great for when an application has many features and updates.
+
+
+#### Course Project
+During the Course Project section, students will create an MVP that follow specific requirements. 
+
+#### Rails Base API
+The Base API, created by developers at Codefi, will be given to each student. When you get hired, you will have to spend time understanding the code base. To simulate this exact same process, students are given a chance to use the base API as a baseline to furthur develop.
+
+
+#### Employer Project
+Towards the end of the Back End, students connect with local employers to simulate a real world experience.
+
+
+Before diving deep into the program, we need the necessary tools.
 
 ## Setup
 
