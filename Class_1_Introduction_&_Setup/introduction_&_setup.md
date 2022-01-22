@@ -11,15 +11,14 @@ In the Back End, we will go over Ruby and Ruby on Rails (Rails for short). Rails
 
 By the end of this course, you will know how to create a full stack Ruby on Rails application and be able to connect a Rails API to Front End Applications. We will do things we weren't able to do before in the Front End such as: 
 - store data in an sql database 
-- Create our very own API 
-- Use Bcrypt to create an authentication system 
-- Create an MVC 
-- Cookies
-- Explore features such as emailing users, real time communication, role management systems and more. 
+- create our very own API 
+- use Bcrypt to create an authentication system 
+- create an MVC 
+- cookies
+- explore features such as emailing users, real time communication, role management systems and more. 
 
 ### Course Structure 
 The span of this course will be 20 weeks. We will go over the following: 
-
 - The Ruby Programming Langauge
 - Introduction to Ruby on Rails + Setup
 - CRUD Operations in Rails
@@ -31,14 +30,29 @@ The span of this course will be 20 weeks. We will go over the following:
 - Employer Project 
 
 #### The Ruby Programming Language
-Classes 2 - 5 will be spent learning the ruby programming language. It's important to understand the basic syntax and fundamentals of ruby in order to move forward onto Rails. The reason for that is the ability to debug faster and recognize common uses of Ruby into Rails. Without understand the basics of Ruby, it'll be difficult to differentiate between what is Rails and what is Ruby. 
+Classes 2 - 5 will be spent learning the ruby programming language. It's important to understand the basic syntax and fundamentals of ruby in order to move forward onto Rails. The reason for that is the ability to debug faster and recognize common uses of Ruby into Rails. Without the basics of Ruby, it'll be difficult to differentiate between what is Rails and what is Ruby. 
 
-Living coding sessions will be spent creating a ruby gem and building out a command line interface (CLI) for short. In class will involve exercises. 
+Living coding sessions will be spent creating a ruby gem and building out a command line interface or CLI for short. In class will involve exercises. We will cover the following ruby fundamentals:
+- syntax 
+- data types
+- printing to the console
+- Irb
+- Conditionals
+- Loops and iterations
+- Classes and Object Oriented Programming 
 
-- rails is only in ruby 
-- be able to debug the application
-- It'll be difficult to differentiate between what is Rails and what is Ruby. 
-- 
+#### Introduction to Ruby on Rails + Setup
+In this section, students will have installed Rails and understand the core concept of Ruby on Rails. 
+
+#### CRUD Operations in Rails 
+Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. 
+
+#### Styling in Rails
+In the course videos provided, it's important to note that Bootstrap 4 will be used. Since the release of [Bootstrap 5](https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)#:~:text=Bootstrap%205%20was%20officially%20released,in%20favor%20of%20vanilla%20JavaScript), these notes will be based on Bootstrap 5.
+
+#### Associations & Authentication Systems
+
+
 ## Setup
 
 **IDEs**<br>
