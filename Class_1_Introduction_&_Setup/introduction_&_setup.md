@@ -42,15 +42,20 @@ Living coding sessions will be spent creating a ruby gem and building out a comm
 - Classes and Object Oriented Programming 
 
 #### Introduction to Ruby on Rails + Setup
-In this section, students will have installed Rails and understand the core concept of Ruby on Rails. 
+In this class, students will have installed Rails and understand the core concept of Ruby on Rails. We will also start a project in Rails.
 
 #### CRUD Operations in Rails 
 Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. 
 
 #### Styling in Rails
-In the course videos provided, it's important to note that Bootstrap 4 will be used. Since the release of [Bootstrap 5](https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)#:~:text=Bootstrap%205%20was%20officially%20released,in%20favor%20of%20vanilla%20JavaScript), these notes will be based on Bootstrap 5.
+In the course videos provided, it's important to note that Bootstrap 4 will be used. Since the release of [version 5](https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)#:~:text=Bootstrap%205%20was%20officially%20released,in%20favor%20of%20vanilla%20JavaScript), these notes will be based on Bootstrap 5.
 
 #### Associations & Authentication Systems
+An association involves a relationship between two models. Rails incorporates different types of associations that describe this relationship. What's the point of an association? An association provides the coder commonly used model operations without directly using SQL. 
+
+Previously in the Front End, we used the Firebase api as our main authentication system. In Rails, we will use the Bcrypt Gem to develope an authnetication system. We also explore different alternatives such Devise. Devise incorporates an already coded authentication system in our application so we don't have to. Why not start with devise? It's a matter of use case of whether you need a custom authentication system or perhaps a quick and commonly used set up that is devise. In Rails, you will find out that by just a few command lines, you can scaffold an entire base line of an application in minutes. However, this does not teach you how to create these applications and more importantly understand them. 
+
+####  Many-to-many Associations & Automated Testing
 
 
 ## Setup
