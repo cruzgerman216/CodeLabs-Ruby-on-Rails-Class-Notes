@@ -66,26 +66,24 @@ We also explore automated testing in Rails. Automated testing is great for when 
 During the Course Project section, students will create an MVP that follow specific requirements. 
 
 #### Rails Base API
-The Base API, created by developers at Codefi, will be given to each student. When you get hired, you will have to spend time understanding the code base. To simulate this exact same process, students are given a chance to use the base API as a baseline to furthur develop.
-
+The Base API, created by developers at Codefi, will be given to each student to add any additional features pertaining to their Front End Applications.
 
 #### Employer Project
 Towards the end of the Back End, students connect with local employers to simulate a real world experience.
 
-
-Before diving deep into the program, we need the necessary tools.
+Before diving deep into the program, we need the necessary tooling.
 
 ## Setup
 
-**IDEs**<br>
-There are various of IDEs that you can use such as VS Code, Atom, Sublime and more. In this specific course, we like to use VS Code because of the live share extension. This helps for pair programming in a remote setting.
+There are various of IDEs that you can use such as VS Code and WebStorm. In this specific curriculum, we will continue to use VS Code because of the live share extension. This helps for pair programming in a remote setting.
+
+Let's move on and install Ruby
+
+### Installing Ruby on Windows 
+
+### Installing Ruby on Mac 
 
 
 ### Next Section - The Ruby Programming Language
-- Before diving deep into rails, we have to first establish a good foundation of the ruby programming language. In these next couple of weeks, we will focus on doing just that.
-
-
-How this course will work
-  - The Roadmap 
-  - Our Tools and Texts
+- Before further exploring Rails, we have to first establish a good foundation of the ruby programming language. In these next couple of weeks, we will focus on doing just that.
 
