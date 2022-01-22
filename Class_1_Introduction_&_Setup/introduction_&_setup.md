@@ -20,7 +20,7 @@ By the end of this course, you will know how to create a full stack Ruby on Rail
 ### Course Structure 
 The span of this course will be 20 weeks. We will go over the following: 
 - The Ruby Programming Langauge
-- Introduction to Ruby on Rails + Setup
+- Introduction to Ruby on Rails and Setup
 - CRUD Operations in Rails
 - Styling in Rails
 - Associations & Authentication Systems
@@ -32,7 +32,7 @@ The span of this course will be 20 weeks. We will go over the following:
 #### The Ruby Programming Language
 Classes 2 - 5 will be spent learning the ruby programming language. It's important to understand the basic syntax and fundamentals of ruby in order to move forward onto Rails. The reason for that is the ability to debug faster and recognize common uses of Ruby into Rails. Without the basics of Ruby, it'll be difficult to differentiate between what is Rails and what is Ruby. 
 
-Living coding sessions will be spent creating a ruby gem and building out a command line interface or CLI for short. In class will involve exercises. We will cover the following ruby fundamentals:
+Live coding sessions will be spent creating a ruby gem and building out a command line interface or CLI for short. In class will involve exercises. We will cover the following ruby fundamentals:
 - syntax 
 - data types
 - printing to the console
@@ -41,25 +41,26 @@ Living coding sessions will be spent creating a ruby gem and building out a comm
 - Loops and iterations
 - Classes and Object Oriented Programming 
 
-#### Introduction to Ruby on Rails + Setup
-In this class, students will have installed Rails and understand the core concept of Ruby on Rails. We will also start a project in Rails.
+#### Introduction to Ruby on Rails and Setup
+Students will have installed Rails and understand the core concept of Ruby on Rails. We will also start a project in Rails. 
+
+Rails 6 and ruby 3 will be used throughout the course.
 
 #### CRUD Operations in Rails 
-Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. 
+Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can, let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. 
 
 #### Styling in Rails
 In the course videos provided, it's important to note that Bootstrap 4 will be used. Since the release of [version 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) in May 2021, these notes will be based on Bootstrap 5.
 
 #### Associations & Authentication Systems
-An association involves a relationship between two models. Rails incorporates different types of associations that describe this connection. What's the point of an association? An association provides the coder commonly used model operations without directly using SQL. 
+An association involves a relationship between two models. A model is a reference to a data entity in the database. Rails incorporates different types of associations that describe this connection. What's the point of an association? An association provides the coder commonly used model operations without directly using Structured Query Language or SQL. 
 
-Furuthermore, we will explore authentication. Previously in the Front End, we used the Firebase API as our main authentication system. In Rails, we will use the Bcrypt Gem to develop an authentication system. We also explore different alternatives such Devise. Devise incorporates an already coded authentication system in our application so we don't have to. Why not start with devise? It's a matter of use case of whether you need a custom authentication system or perhaps a quick and commonly used set up that is devise. In Rails, you will find out that by just a few command lines, you can scaffold an entire base line of an application in minutes. However, this does not teach you how to create these applications and more importantly understand them. 
+Furthermore, we will explore authentication. Previously in the Front End, we used the Firebase API as our main authentication system. In Rails, we will use the Bcrypt gem to develop our very own authentication system. We also explore different alternatives such as Devise. Devise incorporates an already coded authentication system in our application so us developers don't have to. Why not start with devise? It's a matter of use case of whether you need a custom authentication system or perhaps a quick and commonly used set up that is devise. In Rails, you will find out that by just a few command lines, you can scaffold an entire base line of an application in minutes. However, this does not teach you how to create these applications and more importantly understand them. 
 
 ####  Many-to-many Associations & Automated Testing
 Many to Many associations involve the connection between multiple records of two specific models. The connection also involves a third model in which connects these two models. 
 
 We also explore automated testing in Rails. Automated testing is great for when an application has many features and updates.
-
 
 #### Course Project
 During the Course Project section, students will create an MVP that follow specific requirements. 
