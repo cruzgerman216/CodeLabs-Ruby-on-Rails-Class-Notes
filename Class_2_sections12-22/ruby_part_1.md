@@ -4,7 +4,7 @@ Learning Ruby will be just as important as learning Rails. Understanding the bas
 ## History of Ruby and Layer of Abstraction
 Ruby was develop by a man named Yukihiro Matsumoto in Japan. He believed a layer of abstraction should be given to programming languages. What is meant by a layer of abstraction? Think about your phone. You use your phone for many reasons. It's easy to use and it's capable of doing much more than call and text. However, under the hood brings a layer of abstraction that is only understood by those who created it. 
 
-Ruby is written in C. And even C is written in assembly lanuage, which gets translated into machine code. It's this layer of abstraction that exists in the industry that allows for a much more efficent and faster way of developing tools such as Rails.
+Ruby is written in C. And even C is written in assembly language, which gets translated into machine code. It's this layer of abstraction that exists in the industry that allows for a much more efficent and faster way of developing tools such as Rails.
 
 ## Printing to the terminal
 Let's create a newly fresh repl in [replit](https://replit.com/) called class 2. `NOTE: Any computers with ruby installed already is fine to work with. Be sure to create a file called main.rb. Replit will have this by default.` 
@@ -27,7 +27,7 @@ Hello, world!
 2. You can also go to the shell or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
 
 ## Variables 
-A variable contains data. Technically, the name of a variable references the specific memory location that contains data. In ruby, we aren't aware of the memory location as ruby is not concern with this. To store a value in memory, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program stops executing, the temporary data goes away.
+A variable contains data. Technically, the name of a variable references a specific memory location that contains data. In ruby, we aren't aware of the memory location as ruby is not concern with this (as well as other higher level programming languages). To store a value in this memory location, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program stops executing, the temporary data goes away.
 
 ```ruby 
 message = "Hello, world!" 
@@ -35,8 +35,25 @@ message = "Hello, world!"
 
 Here we are storing the string `Hello, world!` in memory and reference that memory location with the variable name `message`. To read this line of code, we say `We set message to 'Hello, world!'`. You will also hear `We store 'Hello, world!' in message`. 
 
+When a ruby file get's execute, it is being read from top to bottom. hypothetically speaking, in line two, if we set `"Another value!"` to message, the memory location that message references, will now contain "`Another value!`".
+
+```ruby 
+message = "Hello, world!"
+puts message
+message = "Another value!"
+puts message
+```
+
+### Naming Convention
+When it comes to naming conventions, programming languages have their own style. In JavaScript, you should know variable names are `camelCase`. The common naming convention for ruby variables, however, are `snake_case`. 
+
+### Constant Variables 
+
+## Data Types 
+
 ## Topics covered
-- print values to console using print, p or puts
+- comments
+- print values to console using print, p or puts [X]
 - methods (with arguments)
 - string interpolation
 - IRB
