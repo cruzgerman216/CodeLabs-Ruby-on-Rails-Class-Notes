@@ -35,7 +35,7 @@ message = "Hello, world!"
 
 Here we are storing the string `Hello, world!` in memory and reference that memory location with the variable name `message`. To read this line of code, we say `We set message to 'Hello, world!'`. You will also hear `We store 'Hello, world!' in message`. 
 
-When a ruby file get's execute, it is being read from top to bottom. hypothetically speaking, in line two, if we set `"Another value!"` to message, the memory location that message references, will now contain "`Another value!`".
+When a ruby file get's executed, it is being read from top to bottom. Hypothetically speaking, if we set message to `"Another value!"` below line 1, the memory location that message references, will now contain "`Another value!`".
 
 ```ruby 
 message = "Hello, world!"
@@ -43,11 +43,22 @@ puts message
 message = "Another value!"
 puts message
 ```
+### Constant Variables 
+In certain use cases, we like to make sure the value the variable contains will <em>not</em> change. To crate this constraint, we can create what is called a constant variable. To create a constant variable, the variable name will be all uppercase.
+
+```ruby 
+API_KEY = "123456789"
+```
+
+In case we accidently change the value of this key, it will result in an error when compiled.
+
+```ruby 
+API_KEY = "123456789"
+API_KEY = "abcdefghi"
+```
 
 ### Naming Convention
 When it comes to naming conventions, programming languages have their own style. In JavaScript, you should know variable names are `camelCase`. The common naming convention for ruby variables, however, are `snake_case`. 
-
-### Constant Variables 
 
 ## Data Types 
 
