@@ -100,10 +100,14 @@ run bundle install to install the necessary gems
 
 
 6. Parse html using Nokogiri and open-uri
-
+At the top of the file, be sure to require both Nokogiri and open-uri
+```ruby 
+require 'nokogiri'
+require "open-uri"
+```
 ```ruby
     def self.scrape_usa
-        doc = Nokogiri::HTML(URI.open("https://www.worldometers.info/coronavirus/country/us/"))
+        doc = Nokogiri::HTML(URI.open(URL))
         puts doc
     end
 ```
@@ -205,6 +209,11 @@ class Scrapper
 ```
 
 16. Refactor the scrape_usa data
+
+At the top of the file 
+```ruby 
+require_relative './concerns/printable.rb'
+```
 ```ruby
         usa_confirmed_cases = text_to_integer(country_main[0].text)
         usa_overall_deaths = text_to_integer(country_main[1].text)
@@ -212,8 +221,11 @@ class Scrapper
     end
 ```
 
-17. Initialize a Country instance with this data
-Don't forget to require_relative the Country class
+1.  Initialize a Country instance with this data
+At the top of the file 
+```ruby 
+require_relative "./country.rb"
+```
 ```ruby
         usa_recoveries = text_to_integer(country_main[2].text)
         usa = Country.new(name: "USA", confirmed_cases: usa_confirmed_cases, overall_deaths:usa_overall_deaths, recoveries:usa_recoveries)
