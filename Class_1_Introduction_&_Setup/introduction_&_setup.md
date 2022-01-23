@@ -83,7 +83,5 @@ Let's move on and install Ruby
 
 ### Installing Ruby on Mac 
 
-
 ### Next Section - The Ruby Programming Language
 - Before further exploring Rails, we have to first establish a good foundation of the ruby programming language. In these next couple of weeks, we will focus on doing just that.
-
