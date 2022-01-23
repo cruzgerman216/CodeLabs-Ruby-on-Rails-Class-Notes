@@ -18,16 +18,22 @@ Type the following in main.rb:
 ```ruby 
 puts "Hello, World!"
 ```
-By default, replit will already have this coded for you in main.rb. `puts` will print to the terminal what is in the righthand side of it, in this case `"Hello, World!"`. Whatever is in double quotation marks is regarded as a string and is a specific data type. A data type is a piece of information that tells how the computer should interpret it. We will go over more data types soon. Futhermore, there are two ways to execute main.rb. 
-1. You can click the `run` button in Replit and it will output the following in the console. 
+By default, replit will already have this coded for you in main.rb. `puts` will print to the terminal whatever is in the righthand side of it, in this case `"Hello, World!"`. Whatever is in double quotation marks is regarded as a string and is a specific data type. A data type is a piece of information that tells how the computer should interpret it. We will go over more data types soon. Futhermore, there are two ways to execute main.rb. 
+1. You can click the `run` button in Replit and it will output the following in the console/terminal. 
 
 ```ruby 
 Hello, world!
 ```
-2. On another note, you can go to the shell or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
+2. You can also go to the shell or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
 
 ## Variables 
+A variable contains data. Technically, the name of a variable references the specific memory location that contains data. In ruby, we aren't away of the memory location as ruby is not concern with this. To store a value in memory, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program stops executing, the temporary data goes away.
 
+```ruby 
+message = "Hello, world!" 
+```
+
+Here we are storing the string `Hello, world!` in memory and reference that memory location with the variable name `message`. To read this line of code, we say `We set message to 'Hello, world!'`. You will also hear `We store 'Hello, world!' in message`. 
 
 ## Topics covered
 - print values to console using print, p or puts
@@ -214,4 +220,3 @@ enter ```ruby bin/tracker``` in the terminal
 #### References
 - https://launchschool.com/books/ruby/read/introduction
 - https://en.wikipedia.org/wiki/Ruby_(programming_language)
-- 
