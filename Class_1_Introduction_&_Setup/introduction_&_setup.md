@@ -1,7 +1,7 @@
-# Introduction and Setup
+# Class 1 Notes 
 
 ## Introduction 
-The Back End portion of Code Labs will be similiar to the Front End in regards to structure and style. Students are expected to learn outside of class and apply that knowledge inside of class ([Flipped Class Room Model](https://omerad.msu.edu/teaching/teaching-skills-strategies/27-teaching/162-what-why-and-how-to-implement-a-flipped-classroom-model)). You will be asked to read documentation, watch assigned videos, complete exercises and build projects as well as commit your code to GitHub. Building Projects are our main focus here at Code Labs as it challenges you to think.  
+The Back End portion of Code Labs will be similiar to the Front End in regards to structure and style. Students are expected to learn outside of class and apply that knowledge inside of class ([Flipped Class Room Model](https://omerad.msu.edu/teaching/teaching-skills-strategies/27-teaching/162-what-why-and-how-to-implement-a-flipped-classroom-model)). You will be asked to read documentation, watch assigned videos, complete exercises and build projects as well as commit your code to GitHub. Building projects are our main focus here at Code Labs as it challenges you to think.  
 
 Class notes will be posted for students to use as a resource in the Code Labs portal. Keep in mind these class notes are maintained. If something comes ambiguous or needs an update, please contact your code coach for adjustment or clarification. 
 
@@ -13,7 +13,7 @@ By the end of this course, you will know how to create a full stack Ruby on Rail
 - store data in an sql database 
 - create our very own API 
 - use Bcrypt to create an authentication system 
-- create an MVC 
+- create a model view controller application or MVC for short 
 - cookies
 - explore features such as emailing users, real time communication, role management systems and more. 
 
@@ -32,22 +32,21 @@ The span of this course will be 20 weeks. We will go over the following:
 #### The Ruby Programming Language
 Classes 2 - 5 will be spent learning the ruby programming language. It's important to understand the basic syntax and fundamentals of ruby in order to move forward onto Rails. The reason for that is the ability to debug faster and recognize common uses of Ruby into Rails. Without the basics of Ruby, it'll be difficult to differentiate between what is Rails and what is Ruby. 
 
-Live coding sessions will be spent creating a ruby gem and building out a command line interface or CLI for short. In class will involve exercises. We will cover the following ruby fundamentals:
+Live coding sessions will be spent creating a ruby gem and building out a command line interface. In class will involve exercises. We will cover the following ruby fundamentals:
 - syntax 
 - data types
 - printing to the console
 - Irb
-- Conditionals
-- Loops and iterations
-- Classes and Object Oriented Programming 
+- conditionals
+- loops and iterations
+- classes and Object Oriented Programming
+- methods and more
 
 #### Introduction to Ruby on Rails and Setup
-Students will have installed Rails and understand the core concept of Ruby on Rails. We will also start a project in Rails. 
-
-Rails 6 and ruby 3 will be used throughout the course.
+Students will have installed Rails and will be introduced to the basics of Rails. Rails 6 and Ruby 2.7 will be used during the live coding sessions. Keep in the video course pertains to Rails 5 and Rails 6.
 
 #### CRUD Operations in Rails 
-Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can, let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. 
+Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can, let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. We will also start a project in Rails similiar to what is built in the Front End. That's right, the [BookIt](https://bookit-codefi.herokuapp.com/) application but in Rails.
 
 #### Styling in Rails
 In the course videos provided, it's important to note that Bootstrap 4 will be used. Since the release of [version 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) in May 2021, these notes will be based on Bootstrap 5.
@@ -57,27 +56,22 @@ An association involves a relationship between two models. A model is a referenc
 
 Furthermore, we will explore authentication. Previously in the Front End, we used the Firebase API as our main authentication system. In Rails, we will use the Bcrypt gem to develop our very own authentication system. We also explore different alternatives such as Devise. Devise incorporates an already coded authentication system in our application so us developers don't have to. Why not start with devise? It's a matter of use case of whether you need a custom authentication system or perhaps a quick and commonly used set up that is devise. In Rails, you will find out that by just a few command lines, you can scaffold an entire base line of an application in minutes. However, this does not teach you how to create these applications and more importantly understand them. 
 
-####  Many-to-many Associations & Automated Testing
-Many to Many associations involve the connection between multiple records of two specific models. The connection also involves a third model in which connects these two models. 
-
-We also explore automated testing in Rails. Automated testing is great for when an application has many features and updates.
+#### Many-to-many Associations & Automated Testing
+Many to Many associations involve the connection between multiple records of two specific models. The connection also involves a third model in which connects these two models. We also explore automated testing in Rails. Automated testing is great for when an application has many features and updates.
 
 #### Course Project
-During the Course Project section, students will create an MVP that follow specific requirements. 
+During the Course Project section, students will create an MVP that follow specific requirements. This time spent will allow you to soley focus on a portfolio project.
 
 #### Rails Base API
-The Base API, created by developers at Codefi, will be given to each student to add any additional features pertaining to their Front End Applications.
+The Base API, created by developers at Codefi, will be given to each student. This gives you a chance to add any additional features pertaining to your Front End Applications and learn more of an orginized workflow of that of the base API. 
 
 #### Employer Project
 Towards the end of the Back End, students connect with local employers to simulate a real world experience.
 
-Before diving deep into the program, we need the necessary tooling.
-
 ## Setup
+Before diving deep into the program, we need the necessary tooling. There are various of IDEs that you can use such as VS Code and WebStorm. In this specific curriculum, we will continue to use VS Code because of the live share extension. This helps for pair programming in a remote setting.
 
-There are various of IDEs that you can use such as VS Code and WebStorm. In this specific curriculum, we will continue to use VS Code because of the live share extension. This helps for pair programming in a remote setting.
-
-Let's move on and install Ruby
+Let's move on and install Ruby. If you have already installed Ruby, please skip the installation process.
 
 ### Installing Ruby on Windows 
 
