@@ -1,4 +1,33 @@
-# The Ruby Programming Language
+# Class 2 - The Ruby Programming Language
+Learning Ruby will be just as important as learning Rails. Understanding the basic syntax and programming fundamentals will be necessary before moving onto any technical framework. 
+
+## History of Ruby and Layer of Abstraction
+Ruby was develop by a man named Yukihiro Matsumoto in Japan. He believed a layer of abstraction should be given to programming languages. What is meant by a layer of abstraction? Think about your phone. You use your phone for many reasons. It's easy to use and it's capable of doing much more than call and text. However, under the hood brings a layer of abstraction that is only understood by those who created it. 
+
+Ruby is written in C. And even C is written in assembly lanuage, which gets translated into machine code. It's this layer of abstraction that exists in the industry that allows for a much more efficent and faster way of developing tools such as Rails.
+
+## Printing to the terminal
+Let's create a newly fresh repl in [replit](https://replit.com/) called class 2. `NOTE: Any computers with ruby installed already is fine to work with. Be sure to create a file called main.rb. Replit will have this by default.` 
+
+Let's start out by printing to the terminal. When we print to the terminal, we allow ourselves as programmers to see the values in our code. We can choose what to out with three built in ruby keywords: 
+- puts 
+- print 
+- p
+
+Type the following in main.rb: 
+```ruby 
+puts "Hello, World!"
+```
+By default, replit will already have this coded for you in main.rb. `puts` will print to the terminal what is in the righthand side of it, in this case `"Hello, World!"`. Whatever is in double quotation marks is regarded as a string and is a specific data type. A data type is a piece of information that tells how the computer should interpret it. We will go over more data types soon. Futhurmore, there are two ways to execute main.rb. 
+1. You can click the `run` button in Replit and it will output the following in the console. 
+
+```ruby 
+Hello, world!
+```
+2. On another note, you can go to the shell or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
+
+## Variables 
+
 
 ## Topics covered
 - print values to console using print, p or puts
@@ -181,3 +210,8 @@ end
 ```
 
 enter ```ruby bin/tracker``` in the terminal
+
+#### References
+- https://launchschool.com/books/ruby/read/introduction
+- https://en.wikipedia.org/wiki/Ruby_(programming_language)
+- 
