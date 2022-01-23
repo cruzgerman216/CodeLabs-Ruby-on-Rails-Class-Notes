@@ -27,7 +27,7 @@ Hello, world!
 2. You can also go to the shell or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
 
 ## Variables 
-A variable contains data. Technically, the name of a variable references the specific memory location that contains data. In ruby, we aren't away of the memory location as ruby is not concern with this. To store a value in memory, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program stops executing, the temporary data goes away.
+A variable contains data. Technically, the name of a variable references the specific memory location that contains data. In ruby, we aren't aware of the memory location as ruby is not concern with this. To store a value in memory, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program stops executing, the temporary data goes away.
 
 ```ruby 
 message = "Hello, world!" 
