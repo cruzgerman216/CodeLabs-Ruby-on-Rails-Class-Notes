@@ -44,7 +44,7 @@ message = "Another value!"
 puts message
 ```
 ### Constant Variables 
-In certain use cases, we like to make sure the value the variable contains will <em>not</em> change. To crate this constraint, we can create what is called a constant variable. To create a constant variable, the variable name will be all uppercase.
+In certain use cases, we like to make sure the value the variable contains will <em>not</em> change. To create this constraint, we can create what is called a constant variable. To create a constant variable, the variable name will be all uppercase.
 
 ```ruby 
 API_KEY = "123456789"
@@ -117,15 +117,43 @@ def say_greetings_to(name, friend)
 end
 
 say_greetings_to "John Doe", "Amy Thompson"
+say_greetings_to("John Doe", "Amy Thompson") 
 # name will reference "John Doe"
 # friend will reference "Amy Thompson"
 ```
 
+## String Expressions and Methods 
+In programming, there will be times where a string value is not always static. We allow a string to be dynamic and change in value. To make a string dynamic, we can use what is called string concatenation.
+### String Concatenation
+String concatenation is the process in which multiple strings are joined together using the `+` operator.
+
+```ruby 
+name = "John Doe"
+puts "My name is" + " " + name
+```
+### String Interpolation 
+String interpolation is another way of joining multiple strings and values together. This is the preferred way.
+```ruby 
+name = "John Doe"
+puts "My name is #{name}" # My name is John Doe
+```
+In  between the opening `#{` and closing `}` will be evaluated as ruby code. 
+
+### Built in String Methods 
+Strings such as `"John Doe"` have what are called "built in ruby methods" and belong to the string class. A class is a template for objects. An object has what are called attributes(properties in JavaScript) and methods. Any string created has access to "instance methods" in the String class. [Here](https://ruby-doc.org/core-3.1.0/String.html) is a list of instance methods. On the left hand under Methods you will see a list categorized by `::` and `#`. In order to understand the documentation, methods that have `::`, are class variables. `#` are instance vaiables. Instances that belong to the String class such as "John Doe" or the name variable for short, will have access to any instance method. Here are some examples:
+
+```ruby 
+name = "John Doe"
+puts name.class # "String"
+```
+The built in string method `length` returns the number of characters in a string. Keep in mind, blank spaces count as one character.
+```ruby 
+name = "John Doe"
+puts name.length # 8
+```
+
 ## Topics covered
-- comments
-- print values to console using print, p or puts [X]
-- methods (with arguments)
-- string interpolation
+
 - IRB
 - data type methods 
   -  "test".class -> returns string, 
@@ -142,7 +170,7 @@ Let's create a gem that is a CLI (Command Line Interface) that scrapes covid-19 
 
 ### Setup 
 
-- Use an IDE such as VS Code
+- Use an IDE such as VS Code or Replit
 - In the console, enter
 ```bundle gem USA_COVID_19_Tracker```
 
