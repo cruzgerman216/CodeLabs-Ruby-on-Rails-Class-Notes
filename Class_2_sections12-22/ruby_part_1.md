@@ -19,7 +19,7 @@ Type the following in main.rb:
 puts "Hello, World!"
 ```
 By default, replit will already have this coded for you in main.rb. `puts` will print to the terminal whatever is in the righthand side of it, in this case `"Hello, World!"`. Whatever is in double quotation marks is regarded as a string and is a specific data type. A data type is a piece of information that tells how the computer should interpret it. We will go over more data types soon. Futhermore, there are two ways to execute main.rb. 
-1. You can click the `run` button in Replit and it will output the following in the console/terminal. 
+1. You can click the `run` button in Replit and it will output the following in the terminal. 
 
 ```ruby 
 Hello, world!
@@ -56,11 +56,70 @@ In case we accidently change the value of this key, it will result in an error w
 API_KEY = "123456789"
 API_KEY = "abcdefghi"
 ```
+When this file gets compiled, `John Doe` will not appear in the terminal. 
 
 ### Naming Convention
 When it comes to naming conventions, programming languages have their own style. In JavaScript, you should know variable names are `camelCase`. The common naming convention for ruby variables, however, are `snake_case`. 
 
-## Data Types 
+### Comments in Code
+It's great to leave comments in code to remind yourself or other developers what the code does. To comment code out or to bypass the compiler, use the `#` sign. Everything after `#` will not get executed.
+
+```ruby
+# API KEYS
+API_KEY = "12345678"
+
+name = "John Doe" # This is an example
+```
+
+## Basic methods
+Methods are a set lines of code that have a purpose. This is a great way to resuse a piece of logic and separate our logic into defined methods. Ruby has built in methods in which we will explore latter. Let's define our own method. To define a method, to define a method we must use keywords `def`  follow by the method name and `end`. The keyword `end` signifies the ending of the method.
+
+```ruby 
+def method_name
+end
+```
+
+In between `def` and `end`, we are able to execute a series of lines. The purpose of this method is to print `john doe` to the terminal.
+
+```ruby 
+    def say_greetings_to
+        puts "Greetings to John Doe"
+    end
+```
+
+However, when compiled, you will notice `John Doe` does not appear in the terminal? Why? That is because the method needs to be invoke or call to execute the series of lines say_greetings_to contains.
+
+```ruby 
+    say_greetings_to
+    say_greetings_to() # You can call a method like this as well
+```
+
+### Parameters in Methods 
+Methods aren't always this static or 'never changing'. To make this dynamic, I like to pass in data into this method outside of the method definition. To reference this data, I will include a parameter called `name`. `name` is an alias and is a reference to data being passed in. When data is being passed into a method, it is referred to as an `argument`. Here, there is one argument being passing into say_greetings_to
+
+```ruby 
+    def say_greetings_to(name)
+        puts name
+    end
+
+    say_greetings_to "John Doe"
+    say_greetings_to("Amy Thompson") # Another way of passing data
+```
+
+### Multiple parameters
+A method can have more than one parameter. We will use a comma to separate the parameters in the method definition as well as in the arguments. The order of arguments being placed is the order they will be referenced to.
+
+
+```ruby 
+    def say_greetings_to(name, friend)
+        puts name
+        puts friend
+    end
+
+    say_greetings_to "John Doe", "Amy Thompson"
+    # name will reference "John Doe"
+    # friend will reference "Amy Thompson"
+```
 
 ## Topics covered
 - comments
