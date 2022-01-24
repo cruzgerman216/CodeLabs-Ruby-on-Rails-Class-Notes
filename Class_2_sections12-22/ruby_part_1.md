@@ -172,7 +172,7 @@ puts "My name is #{name}."
 ```
 
 ## IRB
-Ruby has an sandbox environment to execute ruby code called IRB. This can be helpful for experimenting with different expressions. As someone who constantly moves from JavaScript to Ruby, I sometimes forget which methods or syntax belongs to what language. Occasionally, I use irb to help solve this issue. To use IRB, you are going to want to go to a terminal and enter `irb`. It will then allow you to enter ruby code. 
+Ruby has a sandbox environment to execute ruby code called IRB. This can be helpful for experimenting with different expressions. As someone who constantly moves from JavaScript to Ruby, I sometimes forget which methods or syntax belongs to what language. Occasionally, I use irb to help solve this issue. To use IRB, you are going to want to go to a terminal and enter `irb`. It will then allow you to enter ruby code. 
 
 ```
 irb
@@ -181,10 +181,43 @@ To exit irb, you will need to enter `exit`.
 ```
 exit
 ```
-## Numbers
+## Numbers and Operators
+A Number is a certain data type, like a String and a Boolean, that is generally a range of numbers. There are two types of Numbers: integers and floats. An integer is a whole number (no decimal) whereas floats have a decimal place.
 
+```ruby 
+puts 1 # Integer
+puts 1.1 # Float
+```
 
-## USA Covid CLI Tracker Part 1
+### Operators 
+Occasionally in programming languages, there are operators that evaluate mathatical expressions. These operators are 
+- `+` addition
+- `-` subtraction
+- `/` division
+- `*` multiplication
+- `%` Modulus - Will get the remainder from the division of two numbers
+- `**` Exponent - Performs exponential calculation
+
+Here's an example of how to use all operators.
+
+```ruby 
+puts 1 + 1      # 2
+puts 1 - 1      # 0
+puts 10 / 2     # 5
+puts 5 * 5      # 25
+puts 8 % 7      # 1
+puts 4**3       # 64
+```
+
+### PEMDAS
+PEMDAS is an acronynm that stands for `Parentheses Exponent Multplication Division Addition Subtraction`. PEMDAS is a way to simplify the order of operations when multiple operators are used in the same line. The same logic that applies in math applies in ruby programming (and most programming languages) as well. 
+
+```ruby 
+puts (4 - 4*2/4) + 10 # 12
+```
+<br>
+
+## Project USA Covid CLI Tracker Part 1
 What is a gem? [source](https://medium.com/@morgannegagne/what-is-a-ruby-gem-1eec2684e68) <br>
 They are simply open source libraries that contain Ruby code and are packaged with a little extra data. Using a gem allows a programmer to use the code within the gem in their own program, without explicitly inserting that code. Gems can be used for all sorts of purposes...Rails is a gem!
 
