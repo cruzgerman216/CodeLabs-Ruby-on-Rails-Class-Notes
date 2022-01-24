@@ -190,7 +190,7 @@ puts 1.1 # Float
 ```
 
 ### Operators 
-Occasionally in programming languages, there are operators that evaluate mathatical expressions. These operators are 
+Occasionally in programming languages, there are operators that evaluate mathematical expressions. These operators are 
 - `+` addition
 - `-` subtraction
 - `/` division
@@ -210,13 +210,12 @@ puts 4**3       # 64
 ```
 
 ### PEMDAS
-PEMDAS is an acronynm that stands for `Parentheses Exponent Multplication Division Addition Subtraction`. PEMDAS is a way to simplify the order of operations when multiple operators are used in the same line. The same logic that applies in math applies in ruby programming (and most programming languages) as well. 
+PEMDAS is an acronynm that stands for `Parentheses Exponent Multiplication Division Addition Subtraction`. PEMDAS is a way to explain the order of operations when multiple operators are used in the same line. The same logic that applies in math applies in ruby programming (and most programming languages) as well. 
 
 ```ruby 
 puts (4 - 4*2/4) + 10 # 12
 ```
-<br>
-
+---
 ## Project USA Covid CLI Tracker Part 1
 What is a gem? [source](https://medium.com/@morgannegagne/what-is-a-ruby-gem-1eec2684e68) <br>
 They are simply open source libraries that contain Ruby code and are packaged with a little extra data. Using a gem allows a programmer to use the code within the gem in their own program, without explicitly inserting that code. Gems can be used for all sorts of purposes...Rails is a gem!
