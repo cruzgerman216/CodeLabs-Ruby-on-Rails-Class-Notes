@@ -24,7 +24,7 @@ By default, replit will already have this coded for you in main.rb. `puts` will 
 ```ruby 
 Hello, world!
 ```
-2. You can also go to the shell or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
+2. You can also go to the console (in Replit) or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
 
 ## Variables 
 A variable contains data. Technically, the name of a variable references a specific memory location that contains data. In ruby, we aren't aware of the memory location as ruby is not concern with this (as well as other higher level programming languages). To store a value in this memory location, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program stops executing, the temporary data goes away.
@@ -172,7 +172,15 @@ puts "My name is #{name}."
 ```
 
 ## IRB
+Ruby has an sandbox environment to execute ruby code called IRB. This can be helpful for experimenting with different expressions. As someone who constantly moves from JavaScript to Ruby, I sometimes forget which methods or syntax belongs to what language. Occasionally, I use irb to help solve this issue. To use IRB, you are going to want to go to a terminal and enter `irb`. It will then allow you to enter ruby code. 
 
+```
+irb
+```
+To exit irb, you will need to enter `exit`. 
+```
+exit
+```
 ## Numbers
 
 
