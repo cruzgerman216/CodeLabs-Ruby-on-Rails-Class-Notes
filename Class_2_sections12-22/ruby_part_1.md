@@ -144,12 +144,31 @@ Strings such as `"John Doe"` have what are called "built in ruby methods" and be
 
 ```ruby 
 name = "John Doe"
-puts name.class # "String"
+puts name.class # String
 ```
 The built in string method `length` returns the number of characters in a string. Keep in mind, blank spaces count as one character.
 ```ruby 
 name = "John Doe"
 puts name.length # 8
+```
+You will occasionally is a `?` at the end of methods such as `empty?`. This will return a boolean. A boolean is a specific data type in which refers to two values 
+```ruby 
+true
+false
+```
+Booleans are used for conditionals and will be further explained as we move along in the curriculum. `empty?` will check the number of characters in a string. If the string has no characters or the length is 0, then `empty?` will return true. Otherwise false.
+
+```ruby 
+    puts "John Doe".empty? # false
+```
+
+## Getting User Input 
+Wouldn't it be more interesting if we were to get user input? To be able to do this, let's call `gets.chomp`. After doing so, you will notice your terminal will 'pause' and wait for a user input. Once you have entered a few characters, the IDE will continue executing the rest of the code.
+
+```ruby 
+puts "What's your name?" 
+name = gets.chomp
+puts "My name is #{name}."
 ```
 
 ## Topics covered
