@@ -171,14 +171,9 @@ name = gets.chomp
 puts "My name is #{name}."
 ```
 
-## Topics covered
+## IRB
 
-- IRB
-- data type methods 
-  -  "test".class -> returns string, 
-  -  "test".methods -> built in methods for strings
-- escaping
-- by value vs by reference
+## Numbers
 
 
 ## USA Covid CLI Tracker Part 1
