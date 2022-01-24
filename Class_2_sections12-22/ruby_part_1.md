@@ -216,13 +216,18 @@ PEMDAS is an acronynm that stands for `Parentheses Exponent Multiplication Divis
 puts (4 - 4*2/4) + 10 # 12
 ```
 ---
-## Project USA Covid CLI Tracker Part 1
-What is a gem? [source](https://medium.com/@morgannegagne/what-is-a-ruby-gem-1eec2684e68) <br>
-They are simply open source libraries that contain Ruby code and are packaged with a little extra data. Using a gem allows a programmer to use the code within the gem in their own program, without explicitly inserting that code. Gems can be used for all sorts of purposes...Rails is a gem!
+## Project - Covid-19 Tracker and CLI  Part 1
+With ruby fundamentals, we will have enough knowledge to create a Command Line Interface or CLI. A CLI is a program that runs in the terminal in which seeks user input. We will be build a CLI that includes data scraping Covid-19 statistics. By scraping data, we will allow the user which information they are more inclined to see. We will start by generating a gem.
 
-Let's create a gem that is a CLI (Command Line Interface) that scrapes covid-19 stats and prints them onto the console.
+### What is a gem?
+Ruby [gems](https://rubygems.org/) are simply open source libraries that contain Ruby code. You can also think of gems as "tools" to be used. Here is a list of some of the most popular gems:
+- With over 800 million downloads, [Bundler](https://rubygems.org/gems/bundler) tracks and manages all gem versions that are needed. Bundler is also used to create gems.
+- [Minitest](https://rubygems.org/gems/minitest) provides a testing suit for your project applications
+- By using [Nokogiri](https://rubygems.org/gems/nokogiri), you are easily able to scrape data from websites. 
 
-### Setup 
+### Creating a Gem and Setup
+Let's go ahead and make our own gem. In this curriculumn, we won't be publishing the gem by any means but will give you a clear indication of how to create open source projects for other developers to use.
+
 
 - Use an IDE such as VS Code or Replit
 - In the console, enter
@@ -389,3 +394,5 @@ enter ```ruby bin/tracker``` in the terminal
 #### References
 - https://launchschool.com/books/ruby/read/introduction
 - https://en.wikipedia.org/wiki/Ruby_(programming_language)
+- https://medium.com/@morgannegagne/what-is-a-ruby-gem-1eec2684e68
+- https://bundler.io/
