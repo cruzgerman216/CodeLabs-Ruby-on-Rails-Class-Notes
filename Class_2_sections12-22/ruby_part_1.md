@@ -225,7 +225,7 @@ Ruby [gems](https://rubygems.org/) are simply open source libraries that contain
 - [Minitest](https://rubygems.org/gems/minitest) provides a testing suit for your project applications
 - By using [Nokogiri](https://rubygems.org/gems/nokogiri), you are easily able to scrape data from websites. 
 
-### Creating a Gem and Setup
+### Creating a Gem
 Let's go ahead and create our own gem. In this curriculumn, we won't be publishing the gem by any means but will give you a clear indication of how to create open source projects for other developers to use.
 
 The project can be created in any ruby environment. We will be using Replit or a local IDE to create this project. In order to create a gem, we must use the bundler gem. Bundler will allow us to create a gem from scratch. To check whether or not you have bundler already installed, you can simple type the following in the command line:
@@ -238,18 +238,23 @@ In case you do not have Bundler installed, enter `gem install bundler`.
 Let's go ahead and generate a gem from scratch. Enter the following in the command line:
 
 ```bundle gem USA_COVID_19_Tracker```<br>
+### Gem setup
 You will then get a series of questions. 
-```Do you want to generate tests with your gem?``` no <br>
+1. ```Do you want to generate tests with your gem?``` no <br>
 We are not concern with testing our application at this moment of time. Of course, in future project we will welcome them.
-```Do you want to license your code permissively under the MIT license?``` yes <br>
-By including an MIT license, you are allowing any developer to use the gem however they like as long as they give you credit. On another note, this furthers open source decelopment.
+
+2. ```Do you want to license your code permissively under the MIT license?``` yes <br>
+By including an MIT license, you are allowing any developer to use the gem however they like as long as they give you credit. On another note, this furthers [open source decelopment](https://blog.jcoglan.com/2010/08/15/what-i-mean-when-i-use-the-mit-license/).
 
 ```
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions...
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the “Software”), to deal in the Software without restriction, including without 
+limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+Software, and to permit persons to whom the Software is furnished to do so, subject to the following 
+conditions...
 ``` 
-[source](https://blog.jcoglan.com/2010/08/15/what-i-mean-when-i-use-the-mit-license/)
 
-```Do you want to include a code of conduct in gems you generate?``` yes <br>
+3. ```Do you want to include a code of conduct in gems you generate?``` yes <br>
 
 After these series of questions, bundler will create a project folder with numerous of sub folders and files.
 
