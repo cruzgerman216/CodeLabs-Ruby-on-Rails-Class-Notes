@@ -27,7 +27,7 @@ Hello, world!
 2. You can also go to the console (in Replit) or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
 
 ## Variables 
-A variable contains data. Technically, the name of a variable references a specific memory location that contains data. In ruby, we aren't aware of the memory location as ruby is not concern with this (as well as other higher level programming languages). To store a value in this memory location, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program stops executing, the temporary data goes away.
+A variable contains data. Technically, the name of a variable references a specific memory location that contains data. In ruby, we aren't aware of the memory location as ruby is not concern with this (as well as other higher level programming languages). To store a value in this memory location, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program ends, the temporary data goes away.
 
 ```ruby 
 message = "Hello, world!" 
@@ -228,14 +228,14 @@ Ruby [gems](https://rubygems.org/) are simply open source libraries that contain
 ### Creating a Gem
 Let's go ahead and create our own gem. In this curriculumn, we won't be publishing the gem by any means but will give you a clear indication of how to create open source projects for other developers to use.
 
-The project can be created in any ruby environment. We will be using Replit or a local IDE to create this project. In order to create a gem, we must use the bundler gem. Bundler will allow us to create a gem from scratch. To check whether or not you have bundler already installed, you can simple type the following in the command line:
+The project can be created in any ruby environment. We will be using Replit or a local IDE to create this project. In order to create a gem, we must use the bundler gem. To check whether or not you have bundler already installed, you can simple type the following in the command line:
 
 ``` 
 bundler -v
 ```
 In case you do not have Bundler installed, enter `gem install bundler`. 
 
-Let's go ahead and generate a gem from scratch. Enter the following in the command line:
+Let's go ahead and generate a gem from scratch by entering the following in the command line:
 
 ```bundle gem USA_COVID_19_Tracker```<br>
 ### Gem setup
@@ -244,7 +244,7 @@ You will then get a series of questions.
 We are not concern with testing our application at this moment of time. Of course, in future project we will welcome them.
 
 2. ```Do you want to license your code permissively under the MIT license?``` yes <br>
-By including an MIT license, you are allowing any developer to use the gem however they like as long as they give you credit. On another note, this furthers [open source decelopment](https://blog.jcoglan.com/2010/08/15/what-i-mean-when-i-use-the-mit-license/).
+By including an MIT license, you are allowing any developer to use the gem however they like as long as they give you credit. On another note, this furthers [open source development](https://blog.jcoglan.com/2010/08/15/what-i-mean-when-i-use-the-mit-license/).
 
 ```
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
@@ -256,14 +256,74 @@ conditions...
 
 3. ```Do you want to include a code of conduct in gems you generate?``` yes <br>
 
-After these series of questions, bundler will create a project folder with numerous of sub folders and files.
 
 ### Folder Structure 
+After these series of questions, bundler will create a project folder with numerous of sub folders and files.
 
+``` 
+USA_COVID_19_Tracker
+    bin 
+    lib 
+    .gitignore
+    CODE_OF_CONDUCT.md
+    USA_COVID_19_Tracker.gemspec
+    gemfile
+    gemfile.lock
+    license.txt
+    Rakefile
+    README.md
+```
+Before explaining each folder and file, let's navigate to `USA_COVID_19_Tracker.gemspec`. Let's go ahead and make some adjustments. Please see the block below. We aren't concerned, at this moment of time, with the details of gem.
 
-- cd into project folder
-- create a file called tracker.rb under bin
-NOTE: Tracker will act as our executable file
+```ruby 
+spec.summary = "" # SET TO EMPTY STRING
+spec.description = "" # SET TO EMPTY STRING
+spec.homepage = "" # SET TO EMPTY STRING
+spec.license = "MIT"
+spec.required_ruby_version = ">= 2.6.0"
+
+spec.metadata["allowed_push_host"] = "" # SET TO EMPTY STRING
+
+# comment out these lines of code
+# spec.metadata["homepage_uri"] = spec.homepage
+# spec.metadata["source_code_uri"] = ""
+# spec.metadata["changelog_uri"] = ""
+```
+
+#### Bin Folder
+Back to the folder structor. The bin folder contains two files: console and setup. Console is used for experimentation. Here you can test out specific features/code/issues. By executing this file, it will automatically start IRB. We can include variables, logic in our existing code to test the features. To execute this file, enter `bin/console`
+
+```ruby
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "covid_19"
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+
+# (If you use this, don't forget to add pry to your Gemfile!)
+# require "pry"
+# Pry.start
+
+require "irb"
+IRB.start(__FILE__)
+```
+
+The setup file allows us to automate any other setup. 
+
+#### Bin Folder
+Mostly all of our file creation will happen in the bin folder. 
+
+#### .gitignore
+Files that are left untracked or "ignored" when committing code to GitHub.
+
+#### gemfile
+The gemfile is a list of gems that are necessary to execute the program. Soon, we will be adding more gems. 
+
+### Getting Started
+In the terminal, let's **change directory** or cd into the project folder. Create a file called **tracker.rb** inside of the bin folder. Tracker will be our main executable file.
 
 - add a print line and execute the following ```ruby bin/tracker.rb``` to the console to see if it works.
 
