@@ -82,28 +82,28 @@ end
 In between `def` and `end`, we are able to execute a series of lines. The purpose of this method is to print `john doe` to the terminal.
 
 ```ruby 
-    def say_greetings_to
-        puts "Greetings to John Doe"
-    end
+def say_greetings_to
+    puts "Greetings to John Doe"
+end
 ```
 
 However, when compiled, you will notice `John Doe` does not appear in the terminal? Why? That is because the method needs to be invoke or call to execute the series of lines say_greetings_to contains.
 
 ```ruby 
-    say_greetings_to
-    say_greetings_to() # You can call a method like this as well
+say_greetings_to
+say_greetings_to() # You can call a method like this as well
 ```
 
 ### Parameters in Methods 
 Methods aren't always this static or 'never changing'. To make this dynamic, I like to pass in data into this method outside of the method definition. To reference this data, I will include a parameter called `name`. `name` is an alias and is a reference to data being passed in. When data is being passed into a method, it is referred to as an `argument`. Here, there is one argument being passing into say_greetings_to
 
 ```ruby 
-    def say_greetings_to(name)
-        puts name
-    end
+def say_greetings_to(name)
+    puts name
+end
 
-    say_greetings_to "John Doe"
-    say_greetings_to("Amy Thompson") # Another way of passing data
+say_greetings_to "John Doe"
+say_greetings_to("Amy Thompson") # Another way of passing data
 ```
 
 ### Multiple parameters
@@ -111,14 +111,14 @@ A method can have more than one parameter. We will use a comma to separate the p
 
 
 ```ruby 
-    def say_greetings_to(name, friend)
-        puts name
-        puts friend
-    end
+def say_greetings_to(name, friend)
+    puts name
+    puts friend
+end
 
-    say_greetings_to "John Doe", "Amy Thompson"
-    # name will reference "John Doe"
-    # friend will reference "Amy Thompson"
+say_greetings_to "John Doe", "Amy Thompson"
+# name will reference "John Doe"
+# friend will reference "Amy Thompson"
 ```
 
 ## Topics covered
