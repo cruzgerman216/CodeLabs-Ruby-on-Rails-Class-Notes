@@ -291,7 +291,7 @@ spec.metadata["allowed_push_host"] = "" # SET TO EMPTY STRING
 ```
 
 #### Bin Folder
-Back to the folder structor. The bin folder contains two files: console and setup. Console is used for experimentation. Here you can test out specific features/code/issues. By executing this file, it will automatically start IRB. We can include variables, logic in our existing code to test the features. To execute this file, enter `bin/console`
+Back to the folder structure. The bin folder contains two files: console and setup. Console is used for experimentation. Here you can test out specific features/code/issues. By executing this file, it will automatically start IRB. We can include variables, logic in our existing code to test the features. To execute this file, enter `bin/console`
 
 ```ruby
 #!/usr/bin/env ruby
