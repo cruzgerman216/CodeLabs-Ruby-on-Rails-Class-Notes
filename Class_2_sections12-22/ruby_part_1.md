@@ -323,15 +323,18 @@ Files that are left untracked or "ignored" when committing code to GitHub.
 The gemfile is a list of gems that are necessary to execute the program. Soon, we will be adding more gems. 
 
 ### Getting Started
-In the terminal, let's <em>**change directory**</em> or cd into the project folder. Create a file called <em>**tracker.rb**</em> inside of the bin folder. Tracker will be our main executable file.
+In the terminal, let's <em>**change directory**</em> or cd into the project folder. Create a file called <em>**tracker.rb**</em> inside of the bin folder. Tracker will be our main executable file and act as our start place. 
 
-- add a print line and execute the following ```ruby bin/tracker.rb``` to the console to see if it works.
+#### require_relative and require 
+I want to be able to use the contents of other files. To do that, we are going to use the built in ruby methods `require` and `require_relative`.
 
-- require the file path to 'lib/USA_Covid_19__Tracker.rb" to your tracker.rb file.
+`require` and `require_relative` take in one argument string. This string represents a pathway to the specified file in the project folder. Both methods start at two different locations in the project folder. `require` starts at the **absolute path** or root directory. Let's use `require` to load the <em>**USA_COVID_19_Tracker.rb**</em>
+
+**bin/tracker.rb**
 ```ruby
-require_relative "../lib/USA_Covid_19_Tracker.rb"
+require "./lib/USA_COVID_19_Tracker.rb"
 ```
-NOTE: In lib/USA_Covid_19_tracker.rb, this will act as our root module of imports
+
 
 ### Preparing the CLI class
 
@@ -480,3 +483,4 @@ enter ```ruby bin/tracker``` in the terminal
 - https://en.wikipedia.org/wiki/Ruby_(programming_language)
 - https://medium.com/@morgannegagne/what-is-a-ruby-gem-1eec2684e68
 - https://bundler.io/
+- https://stackoverflow.com/questions/21306512/difference-between-relative-path-and-absolute-path-in-javascript
