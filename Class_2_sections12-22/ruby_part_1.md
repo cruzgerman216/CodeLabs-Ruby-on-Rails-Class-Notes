@@ -87,7 +87,7 @@ def say_greetings_to
 end
 ```
 
-However, when compiled, you will notice `John Doe` does not appear in the terminal? Why? That is because the method needs to be invoke or call to execute the series of lines say_greetings_to contains.
+However, when compiled, you will notice `John Doe` does not appear in the terminal? Why? That is because the method needs to be invoke or called to execute the series of lines say_greetings_to contains.
 
 ```ruby 
 say_greetings_to
@@ -323,7 +323,7 @@ Files that are left untracked or "ignored" when committing code to GitHub.
 The gemfile is a list of gems that are necessary to execute the program. Soon, we will be adding more gems. 
 
 ### Getting Started
-In the terminal, let's **change directory** or cd into the project folder. Create a file called **tracker.rb** inside of the bin folder. Tracker will be our main executable file.
+In the terminal, let's <em>**change directory**</em> or cd into the project folder. Create a file called <em>**tracker.rb**</em> inside of the bin folder. Tracker will be our main executable file.
 
 - add a print line and execute the following ```ruby bin/tracker.rb``` to the console to see if it works.
 
