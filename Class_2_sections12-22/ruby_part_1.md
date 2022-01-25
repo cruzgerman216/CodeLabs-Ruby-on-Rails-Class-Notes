@@ -325,17 +325,14 @@ The gemfile is a list of gems that are necessary to execute the program. Soon, w
 ### Getting Started
 In the terminal, let's <em>**change directory**</em> or cd into the project folder. To check the available files and folders that exist in the current directory you are in, enter `ls`. Create a file called <em>**tracker.rb**</em> inside of the bin folder. Tracker will be our main executable file and act as our start place. 
 
-### require_relative and require 
+### require 
 I want to be able to use the contents of other files. To do that, we are going to use the built in ruby methods `require` and `require_relative`.
 
-`require` and `require_relative` take in one argument string. This string represents a pathway to the specified file in the project folder. Both methods start at two different locations in the project folder. `require` starts at the **absolute path** or root directory. Let's use `require` to load <em>**USA_COVID_19_Tracker.rb**</em>
+`require` and `require_relative` take in one argument string. This string represents a pathway to the specified file in the project folder. Both methods start at two different locations in the project folder. `require` starts at the **absolute path** or root directory. Let's use `require` to load <em>**bin/USA_COVID_19_Tracker.rb**</em>
 
-**bin/tracker.rb**
-```ruby
-require "./lib/USA_COVID_19_Tracker.rb"
-```
-These paths are simliar to the linux commands in the terminal. When reading a path, we start from left to right. 
+The creation of these strings are simliar to the linux commands in the terminal. When creating/reading a path, we start from left to right. 
 
+**bin.tracker.rb**
 ```ruby 
 require "./" # Starts at the root directory (USA_COVID_19_Tracker)
 ```
@@ -350,6 +347,35 @@ Then load USA_COVID_19_Tracker.rb.
 require "./lib/USA_COVID_19_Tracker.rb" # Loads specific file
 ```
 Notice the usage of the forward slash `/` to change directories from the root directory to lib and to load USA_COVID_19_Tracker.rb.
+
+### require_relative
+When we execute tracker.rb in the terminal 
+
+**terminal**
+```
+ruby bin/tracker.rb
+```
+We get a file path error in USA_COVID_19_Tracker.rb.
+
+```
+`require': cannot load such file -- USA_COVID_19_Tracker/version
+```
+
+Navigate to lib/USA_COVID_19_Tracker.rb. Let's use `require_relative` to load the version file. The file that contains a `require_relative` line starts the path relative to where it is located. 
+
+```ruby 
+ require_relative '' # USA_COVID_19_Tracker.rb is in the lib directory. This path starts at the lib directory. 
+```
+The lib directory contains the folder the version file exists in. Let's go ahead and change directories to the USA_COVID_19_Tracker folder.
+
+```ruby 
+require_relative 'USA_COVID_19_Tracker'
+```
+To load the file, let's include a forward slash `/` after the directory name.
+
+```ruby 
+require_relative 'USA_COVID_19_Tracker/version`
+```
 
 ### Preparing the CLI class
 
