@@ -323,18 +323,33 @@ Files that are left untracked or "ignored" when committing code to GitHub.
 The gemfile is a list of gems that are necessary to execute the program. Soon, we will be adding more gems. 
 
 ### Getting Started
-In the terminal, let's <em>**change directory**</em> or cd into the project folder. Create a file called <em>**tracker.rb**</em> inside of the bin folder. Tracker will be our main executable file and act as our start place. 
+In the terminal, let's <em>**change directory**</em> or cd into the project folder. To check the available files and folders that exist in the current directory you are in, enter `ls`. Create a file called <em>**tracker.rb**</em> inside of the bin folder. Tracker will be our main executable file and act as our start place. 
 
-#### require_relative and require 
+### require_relative and require 
 I want to be able to use the contents of other files. To do that, we are going to use the built in ruby methods `require` and `require_relative`.
 
-`require` and `require_relative` take in one argument string. This string represents a pathway to the specified file in the project folder. Both methods start at two different locations in the project folder. `require` starts at the **absolute path** or root directory. Let's use `require` to load the <em>**USA_COVID_19_Tracker.rb**</em>
+`require` and `require_relative` take in one argument string. This string represents a pathway to the specified file in the project folder. Both methods start at two different locations in the project folder. `require` starts at the **absolute path** or root directory. Let's use `require` to load <em>**USA_COVID_19_Tracker.rb**</em>
 
 **bin/tracker.rb**
 ```ruby
 require "./lib/USA_COVID_19_Tracker.rb"
 ```
+These paths are simliar to the linux commands in the terminal. When reading a path, we start from left to right. 
 
+```ruby 
+require "./" # Starts at the root directory (USA_COVID_19_Tracker)
+```
+There are many folders (.git, bin, lib) and files (.gitignore, CODE_of_CONDUCT.md, ect) to load. We must first change directories to `lib` to get to `lib/USA_COVID_19_Tracker.rb`.
+
+```ruby 
+require "./lib" # Changes directory to the lib folder
+```
+Then load USA_COVID_19_Tracker.rb.
+
+```ruby 
+require "./lib/USA_COVID_19_Tracker.rb" # Loads specific file
+```
+Notice the usage of the forward slash `/` to change directories from the root directory to lib and to load USA_COVID_19_Tracker.rb.
 
 ### Preparing the CLI class
 
