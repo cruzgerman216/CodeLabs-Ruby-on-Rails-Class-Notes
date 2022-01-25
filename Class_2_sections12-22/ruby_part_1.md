@@ -210,7 +210,7 @@ puts 4**3       # 64
 ```
 
 ### PEMDAS
-PEMDAS is an acronynm that stands for `Parentheses Exponent Multiplication Division Addition Subtraction`. PEMDAS is a way to explain the order of operations when multiple operators are used in the same line. The same logic that applies in math applies in ruby programming (and most programming languages) as well. 
+PEMDAS is an acronynm that stands for `Parentheses Exponent Multiplication Division Addition Subtraction`. PEMDAS is a way to explain the order of operations when multiple operators are used in the same line. The same logic that applies in math applies in ruby programming (and in most programming languages) as well. 
 
 ```ruby 
 puts (4 - 4*2/4) + 10 # 12
@@ -228,7 +228,7 @@ Ruby [gems](https://rubygems.org/) are simply open source libraries that contain
 ### Creating a Gem
 Let's go ahead and create our own gem. In this curriculumn, we won't be publishing the gem by any means but will give you a clear indication of how to create open source projects for other developers to use.
 
-The project can be created in any ruby environment. We will be using Replit or a local IDE to create this project. In order to create a gem, we must use the bundler gem. To check whether or not you have bundler already installed, you can simple type the following in the command line:
+The project can be created in any ruby environment. We will be using Replit or a local IDE to create this project. In order to create a gem, we must use the bundler gem. To check whether or not you have bundler already installed, you can simply type the following in the command line:
 
 ``` 
 bundler -v
