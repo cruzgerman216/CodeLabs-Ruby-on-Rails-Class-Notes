@@ -503,30 +503,30 @@ end
 ```
 
 ### CLI menu
+This CLI will have a menu. Define a method called `menu`. Let's use `gets.chomp` to get user input. 
 
-- define a method called menu
-- store user input in a variable called input
-- call menu inside of the run method between greeting and end_program
-
-```ruby
-    def run
-        system('clear')
-        greeting
-        menu  # <------ here
-        end_program
-    end
-.
-.
-.
+**cli.rb**
+```ruby 
     def menu
         input = gets.chomp.downcase
     end
 ```
 
-- define a method called list_options
-  - use <<- and regex to print a multi-line string
-- call list_options in menu
+Let's call menu between lines containing greeting and end_program.
 
+**cli.rb**
+```ruby
+    def run
+        system('clear')
+        greeting
+        menu  
+        end_program
+    end
+```
+
+Let's define another method called `list_options`. We will then use special syntax to print multiple lines without having to repeat `puts` more than once.
+
+**cli.rb**
 ```ruby
     def menu
         list_options
@@ -547,7 +547,20 @@ end
     end
 ```
 
-enter ```ruby bin/tracker``` in the terminal
+Let's now test this out. Enter the following 
+
+**terminal**
+```
+ruby bin/tracker.rb
+``` 
+> Welcome to the Covid 19 tracker
+> 1. 
+> 2.
+> 3. 
+> Which one do you prefer?
+> 1
+> have a great day!
+```
 
 #### References
 - https://launchschool.com/books/ruby/read/introduction
