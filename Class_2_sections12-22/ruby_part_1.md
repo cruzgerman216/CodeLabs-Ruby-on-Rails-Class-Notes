@@ -72,7 +72,7 @@ name = "John Doe" # This is an example
 ```
 
 ## Basic methods
-Methods are a set lines of code that have a purpose. This is a great way to resuse a piece of logic and separate our logic into defined methods. Ruby has built in methods in which we will explore latter. Let's define our own method. To define a method, to define a method we must use keywords `def`  follow by the method name and `end`. The keyword `end` signifies the ending of the method.
+Methods are a set lines of code that have a purpose. This is a great way to resuse a piece of logic and separate our logic into defined methods. Ruby has built in methods in which we will explore later. For now, let's define our own method. To define a method, we must use keywords `def` follow by the method name in one line. In the next line, we must include the keyword `end`. `end` signifies the ending of the method.
 
 ```ruby 
 def method_name
@@ -326,13 +326,13 @@ The gemfile is a list of gems that are necessary to execute the program. Soon, w
 In the terminal, let's <em>**change directory**</em> or cd into the project folder. To check the available files and folders that exist in the current directory you are in, enter `ls`. Create a file called <em>**tracker.rb**</em> inside of the bin folder. Tracker will be our main executable file and act as our start place. 
 
 ### require 
-I want to be able to use the contents of other files. To do that, we are going to use the built in ruby methods `require` and `require_relative`.
+We want to be able to use the contents of other files. To do that, we are going to use the built in ruby methods `require` and `require_relative`.
 
-`require` and `require_relative` take in one argument string. This string represents a pathway to the specified file in the project folder. Both methods start at two different locations in the project folder. `require` starts at the **absolute path** or root directory. Let's use `require` to load <em>**bin/USA_COVID_19_Tracker.rb**</em>
+`require` and `require_relative` take in one argument string. This string represents a pathway to the specified file in the project folder. Both methods start at two different locations in the project folder. `require` starts at the **absolute path** or root directory. Let's use `require` to load <em>**bin/USA_COVID_19_Tracker.rb**</em>(USA_COVID_19_Tracker.rb is responsible for loading other files we will later create).
 
 The creation of these strings are simliar to the linux commands in the terminal. When creating/reading a path, we start from left to right. 
 
-**bin.tracker.rb**
+**bin/tracker.rb**
 ```ruby 
 require "./" # Starts at the root directory (USA_COVID_19_Tracker)
 ```
@@ -353,7 +353,7 @@ When we execute tracker.rb in the terminal
 
 **terminal**
 ```
-ruby bin/tracker.rb
+> ruby bin/tracker.rb
 ```
 We get a file path error in USA_COVID_19_Tracker.rb.
 
@@ -482,7 +482,7 @@ class CLI
 end
 ```
 
-Let's create a new instannce method called `end_program` that prints a farewell message for when the program stops executing. It makes sense to invoke this method at the end of the `run` method because it will be the last statement.
+Let's create a new instance method called `end_program` that prints a farewell message for when the program stops executing. It makes sense to invoke this method at the end of the `run` method because it will be the last statement.
 
 ```ruby
 class CLI
@@ -555,3 +555,4 @@ enter ```ruby bin/tracker``` in the terminal
 - https://medium.com/@morgannegagne/what-is-a-ruby-gem-1eec2684e68
 - https://bundler.io/
 - https://stackoverflow.com/questions/21306512/difference-between-relative-path-and-absolute-path-in-javascript
+- https://www.learneroo.com/modules/142/nodes/744
