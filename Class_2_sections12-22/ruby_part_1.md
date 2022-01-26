@@ -553,13 +553,13 @@ Let's now test this out. Enter the following
 ```
 ruby bin/tracker.rb
 ``` 
-> Welcome to the Covid 19 tracker
-> 1. 
-> 2.
-> 3. 
-> Which one do you prefer?
-> 1
-> have a great day!
+    > Welcome to the Covid 19 tracker
+    > 1. 
+    > 2.
+    > 3. 
+    > Which one do you prefer?
+    > 1
+    > have a great day!
 ```
 
 #### References
