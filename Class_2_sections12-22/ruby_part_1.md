@@ -381,7 +381,7 @@ require_relative 'USA_COVID_19_Tracker/version`
 ### Preparing the CLI class
 Let's create a Ruby class. In ruby, classes contain methods and attributes. You can think of attributes as "variables" for classes. These methods and attributes are the blue print for creating objects. For example, strings are objects in which can invoke String methods ("example".length). We will dive deep into objects later.
 
-Navigate to <em>**lib/USA_COVID_19_Tracker**</em> and create a file called <em>**cli.rb**</em>. To create a class, we must first start off with the keyword `class` follow by the classname. At the end of every class contains the key word `end`. Let's call this class CLI. 
+Navigate to <em>**lib/USA_COVID_19_Tracker**</em> and create a file called <em>**cli.rb**</em>. To create a class, we must first start off with the keyword `class` follow by the classname. Let's call this class CLI.  At the end of every class contains the key word `end`. 
 
 ```ruby
 class CLI
@@ -390,7 +390,7 @@ end
 
 We want to eventually create a method from CLI to invoke the start of the application. Let's load this file in `lib/USA_COVID_19_Tracker.rb`.
 
-`USA_COVID_19_Tracker.rb`
+**USA_COVID_19_Tracker.rb**
 ```ruby
 require_relative "USA_Covid_19_Tracker/version"
 
@@ -401,7 +401,7 @@ end
 
 require_relative "USA_Covid_19_Tracker/cli.rb"
 ```
-Tracker.rb will get the loaded content form this file. This also includes the CLI class. Navigate to `bin/tracker.rb`
+Tracker.rb will get the loaded content from this file. This also includes the CLI class. Navigate to `bin/tracker.rb`
 
 ### Creating a CLI instance
 An instance is an object associated with a specific class. To create a CLI instance, we use the `new` method. 
@@ -426,6 +426,7 @@ end
 
 Navigate to <em>**tracker.rb**</em>. Because CLI.new is an instance of the CLI class, we can call an additional method onto it. Let's call the newly created `run` method.
 
+**tracker.rb**
 ```ruby 
 CLI.new.run # The start of the application
 ```
@@ -443,9 +444,31 @@ class CLI
 end
 ```
 
-- in run, include system("clear") to clear the console when the program starts
-- call the greeting method after system("clear")
+Let's go ahead and include the `greeting` method inside of the `run` method. It's actually quite simple. All we have to do is include the name of the method we like to call in `run`. 
 
+**cli.rb**
+ ```ruby
+class CLI
+    def run
+        greeting
+    end
+
+    def greeting
+        puts "Welcome to the Covid-19 CLI Tracker!"
+    end
+end
+```
+Let's execute tracker.rb. 
+
+**terminal**
+```
+> ruby bin/tracker.rb
+> Welcome to the Covid-19 CLI Tracker!
+```
+
+Notice how every time tracker.rb gets executed, the terminal does not clear. Ruby gives us a neat method that allows us to clear the terminal at the start of the application. This method is called `system` which takes in 'clear' as the argument.
+
+**cli.rb**
 ```ruby
 class CLI
     def run
@@ -459,9 +482,7 @@ class CLI
 end
 ```
 
-- define another method called end_program
-- in the program, print out "See ya latter!"
-- Inlude it in the run method
+Let's create a new instannce method called `end_program` that prints a farewell message for when the program stops executing. It makes sense to invoke this method at the end of the `run` method because it will be the last statement.
 
 ```ruby
 class CLI
@@ -480,6 +501,8 @@ class CLI
     end
 end
 ```
+
+### CLI menu
 
 - define a method called menu
 - store user input in a variable called input
