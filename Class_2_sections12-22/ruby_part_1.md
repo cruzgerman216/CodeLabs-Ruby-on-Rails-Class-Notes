@@ -363,6 +363,7 @@ We get a file path error in USA_COVID_19_Tracker.rb.
 
 Navigate to lib/USA_COVID_19_Tracker.rb. Let's use `require_relative` to load the version file. The file that contains a `require_relative` line starts the path relative to where it is located. 
 
+**USA_COVID_19_Tracker.rb**
 ```ruby 
  require_relative '' # USA_COVID_19_Tracker.rb is in the lib directory. This path starts at the lib directory. 
 ```
@@ -378,21 +379,18 @@ require_relative 'USA_COVID_19_Tracker/version`
 ```
 
 ### Preparing the CLI class
+Let's create a Ruby class. In ruby, classes contain methods and attributes. You can think of attributes as "variables" for classes. These methods and attributes are the blue print for creating objects. For example, strings are objects in which can invoke String methods ("example".length). We will dive deep into objects later.
 
-- under lib/USA_Covid_19_Tracker, create a file called cli.rb
-- Create a class called CLI
-- Define a method called test. In test, print out a statement.
+Navigate to <em>**lib/USA_COVID_19_Tracker**</em> and create a file called <em>**cli.rb**</em>. To create a class, we must first start off with the keyword `class` follow by the classname. At the end of every class contains the key word `end`. Let's call this class CLI. 
 
 ```ruby
 class CLI
-    def test
-        puts "test"
-    end
 end
 ```
 
-- Under lib, in USA_Covid_19_Tracker.rb, require cli.rb so that our tracker file can use it
+We want to eventually create a method from CLI to invoke the start of the application. Let's load this file in `lib/USA_COVID_19_Tracker.rb`.
 
+`USA_COVID_19_Tracker.rb`
 ```ruby
 require_relative "USA_Covid_19_Tracker/version"
 
@@ -401,30 +399,39 @@ module USACovid19Tracker
   # Your code goes here...
 end
 
-
 require_relative "USA_Covid_19_Tracker/cli.rb"
 ```
+Tracker.rb will get the loaded content form this file. This also includes the CLI class. Navigate to `bin/tracker.rb`
 
-- Under bin, in tracker, instantiate an instance from the CLI class and call out the test method
+### Creating a CLI instance
+An instance is an object associated with a specific class. To create a CLI instance, we use the `new` method. 
 
+**bin/tracker.rb**
 ```ruby
 require_relative "../lib/USA_Covid_19_Tracker.rb"
 
-CLI.new.test
+CLI.new
 ```
 
-- run ```ruby bin/tracker.rb``` in the console
+### Adding methods to the CLI Class
+Navigate to <em>**lib/USA_COVID_19_Tracker/cli.rb**</em>. In the scope of the cli class, between lines containing `class` and `end`, let's define what is referred to as an insance method. Call this method `run`.
 
-- Instead of calling the test method, let's call run instead
+**cli.rb**
+```ruby
+class CLI
+    def run
+    end
+end
+```
+
+Navigate to <em>**tracker.rb**</em>. Because CLI.new is an instance of the CLI class, we can call an additional method onto it. Let's call the newly created `run` method.
 
 ```ruby 
-CLI.new.run
+CLI.new.run # The start of the application
 ```
+Navigate back to <em>**cli.rb**</em>. Let's define a new method that prints out a welcome mesage to the terminal!
 
-### CLI class
-- define a method named run and greeting
-- print out a welcome statement in the greeting method
-
+**cli.rb**
 ```ruby
 class CLI
     def run
