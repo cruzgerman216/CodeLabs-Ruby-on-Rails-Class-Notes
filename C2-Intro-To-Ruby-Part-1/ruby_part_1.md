@@ -106,9 +106,9 @@ Unlike a hash, we aren't aware of the position of each element of the array (thi
 
 ## Printing To The Terminal
 When we print to the terminal, we allow ourselves as programmers to see the values in our code. We can choose what to output with three built in ruby keywords: 
-- puts 
-- print 
-- p
+- `puts` 
+- `print` 
+- `p`
 
 Type the following in main.rb: 
 ```ruby 
