@@ -694,4 +694,4 @@ ruby bin/tracker.rb
 - https://www.techotopia.com/index.php/Ruby_Variable_Scope
 
 ---
-Saw a mispelled word? Want to improve the class notes? Create a pull request and contribute! 
+Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
