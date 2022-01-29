@@ -38,12 +38,39 @@ false
 ```
 
 ### Hashes 
-Hashes 
+A hash is a series of key-value pairs. In order to access a value, square brackets are needed `[]` after the hash. In between the square brackets, include the name of the key as a symbol.
 
-- Boolean
-- Hashes
-- Arrays
-- Symbols
+```ruby 
+{:name => "John Doe", :age => 54}
+{:name => "Amy Singer", :age => 43}[:name] # 'Amy Singer'
+```
+
+Here is a much newer syntax for defining key-value pairs for ruby.
+
+```ruby 
+{name: "John Doe", age: 54}
+{name: "Amy Singer", age: 43}[:name] # 'Amy Singer'
+```
+
+### Symbols 
+Symbols are referred to as variables names in replacement to strings for higher performance rates. In order to define a symbol, use a colon `:`. Refer to hashes and the use of symbols to access values. 
+
+```ruby
+:name
+```
+
+### Arrays
+An array is a list of data enclosed in square brackets `[]`. Each list item or element is separated by a comma `,`. An array can hold different amounts of data types.
+
+```ruby
+[1, "string", true, :test, {name: "John Doe"}]
+```
+
+Unlike a hash, we aren't aware of the position of each element of the array (think of a thousand elements in a single array). To gain access of a value at a position, we use square brackets follow by a number. This number represents the position the element is at. The position of an array starts at 0 which will return `1`
+
+```ruby 
+[1, "string", true, :test, {name: "John Doe"}][0] # 1
+```
 
 ## Printing to the terminal
 Let's create a newly fresh repl in [replit](https://replit.com/) called class 2. `NOTE: Any computers with ruby installed already is fine to work with. Be sure to create a file called main.rb. Replit will have this by default.` 
