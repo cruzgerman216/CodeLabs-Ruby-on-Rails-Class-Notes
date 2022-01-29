@@ -6,6 +6,30 @@ Ruby was develop by a man named Yukihiro Matsumoto in Japan. He believed a layer
 
 Ruby is written in C. And even C is written in assembly language, which gets translated into machine code. It's this layer of abstraction that exists in the industry that allows for a much more efficent and faster way of developing tools such as Rails.
 
+## Data Types
+Data types in programming are ways to define different types of data. Each data type is used in a different manner. 
+
+### Strings 
+A string is characterized by text. They are grouped by characters that can represent sentences and words. In order to define a string, you would need to use single quotes or double quotes outside of a character(s). 
+```ruby
+"This is an example. I can include any character, here is an example list: 1234567890!@#$%^&&*()"
+```
+
+Double quotes allow for single quotes whereas, single quotes cannot have within the string additional single quotes.
+
+```ruby
+"It isn't good to forget what a string represents." # Correct
+'This isn't going to work.'                         # Incorrect
+```
+
+### Numbers
+Numbers are used for mathemtical results. A number represents a range of numbers
+- Number
+- Boolean
+- Hashes
+- Arrays
+- Symbols
+
 ## Printing to the terminal
 Let's create a newly fresh repl in [replit](https://replit.com/) called class 2. `NOTE: Any computers with ruby installed already is fine to work with. Be sure to create a file called main.rb. Replit will have this by default.` 
 
