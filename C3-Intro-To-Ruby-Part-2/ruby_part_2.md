@@ -81,11 +81,11 @@ if false
 elsif true 
     puts "Will print"
 else 
-    puts "Will print"
+    puts "Will print not print because the previous logic block is true"
 end 
 ```
 
-Because the compiler reads from top to bottom, whichever conditional that is `true` first, the following logical block will get executed.
+Because the compiler reads from top to bottom, the if block is satisfied once one condtional is true. Once satisfied, it will disregard other conditionals.
 
 ### Logical Operators
 How do we check to see if purchase is greater than 2000? We use what are called logical operators. Logical operators are the process in which compares two values in a certain fashion and result in either `true` or `false`. Here is a list of logical operators. 
@@ -118,10 +118,9 @@ elsif purchase > 2000 # false
 end 
 ```
 
-Let's include another condition that checks if the purchase is greater than 1500, and less than 2000. `Let's include this at the top level of the conditional chain to be read first otherwise, the other conditionals we get executed first.`
 
 ```ruby 
-if purchase > 1500 && purchase < 2000 
+if purchase > 1500 && purchase < 2000 # false
     puts "Almost out of funds"
 elsif purchase < 2000   # true 
     puts "Successful transaction"
@@ -129,17 +128,69 @@ elsif purchase > 2000 # false
     puts "Insufficient funds"
 end 
 ```
+## Array
+ An array is a list of items(strings, integers, arrays, objects, ect)
 
-<!-- - array
-  - An array is a list of items(strings, integers, arrays, objects, ect)
-- hash
-  - Hash is a collection of unique keys and their values
+```ruby 
+[1, '4', true, {name: "John"}]
+```
+
+### Pop
+Invoking the array method `pop` will remove the last element of the array.
+
+```ruby 
+names = ["John", "Sam", "Amy"]
+names.pop # returns removed element "Amy"
+puts names # ["John", "Sam"]
+```
+
+### Push
+Invoking the array method `push` will add an element at the end of the array.
+
+```ruby 
+names = ["Isaiah", "Delilah", "Alexis"]
+names.push("Noah") # returns ["Isiah", "Delilah", "Alexis", "Noah"]
+```
+
+### Join
+Invoking the array method `join` will combine all elements as a string. 
+
+```ruby 
+names = ["My", "name", "is", "Skylar"]
+names.join # "MynameisSkylar"
+```
+You can also include a string as an argument to put in between each element.
+names = ["My", "name", "is", "Skylar"]
+names.join(" ") # "My name is Skylar"
+```
+
+### Each
+Invoking the array method `each` will allow us to iterate through the list of elements in a code block using keywords `do` to start the block and `end` to end the block. `|reference|` is place after `do` as a reference to each element of the array. The code block is repeated as many times as there are elements in the array.
+
+```ruby 
+names = ["Isaiah", 'Alexis', 'Emily']
+
+names.each do |name|
+    # name is a reference to each element of the array 
+    puts "My name is #{name}."
+end 
+```
+**Terminal**
+```
+> My name is Isaiah
+> My name is Alexis
+> My name is Emily
+```
+
+Instead of a code block, we can also format the iteration as an in-line block. 
+```ruby
+names.each {|name| puts "My name is #{name}}
+```
+<!--
 - While loop
-  - A "While" Loop is used to repeat a specific block of code an unknown number of times, until a condition is met. --> -->
+  - A "While" Loop is used to repeat a specific block of code an unknown number of times, until a condition is met. -->
 
 ## Array 
-
-## Hash 
 
 ## Loops 
 
