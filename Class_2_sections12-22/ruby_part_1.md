@@ -1,6 +1,8 @@
 # Class 2 - The Ruby Programming Language Part 1
 ![Ruby Programming](../assets/images/C1-images/ruby.png)
+
 Learning Ruby will be just as important as learning Rails. Understanding the basic syntax and programming fundamentals will be necessary before moving onto any technical framework. 
+
 ---
 *Class 2 refers to videos 12 - 22 in Section 2: The Ruby Programming Language*
 
