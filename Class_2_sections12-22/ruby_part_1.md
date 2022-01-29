@@ -6,6 +6,18 @@ Ruby was develop by a man named Yukihiro Matsumoto in Japan. He believed a layer
 
 Ruby is written in C. And even C is written in assembly language, which gets translated into machine code. It's this layer of abstraction that exists in the industry that allows for a much more efficent and faster way of developing tools such as Rails.
 
+## Creating/Executing a Ruby file 
+Create a new folder or create a newly fresh repl in [replit](https://replit.com/) called class 2. `NOTE: Any computers with ruby installed already is fine to work with. Be sure to create a file called main.rb. Replit will have this by default.` 
+
+To create a ruby file, you must include the `.rb` extension to create ruby executable code. 
+
+In order to execute the code in a Ruby file, enter the following to the terminal:
+
+**terminal**
+```
+> ruby file_name.rb
+```
+
 ## Data Types
 Data types in programming are ways to define different types of data. Each data type is used in a different manner. 
 
@@ -74,9 +86,7 @@ Unlike a hash, we aren't aware of the position of each element of the array (thi
 ```
 
 ## Printing to the terminal
-Let's create a newly fresh repl in [replit](https://replit.com/) called class 2. `NOTE: Any computers with ruby installed already is fine to work with. Be sure to create a file called main.rb. Replit will have this by default.` 
-
-Let's start out by printing to the terminal. When we print to the terminal, we allow ourselves as programmers to see the values in our code. We can choose what to output with three built in ruby keywords: 
+When we print to the terminal, we allow ourselves as programmers to see the values in our code. We can choose what to output with three built in ruby keywords: 
 - puts 
 - print 
 - p
@@ -85,7 +95,7 @@ Type the following in main.rb:
 ```ruby 
 puts "Hello, World!"
 ```
-By default, replit will already have this coded for you in main.rb. `puts` will print to the terminal whatever is in the righthand side of it, in this case `"Hello, World!"`. Whatever is in double quotation marks is regarded as a string and is a specific data type. A data type is a piece of information that tells how the computer should interpret it. We will go over more data types soon. Futhermore, there are two ways to execute main.rb. 
+ `puts` will print to the terminal whatever is in the righthand side of it, in this case `"Hello, World!"`. Whatever is in double quotation marks is regarded as a string and is a specific data type. A data type is a piece of information that tells how the computer should interpret it. We will go over more data types soon. Futhermore, there are two ways to execute main.rb. 
 1. You can click the `run` button in Replit and it will output the following in the terminal. 
 
 ``` 
