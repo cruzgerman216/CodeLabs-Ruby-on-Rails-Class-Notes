@@ -1,4 +1,4 @@
-# Class 1 - Intro
+# Class 1 - Introduction to Back End 
 ### Table of Contents 
 - Introduction
 - Back End Roadmap 
