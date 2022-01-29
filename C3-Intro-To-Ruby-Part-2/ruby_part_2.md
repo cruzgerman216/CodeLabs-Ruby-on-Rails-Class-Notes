@@ -5,15 +5,39 @@ Now we get into problem solving that involves even the basic features of most pr
 
 ---
 ### Table of Contents 
-- Methods
+- Return Expressions In Methods 
 - Conditionals
 - Arrays
 - Loops
 - USA Covid CLI Tracker Part 2
 --- 
-<!-- - methods
-  - Ruby methods are very similar to functions in any other programming language. Ruby methods are used to bundle one or more repeatable statements into a single unit.
-- if/else conditions
+
+## Return Expressions in Methods 
+In class 2, we introduced methods. To jog your memory, Ruby methods are used to bundle one or more repeatable statements into a single unit. The last line of every Ruby method gets return. This gives the opportunity to return an evaluated expression and store it in a declared variable.
+
+```ruby
+def add(num_one, num_two)
+    puts "Adding numbers..."
+    num_one + num_two # Last line that will be return
+end
+
+result = add(5, 5) 
+puts result # prints 10
+```
+
+You can also use the `return` keyword to explicitly return a value. Anything after the line of code containing the `return` keyword will not execute.
+
+```ruby 
+def add (num_one, num_two)
+    return num_one + num_two 
+    puts "test" # Will not execute after return
+end
+
+result = add(5,5)
+puts result # prints 10
+```
+
+<!-- - if/else conditions
   - if/elses statements are logic blocks. Executes code if the conditional is true. If the conditional is not true, code specified in the else clause is executed.
 - array
   - An array is a list of items(strings, integers, arrays, objects, ect)
