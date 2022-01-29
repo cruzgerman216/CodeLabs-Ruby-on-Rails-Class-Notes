@@ -1,6 +1,19 @@
 # Class 2 - The Ruby Programming Language
 Learning Ruby will be just as important as learning Rails. Understanding the basic syntax and programming fundamentals will be necessary before moving onto any technical framework. 
 
+### Table of Contents 
+- History of Ruby and Layer of Abstraction 
+- Creating/Executing a Ruby file 
+- Data Types
+- Printing To The Terminal
+- Variables
+- Basic Methods
+- String Expressions and Methods 
+- Getting User Input 
+- Operators 
+- Project - Covid-19 Tracker and CLI  Part 1
+---
+
 ## History of Ruby and Layer of Abstraction
 Ruby was develop by a man named Yukihiro Matsumoto in Japan. He believed a layer of abstraction should be given to programming languages. What is meant by a layer of abstraction? Think about your phone. You use your phone for many reasons. It's easy to use and it's capable of doing much more than call and text. However, under the hood brings a layer of abstraction that is only understood by those who created it. 
 
@@ -85,7 +98,7 @@ Unlike a hash, we aren't aware of the position of each element of the array (thi
 [1, "string", true, :test, {name: "John Doe"}][0] # 1
 ```
 
-## Printing to the terminal
+## Printing To The Terminal
 When we print to the terminal, we allow ourselves as programmers to see the values in our code. We can choose what to output with three built in ruby keywords: 
 - puts 
 - print 
