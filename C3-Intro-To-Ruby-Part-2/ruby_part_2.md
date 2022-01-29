@@ -192,9 +192,67 @@ names.each {|name| puts "My name is #{name}}
 - While loop
   - A "While" Loop is used to repeat a specific block of code an unknown number of times, until a condition is met. -->
 
-## Array 
-
 ## Loops 
+Loops are a fundamental feature in programming languages. Loops allow a code block to be repeated as long as a condition is met. 
+
+### while loop
+A `while` loop checks a condition before running it's code block. As long as the condition is true, it will repeat. `NOTE: It's common to create an infinite loop on accident. You have to make sure the loop will eventually end as an infinite loop will crash the program.` To define a `while` loop, use the keyword `while` follow by the condition. Use the keyword `end` to end the code block.
+
+```ruby
+i = 0
+while i < 5
+  puts i
+  i += 1
+end 
+```
+
+**Terminal**
+```
+> 0
+> 1
+> 2
+> 3
+> 4
+```
+### for loop
+A for loop is preferred when the number of iterations are known. 
+
+```ruby 
+for a in 0..4 do
+    puts a  
+end
+```
+
+### do..while loop
+A `do..while` is similiar to the while loop, however, it executes the code block at least once.
+
+```ruby
+i = -100
+loop do
+    puts "Example"
+    if i < 0
+        break # stops the loop
+    end
+end
+```
+### until loop
+The `until` loop will repeatedly execute the code block until the condition has been met.
+
+```ruby 
+i = 0
+until i == 5 do 
+  puts i 
+  i = 1 + i
+end
+```
+**terminal**
+```
+> 0
+> 1
+> 2
+> 3
+> 4
+```
 
 ## USA Covid CLI Tracker Part 2
 
