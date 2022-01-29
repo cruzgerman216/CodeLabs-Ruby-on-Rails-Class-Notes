@@ -6,7 +6,7 @@
 - Arrays
 - Loops
 - USA Covid CLI Tracker Part 2
-
+--- 
 <!-- - methods
   - Ruby methods are very similar to functions in any other programming language. Ruby methods are used to bundle one or more repeatable statements into a single unit.
 - if/else conditions
