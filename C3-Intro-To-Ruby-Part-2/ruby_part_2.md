@@ -7,9 +7,10 @@ Now we get into problem solving that involves even the basic features of most pr
 ### Table of Contents 
 - Return Expressions In Methods 
 - Conditionals
+- Case Statements
 - Arrays
 - Loops
-- USA Covid CLI Tracker Part 2
+- Project - Covid-19 Tracker and CLI  Part 2
 --- 
 
 ## Return Expressions in Methods 
@@ -129,6 +130,22 @@ elsif purchase > 2000 # false
     puts "Insufficient funds"
 end 
 ```
+
+## Case Statements 
+When deciding to use if/else conditionals, you may want to consider case statements as they are similiar. Case statements start with the keyword `case` follow by a value. This value is check by each line containing `when` keywords. Each `when` line is followed by a value. If the value matches, the code block will get executed.
+
+```ruby
+name = "Delilah"
+case name
+when "Delilah"
+    puts "Found Delilah!" # Prints
+when "Noah"
+    puts "Found Noah!"
+else 
+  puts "Could not find anyone"
+end 
+```
+
 ## Array
  An array is a list of items(strings, integers, arrays, objects, ect)
 
