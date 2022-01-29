@@ -682,6 +682,7 @@ ruby bin/tracker.rb
 > 1
 > have a great day!
 ```
+---
 
 #### References
 - https://launchschool.com/books/ruby/read/introduction
@@ -691,3 +692,6 @@ ruby bin/tracker.rb
 - https://stackoverflow.com/questions/21306512/difference-between-relative-path-and-absolute-path-in-javascript
 - https://www.learneroo.com/modules/142/nodes/744
 - https://www.techotopia.com/index.php/Ruby_Variable_Scope
+
+---
+Saw a mispelled word? Want to improve the class notes? Create a pull request and contribute! 
