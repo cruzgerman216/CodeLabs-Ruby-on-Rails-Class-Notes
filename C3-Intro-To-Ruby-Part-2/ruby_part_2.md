@@ -118,6 +118,7 @@ elsif purchase > 2000 # false
 end 
 ```
 
+Let's include another condition that checks if the purchase is greater than 1500, and less than 2000. `Let's include this at the top level of the conditional chain to be read first otherwise, the other conditionals will get executed first.`
 
 ```ruby 
 if purchase > 1500 && purchase < 2000 # false
@@ -160,6 +161,7 @@ names = ["My", "name", "is", "Skylar"]
 names.join # "MynameisSkylar"
 ```
 You can also include a string as an argument to put in between each element.
+```ruby 
 names = ["My", "name", "is", "Skylar"]
 names.join(" ") # "My name is Skylar"
 ```
