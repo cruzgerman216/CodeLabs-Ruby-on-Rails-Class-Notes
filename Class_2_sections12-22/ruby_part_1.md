@@ -38,11 +38,12 @@ false
 ```
 
 ### Hashes 
-A hash is a series of key-value pairs. In order to access a value, square brackets are needed `[]` after the hash. In between the square brackets, include the name of the key as a symbol.
+A hash is a series of unique key-value pairs. In order to access a value, square brackets are needed `[]` after the hash. In between the square brackets, include the name of the key as a symbol.
 
 ```ruby 
 {:name => "John Doe", :age => 54}
 {:name => "Amy Singer", :age => 43}[:name] # 'Amy Singer'
+{name: "John Doe", name: "Amy Singer"} # Error! Duplicated key :name and overwritten
 ```
 
 Here is a much newer syntax for defining key-value pairs for ruby.
@@ -87,10 +88,10 @@ puts "Hello, World!"
 By default, replit will already have this coded for you in main.rb. `puts` will print to the terminal whatever is in the righthand side of it, in this case `"Hello, World!"`. Whatever is in double quotation marks is regarded as a string and is a specific data type. A data type is a piece of information that tells how the computer should interpret it. We will go over more data types soon. Futhermore, there are two ways to execute main.rb. 
 1. You can click the `run` button in Replit and it will output the following in the terminal. 
 
-```ruby 
-Hello, world!
+``` 
+> Hello, world!
 ```
-2. You can also go to the console (in Replit) or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
+1. You can also go to the console (in Replit) or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
 
 ## Variables 
 A variable contains data. Technically, the name of a variable references a specific memory location that contains data. In ruby, we aren't aware of the memory location as ruby is not concern with this (as well as other higher level programming languages). To store a value in this memory location, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program ends, the temporary data goes away.

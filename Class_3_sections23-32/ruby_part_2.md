@@ -1,6 +1,5 @@
 # The Ruby Programming Language
 
-## Topics covered
 - methods
   - Ruby methods are very similar to functions in any other programming language. Ruby methods are used to bundle one or more repeatable statements into a single unit.
 - if/else conditions
@@ -12,6 +11,16 @@
 - While loop
   - A "While" Loop is used to repeat a specific block of code an unknown number of times, until a condition is met.
 
+
+## Methods 
+
+## Conditionals 
+
+## Array 
+
+## Hash 
+
+## Loops 
 
 ## USA Covid CLI Tracker Part 2
 
