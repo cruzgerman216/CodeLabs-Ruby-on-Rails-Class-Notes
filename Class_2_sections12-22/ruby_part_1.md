@@ -19,7 +19,7 @@ In order to execute the code in a Ruby file, enter the following to the terminal
 ```
 
 ## Data Types
-Data types in programming are ways to define different types of data. Each data type is used in a different manner. 
+Data types in programming are ways to define different types of data. A data type is also a piece of information that tells how the computer should interpret it. Each data type is used in a different manner. 
 
 ### Strings 
 A string is characterized by text. They are grouped by characters that can represent sentences and words. In order to define a string, you would need to use single quotes or double quotes outside of a character(s). 
@@ -95,13 +95,11 @@ Type the following in main.rb:
 ```ruby 
 puts "Hello, World!"
 ```
- `puts` will print to the terminal whatever is in the righthand side of it, in this case `"Hello, World!"`. Whatever is in double quotation marks is regarded as a string and is a specific data type. A data type is a piece of information that tells how the computer should interpret it. We will go over more data types soon. Futhermore, there are two ways to execute main.rb. 
-1. You can click the `run` button in Replit and it will output the following in the terminal. 
+ `puts` will print to the terminal whatever is in the righthand side of it, in this case `"Hello, World!"`. Execute the ruby code, you should get the following: 
 
 ``` 
 > Hello, world!
 ```
-1. You can also go to the console (in Replit) or terminal and enter `ruby main.rb`. This will execute the code in main.rb. 
 
 ## Variables 
 A variable contains data. Technically, the name of a variable references a specific memory location that contains data. In ruby, we aren't aware of the memory location as ruby is not concern with this (as well as other higher level programming languages). To store a value in this memory location, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program ends, the temporary data goes away.
