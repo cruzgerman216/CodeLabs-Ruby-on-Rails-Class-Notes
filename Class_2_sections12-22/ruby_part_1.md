@@ -19,12 +19,27 @@ Double quotes allow for single quotes whereas, single quotes cannot have within 
 
 ```ruby
 "It isn't good to forget what a string represents." # Correct
-'This isn't going to work.'                         # Incorrect
+'This isn't going to work.'                         # Error!
 ```
 
 ### Numbers
-Numbers are used for mathemtical results. A number represents a range of numbers
-- Number
+A number represents a range of digits. There are two types of Numbers: integers and floats. An integer is a whole number (no decimal) whereas floats have a decimal place. Numbers and mathematical calculations go hand and hand.
+
+```ruby 
+puts 1 # Integer
+puts 1.1 # Float
+```
+### Boolean
+A boolean represents a unique value that is either `true` and `false`. We will explore booleans more when we talk about conditionals.
+
+```ruby
+true 
+false 
+```
+
+### Hashes 
+Hashes 
+
 - Boolean
 - Hashes
 - Arrays
@@ -146,6 +161,46 @@ say_greetings_to("John Doe", "Amy Thompson")
 # friend will reference "Amy Thompson"
 ```
 
+### Local and Global Variables (Scope)
+We've been using local variables since the beginning of the notes. To get more technical, when a local is defined, it can only be accessed in its scope. A scope defines where in the program a variable is accessible.
+
+A local variable that is defined outside of a for example, a method, can only be accessed outside of the method.
+
+
+```ruby 
+name = "John Doe" 
+def my_name 
+    puts name # Incorrect
+end
+
+my_name # Error! Undefined local variable or method 'name'
+puts name # Correct
+```
+
+When a local variable is defined in a method, it can only be accessed within it's scope or in other words, it's method it was defined in. 
+
+```ruby
+def my_name 
+    name = "John Doe"
+    puts name # Correct
+end 
+
+name # Error! Undefined local variable or method 'name'
+```
+
+Global variables on the other hand, can be accessed throughout your entire file or files (depending if you load the file from another file). This is not recommended because somewhere in file, you may have accidently used the same variable name and somewhere in the logic, can cause an issue.
+
+```ruby
+name = "John Doe"
+
+def my_name 
+    puts name
+    name = "Amy Singer"
+end 
+my_name
+puts name
+```
+
 ## String Expressions and Methods 
 In programming, there will be times where a string value is not always static. We allow a string to be dynamic and change in value. To make a string dynamic, we can use what is called string concatenation.
 ### String Concatenation
@@ -205,15 +260,8 @@ To exit irb, you will need to enter `exit`.
 ```
 exit
 ```
-## Numbers and Operators
-A Number is a certain data type, like a String and a Boolean, that is generally a range of numbers. There are two types of Numbers: integers and floats. An integer is a whole number (no decimal) whereas floats have a decimal place.
+## Operators
 
-```ruby 
-puts 1 # Integer
-puts 1.1 # Float
-```
-
-### Operators 
 Occasionally in programming languages, there are operators that evaluate mathematical expressions. These operators are 
 - `+` addition
 - `-` subtraction
@@ -593,3 +641,4 @@ ruby bin/tracker.rb
 - https://bundler.io/
 - https://stackoverflow.com/questions/21306512/difference-between-relative-path-and-absolute-path-in-javascript
 - https://www.learneroo.com/modules/142/nodes/744
+- https://www.techotopia.com/index.php/Ruby_Variable_Scope
