@@ -188,17 +188,16 @@ end
 name # Error! Undefined local variable or method 'name'
 ```
 
-Global variables on the other hand, can be accessed throughout your entire file or files (depending if you load the file from another file). This is not recommended because somewhere in file, you may have accidently used the same variable name and somewhere in the logic, can cause an issue.
+Global variables on the other hand, can be accessed throughout your entire file or files (depending if you load the file from another file). This is not recommended because somewhere in file, you may have accidently used the same variable name and somewhere in the logic, can cause an issue. That avaiability and cause of security may be hard to keep track of. To declare a global variable you will need to place a `$` in front of a variable name. 
 
-```ruby
-name = "John Doe"
+```ruby 
+$name = "John Doe"
 
 def my_name 
-    puts name
-    name = "Amy Singer"
+    puts $name 
 end 
-my_name
-puts name
+
+my_name # Correct
 ```
 
 ## String Expressions and Methods 
