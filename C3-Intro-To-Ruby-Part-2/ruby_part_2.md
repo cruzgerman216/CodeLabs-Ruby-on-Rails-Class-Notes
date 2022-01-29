@@ -1,5 +1,9 @@
 # Class 3 - The Ruby Programming Language Part 2
+Now we get into problem solving that involves even the basic features of most programming languages. 
 
+*Class 3 refers to videos 23 - 32 in Section 2: The Ruby Programming Language*
+
+---
 ### Table of Contents 
 - Methods
 - Conditionals
