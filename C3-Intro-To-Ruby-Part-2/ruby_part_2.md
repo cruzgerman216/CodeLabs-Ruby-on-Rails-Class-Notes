@@ -37,19 +37,105 @@ result = add(5,5)
 puts result # prints 10
 ```
 
-<!-- - if/else conditions
-  - if/elses statements are logic blocks. Executes code if the conditional is true. If the conditional is not true, code specified in the else clause is executed.
-- array
+## Conditionals 
+Conditionals are one of the most important fundamental blocks in programming. They are logic solvers. Think about it like this, let's say your credit card limit is at 2,000 dollars. If you go pass your credit car limit, it will decline. If you go lower than 2,000 dollars, then you are fine! Let's code this using conditionals! See below the starter code
+
+```ruby 
+purchase = 500
+# When purchase is greater than 2000, print "Insufficient funds"
+# When purchase is less than 2000, print "Successfull transaction"
+```
+
+### If/else/elsif/end
+In order to use a conditional, we must use keywords `if` and `end`. After the keyword `if` lies a boolean. If the boolean is `true`, the statements between lines `if` and `end` will execute. If it is `false`, it will **not** execute the block of code. 
+
+```ruby 
+purchase = 500
+# When purchase is greater than 2000, print "Insufficient funds"
+if true
+    puts "Will print!"
+end 
+
+if false 
+    puts "Will not print!!"
+end 
+# When purchase is less than 2000, print "Successfull transaction"
+```
+
+We can also refer to an `else` statement to execute if the conditional is false. 
+
+```ruby 
+
+if false 
+    puts "Will not print"
+else 
+    puts "Will print"
+end 
+```
+
+Chaining conditionals is quite frequent. To do so, we use the keyword `elsif`
+```ruby 
+
+if false 
+    puts "Will not print"
+elsif true 
+    puts "Will print"
+else 
+    puts "Will print"
+end 
+```
+
+Because the compiler reads from top to bottom, whichever conditional that is `true` first, the following logical block will get executed.
+
+### Logical Operators
+How do we check to see if purchase is greater than 2000? We use what are called logical operators. Logical operators are the process in which compares two values in a certain fashion and result in either `true` or `false`. Here is a list of logical operators. 
+
+- <         Less than 
+- >         Greater than
+- <=        Less than or equal to
+- >=        Greater than or equal to
+- ==        Equal to
+- !=        Does not equal
+- &&        And checks two conditions, **both** must be true to execute the logic block
+- ||        Or checks two conditions, **at least one** must be true to execute the logic block
+
+Use the 'less than' sign or `<` to check to see if purchase is less than 2000.
+
+```ruby 
+purchase = 500
+if purchase < 2000 # true 
+    puts "Successful transaction"
+end 
+```
+
+Use the greater than sign or `>` to check to see if purchase is greater than 2000.
+
+```ruby
+if purchase < 2000 # true 
+    puts "Successful transaction"
+elsif purchase > 2000 # false 
+    puts "Insufficient funds"
+end 
+```
+
+Let's include another condition that checks if the purchase is greater than 1500, and less than 2000. `Let's include this at the top level of the conditional chain to be read first otherwise, the other conditionals we get executed first.`
+
+```ruby 
+if purchase > 1500 && purchase < 2000 
+    puts "Almost out of funds"
+elsif purchase < 2000   # true 
+    puts "Successful transaction"
+elsif purchase > 2000 # false 
+    puts "Insufficient funds"
+end 
+```
+
+<!-- - array
   - An array is a list of items(strings, integers, arrays, objects, ect)
 - hash
   - Hash is a collection of unique keys and their values
 - While loop
-  - A "While" Loop is used to repeat a specific block of code an unknown number of times, until a condition is met. -->
-
-
-## Methods 
-
-## Conditionals 
+  - A "While" Loop is used to repeat a specific block of code an unknown number of times, until a condition is met. --> -->
 
 ## Array 
 
