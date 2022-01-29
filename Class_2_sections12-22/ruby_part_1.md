@@ -80,7 +80,7 @@ Here is a much newer syntax for defining key-value pairs for ruby.
 ```
 
 ### Symbols 
-Symbols are referred to as variables names in replacement to strings for higher performance rates. In order to define a symbol, use a colon `:`. Refer to hashes and the use of symbols to access values. 
+Symbols are referred to as variable names in replacement to strings for higher performance rates. In order to define a symbol, use a colon `:`. Refer to hashes and the use of symbols to access values. 
 
 ```ruby
 :name
