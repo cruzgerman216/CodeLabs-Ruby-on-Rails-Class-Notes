@@ -90,14 +90,14 @@ Because the compiler reads from top to bottom, whichever conditional that is `tr
 ### Logical Operators
 How do we check to see if purchase is greater than 2000? We use what are called logical operators. Logical operators are the process in which compares two values in a certain fashion and result in either `true` or `false`. Here is a list of logical operators. 
 
-- <         Less than 
-- >         Greater than
-- <=        Less than or equal to
-- >=        Greater than or equal to
-- ==        Equal to
-- !=        Does not equal
-- &&        And checks two conditions, **both** must be true to execute the logic block
-- ||        Or checks two conditions, **at least one** must be true to execute the logic block
+- `<`         Less than 
+- `>`         Greater than
+- `<= `       Less than or equal to
+- `>=`        Greater than or equal to
+- `==`        Equal to
+- `!=`        Does not equal
+- `&&`        And checks two conditions, **both** must be true to execute the logic block
+- `||`        Or checks two conditions, **at least one** must be true to execute the logic block
 
 Use the 'less than' sign or `<` to check to see if purchase is less than 2000.
 
