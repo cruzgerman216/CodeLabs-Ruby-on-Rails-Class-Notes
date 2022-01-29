@@ -1,6 +1,13 @@
-# The Ruby Programming Language
+# Class 3 - The Ruby Programming Language Part 2
 
-- methods
+### Table of Contents 
+- Methods
+- Conditionals
+- Arrays
+- Loops
+- USA Covid CLI Tracker Part 2
+
+<!-- - methods
   - Ruby methods are very similar to functions in any other programming language. Ruby methods are used to bundle one or more repeatable statements into a single unit.
 - if/else conditions
   - if/elses statements are logic blocks. Executes code if the conditional is true. If the conditional is not true, code specified in the else clause is executed.
@@ -9,7 +16,7 @@
 - hash
   - Hash is a collection of unique keys and their values
 - While loop
-  - A "While" Loop is used to repeat a specific block of code an unknown number of times, until a condition is met.
+  - A "While" Loop is used to repeat a specific block of code an unknown number of times, until a condition is met. -->
 
 
 ## Methods 

@@ -1,9 +1,13 @@
 # Class 1 - Intro
-
+### Table of Contents 
+- Introduction
+- Back End Roadmap 
+- Setup
+--- 
 ## Introduction 
 The Back End portion of Code Labs will be similiar to the Front End in regards to structure and style. Students are expected to learn outside of class and apply that knowledge inside of class ([Flipped Class Room Model](https://omerad.msu.edu/teaching/teaching-skills-strategies/27-teaching/162-what-why-and-how-to-implement-a-flipped-classroom-model)). You will be asked to read documentation, watch assigned videos, complete exercises and build projects as well as commit your code to GitHub. Building projects are our main focus here at Code Labs as it challenges you to think.  
 
-Class notes will be posted for students to use as a resource in the Code Labs portal. Keep in mind these class notes are maintained. If something comes ambiguous or needs an update, please contact your code coach for adjustment or clarification. 
+Class notes will be posted for students to use as a resource. Keep in mind these class notes are maintained. If something comes ambiguous or needs an update, please contact your code coach for adjustment or clarification. 
 
 ## The Back End Roadmap
 
