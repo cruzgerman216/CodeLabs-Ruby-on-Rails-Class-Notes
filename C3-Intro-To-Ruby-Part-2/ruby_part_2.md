@@ -269,10 +269,10 @@ end
 ```
 
 ## USA Covid CLI Tracker Part 2
+As of now, the CLI exits after input. Let's incorporate a while loop to prevent this from happening. 
 
 ### Implementing a Loop 
-
-- return user input in menu method
+Return the user input in the `menu` method. 
 
 ```ruby
     def menu
@@ -281,22 +281,18 @@ end
         return input;
     end
 ```
-
-- In the run method, use a while loop to conditionally execute a block of code unless the user enter's 'exit'
-
+In the run menu, create a `while` loop. As it's condition, check to see if user input is 'exit'. If so, end the while loop. 
 ```ruby
     def run
         system('clear')
         greeting
-        while menu != 'exit'
+        while menu != 'exit' # Will always run as long as the user does not type 'exit'
         end
         end_program
     end
 ```
 
-Test the cli. 
-
-- Define a choose_option method with a parameter. This method should execute code in a set of case when statements corresponding to the user's input. 
+The user can see the list but the CLI does not react to the chosen option. Let's create a `case/when` block. Create a method `choose_option` that accepts one parameter. Define the `when` blocks. 
 
 ```ruby
     def choose_option(option)
@@ -309,7 +305,7 @@ Test the cli.
     end
 ```
 
-- call choose_option in the menu method
+Include `choose_option` within the `menu` method. Be sure to pass in the input as an argument.
 ```ruby
    def menu
         list_options
@@ -319,6 +315,24 @@ Test the cli.
     end
 ```
 
+Go head an test this.
+
+**Terminal**
+```
+> Welcome to the Covid 19 tracker
+> 1. 
+> 2.
+> 3. 
+> Which one do you prefer?
+> 1
+> Number 1 chosen
+> 1. 
+> 2.
+> 3. 
+> Which one do you prefer?
+> exit
+> have a great day!> 
+```
 #### References
 - https://www.tutorialspoint.com/ruby/ruby_methods.html
 - https://www.geeksforgeeks.org/ruby-loops-for-while-do-while-until/
