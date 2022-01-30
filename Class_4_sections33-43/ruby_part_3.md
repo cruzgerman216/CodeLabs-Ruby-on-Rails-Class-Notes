@@ -2,9 +2,7 @@
 
 ## Topics covered
 - [style guide](https://github.com/rubocop/ruby-style-guide) - conventional naming and style for ruby programming 
-  - variables and methods are snake case
-  -  class names - each word is capitalized
-- Object Oriented Programming (OOP) is a programming paradigm that used objects and their interactions to design and program application.
+- Object Oriented Programming (OOP) is a programming paradigm that use objects and their interactions to design and program application.
 - class
   - A class is a blueprint from which objects are created. 
 - Nokogiri  
@@ -13,6 +11,90 @@
   - OpenURI is an easy-to-use wrapper for Net::HTTP, Net::HTTPS and Net::FTP.
 
 ## USA Covid CLI Tracker Part 3
+
+### Covid-19 USA Data Site
+We will use this [site](https://www.worldometers.info/coronavirus/country/us/) to scrape data from. The way we will organize our data is to separate countries and states. We will use clases to do this.
+
+### Preparing the Country and State classes
+We will go ahead and use Ruby Classes to structure the Covid-19 data for countries and states. A class is a blueprint to create instances (objects). Objects are mistaken to be hashes. Keep in mind instances, also referred to as objects, is created by a class. To create a class, use the keyword `class` follow by the class name. Make sure the class name is always capitlized. To end the class block, use the keyword `end`
+
+Create a file under lib called `country.rb`. Define a class called `Country`. 
+
+```ruby
+class Country 
+
+end
+```
+
+
+```ruby 
+class Country
+    attr_accessor :name, :confirmed_cases, :overall_deaths, :recoveries
+end
+```
+- declare attribute accessors name, confirmed_cases, overall_deaths and recoveries
+- attribute accessors give getters and setters to these properties so you can access them
+```ruby 
+class Country
+    attr_accessor :name, :confirmed_cases, :overall_deaths, :recoveries
+end
+```
+
+
+- Create a property called @@Countries and set it to an empty array
+```ruby 
+@@Countries = []
+```
+- Create a class method all that returns the @@Countries property
+    - a class method can only be called from the Class itself. Instances do not have access to this.
+```ruby
+class Country
+    attr_accessor :name, :confirmed_cases, :overall_deaths, :recoveries
+    @@Countries = []
+
+    def self.all
+        @@Countries
+    end
+end
+```
+
+
+- create an initialize method(acts as a constructor in other languages like JavaScript) that allows you to set your attribute accessors with metaprogramming
+  - instead of multiple lines we can use the each methd to access these key paired values
+  - In the statement, with the self method use the send method
+  - The first argument in send() is the message that you're sending to the object - that is, the name of a method. It could be string or symbol but symbols are preferred. Then arguments those need to pass in method, those will be the remaining arguments in send()
+```ruby 
+    def initialize(attributes)
+    # Example:
+    # new Country({:name=>"USA"})
+        attributes.each {|key, value| self.send("#{key}=", value)}
+    end
+```
+
+
+- Create a separate file called state.rb under lib
+    - define a class called state that inherits Country
+      - By inheriting Country, we get inherit attributes from the country class and the initialize method
+    - defined class property called @@states set to an empty array
+    - define a class method called all that returns @@states
+
+```ruby
+class State < Country
+    @@states = []
+    def self.all
+        @@states
+    end
+end
+```
+
+- include country.rb and state.rb in USA_Covid_19_Tracker.rb
+```ruby
+    require_relative "USA_Covid_19_Tracker/cli.rb"
+    require_relative "./country.rb"
+    require_relative "./state.rb"
+```
+
+- test the cli to see if it works still
 
 ### Scraping Setup
 
