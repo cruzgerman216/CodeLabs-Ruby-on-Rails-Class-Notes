@@ -315,7 +315,7 @@ Include `choose_option` within the `menu` method. Be sure to pass in the input a
     end
 ```
 
-Go head an test this.
+Go head and test this.
 
 **Terminal**
 ```
