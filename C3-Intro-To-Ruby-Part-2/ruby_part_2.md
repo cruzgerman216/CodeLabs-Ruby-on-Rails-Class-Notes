@@ -336,4 +336,3 @@ Go head and test this.
 #### References
 - https://www.tutorialspoint.com/ruby/ruby_methods.html
 - https://www.geeksforgeeks.org/ruby-loops-for-while-do-while-until/
-- Send method: https://stackoverflow.com/questions/3337285/what-does-send-do-in-ruby
