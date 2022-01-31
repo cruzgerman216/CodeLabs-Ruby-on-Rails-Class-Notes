@@ -1,14 +1,86 @@
-# The Ruby Programming Language
+# Class 4 - The Ruby Programming Language Part 3
 
-## Topics covered
-- [style guide](https://github.com/rubocop/ruby-style-guide) - conventional naming and style for ruby programming 
-- Object Oriented Programming (OOP) is a programming paradigm that use objects and their interactions to design and program application.
-- class
-  - A class is a blueprint from which objects are created. 
-- Nokogiri  
-  - Nokogiri is an open source software library to parse HTML and XML in Ruby. 
-- Open-uri
-  - OpenURI is an easy-to-use wrapper for Net::HTTP, Net::HTTPS and Net::FTP.
+*Class 3 refers to videos 33-43 in Section 2: The Ruby Programming Language*
+
+---
+### Table of Contents 
+- Ruby Classes
+  - Initialize method
+  - attr_accessor, attr_reader, attr_writer
+- Object Oriented Programming (OOP)
+- Project - Covid-19 Tracker and CLI  Part 3
+--- 
+
+## Ruby Classes
+A class is a blueprint to create instances (objects). Objects are mistaken to be hashes. Keep in mind instances are created by a class. A class is defined by it's methods and attributes. To create a class, use the keyword `class` follow by the class name. Make 
+sure the class name is always capitlized. To end the class block, use the keyword `end`.
+
+```ruby 
+class Animal 
+end 
+```
+To create an instance will involve the class name as well as invoking the `new` method.
+
+```ruby
+Animal.new  # Creates an instance of the Animal class
+```
+### Instance Methods
+This isn't very helpful as we see here, this class doesn't have any methods. Let's create an instance method. 
+An instance method are methods belong to instances of the class. To define an instance method, we define the method in the class block.
+
+```ruby 
+class Animal
+    def drinks
+        puts "**drinks water**"
+    end
+end 
+
+mammal = Animal.new 
+mammal.drinks # **drinks water**
+```
+
+
+### Class Methods 
+We can also define class methods. In order to define a class method, include `self.` before the method name. 
+
+```ruby 
+class Animal
+    def drinks
+        puts "**drinks water**"
+    end
+
+    def self.from_the_class
+        puts "Prints from the class."
+    end
+end 
+Animal.from_the_class
+```
+
+### Initialize Method 
+
+
+### Attributes 
+Methods in a class can be characterized by capabilities of the class or instance. However, we can store information to be kept within the class or instance using attributes. Attributes or properties or also called instance variables, are a way to define a storage place. 
+
+To create attributes, we need to define **getter** and **setter** methods. A getter methods returns the value of the attribute and a setter sets the attribute to a value. 
+
+```ruby 
+class Animal
+    def drinks
+        puts "**drinks water**"
+    end
+
+    def self.from_the_class
+        puts "Prints from the class."
+    end
+end 
+Animal.from_the_class
+```
+
+
+
+
+
 
 ## USA Covid CLI Tracker Part 3
 
@@ -16,7 +88,7 @@
 We will use this [site](https://www.worldometers.info/coronavirus/country/us/) to scrape data from. The way we will organize our data is to separate countries and states. We will use clases to do this.
 
 ### Preparing the Country and State classes
-We will go ahead and use Ruby Classes to structure the Covid-19 data for countries and states. A class is a blueprint to create instances (objects). Objects are mistaken to be hashes. Keep in mind instances, also referred to as objects, is created by a class. To create a class, use the keyword `class` follow by the class name. Make sure the class name is always capitlized. To end the class block, use the keyword `end`
+We will go ahead and use Ruby Classes to structure the Covid-19 data for countries and states. 
 
 Create a file under lib called `country.rb`. Define a class called `Country`. 
 
@@ -128,7 +200,7 @@ end
 ```
 
 4. In the gemfile, add gems nokogiri and open-uri
-
+Nokogiri is an open source software library to parse HTML and XML in Ruby. OpenURI is an easy-to-use wrapper for Net::HTTP, Net::HTTPS and Net::FTP.
 ```ruby
     git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
@@ -318,3 +390,4 @@ require_relative "./country.rb"
 #### References
 - https://en.wikipedia.org/wiki/Nokogiri_(software)#:~:text=Nokogiri%20is%20an%20open%20source,from%20the%20rubygems.org%20repository.
 - https://ruby-doc.org/stdlib-2.6.3/libdoc/open-uri/rdoc/OpenURI.html
+- https://www.rubyguides.com/2019/02/ruby-class/
