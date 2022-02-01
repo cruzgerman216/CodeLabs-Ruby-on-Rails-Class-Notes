@@ -41,7 +41,7 @@ In order to execute the code in a Ruby file, enter the following to the terminal
 Data types in programming are ways to define different types of data. A data type is also a piece of information that tells how the computer should interpret it. Each data type is used in a different manner. 
 
 ### Strings 
-A string is characterized by text. They are grouped by characters that can represent sentences and words. In order to define a string, you would need to use single quotes or double quotes outside of a character(s). 
+A string is a certain data type and is characterized by text. They are grouped by characters that can represent sentences and words. In order to define a string, you would need to use single quotes or double quotes outside of text.
 ```ruby
 "This is an example. I can include any character, here is an example list: 1234567890!@#$%^&&*()"
 ```
@@ -57,11 +57,11 @@ Double quotes allow for single quotes whereas, single quotes cannot have within 
 A number represents a range of digits. There are two types of Numbers: integers and floats. An integer is a whole number (no decimal) whereas floats have a decimal place. Numbers and mathematical calculations go hand and hand.
 
 ```ruby 
-puts 1 # Integer
-puts 1.1 # Float
+puts 1 # This is an Integer
+puts 1.1 # And this is a Float
 ```
 ### Boolean
-A boolean represents a unique value that is either `true` and `false`. We will explore booleans more when we talk about conditionals.
+A boolean represents a unique value that is either `true` and `false`. We use booleans to solve problems that need logical solutions. We will explore booleans more when we talk about conditionals in the next class.
 
 ```ruby
 true 
@@ -77,7 +77,7 @@ A hash is a series of unique key-value pairs. In order to access a value, square
 {name: "John Doe", name: "Amy Singer"} # Error! Duplicated key :name and overwritten
 ```
 
-Here is a much newer syntax for defining key-value pairs for ruby.
+Here is a much newer syntax for defining key-value pairs for Ruby.
 
 ```ruby 
 {name: "John Doe", age: 54}
@@ -92,20 +92,20 @@ Symbols are referred to as variable names in replacement to strings for higher p
 ```
 
 ### Arrays
-An array is a list of data enclosed in square brackets `[]`. Each list item or element is separated by a comma `,`. An array can hold different amounts of data types.
+An array is a list of data enclosed in square brackets `[]`. Each list item or element is separated by a comma `,`. An array can hold different amounts of data types. Here is an example: 
 
 ```ruby
 [1, "string", true, :test, {name: "John Doe"}]
 ```
 
-Unlike a hash, we aren't aware of the position of each element of the array (think of a thousand elements in a single array). To gain access of a value at a position, we use square brackets follow by a number. This number represents the position the element is at. The position of an array starts at 0 which will return `1`
+In an array, we aren't aware of the position of each element of the array (think of a thousand elements in a single array). To gain access of a value at a position, we use square brackets follow by a number. This number represents the position the element is at. The position of an array starts at 0 which in this case, will return `1`. Here is a demonstratin of accessing the first element of the array:
 
 ```ruby 
 [1, "string", true, :test, {name: "John Doe"}][0] # 1
 ```
 
 ## Printing To The Terminal
-When we print to the terminal, we allow ourselves as programmers to see the values in our code. We can choose what to output with three built in ruby keywords: 
+When we print to the terminal, we allow ourselves as programmers to see the values in our code. We can choose what to output with three built in Ruby keywords: 
 - `puts` 
 - `print` 
 - `p`
@@ -114,14 +114,14 @@ Type the following in main.rb:
 ```ruby 
 puts "Hello, World!"
 ```
- `puts` will print to the terminal whatever is in the righthand side of it, in this case `"Hello, World!"`. Execute the ruby code, you should get the following: 
+ `puts` will print to the terminal whatever is in the righthand side of it, in this case `"Hello, World!"`. Execute the Ruby code, you should get the following: 
 
 ``` 
 > Hello, world!
 ```
 
 ## Variables 
-A variable contains data. Technically, the name of a variable references a specific memory location that contains data. In ruby, we aren't aware of the memory location as ruby is not concern with this (as well as other higher level programming languages). To store a value in this memory location, we use the `=` sign. Keep in mind whenever we store data in our computer's memory, it is only temporary data. So when the program ends, the temporary data goes away.
+A variable contains data. Technically, the name of a variable references a specific memory location that contains data. To store a value in this memory location, we use the `=` sign. Keep in mind, whenever we store data in our computer's memory as the program runs, it is only temporary data. So when the program ends, the temporary data goes away.
 
 ```ruby 
 message = "Hello, world!" 
@@ -129,13 +129,13 @@ message = "Hello, world!"
 
 Here we are storing the string `Hello, world!` in memory and reference that memory location with the variable name `message`. To read this line of code, we say `We set message to 'Hello, world!'`. You will also hear `We store 'Hello, world!' in message`. 
 
-When a ruby file get's executed, it is being read from top to bottom. Hypothetically speaking, if we set message to `"Another value!"` below line 1, the memory location that message references, will now contain "`Another value!`".
+When a Ruby file get's executed, it is being read from top to bottom. Hypothetically speaking, if we set message to `"Another value!"` below line 1, the memory location that message references, will now contain "`Another value!`".
 
 ```ruby 
 message = "Hello, world!"
-puts message
+puts message # Hello, world!
 message = "Another value!"
-puts message
+puts message # Another value!
 ```
 ### Constant Variables 
 In certain use cases, we like to make sure the value the variable contains will <em>not</em> change. To create this constraint, we can create what is called a constant variable. To create a constant variable, the variable name will be all uppercase.
@@ -148,12 +148,11 @@ In case we accidently change the value of this key, it will result in an error w
 
 ```ruby 
 API_KEY = "123456789"
-API_KEY = "abcdefghi"
+API_KEY = "abcdefghi" # ERROR, CANNOT CHANGE VALUE OF CONSTANT
 ```
-When this file gets compiled, `John Doe` will not appear in the terminal. 
 
 ### Naming Convention
-When it comes to naming conventions, programming languages have their own style. In JavaScript, you should know variable names are `camelCase`. The common naming convention for ruby variables, however, are `snake_case`. 
+When it comes to naming conventions, programming languages have their own style. In JavaScript, you should know variable names are `camelCase`. The common naming convention for Ruby variables, however, are `snake_case`. 
 
 ### Comments in Code
 It's great to leave comments in code to remind yourself or other developers what the code does. To comment code out or to bypass the compiler, use the `#` sign. Everything after `#` will not get executed.
@@ -164,9 +163,10 @@ API_KEY = "12345678"
 
 name = "John Doe" # This is an example
 ```
+When this file gets compiled, anything after `#` that is on the same line will not be executed. 
 
 ## Basic methods
-Methods are a set lines of code that have a purpose. This is a great way to resuse a piece of logic and separate our logic into defined methods. Ruby has built in methods in which we will explore later. For now, let's define our own method. To define a method, we must use keywords `def` follow by the method name in one line. In the next line, we must include the keyword `end`. `end` signifies the ending of the method.
+Methods are a set of pre-defined code lines or code block that have a purpose. This is a great way to resuse a piece of logic and separate our logic into defined methods. Ruby has built in methods in which we will explore later. For now, let's define our own method. To define a method, we must use keywords `def` follow by the method name in one line. In the next line, we must include the keyword `end`. `end` signifies the ending of the method or code block.
 
 ```ruby 
 def method_name
@@ -181,7 +181,7 @@ def say_greetings_to
 end
 ```
 
-However, when compiled, you will notice `John Doe` does not appear in the terminal? Why? That is because the method needs to be invoke or called to execute the series of lines say_greetings_to contains.
+However, when compiled, you will notice `John Doe` does not appear in the terminal? Why? That is because the method needs to be invoke or called to execute the series of lines say_greetings_to contains. You call invoke a method in two ways, with or without the opening and closing parenthesis after the method name.
 
 ```ruby 
 say_greetings_to
@@ -189,19 +189,19 @@ say_greetings_to() # You can call a method like this as well
 ```
 
 ### Parameters in Methods 
-Methods aren't always this static or 'never changing'. To make this dynamic, I like to pass in data into this method outside of the method definition. To reference this data, I will include a parameter called `name`. `name` is an alias and is a reference to data being passed in. When data is being passed into a method, it is referred to as an `argument`. Here, there is one argument being passing into say_greetings_to
+Methods aren't always this static or 'never changing'. To make this dynamic, I like to pass in data into this method outside of the method definition. To reference this data, I will include what is called a parameter which will be called `name`. `name` is an alias and is a reference to data being passed in. When data is being passed into a method, it is referred to as an `argument`. Here, there is one argument being passing into say_greetings_to
 
 ```ruby 
 def say_greetings_to(name)
     puts name
 end
 
-say_greetings_to "John Doe"
-say_greetings_to("Amy Thompson") # Another way of passing data
+say_greetings_to "John Doe" # Prints John Doe
+say_greetings_to("Amy Thompson") # Another way of passing data, prints Amy Thompson
 ```
 
 ### Multiple parameters
-A method can have more than one parameter. We will use a comma to separate the parameters in the method definition as well as in the arguments. The order of arguments being placed is the order they will be referenced to.
+A method can have more than one parameter. To include more than one parameter, you must include a comma to separate each parameter. This rule also applies to multiple arguments. The order of arguments being placed is the order they will be referenced to by the method.
 
 
 ```ruby 
