@@ -217,10 +217,10 @@ say_greetings_to("John Doe", "Amy Thompson")
 ```
 
 ### Local and Global Variables (Scope)
-We've been using local variables since the beginning of the notes. To get more technical, when a local is defined, it can only be accessed in its scope. A scope defines where in the program a variable is accessible.
+We've been using local variables since the beginning of the notes. To get more technical, when a local variable is defined, it can only be accessed in its scope. A scope defines where in the program a variable is accessible.
 
-A local variable that is defined outside of a for example, a method, can only be accessed outside of the method.
-
+A local variable that is defined outside of, for example, a method, can only be accessed outside of the method.
+`NOTE: KEEP IN MIND, SCOPE IS DIFFERENT FOR ALL LANGUAGES`
 
 ```ruby 
 name = "John Doe" 
@@ -229,7 +229,7 @@ def my_name
 end
 
 my_name # Error! Undefined local variable or method 'name'
-puts name # Correct
+puts name # Prints John Doe
 ```
 
 When a local variable is defined in a method, it can only be accessed within it's scope or in other words, it's method it was defined in. 
@@ -243,7 +243,7 @@ end
 name # Error! Undefined local variable or method 'name'
 ```
 
-Global variables on the other hand, can be accessed throughout your entire file or files (depending if you load the file from another file). This is not recommended because somewhere in file, you may have accidently used the same variable name and somewhere in the logic, can cause an issue. That avaiability and cause of security may be hard to keep track of. To declare a global variable you will need to place a `$` in front of a variable name. 
+Global variables on the other hand, can be accessed throughout your entire file or files (depending if you load the file from another file). This is not recommended because somewhere in a file, you may have accidently used the same variable name and somewhere in the logic, can cause an issue. That avaiability and cause of security may be hard to keep track of. To declare a global variable you will need to place a `$` in front of a variable name. 
 
 ```ruby 
 $name = "John Doe"
@@ -257,6 +257,7 @@ my_name # Correct
 
 ## String Expressions and Methods 
 In programming, there will be times where a string value is not always static. We allow a string to be dynamic and change in value. To make a string dynamic, we can use what is called string concatenation.
+
 ### String Concatenation
 String concatenation is the process in which multiple strings are joined together using the `+` operator.
 
@@ -270,21 +271,21 @@ String interpolation is another way of joining multiple strings and values toget
 name = "John Doe"
 puts "My name is #{name}" # My name is John Doe
 ```
-In  between the opening `#{` and closing `}` will be evaluated as ruby code. 
+In between the opening `#{` and closing `}` will be evaluated as ruby code. 
 
 ### Built in String Methods 
-Strings such as `"John Doe"` have what are called "built in ruby methods" and belong to the string class. A class is a template for objects. An object has what are called attributes(properties in JavaScript) and methods. Any string created has access to "instance methods" in the String class. [Here](https://ruby-doc.org/core-3.1.0/String.html) is a list of instance methods. On the left hand under Methods you will see a list categorized by `::` and `#`. In order to understand the documentation, methods that have `::`, are class variables. `#` are instance vaiables. Instances that belong to the String class such as "John Doe" or the name variable for short, will have access to any instance method. Here are some examples:
+Strings such as `"John Doe"` have what are called `built-in Ruby methods` and belong to the string class. A class is a template for objects. An object has what are called attributes and methods. Any string created has access to "instance methods" in the String class. [Here](https://ruby-doc.org/core-3.1.0/String.html) is a list of instance methods. On the left hand side, under **Methods** you will see a list categorized by `::` and `#`. In order to understand the documentation, methods that have `::`, are class variables. `#` are instance vaiables. Instances that belong to the String class such as "John Doe" or the name variable for short, will have access to any instance method. Here are some examples:
 
 ```ruby 
 name = "John Doe"
-puts name.class # String
+puts name.class # Prints String
 ```
-The built in string method `length` returns the number of characters in a string. Keep in mind, blank spaces count as one character.
+The built in string method `length` returns the number of characters in a string. Keep in mind, blank spaces count as a character.
 ```ruby 
 name = "John Doe"
 puts name.length # 8
 ```
-You will occasionally is a `?` at the end of methods such as `empty?`. This will return a boolean. A boolean is a specific data type in which refers to two values 
+You will occasionally see a `?` at the end of methods such as `empty?`. This will return a boolean. A boolean is a specific data type in which refers to two values 
 ```ruby 
 true
 false
@@ -296,7 +297,7 @@ Booleans are used for conditionals and will be further explained as we move alon
 ```
 
 ## Getting User Input 
-Wouldn't it be more interesting if we were to get user input? To be able to do this, let's call `gets.chomp`. After doing so, you will notice your terminal will 'pause' and wait for a user input. Once you have entered a few characters, the IDE will continue executing the rest of the code.
+Wouldn't it be more interesting if we were to get user input? Ruby already has these methods provided for Ruby Coders. To be able to do this, Ruby has given coders: `gets.chomp`.  Lets call this method. After doing so, you will notice your terminal will 'pause' and wait for a user input. Once you have entered a few characters, the IDE will continue executing the rest of the code.
 
 ```ruby 
 puts "What's your name?" 
@@ -305,15 +306,23 @@ puts "My name is #{name}."
 ```
 
 ## IRB
-Ruby has a sandbox environment to execute ruby code called IRB. This can be helpful for experimenting with different expressions. As someone who constantly moves from JavaScript to Ruby, I sometimes forget which methods or syntax belongs to what language. Occasionally, I use irb to help solve this issue. To use IRB, you are going to want to go to a terminal and enter `irb`. It will then allow you to enter ruby code. 
+Ruby has a sandbox environment to execute Ruby code called IRB. This can be helpful for experimenting with different expressions. As someone who constantly moves from JavaScript to Ruby, I sometimes forget which methods or syntax belongs to what language. Occasionally, I use IRB to help solve this issue. To use IRB, you are going to want to go to a terminal and enter `irb`. It will then allow you to enter ruby code. 
 
+**terminal**
 ```
 irb
 ```
+
+```
+> puts "John Doe" # Enter
+> John Doe # Result
+```
+
 To exit irb, you will need to enter `exit`. 
 ```
 exit
 ```
+
 ## Operators
 
 Occasionally in programming languages, there are operators that evaluate mathematical expressions. These operators are 
@@ -327,6 +336,8 @@ Occasionally in programming languages, there are operators that evaluate mathema
 Here's an example of how to use all operators.
 
 ```ruby 
+# Expression |  # Result
+# _______________________
 puts 1 + 1      # 2
 puts 1 - 1      # 0
 puts 10 / 2     # 5
@@ -336,7 +347,7 @@ puts 4**3       # 64
 ```
 
 ### PEMDAS
-PEMDAS is an acronynm that stands for `Parentheses Exponent Multiplication Division Addition Subtraction`. PEMDAS is a way to explain the order of operations when multiple operators are used in the same line. The same logic that applies in math applies in ruby programming (and in most programming languages) as well. 
+PEMDAS is an acronynm that stands for `Parentheses Exponent Multiplication Division Addition Subtraction`. PEMDAS is a way to explain the order of operations when multiple operators are used in the same line. The same logic that applies in math applies in Ruby programming (and in most programming languages) as well. 
 
 ```ruby 
 puts (4 - 4*2/4) + 10 # 12
