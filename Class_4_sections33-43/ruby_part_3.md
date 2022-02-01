@@ -57,7 +57,25 @@ Animal.from_the_class
 ```
 
 ### Initialize Method 
+The initialize method is a reserved method in classes. If you have dealt with contructors in other languages, you will exactly understand what the initialize method will do. The initialize method is part of the instance-creation process where attributes can be set or execute another form of logic. 
 
+```ruby 
+class Animal
+
+    def initialize()
+        puts "Animal instance created!"
+    end
+
+    def drinks
+        puts "**drinks water**"
+    end
+
+    def self.from_the_class
+        puts "Prints from the class."
+    end
+end 
+Animal.new
+```
 
 ### Attributes 
 Methods in a class can be characterized by capabilities of the class or instance. However, we can store information to be kept within the class or instance using attributes. Attributes or properties or also called instance variables, are a way to define a storage place. 
