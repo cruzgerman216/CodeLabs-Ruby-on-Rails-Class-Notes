@@ -1,4 +1,5 @@
-# Class 1 - Introduction to Back End 
+# Class 1 - Introduction to the Back End 
+---
 ### Table of Contents 
 - Introduction
 - Back End Roadmap 
@@ -34,7 +35,7 @@ The span of this course will be 20 weeks. We will go over the following:
 - Employer Project 
 
 #### The Ruby Programming Language
-Classes 2 - 5 will be spent learning the ruby programming language. It's important to understand the basic syntax and fundamentals of ruby in order to move forward onto Rails. The reason for that is the ability to debug faster and recognize common uses of Ruby into Rails. Without the basics of Ruby, it'll be difficult to differentiate between what is Rails and what is Ruby. 
+Classes 2 - 5 will be spent learning the ruby programming language. It's important to understand the basic syntax and fundamentals of Ruby in order to move forward onto Rails. The reason for that is the ability to debug faster and recognize common uses of Ruby into Rails. Without the basics of Ruby, it'll be difficult to differentiate between what is Rails and what is Ruby. 
 
 Live coding sessions will be spent creating a ruby gem and building out a command line interface. In class will involve exercises. We will cover the following ruby fundamentals:
 - syntax 
@@ -47,7 +48,7 @@ Live coding sessions will be spent creating a ruby gem and building out a comman
 - methods and more
 
 #### Introduction to Ruby on Rails and Setup
-Students will have installed Rails and will be introduced to the basics of Rails. Rails 6 and Ruby 2.7 will be used during the live coding sessions. Keep in the video course pertains to Rails 5 and Rails 6.
+Students will have installed Rails and will be introduced to the basics of Rails. Rails 6 and Ruby 2.7 will be used during the live coding sessions. Keep in mind the video course pertains to Rails 5 and Rails 6.
 
 #### CRUD Operations in Rails 
 Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can, let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. We will also start a project in Rails similiar to what is built in the Front End. That's right, the [BookIt](https://bookit-codefi.herokuapp.com/) application but in Rails.
