@@ -354,7 +354,7 @@ puts (4 - 4*2/4) + 10 # 12
 ```
 ---
 ## Project - Covid-19 Tracker and CLI  Part 1
-With ruby fundamentals, we will have enough knowledge to create a Command Line Interface or CLI. A CLI is a program that runs in the terminal in which seeks user input. We will be building a CLI that includes data-scraping Covid-19 statistics. By scraping data, we will allow the user to choose which information they are more inclined to see. We will start by generating a gem.
+With ruby fundamentals, we will have enough knowledge to create a Command Line Interface or CLI. A CLI is a program that runs in the terminal in which seeks user input. We will be building a CLI that includes data-scraping Covid-19 data. By scraping data, we will allow the user to choose which information they are more inclined to see. We will start by generating a gem.
 
 ### What is a gem?
 Ruby [gems](https://rubygems.org/) are simply open source libraries that contain Ruby code. You can also think of gems as "tools" to be used. Here is a list of the most popular gems:
@@ -365,7 +365,7 @@ Ruby [gems](https://rubygems.org/) are simply open source libraries that contain
 ### Creating a Gem
 Let's go ahead and create our own gem. In this curriculumn, we won't be publishing the gem by any means but will give you a clear indication of how to create open source projects for other developers to use.
 
-The project can be created in any ruby environment. We will be using Replit or a local IDE to create this project. In order to create a gem, we must use the bundler gem. To check whether or not you have bundler already installed, you can simply type the following in the command line:
+The project can be created in any Ruby environment. We will be using Replit or a local IDE to create this project. In order to create a gem, we must use the bundler gem. To check whether or not you have bundler already installed, you can simply type the following in the command line:
 
 ``` 
 bundler -v
@@ -428,7 +428,7 @@ spec.metadata["allowed_push_host"] = "" # SET TO EMPTY STRING
 ```
 
 #### Bin Folder
-Back to the folder structure. The bin folder contains two files: console and setup. Console is used for experimentation. Here you can test out specific features/code/issues. By executing this file, it will automatically start IRB. We can include variables, logic in our existing code to test the features. To execute this file, enter `bin/console`
+Back to the folder structure. The bin folder contains two files: console and setup. Console is used for `experimentation`. Here you can test out specific features/code/issues. By executing this file, it will automatically start IRB. We can include variables, logic in our existing code to test the features. To execute this file, enter `bin/console`
 
 ```ruby
 #!/usr/bin/env ruby
@@ -463,7 +463,7 @@ The gemfile is a list of gems that are necessary to execute the program. Soon, w
 In the terminal, let's <em>**change directory**</em> or cd into the project folder. To check the available files and folders that exist in the current directory you are in, enter `ls`. Create a file called <em>**tracker.rb**</em> inside of the bin folder. Tracker will be our main executable file and act as our start place. 
 
 ### require 
-We want to be able to use the contents of other files. To do that, we are going to use the built in ruby methods `require` and `require_relative`.
+We want to be able to use the contents of other files. To do that, we are going to use the built in Ruby methods `require` and `require_relative`.
 
 `require` and `require_relative` take in one argument string. This string represents a pathway to the specified file in the project folder. Both methods start at two different locations in the project folder. `require` starts at the **absolute path** or root directory. Let's use `require` to load <em>**bin/USA_COVID_19_Tracker.rb**</em>(USA_COVID_19_Tracker.rb is responsible for loading other files we will later create).
 
@@ -481,7 +481,7 @@ require "./lib" # Changes directory to the lib folder
 Then load USA_COVID_19_Tracker.rb.
 
 ```ruby 
-require "./lib/USA_COVID_19_Tracker.rb" # Loads specific file
+require "./lib/USA_COVID_19_Tracker.rb" # This line of code loads USA_COVID_19_Tracker.rb
 ```
 Notice the usage of the forward slash `/` to change directories from the root directory to lib and to load USA_COVID_19_Tracker.rb.
 
@@ -516,7 +516,7 @@ require_relative 'USA_COVID_19_Tracker/version`
 ```
 
 ### Preparing the CLI class
-Let's create a Ruby class. In ruby, classes contain methods and attributes. You can think of attributes as "variables" for classes. These methods and attributes are the blue print for creating objects. For example, strings are objects in which can invoke String methods ("example".length). We will dive deep into objects later.
+Let's create a Ruby class. In Ruby, classes contain methods and attributes. You can think of attributes as "variables" for classes. These methods and attributes are the blue print for creating objects. For example, strings are objects in which can invoke String methods ("example".length).
 
 Navigate to <em>**lib/USA_COVID_19_Tracker**</em> and create a file called <em>**cli.rb**</em>. To create a class, we must first start off with the keyword `class` follow by the classname. Let's call this class CLI.  At the end of every class contains the key word `end`. 
 
@@ -536,7 +536,7 @@ module USACovid19Tracker
   # Your code goes here...
 end
 
-require_relative "USA_Covid_19_Tracker/cli.rb"
+require_relative "USA_Covid_19_Tracker/cli.rb" # Load cli.rb
 ```
 Tracker.rb will get the loaded content from this file. This also includes the CLI class. Navigate to `bin/tracker.rb`
 
@@ -565,9 +565,9 @@ Navigate to <em>**tracker.rb**</em>. Because CLI.new is an instance of the CLI c
 
 **tracker.rb**
 ```ruby 
-CLI.new.run # The start of the application
+CLI.new.run # Executes the run method in the CLI class
 ```
-Navigate back to <em>**cli.rb**</em>. Let's define a new method that prints out a welcome mesage to the terminal!
+Navigate back to <em>**cli.rb**</em>. Let's define a new method that prints out a welcome mesage to the terminal.
 
 **cli.rb**
 ```ruby
@@ -619,7 +619,7 @@ class CLI
 end
 ```
 
-Let's create a new instance method called `end_program` that prints a farewell message for when the program stops executing. It makes sense to invoke this method at the end of the `run` method because it will be the last statement.
+Let's create a new instance method called `end_program` that prints a farewell message for when the program stops executing. It makes sense to invoke this method at the end of the `run` method because it will be the last message printed onto the terminal before ending the program.
 
 ```ruby
 class CLI
