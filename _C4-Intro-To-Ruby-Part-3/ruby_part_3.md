@@ -26,7 +26,7 @@ Animal.new  # Creates an instance of the Animal class
 ```
 ### Instance Methods
 This isn't very helpful as we see here, this class doesn't have any methods. Let's create an instance method. 
-An instance method are methods belong to instances of the class. To define an instance method, we define the method in the class block.
+An instance method are methods belonging to instances of the class. To define an instance method, we define the method in the class block.
 
 ```ruby 
 class Animal
@@ -38,7 +38,6 @@ end
 mammal = Animal.new 
 mammal.drinks # **drinks water**
 ```
-
 
 ### Class Methods 
 We can also define class methods. In order to define a class method, include `self.` before the method name. 
@@ -57,7 +56,7 @@ Animal.from_the_class
 ```
 
 ### Initialize Method 
-The initialize method is a reserved method in classes. If you have dealt with contructors in other languages, you will exactly understand what the initialize method will do. The initialize method is part of the instance-creation process where attributes can be set or execute another form of logic. 
+The initialize method is a reserved method in Ruby classes. If you have dealt with contructors in other languages, you will exactly understand what the initialize method will do. The initialize method is part of the instance-creation process where attributes can be set or execute another form of logic. 
 
 ```ruby 
 class Animal
@@ -79,26 +78,74 @@ end
 Animal.new("Dog") # Prints I am a dog!
 ```
 ### Attributes 
-Methods in a class can be characterized by capabilities of the class or instance. However, we can store information to be kept within the class or instance using attributes. Attributes or properties or also called instance variables, are a way to define a storage place. 
+Methods in a class can be characterized by capabilities of the class or instance. However, we can store information to be kept within the class or instance using attributes. Attributes are a way to define a storage place. 
 
-To create attributes, we need to define **getter** and **setter** methods. A getter methods returns the value of the attribute and a setter sets the attribute to a value. 
+To create attributes, we need to define **getter** and **setter** methods. A `getter` method returns the value of the attribute and a `setter` sets the attribute to a value. 
+
+### Instance Variables with getters and setters
+Instance variables are attributes that exist for instances of the class. Let's create `getter` and `setters` for an instance variable. Below I have defined an empty class called person.
 
 ```ruby 
-class Animal
-    def drinks
-        puts "**drinks water**"
-    end
-
-    def self.from_the_class
-        puts "Prints from the class."
-    end
-end 
-Animal.from_the_class
+def Person
+end
 ```
 
+To create a `setter`, we must include the name of the attribute follow by an `=` sign. We will also include a parameter.
 
+```ruby 
+def Person
+    def name=(name)
 
+    end
+end
+```
 
+We aren't yet storing the value of the parameter. There are two ways we can store this value, in a instance variable or a class variable. An instance variable can be set or access by an instance. A class variable can bet set or access by an instance. Same set rules that apply to instance methods and class methods.
+
+To create an instance variable, you can declare the variable in any code block and you must include `@` in front of the variable name.
+
+```ruby 
+def Person
+    def name=(name)
+        @name = name
+    end
+end
+```
+
+To create a getter, we will define the method to return the instance variable `@name`
+
+```ruby 
+def Person
+    def name=(name)
+        @name = name
+    end
+    
+    def name
+        @name
+    end
+end
+
+person = Person.new
+person.name = "John Doe"
+person.name # John Doe
+```
+
+We can also use the initialize method to set an attribute. 
+
+```ruby
+class Person 
+  def initialize(name)
+    @name = name
+  end 
+
+  def name 
+    @name
+  end
+end 
+
+person = Person.new("John Doe")
+puts person.name # John Doe
+```
 
 
 ## USA Covid CLI Tracker Part 3
@@ -131,7 +178,6 @@ class Country
 end
 ```
 
-
 - Create a property called @@Countries and set it to an empty array
 ```ruby 
 @@Countries = []
@@ -149,7 +195,6 @@ class Country
 end
 ```
 
-
 - create an initialize method(acts as a constructor in other languages like JavaScript) that allows you to set your attribute accessors with metaprogramming
   - instead of multiple lines we can use the each methd to access these key paired values
   - In the statement, with the self method use the send method
@@ -161,7 +206,6 @@ end
         attributes.each {|key, value| self.send("#{key}=", value)}
     end
 ```
-
 
 - Create a separate file called state.rb under lib
     - define a class called state that inherits Country

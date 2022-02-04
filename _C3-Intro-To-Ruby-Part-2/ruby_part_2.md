@@ -281,12 +281,12 @@ Return the user input in the `menu` method.
         return input;
     end
 ```
-In the run menu, create a `while` loop. As it's condition, check to see if user input is 'exit'. If so, end the while loop. 
+In the `run` method, create a `while` loop. As it's condition, check to see if user input is 'exit'. If so, end the while loop. 
 ```ruby
     def run
         system('clear')
         greeting
-        while menu != 'exit' # Will always run as long as the user does not type 'exit'
+        while menu != 'exit' # Will always run as long as the user does not enter 'exit'
         end
         end_program
     end
