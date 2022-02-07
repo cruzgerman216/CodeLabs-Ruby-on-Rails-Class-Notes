@@ -12,10 +12,10 @@ Class notes will be posted for students to use as a resource. Keep in mind these
 
 ## The Back End Roadmap
 
-In the Back End, we will go over Ruby and Ruby on Rails (Rails for short). Rails is a web framework running on the ruby programming language. Rails allows us to build full stack web applications and RESTful APIs fast and easily!  
+In the Back End, we will go over Ruby and Ruby on Rails (Rails for short). Rails is a web framework running on the Ruby programming language. Rails allows us to build Full Stack web applications and RESTful APIs fast and easily!  
 
 By the end of this course, you will know how to create a full stack Ruby on Rails application and be able to connect a Rails API to Front End Applications. We will do things we weren't able to do before in the Front End such as: 
-- store data in an sql database 
+- store data in an SQL database 
 - create our very own API 
 - use Bcrypt to create an authentication system 
 - create a model view controller application or MVC for short 
@@ -24,7 +24,7 @@ By the end of this course, you will know how to create a full stack Ruby on Rail
 
 ### Course Structure 
 The span of this course will be 20 weeks. We will go over the following: 
-- The Ruby Programming Langauge
+- The Ruby Programming Language
 - Introduction to Ruby on Rails and Setup
 - CRUD Operations in Rails
 - Styling in Rails
@@ -35,9 +35,9 @@ The span of this course will be 20 weeks. We will go over the following:
 - Employer Project 
 
 #### The Ruby Programming Language
-Classes 2 - 5 will be spent learning the ruby programming language. It's important to understand the basic syntax and fundamentals of Ruby in order to move forward onto Rails. The reason for that is the ability to debug faster and recognize common uses of Ruby into Rails. Without the basics of Ruby, it'll be difficult to differentiate between what is Rails and what is Ruby. 
+Classes 2 - 5 will be spent learning the Ruby programming language. It's important to understand the basic syntax and fundamentals of Ruby in order to move forward onto Rails. The reason for that is the ability to debug faster and recognize common uses of Ruby into Rails. Without the basics of Ruby, it'll be difficult to differentiate between what is Rails and what is Ruby. 
 
-Live coding sessions will be spent creating a ruby gem and building out a command line interface. In class will involve exercises. We will cover the following ruby fundamentals:
+Live coding sessions will be spent creating a Ruby gem and building out a command line interface. In class will involve exercises. We will cover the following Ruby fundamentals:
 - syntax 
 - data types
 - printing to the console
@@ -79,4 +79,4 @@ Before diving deep into the program, we need the necessary tooling. There are va
 However, for now we will use [Replit](https://replit.com/~). Replit is an online IDE for various programming languages. It's easy to sign up with and you can connect your GitHub to Replit to create repos. In the future, we will use a local IDE such as VS Code.
 
 ### Next Section - The Ruby Programming Language
-- Before further exploring Rails, we have to first establish a good foundation of the ruby programming language. In these next couple of weeks, we will focus on doing just that.
+- Before further exploring Rails, we have to first establish a good foundation of the Ruby programming language. In these next couple of weeks, we will focus on doing just that.
