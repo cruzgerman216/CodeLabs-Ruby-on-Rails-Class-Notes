@@ -88,7 +88,7 @@ end
 
 Because the compiler reads from top to bottom, the if block is satisfied once one condtional is true. Once satisfied, it will disregard other conditionals.
 
-### Logical Operators
+### Relational & Logical Operators
 How do we check to see if purchase is greater than 2000? We use what are called logical operators. Logical operators are the process in which compares two values in a certain fashion and result in either `true` or `false`. Here is a list of logical operators. 
 
 - `<`         Less than 
