@@ -709,7 +709,10 @@ ruby bin/tracker.rb
 - https://www.learneroo.com/modules/142/nodes/744
 - https://www.techotopia.com/index.php/Ruby_Variable_Scope
 
-#### Explore 
+#### Topics to Explore 
 - Type Conversions 
 - Pass by Value or by Reference
+- Primitive Types
+- Object Oriented Programming
+- High Level Programming vs Low Level Programming 
 Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
