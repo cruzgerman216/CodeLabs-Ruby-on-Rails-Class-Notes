@@ -7,7 +7,7 @@
     - Methods
     - Getting User input 
     - Covid-19 Tracker and CLI Part 1
-  - [Class 3 Ruby Part 2][(https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/Class_3_sections23-32/ruby_part_2.md](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/_C3-Intro-To-Ruby-Part-2/ruby_part_2.md))
+  - [Class 3 Ruby Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/_C3-Intro-To-Ruby-Part-2/ruby_part_2.md)
     - Conditionals
     - Arrays
     - Loops
