@@ -709,4 +709,7 @@ ruby bin/tracker.rb
 - https://www.learneroo.com/modules/142/nodes/744
 - https://www.techotopia.com/index.php/Ruby_Variable_Scope
 
+#### Explore 
+- Type Conversions 
+- 
 Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
