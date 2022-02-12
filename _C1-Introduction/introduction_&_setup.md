@@ -76,7 +76,7 @@ Towards the end of the Back End, students connect with local employers to simula
 ## Setup
 Before diving deep into the program, we need the necessary tooling. There are various of IDEs that you can use such as VS Code and WebStorm. In this specific curriculum, we will continue to use VS Code because of the live share extension. This helps for pair programming in a remote setting.
 
-```If you like to install Ruby, refer to section 13 for Mac and section 15 for Windows in *The Complete Ruby on Rails Developer Course*.```
+```To install Ruby, refer to section 13 for Mac and section 15 for Windows in *The Complete Ruby on Rails Developer Course*.```
 
 For now we will use [Replit](https://replit.com/~). Replit is an online IDE for various programming languages. It's easy to sign up with and you can connect your GitHub to Replit to create repos. In the future, we will use a local IDE such as VS Code.
 
