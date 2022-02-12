@@ -713,6 +713,9 @@ ruby bin/tracker.rb
 - Type Conversions 
 - Pass by Value or by Reference
 - Primitive Types
-- Object Oriented Programming
 - High Level Programming vs Low Level Programming 
+- Assignment Operators 
+- Parallel Assignment
+- BitWise Operators
+
 Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
