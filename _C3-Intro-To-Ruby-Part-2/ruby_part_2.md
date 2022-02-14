@@ -280,7 +280,7 @@ end
 > 4
 ```
 
-<div id="#Project-Covid-19-Tracker-and-CLI-Part-2"></div>
+<div id="Project-Covid-19-Tracker-and-CLI-Part-2"></div>
 
 ## USA Covid CLI Tracker Part 2
 As of now, the CLI exits after input. Let's incorporate a while loop to prevent this from happening. 
