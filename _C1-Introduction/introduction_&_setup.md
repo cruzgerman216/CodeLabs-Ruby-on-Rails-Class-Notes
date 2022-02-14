@@ -1,9 +1,9 @@
 # Class 1 - Introduction to the Back End 
 ---
 ### Table of Contents 
-- <a href="Introduction">Introduction<a>
-- <a href="Back-End-Roadmap">Back End Roadmap<a>
-- <a href="Setup">Setup<a>
+- <a href="#Introduction">Introduction<a>
+- <a href="#Back-End-Roadmap">Back End Roadmap<a>
+- <a href="#Setup">Setup<a>
 --- 
 
 <div id="Introduction"></div>
