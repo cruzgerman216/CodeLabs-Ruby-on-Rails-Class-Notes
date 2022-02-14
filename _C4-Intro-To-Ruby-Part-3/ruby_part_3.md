@@ -83,7 +83,7 @@ Methods in a class can be characterized by capabilities of the class or instance
 To create attributes, we need to define **getter** and **setter** methods. A `getter` method returns the value of the attribute and a `setter` sets the attribute to a value. 
 
 ### Instance Variables with getters and setters
-Instance variables are attributes that exist for instances of the class. Let's create `getter` and `setters` for an instance variable. Below I have defined an empty class called person.
+Instance variables are attributes that exist for instances of the class. Let's create a `getter` and `setter` for an instance variable. Below I have defined an empty class called person.
 
 ```ruby 
 def Person
@@ -100,7 +100,7 @@ def Person
 end
 ```
 
-We aren't yet storing the value of the parameter. There are two ways we can store this value, in a instance variable or a class variable. An instance variable can be set or access by an instance. A class variable can bet set or access by an instance. Same set rules that apply to instance methods and class methods.
+We aren't yet storing the value of the parameter. There are two ways we can store this value, in a instance variable or a class variable. An instance variable can be set or access by an instance. 
 
 To create an instance variable, you can declare the variable in any code block and you must include `@` in front of the variable name.
 
@@ -147,11 +147,45 @@ person = Person.new("John Doe")
 puts person.name # John Doe
 ```
 
+### Attribute Accessors
+Instead of defining setters and getters, we can use attribute writers and readers. `attr_writer` and `attr_reader` will define the methods for us to read and set an instance variable. 
+
+```ruby
+class Person 
+  attr_writer :age
+  attr_reader :age
+  def info 
+    puts @age 
+  end
+end
+
+person = Person.new 
+person.age = 43
+person.info() # prints 43
+```
+
+Without `attr_writer`, you will not be able to set the instance variable outside of the class (you can inside of the class). If you like to be able to set the instance variable and access it's value outside of the class, then you can use `attr_accessor`.
+
+```ruby
+class Person 
+  attr_accessor :age
+
+  def info 
+    puts @age 
+  end
+end
+
+person = Person.new 
+person.age = 43
+person.info() # prints 43
+```
+
+### Object Oriented Programming 
 
 ## USA Covid CLI Tracker Part 3
 
-### Covid-19 USA Data Site
-We will use this [site](https://www.worldometers.info/coronavirus/country/us/) to scrape data from. The way we will organize our data is to separate countries and states. We will use clases to do this.
+### Covid-19 USA Statistics Site
+We will use this [site](https://www.worldometers.info/coronavirus/country/us/) to scrape data from. The way we will organize our data is to separate countries and states. We will use classes to do this.
 
 ### Preparing the Country and State classes
 We will go ahead and use Ruby Classes to structure the Covid-19 data for countries and states. 
@@ -454,3 +488,9 @@ require_relative "./country.rb"
 - https://en.wikipedia.org/wiki/Nokogiri_(software)#:~:text=Nokogiri%20is%20an%20open%20source,from%20the%20rubygems.org%20repository.
 - https://ruby-doc.org/stdlib-2.6.3/libdoc/open-uri/rdoc/OpenURI.html
 - https://www.rubyguides.com/2019/02/ruby-class/
+
+
+#### Topics to Explore 
+- OOP Polymorphism
+
+Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

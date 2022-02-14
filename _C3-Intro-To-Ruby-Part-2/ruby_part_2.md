@@ -88,8 +88,8 @@ end
 
 Because the compiler reads from top to bottom, the if block is satisfied once one condtional is true. Once satisfied, it will disregard other conditionals.
 
-### Relational & Logical Operators
-How do we check to see if purchase is greater than 2000? We use what are called logical operators. Logical operators are the process in which compares two values in a certain fashion and result in either `true` or `false`. Here is a list of logical operators. 
+### Comparison & Logical Operators
+How do we check to see if purchase is greater than 2000? We use what are called comparison operators. Comparison operators are the process in which compares two values in a certain fashion and result in either `true` or `false`. Here is a list of comparison operators. 
 
 - `<`         Less than 
 - `>`         Greater than
@@ -97,6 +97,9 @@ How do we check to see if purchase is greater than 2000? We use what are called 
 - `>=`        Greater than or equal to
 - `==`        Equal to
 - `!=`        Does not equal
+
+A logical operator check for two or more comparisons.
+
 - `&&`        And checks two conditions, **both** must be true to execute the logic block
 - `||`        Or checks two conditions, **at least one** must be true to execute the logic block
 
@@ -119,7 +122,7 @@ elsif purchase > 2000 # false
 end 
 ```
 
-Let's include another condition that checks if the purchase is greater than 1500, and less than 2000. `Let's include this at the top level of the conditional chain to be read first otherwise, the other conditionals will get executed first.`
+Let's include another condition that checks if the purchase is greater than 1500, and less than 2000. We will use the logical operator `&&` to see if both conditions are true, if so, return true.
 
 ```ruby 
 if purchase > 1500 && purchase < 2000 # false
@@ -336,3 +339,9 @@ Go head and test this.
 #### References
 - https://www.tutorialspoint.com/ruby/ruby_methods.html
 - https://www.geeksforgeeks.org/ruby-loops-for-while-do-while-until/
+
+#### Topics to Explore 
+- OOP Polymorphism
+- The Call Stack 
+
+Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

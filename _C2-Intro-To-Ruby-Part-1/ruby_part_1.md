@@ -8,7 +8,7 @@ Learning Ruby will be just as important as learning Rails. Understanding the bas
 ---
 
 ### Table of Contents 
-- History of Ruby and Layer of Abstraction 
+- <li><a href="#History-of-Ruby-and-Layer-of-Abstraction">History of Ruby and Layer of Abstraction <a><li>
 - Creating/Executing a Ruby file 
 - Data Types
 - Printing To The Terminal
@@ -21,6 +21,7 @@ Learning Ruby will be just as important as learning Rails. Understanding the bas
 ---
 
 ## History of Ruby and Layers of Abstraction
+<div id="#History-of-Ruby-and-Layer-of-Abstraction"></div>
 Ruby was develop by a man named Yukihiro Matsumoto in Japan. He believed a layer of abstraction should be given to programming languages. What is meant by a layer of abstraction? Think about your phone. You use your phone for many reasons. It's easy to use and it's capable of doing much more than call and text. However, under the hood brings a layer of abstraction that is only understood by those who created it. 
 
 Ruby is written in C. And even C is written in assembly language, which gets translated into machine code. It's this layer of abstraction that exists in the industry that allows for a much more efficent and faster way of developing tools such as Rails.
@@ -717,5 +718,6 @@ ruby bin/tracker.rb
 - Assignment Operators 
 - Parallel Assignment
 - BitWise Operators
+- Variable Scopes
 
 Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
