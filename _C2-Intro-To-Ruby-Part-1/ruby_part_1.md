@@ -371,7 +371,7 @@ puts (4 - 4*2/4) + 10 # 12
 ```
 ---
 
-<div id="#Project-Covid-19-Tracker-and-CLI-Part-1"></div>
+<div id="Project-Covid-19-Tracker-and-CLI-Part-1"></div>
 
 ## Project - Covid-19 Tracker and CLI  Part 1
 With ruby fundamentals, we will have enough knowledge to create a Command Line Interface or CLI. A CLI is a program that runs in the terminal in which seeks user input. We will be building a CLI that includes data-scraping Covid-19 data. By scraping data, we will allow the user to choose which information they are more inclined to see. We will start by generating a gem.
