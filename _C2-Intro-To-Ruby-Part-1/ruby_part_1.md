@@ -8,23 +8,25 @@ Learning Ruby will be just as important as learning Rails. Understanding the bas
 ---
 
 ### Table of Contents 
-- <li><a href="#History-of-Ruby-and-Layer-of-Abstraction">History of Ruby and Layer of Abstraction <a><li>
-- Creating/Executing a Ruby file 
-- Data Types
-- Printing To The Terminal
-- Variables
-- Basic Methods
-- String Expressions and Methods 
-- Getting User Input 
-- Operators 
-- Project - Covid-19 Tracker and CLI  Part 1
+- <a href="#History-of-Ruby-and-Layer-of-Abstraction">History of Ruby and Layer of Abstraction<a>
+- <a href="#Creating/Executing-a-Ruby-file">Creating/Executing a Ruby file<a>
+- <a href="#Data-Types">Data Types<a>
+- <a href="#Printing-to-the-Terminal">Printing to the Terminal<a>
+- <a href="#Variables">Variables<a>
+- <a href="#Basic-Methods">Basic Methods<a>
+- <a href="#String-Expressions-and-Methods">String Expressions and Methods<a>
+- <a href="#Getting-User-Input">Getting User Input <a>
+- <a href="#Operators">Operators<a>
+- <a href="#Project-Covid-19-Tracker-and-CLI-Part-1">Project - Covid-19 Tracker and CLI Part 1<a>
 ---
 
 ## History of Ruby and Layers of Abstraction
-<div id="#History-of-Ruby-and-Layer-of-Abstraction"></div>
+<div id="History-of-Ruby-and-Layer-of-Abstraction"></div>
 Ruby was develop by a man named Yukihiro Matsumoto in Japan. He believed a layer of abstraction should be given to programming languages. What is meant by a layer of abstraction? Think about your phone. You use your phone for many reasons. It's easy to use and it's capable of doing much more than call and text. However, under the hood brings a layer of abstraction that is only understood by those who created it. 
 
 Ruby is written in C. And even C is written in assembly language, which gets translated into machine code. It's this layer of abstraction that exists in the industry that allows for a much more efficent and faster way of developing tools such as Rails.
+
+<div id="Creating/Executing-a-Ruby-file"></div>
 
 ## Creating/Executing a Ruby file 
 Create a new folder or create a newly fresh repl in [replit](https://replit.com/) called class 2. `NOTE: Any computers with ruby installed already is fine to work with. Be sure to create a file called main.rb. Replit will have this by default.` 
@@ -37,6 +39,8 @@ In order to execute the code in a Ruby file, enter the following to the terminal
 ```
 > ruby file_name.rb
 ```
+
+<div id="Data-Types"></div>
 
 ## Data Types
 Data types in programming are ways to define different types of data. A data type is also a piece of information that tells how the computer should interpret it. Each data type is used in a different manner. 
@@ -105,6 +109,8 @@ In an array, we aren't aware of the position of each element of the array (think
 [1, "string", true, :test, {name: "John Doe"}][0] # 1
 ```
 
+<div id="Printing-to-the-Terminal"></div>
+
 ## Printing To The Terminal
 When we print to the terminal, we allow ourselves as programmers to see the values in our code. We can choose what to output with three built in Ruby keywords: 
 - `puts` 
@@ -120,6 +126,8 @@ puts "Hello, World!"
 ``` 
 > Hello, world!
 ```
+
+<div id="Variables"></div>
 
 ## Variables 
 A variable contains data. Technically, the name of a variable references a specific memory location that contains data. To store a value in this memory location, we use the `=` sign. Keep in mind, whenever we store data in our computer's memory as the program runs, it is only temporary data. So when the program ends, the temporary data goes away.
@@ -165,6 +173,8 @@ API_KEY = "12345678"
 name = "John Doe" # This is an example
 ```
 When this file gets compiled, anything after `#` that is on the same line will not be executed. 
+
+<div id="Basic-Methods"></div>
 
 ## Basic methods
 Methods are a set of pre-defined code lines or code block that have a purpose. This is a great way to resuse a piece of logic and separate our logic into defined methods. Ruby has built in methods in which we will explore later. For now, let's define our own method. To define a method, we must use keywords `def` follow by the method name in one line. In the next line, we must include the keyword `end`. `end` signifies the ending of the method or code block.
@@ -256,6 +266,8 @@ end
 my_name # Correct
 ```
 
+<div id="String-Expressions-and-Methods"></div>
+
 ## String Expressions and Methods 
 In programming, there will be times where a string value is not always static. We allow a string to be dynamic and change in value. To make a string dynamic, we can use what is called string concatenation.
 
@@ -297,6 +309,8 @@ Booleans are used for conditionals and will be further explained as we move alon
     puts "John Doe".empty? # false
 ```
 
+<div id="Getting-User-Input"></div>
+
 ## Getting User Input 
 Wouldn't it be more interesting if we were to get user input? Ruby already has these methods provided for Ruby Coders. To be able to do this, Ruby has given coders: `gets.chomp`.  Lets call this method. After doing so, you will notice your terminal will 'pause' and wait for a user input. Once you have entered a few characters, the IDE will continue executing the rest of the code.
 
@@ -323,6 +337,8 @@ To exit irb, you will need to enter `exit`.
 ```
 exit
 ```
+
+<div id="Operators"></div>
 
 ## Operators
 
@@ -354,6 +370,9 @@ PEMDAS is an acronynm that stands for `Parentheses Exponent Multiplication Divis
 puts (4 - 4*2/4) + 10 # 12
 ```
 ---
+
+<div id="#Project-Covid-19-Tracker-and-CLI-Part-1"></div>
+
 ## Project - Covid-19 Tracker and CLI  Part 1
 With ruby fundamentals, we will have enough knowledge to create a Command Line Interface or CLI. A CLI is a program that runs in the terminal in which seeks user input. We will be building a CLI that includes data-scraping Covid-19 data. By scraping data, we will allow the user to choose which information they are more inclined to see. We will start by generating a gem.
 
