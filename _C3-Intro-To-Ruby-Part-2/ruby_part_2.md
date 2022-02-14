@@ -5,14 +5,15 @@ Now we get into problem solving that involves even the basic features of most pr
 
 ---
 ### Table of Contents 
-- Return Expressions In Methods 
-- Conditionals
-- Case Statements
-- Arrays
-- Loops
-- Project - Covid-19 Tracker and CLI  Part 2
+- <a href="#Return-Expressions-In-Methods">Return Expressions In Methods</a>
+- <a href="#Conditionals">Conditionals</a>
+- <a href="#Case-Statements">Case Statements</a>
+- <a href="#Arrays">Arrays</a>
+- <a href="#Loops">Loops</a>
+- <a href="#Project-Covid-19-Tracker-and-CLI-Part-2">Project - Covid-19 Tracker and CLI Part 2</a>
 --- 
 
+<div id="Return-Expressions-In-Methods"><div>
 ## Return Expressions in Methods 
 In class 2, we introduced methods. To jog your memory, Ruby methods are used to bundle one or more repeatable statements into a single unit. The last line of every Ruby method gets return. This gives the opportunity to return an evaluated expression and store it in a declared variable.
 
@@ -37,6 +38,8 @@ end
 result = add(5,5)
 puts result # prints 10
 ```
+
+<div id="conditionals"></div>
 
 ## Conditionals 
 Conditionals are one of the most important fundamental blocks in programming. They are logic solvers. Think about it like this, let's say your credit card limit is at 2,000 dollars. If you go pass your credit car limit, it will decline. If you go lower than 2,000 dollars, then you are fine! Let's code this using conditionals! See below the starter code
@@ -134,6 +137,8 @@ elsif purchase > 2000 # false
 end 
 ```
 
+<div id="Case-Statements"></div>
+
 ## Case Statements 
 When deciding to use if/else conditionals, you may want to consider case statements as they are similiar. Case statements start with the keyword `case` follow by a value. This value is check by each line containing `when` keywords. Each `when` line is followed by a value. If the value matches, the code block will get executed.
 
@@ -149,7 +154,9 @@ else
 end 
 ```
 
-## Array
+<div id="Arrays"></div>
+
+## Arrays
  An array is a list of items(strings, integers, arrays, objects, ect)
 
 ```ruby 
@@ -208,6 +215,8 @@ Instead of a code block, we can also format the iteration as an in-line block.
 ```ruby
 names.each {|name| puts "My name is #{name}}
 ```
+
+<div id="Loops"></div>
 
 ## Loops 
 Loops are a fundamental feature in programming languages. Loops allow a code block to be repeated as long as a condition is met. 
@@ -270,6 +279,8 @@ end
 > 3
 > 4
 ```
+
+<div id="#Project-Covid-19-Tracker-and-CLI-Part-2"></div>
 
 ## USA Covid CLI Tracker Part 2
 As of now, the CLI exits after input. Let's incorporate a while loop to prevent this from happening. 
