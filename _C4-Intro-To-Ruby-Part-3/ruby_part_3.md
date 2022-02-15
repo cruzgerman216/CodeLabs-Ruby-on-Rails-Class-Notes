@@ -4,14 +4,15 @@
 
 ---
 ### Table of Contents 
-- Ruby Classes
+- Classes
   - Initialize method
   - attr_accessor, attr_reader, attr_writer
+- Modules
 - Object Oriented Programming (OOP)
 - Project - Covid-19 Tracker and CLI  Part 3
 --- 
 
-## Ruby Classes
+## Classes
 A class is a blueprint to create instances (objects). Objects are mistaken to be hashes. Keep in mind instances are created by a class. A class is defined by it's methods and attributes. To create a class, use the keyword `class` follow by the class name. Make 
 sure the class name is always capitlized. To end the class block, use the keyword `end`.
 
@@ -19,14 +20,13 @@ sure the class name is always capitlized. To end the class block, use the keywor
 class Animal 
 end 
 ```
-To create an instance will involve the class name as well as invoking the `new` method.
+To create an instance, we will involve the class name as well as invoking the `new` method.
 
 ```ruby
 Animal.new  # Creates an instance of the Animal class
 ```
 ### Instance Methods
-This isn't very helpful as we see here, this class doesn't have any methods. Let's create an instance method. 
-An instance method are methods belonging to instances of the class. To define an instance method, we define the method in the class block.
+This isn't very helpful as we see here, this class doesn't have any methods. Let's create an instance method. Instance methods are methods belonging to instances of the class. To define an instance method, we define the method in the class block.
 
 ```ruby 
 class Animal
@@ -36,7 +36,7 @@ class Animal
 end 
 
 mammal = Animal.new 
-mammal.drinks # **drinks water**
+mammal.drinks # Prints **drinks water**
 ```
 
 ### Class Methods 
@@ -49,14 +49,14 @@ class Animal
     end
 
     def self.from_the_class
-        puts "Prints from the class."
+        puts "Class method"
     end
 end 
-Animal.from_the_class
+Animal.from_the_class # Prints Class Method
 ```
 
 ### Initialize Method 
-The initialize method is a reserved method in Ruby classes. If you have dealt with contructors in other languages, you will exactly understand what the initialize method will do. The initialize method is part of the instance-creation process where attributes can be set or execute another form of logic. 
+The initialize method is a reserved method in Ruby classes. If you have dealt with contructors in other languages, you will exactly understand what the initialize method will do. The initialize method is part of the instance-creation process where attributes can be set or execute some form of logic.
 
 ```ruby 
 class Animal
@@ -90,7 +90,7 @@ def Person
 end
 ```
 
-To create a `setter`, we must include the name of the attribute follow by an `=` sign. We will also include a parameter.
+To create a `setter`, we must define a method. The method name should be the name of the attribute follow by an `=` sign. We must also include a parameter.
 
 ```ruby 
 def Person
@@ -102,7 +102,7 @@ end
 
 We aren't yet storing the value of the parameter. There are two ways we can store this value, in a instance variable or a class variable. An instance variable can be set or access by an instance. 
 
-To create an instance variable, you can declare the variable in any code block and you must include `@` in front of the variable name.
+To create an instance variable, you must include `@` in front of the variable name.
 
 ```ruby 
 def Person
@@ -127,7 +127,7 @@ end
 
 person = Person.new
 person.name = "John Doe"
-person.name # John Doe
+person.name # returns "John Doe"
 ```
 
 We can also use the initialize method to set an attribute. 
@@ -164,7 +164,10 @@ person.age = 43
 person.info() # prints 43
 ```
 
-Without `attr_writer`, you will not be able to set the instance variable outside of the class (you can inside of the class). If you like to be able to set the instance variable and access it's value outside of the class, then you can use `attr_accessor`.
+Without `attr_writer`, you will not be able to set the instance variable outside of the class (you can inside of the class). 
+
+### attr_accessor, the best of both worlds
+If you like to be able to set the instance variable and access it's value outside of the class, then you can use `attr_accessor`.
 
 ```ruby
 class Person 
@@ -180,7 +183,52 @@ person.age = 43
 person.info() # prints 43
 ```
 
+## Modules
+Modules are a great way to bundle commonly used methods for classes. Take these classes for example.
+
+```ruby 
+class Person 
+end
+
+class Animal
+end
+```
+
+We can agree that a person and an animal both eat. They share that commonlity together but we don't necessarily want to create a class for this purpose. Modules sound perfect because you can't create instances with modules. When creating a module, start with the keyword `module` follow by the module name. To end the module definition, we use the keyword `end`.
+
+```ruby 
+module Eat 
+    def eat(food)
+        puts "**ate #{food}**"
+    end
+end
+```
+
+To include the module in these classes, use the `include` method follow by the module name. 
+
+```ruby 
+module Eat 
+    def eat(food)
+        puts "**ate #{food}**"
+    end
+end
+
+class Person 
+    include Eat
+end
+
+class Animal
+    include Eat
+end
+
+# Creates a Person Instance and invokes/calls eat
+Person.new.eat("Carrots") # Prints **ate Carrots**
+```
+Using the `include` method will add instance methods. If you like to add class methods, use `extend`.
+
+
 ### Object Oriented Programming 
+Object Oriented Programming is a programming paradigm used to battle against complex systems and prevent large scale errors. To do this, OOP disects an application's code into logical bundles.
 
 ## USA Covid CLI Tracker Part 3
 
@@ -492,5 +540,7 @@ require_relative "./country.rb"
 
 #### Topics to Explore 
 - OOP Polymorphism
+- OOP Encapsulation
+- 
 
 Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
