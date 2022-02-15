@@ -4,13 +4,16 @@
 
 ---
 ### Table of Contents 
+- Object Oriented Programming (OOP)
 - Classes
   - Initialize method
   - attr_accessor, attr_reader, attr_writer
 - Modules
-- Object Oriented Programming (OOP)
 - Project - Covid-19 Tracker and CLI  Part 3
 --- 
+
+### Object Oriented Programming 
+Object Oriented Programming is a programming paradigm used to battle against complex systems and prevent large scale errors. To do this, OOP disects an application's code into logical bundles.
 
 ## Classes
 A class is a blueprint to create instances (objects). Objects are mistaken to be hashes. Keep in mind instances are created by a class. A class is defined by it's methods and attributes. To create a class, use the keyword `class` follow by the class name. Make 
@@ -227,8 +230,6 @@ Person.new.eat("Carrots") # Prints **ate Carrots**
 Using the `include` method will add instance methods. If you like to add class methods, use `extend`.
 
 
-### Object Oriented Programming 
-Object Oriented Programming is a programming paradigm used to battle against complex systems and prevent large scale errors. To do this, OOP disects an application's code into logical bundles.
 
 ## USA Covid CLI Tracker Part 3
 
