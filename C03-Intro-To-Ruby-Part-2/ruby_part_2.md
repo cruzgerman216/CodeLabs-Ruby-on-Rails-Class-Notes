@@ -285,7 +285,7 @@ end
 ## USA Covid CLI Tracker Part 2
 As of now, the CLI exits after input. Let's incorporate a while loop to prevent this from happening. 
 
-### Implementing a Loop 
+### Implementing a Loop to get User input or stop program
 Return the user input in the `menu` method. 
 
 ```ruby
@@ -295,6 +295,7 @@ Return the user input in the `menu` method.
         return input;
     end
 ```
+
 In the `run` method, create a `while` loop. As it's condition, check to see if user input is 'exit'. If so, end the while loop. 
 ```ruby
     def run
@@ -305,6 +306,8 @@ In the `run` method, create a `while` loop. As it's condition, check to see if u
         end_program
     end
 ```
+
+### Menu with case/when
 
 The user can see the list but the CLI does not react to the chosen option. Let's create a `case/when` block. Create a method `choose_option` that accepts one parameter. Define the `when` blocks. 
 
@@ -347,12 +350,15 @@ Go head and test this.
 > exit
 > have a great day!> 
 ```
+
 #### References
 - https://www.tutorialspoint.com/ruby/ruby_methods.html
 - https://www.geeksforgeeks.org/ruby-loops-for-while-do-while-until/
 
 #### Topics to Explore 
-- OOP Polymorphism
+- Case/When
 - The Call Stack 
+- Infinite Loops
+- Recursion
 
 Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

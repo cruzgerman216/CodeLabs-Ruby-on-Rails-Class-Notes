@@ -4,16 +4,18 @@
 
 ---
 ### Table of Contents 
-- Object Oriented Programming (OOP)
-- Classes
-  - Initialize method
-  - attr_accessor, attr_reader, attr_writer
-- Modules
-- Project - Covid-19 Tracker and CLI  Part 3
+- <a href="#OOP">Object Oriented Programming (OOP)</a>
+- <a href="#Classes">Classes</a>
+- <a href="#Modules">Modules</a>
+- <a href="#Project-Covid-19-Tracker-and-CLI-Part-3">Project - Covid-19 Tracker and CLI Part 3</a>
 --- 
 
-### Object Oriented Programming 
-Object Oriented Programming is a programming paradigm used to battle against complex systems and prevent large scale errors. To do this, OOP disects an application's code into logical bundles.
+<div id="OOP"></div>
+
+## Object Oriented Programming 
+Object Oriented Programming is a programming paradigm used to battle against complex systems and prevent large scale errors. To do this, OOP disects an application's code into logical bundles. Unforuntely, we don't have enough time to cover all the concepts of OOP other than inheritance, I recommend you to explore some starting points under <a href="#topics-to-explore">Topics to Explore</a>.
+
+<div href="Classes"></div>
 
 ## Classes
 A class is a blueprint to create instances (objects). Objects are mistaken to be hashes. Keep in mind instances are created by a class. A class is defined by it's methods and attributes. To create a class, use the keyword `class` follow by the class name. Make 
@@ -186,6 +188,38 @@ person.age = 43
 person.info() # prints 43
 ```
 
+
+### Inheritance 
+Inheritance is where a class inherits all the traits/behavior from another class. Here we have two classes: `Human` and `Coder`
+
+```ruby 
+class Human 
+    def say(something)
+        puts something
+    end
+end
+
+class Coder 
+end
+```
+
+We can say that a Coder inherits all of the Human traits because it too has a general trait like `say`. Let's have `Coder` inherit form `Human`. After `class Coder`, include the less than greater than sign `<` follow by `Human`. 
+
+```ruby 
+class Human 
+    def say(something)
+        puts something
+    end
+end
+
+class Coder < Human
+end
+
+Coder.new.say("I'm a human too!")
+```
+
+<div id="Modules"></div>
+
 ## Modules
 Modules are a great way to bundle commonly used methods for classes. Take these classes for example.
 
@@ -230,6 +264,7 @@ Person.new.eat("Carrots") # Prints **ate Carrots**
 Using the `include` method will add instance methods. If you like to add class methods, use `extend`.
 
 
+<div href="Project-Covid-19-Tracker-and-CLI-Part-3"></div>
 
 ## USA Covid CLI Tracker Part 3
 
@@ -539,9 +574,14 @@ require_relative "./country.rb"
 - https://www.rubyguides.com/2019/02/ruby-class/
 
 
+<def id="topics-to-explore"></div>
+
 #### Topics to Explore 
 - OOP Polymorphism
 - OOP Encapsulation
-- 
+- Modules as Namespaces
+- Private vs protected vs Public 
+- Super keyword
+- Inheritance vs Modules
 
 Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
