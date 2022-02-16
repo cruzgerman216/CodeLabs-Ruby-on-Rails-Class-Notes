@@ -263,13 +263,12 @@ Person.new.eat("Carrots") # Prints **ate Carrots**
 ```
 Using the `include` method will add instance methods. If you like to add class methods, use `extend`.
 
-
-<div href="Project-Covid-19-Tracker-and-CLI-Part-3"></div>
+<div id="Project-Covid-19-Tracker-and-CLI-Part-3"></div>
 
 ## USA Covid CLI Tracker Part 3
-In Part 3, we will will focus primarily on setting up classes `Country` and `State`. We will also add gems `Nokogiri` and `open-uri`. These gems will be used to scrape info from a site. We ultimately want to print the info we scrape onto the console. Let's explore the webpage we like to scrape.
-
 <img src="https://miro.medium.com/max/636/0*08Uq7LNwpSfEA3zc.jpeg"/>
+
+In Part 3, we will will focus primarily on setting up classes `Country` and `State`. We will also add gems `Nokogiri` and `open-uri`. These gems will be used to scrape info from a site and parse the HTML document. We ultimately want to print the info we scrape onto the console. Let's explore the webpage we like to scrape.
 
 ### Covid-19 USA Statistics Site
 We will use this [site](https://www.worldometers.info/coronavirus/country/us/) to scrape data from. The way we will organize our data is to separate countries and states. We will use classes to do this.
