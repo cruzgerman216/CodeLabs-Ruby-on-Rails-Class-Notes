@@ -391,16 +391,16 @@ Include country.rb and state.rb in USA_Covid_19_Tracker.rb
 This would be a good time to check if things work! :thumbsup:
 
 ### Scraping Setup
-
-1. create a file called scraper.rb under the lib directory. Include the file in the USA_Covid_19_Tracker.rb file
+Create a file called scraper.rb under the lib directory. Include the file in the USA_Covid_19_Tracker.rb file
 
 ```ruby
 require_relative "USA_Covid_19_Tracker/cli.rb"
-require_relative "./country.rb"
-require_relative "./state.rb"
-require_relative "./scraper.rb"
+require_relative "country.rb"
+require_relative "state.rb"
+require_relative "scraper.rb"
 ```
-2. define a class called Scrapper and include two class methods scrape_usa and scrape_states
+
+Define a class called Scrapper and include two class methods `scrape_usa` and `scrape_states`.
 
 
 ```ruby
@@ -415,14 +415,19 @@ end
 
 ```
 
-3. Create a attribute and set it to the url we will be scraping from
+Create a class constant and set it to the url we will be scraping from. A class constant cannot be reassigned.
 
 ```ruby
-    URL = "https://www.worldometers.info/coronavirus/country/us/"
+class Scrapper
+    URL = "https://www.worldometers.info/coronavirus/country/us/" # class constant
+
+    def self.scrape_usa
+    end
 ```
 
-4. In the gemfile, add gems nokogiri and open-uri
-Nokogiri is an open source software library to parse HTML and XML in Ruby. OpenURI is an easy-to-use wrapper for Net::HTTP, Net::HTTPS and Net::FTP.
+### Setting up Open-URI and Nokogiri gems
+In the gemfile, add gems Open-URI and Nokogiri. Open-URI allows you to make HTTP requests that will ultimately return a document of the webpage. Nokogiri will allow us to parse HTML in Ruby. 
+
 ```ruby
     git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
@@ -432,50 +437,27 @@ Nokogiri is an open source software library to parse HTML and XML in Ruby. OpenU
     gem 'nokogiri', '~> 1.12', '>= 1.12.5'
     gem 'open-uri', '~> 0.1.0'
 ```
-5. run ```bundle install```
+Run ```bundle install```
 
+### Bundling Issue
 You may get an error from your gemspec file
+
 ```The gemspec at /Users/username/Documents/GitHub/Ruby-GEM-CLI-Covid-Tracker/USA_Covid_19_Tracker/USA_Covid_19_Tracker.gemspec is not
 valid. Please fix this gemspec.
 The validation error was 'metadata['homepage_uri'] has invalid link: "TODO: Put your gem's website or public repo URL here."```
 
-- comment out this section in your gemspec file 
+Navigate to the Gemfile and comment out `gemspec`. We aren't interested at the moment to specify the dependencies of the program.
 
 ```ruby
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
- 
-  # if spec.respond_to?(:metadata)
-  #   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-
-  #   spec.metadata["homepage_uri"] = spec.homepage
-  #   spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  #   spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
-  # else
-  #   raise "RubyGems 2.0 or newer is required to protect against " \
-  #     "public gem pushes."
-  # end
+# Specify your gem's dependencies in covid_19.gemspec
+# gemspec
 ```
 
-set these attributes to an empty string
-```ruby
- spec.summary       = ""
-  spec.description   = ""
-  spec.homepage      =  ""
-  spec.license       = "MIT"
-```
-You may also get a bundler issue 
- change the version to what you have, I have version 2.2.32
+Run bundle install to install the necessary gems.
 
- ```ruby
-spec.add_development_dependency "bundler", "~> 2.2.32"
-  spec.add_development_dependency "rake", "~> 10.0"
-  ```
+### Data Scraping
 
-run bundle install to install the necessary gems
-
-
-6. Parse html using Nokogiri and open-uri
+1. Parse html using Nokogiri and open-uri
 At the top of the file, be sure to require both Nokogiri and open-uri
 ```ruby 
 require 'nokogiri'
@@ -625,4 +607,4 @@ require_relative "./country.rb"
 - Super keyword
 - Inheritance vs Modules
 
-Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+:wave: Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
