@@ -263,45 +263,37 @@ Person.new.eat("Carrots") # Prints **ate Carrots**
 ```
 Using the `include` method will add instance methods. If you like to add class methods, use `extend`.
 
-
-<div href="Project-Covid-19-Tracker-and-CLI-Part-3"></div>
+<div id="Project-Covid-19-Tracker-and-CLI-Part-3"></div>
 
 ## USA Covid CLI Tracker Part 3
+<img src="https://miro.medium.com/max/636/0*08Uq7LNwpSfEA3zc.jpeg"/>
+
+In Part 3, we will will focus primarily on setting up classes `Country` and `State`. We will also add gems `Nokogiri` and `open-uri`. These gems will be used to scrape info from a site and parse the HTML document. We ultimately want to print the info we scrape onto the console. Let's explore the webpage we like to scrape.
 
 ### Covid-19 USA Statistics Site
-We will use this [site](https://www.worldometers.info/coronavirus/country/us/) to scrape data from. The way we will organize our data is to separate countries and states. We will use classes to do this.
+We will use this [site](https://www.worldometers.info/coronavirus/country/us/) to scrape data from. The way we will organize our data is to separate `countries` and `states`. We will use classes to do this.
 
-### Preparing the Country and State classes
-We will go ahead and use Ruby Classes to structure the Covid-19 data for countries and states. 
-
-Create a file under lib called `country.rb`. Define a class called `Country`. 
+### Preparing the Country Class
+We will go ahead and use Ruby Classes to structure the Covid-19 data for countries and states. Create a file under lib called `country.rb`. Define a class called `Country`. 
 
 ```ruby
 class Country 
-
 end
 ```
-
+Let's include attribute accessors for name, confirmed_cases, overall_deaths, and recoveries. 
 
 ```ruby 
 class Country
     attr_accessor :name, :confirmed_cases, :overall_deaths, :recoveries
 end
 ```
-- declare attribute accessors name, confirmed_cases, overall_deaths and recoveries
-- attribute accessors give getters and setters to these properties so you can access them
-```ruby 
-class Country
-    attr_accessor :name, :confirmed_cases, :overall_deaths, :recoveries
-end
-```
+To store Country Instances, declare a class variable and set it to an empty array.
 
-- Create a property called @@Countries and set it to an empty array
 ```ruby 
 @@Countries = []
 ```
-- Create a class method all that returns the @@Countries property
-    - a class method can only be called from the Class itself. Instances do not have access to this.
+Create a class method all that returns the @@Countries property.
+
 ```ruby
 class Country
     attr_accessor :name, :confirmed_cases, :overall_deaths, :recoveries
@@ -313,10 +305,61 @@ class Country
 end
 ```
 
-- create an initialize method(acts as a constructor in other languages like JavaScript) that allows you to set your attribute accessors with metaprogramming
-  - instead of multiple lines we can use the each methd to access these key paired values
-  - In the statement, with the self method use the send method
-  - The first argument in send() is the message that you're sending to the object - that is, the name of a method. It could be string or symbol but symbols are preferred. Then arguments those need to pass in method, those will be the remaining arguments in send()
+Upon instantiation, we like to set the country attributes. To do this, define the intialize method. 
+
+```ruby
+    def initialize()
+    end
+```
+
+Let's add parameters to `initialize` to set each instance variable upon instantiation. 
+
+```ruby
+    def initialize(name, confirmed_cases, overall_deaths, recoveries)
+        @name = name
+        @confirmed_cases = confirmed_cases
+        @overall_deaths = overall_deaths
+        @recoveries = recoveries
+    end
+```
+
+### Basic Meta Programming using the built-in method send
+
+Assigning values to each instance variable is redundant. Lets incorporate some meta programming. Meta programming can be referred to as "code that writes code for us". Include only one parameter called attributes. Get rid of the code lines within the method definition aswell.
+
+```ruby
+    # Attributes will be a hash
+    def initialize(attributes)
+
+    end
+```
+Let's use the hash method `each` to iterate through the hash. Include a one line code block `{}`. By using the method each, we can reference each key and it's value by coding the following: 
+
+```ruby
+    # Attributes will be a hash
+    def initialize(attributes)
+        attributes.each {|key, value| }
+    end
+```
+
+In the one line statement, use `self` to invoke the `send` method. The send method will take in two arguments. The first will be the name of a method we like to execute. In this case, we like to execute a setter method for each attribute.
+
+```ruby
+    # Attributes will be a hash
+    def initialize(attributes)
+        attributes.each {|key, value| self.send("#{key}=") }
+    end
+```
+
+Remember `attr_accessor` provides these methods for each instance variable. For example, here is the setter for the inatance variable `name`:
+
+```ruby 
+    def name=(value)
+        @name = value;
+    end
+```
+
+Notice how this method definition also includes a parameter. We can pass in the value as a second argument in `send`.
 ```ruby 
     def initialize(attributes)
     # Example:
@@ -325,11 +368,8 @@ end
     end
 ```
 
-- Create a separate file called state.rb under lib
-    - define a class called state that inherits Country
-      - By inheriting Country, we get inherit attributes from the country class and the initialize method
-    - defined class property called @@states set to an empty array
-    - define a class method called all that returns @@states
+### Preparing the State Class
+After defining the Country class, let's create a file called `state.rb` under lib and define the `State` class. Let's allow the `State` class to be the subclass/inherit from Country.
 
 ```ruby
 class State < Country
@@ -340,26 +380,27 @@ class State < Country
 end
 ```
 
-- include country.rb and state.rb in USA_Covid_19_Tracker.rb
+### Loading country.rb and State.rb
+Include country.rb and state.rb in USA_Covid_19_Tracker.rb
 ```ruby
     require_relative "USA_Covid_19_Tracker/cli.rb"
     require_relative "./country.rb"
     require_relative "./state.rb"
 ```
 
-- test the cli to see if it works still
+This would be a good time to check if things work! :thumbsup:
 
 ### Scraping Setup
-
-1. create a file called scraper.rb under the lib directory. Include the file in the USA_Covid_19_Tracker.rb file
+Create a file called scraper.rb under the lib directory. Include the file in the USA_Covid_19_Tracker.rb file
 
 ```ruby
 require_relative "USA_Covid_19_Tracker/cli.rb"
-require_relative "./country.rb"
-require_relative "./state.rb"
-require_relative "./scraper.rb"
+require_relative "country.rb"
+require_relative "state.rb"
+require_relative "scraper.rb"
 ```
-2. define a class called Scrapper and include two class methods scrape_usa and scrape_states
+
+Define a class called Scrapper and include two class methods `scrape_usa` and `scrape_states`.
 
 
 ```ruby
@@ -374,14 +415,19 @@ end
 
 ```
 
-3. Create a attribute and set it to the url we will be scraping from
+Create a class constant and set it to the url we will be scraping from. A class constant cannot be reassigned.
 
 ```ruby
-    URL = "https://www.worldometers.info/coronavirus/country/us/"
+class Scrapper
+    URL = "https://www.worldometers.info/coronavirus/country/us/" # class constant
+
+    def self.scrape_usa
+    end
 ```
 
-4. In the gemfile, add gems nokogiri and open-uri
-Nokogiri is an open source software library to parse HTML and XML in Ruby. OpenURI is an easy-to-use wrapper for Net::HTTP, Net::HTTPS and Net::FTP.
+### Setting up Open-URI and Nokogiri gems
+In the gemfile, add gems Open-URI and Nokogiri. Open-URI allows you to make HTTP requests that will ultimately return a document of the webpage. Nokogiri will allow us to parse HTML in Ruby. 
+
 ```ruby
     git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
@@ -391,50 +437,27 @@ Nokogiri is an open source software library to parse HTML and XML in Ruby. OpenU
     gem 'nokogiri', '~> 1.12', '>= 1.12.5'
     gem 'open-uri', '~> 0.1.0'
 ```
-5. run ```bundle install```
+Run ```bundle install```
 
+### Bundling Issue
 You may get an error from your gemspec file
+
 ```The gemspec at /Users/username/Documents/GitHub/Ruby-GEM-CLI-Covid-Tracker/USA_Covid_19_Tracker/USA_Covid_19_Tracker.gemspec is not
 valid. Please fix this gemspec.
 The validation error was 'metadata['homepage_uri'] has invalid link: "TODO: Put your gem's website or public repo URL here."```
 
-- comment out this section in your gemspec file 
+Navigate to the Gemfile and comment out `gemspec`. We aren't interested at the moment to specify the dependencies of the program.
 
 ```ruby
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
- 
-  # if spec.respond_to?(:metadata)
-  #   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-
-  #   spec.metadata["homepage_uri"] = spec.homepage
-  #   spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  #   spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
-  # else
-  #   raise "RubyGems 2.0 or newer is required to protect against " \
-  #     "public gem pushes."
-  # end
+# Specify your gem's dependencies in covid_19.gemspec
+# gemspec
 ```
 
-set these attributes to an empty string
-```ruby
- spec.summary       = ""
-  spec.description   = ""
-  spec.homepage      =  ""
-  spec.license       = "MIT"
-```
-You may also get a bundler issue 
- change the version to what you have, I have version 2.2.32
+Run bundle install to install the necessary gems.
 
- ```ruby
-spec.add_development_dependency "bundler", "~> 2.2.32"
-  spec.add_development_dependency "rake", "~> 10.0"
-  ```
+### Data Scraping
 
-run bundle install to install the necessary gems
-
-
-6. Parse html using Nokogiri and open-uri
+Parse html using Nokogiri and open-uri
 At the top of the file, be sure to require both Nokogiri and open-uri
 ```ruby 
 require 'nokogiri'
@@ -447,7 +470,7 @@ require "open-uri"
     end
 ```
 
-7. test this out and call this method 
+Test this out and call this method 
 
 ```ruby
 Scrapper.scrape_usa
@@ -473,7 +496,7 @@ You should get something similiar to this. It should be a large document.
 .
 ```
 
-8. In the scrape_usa method, use the css method to target specific classes of the document. This should return an array of text. Use the dev tools to inspect the document of what specific elements you are interested in. In this case, usa main data. This might be tricky to locate the css classes.
+1. In the scrape_usa method, use the css method to target specific classes of the document. This should return an array of text. Use the dev tools to inspect the document of what specific elements you are interested in. In this case, usa main data. This might be tricky to locate the css classes.
 
 ```ruby 
     def self.scrape_usa
@@ -584,4 +607,4 @@ require_relative "./country.rb"
 - Super keyword
 - Inheritance vs Modules
 
-Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+:wave: Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
