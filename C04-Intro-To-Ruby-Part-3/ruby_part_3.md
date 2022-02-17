@@ -444,9 +444,11 @@ You may get an error from your gemspec file
 
 ```The gemspec at /Users/username/Documents/GitHub/Ruby-GEM-CLI-Covid-Tracker/USA_Covid_19_Tracker/USA_Covid_19_Tracker.gemspec is not
 valid. Please fix this gemspec.
-The validation error was 'metadata['homepage_uri'] has invalid link: "TODO: Put your gem's website or public repo URL here."```
+The validation error was 'metadata['homepage_uri'] has invalid link: "TODO: Put your gem's website or public repo URL here."
+```
 
 Navigate to the Gemfile and comment out `gemspec`. We aren't interested at the moment to specify the dependencies of the program.
+
 
 ```ruby
 # Specify your gem's dependencies in covid_19.gemspec
