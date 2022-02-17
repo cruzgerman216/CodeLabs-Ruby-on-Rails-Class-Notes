@@ -457,7 +457,7 @@ Run bundle install to install the necessary gems.
 
 ### Data Scraping
 
-1. Parse html using Nokogiri and open-uri
+Parse html using Nokogiri and open-uri
 At the top of the file, be sure to require both Nokogiri and open-uri
 ```ruby 
 require 'nokogiri'
@@ -470,7 +470,7 @@ require "open-uri"
     end
 ```
 
-7. test this out and call this method 
+Test this out and call this method 
 
 ```ruby
 Scrapper.scrape_usa
@@ -496,7 +496,7 @@ You should get something similiar to this. It should be a large document.
 .
 ```
 
-8. In the scrape_usa method, use the css method to target specific classes of the document. This should return an array of text. Use the dev tools to inspect the document of what specific elements you are interested in. In this case, usa main data. This might be tricky to locate the css classes.
+1. In the scrape_usa method, use the css method to target specific classes of the document. This should return an array of text. Use the dev tools to inspect the document of what specific elements you are interested in. In this case, usa main data. This might be tricky to locate the css classes.
 
 ```ruby 
     def self.scrape_usa
