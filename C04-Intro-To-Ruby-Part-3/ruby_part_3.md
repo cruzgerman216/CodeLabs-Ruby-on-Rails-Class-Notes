@@ -271,39 +271,29 @@ Using the `include` method will add instance methods. If you like to add class m
 In Part 3, we will will focus primarily on setting up classes `Country` and `State`. We will also add gems `Nokogiri` and `open-uri`. These gems will be used to scrape info from a site and parse the HTML document. We ultimately want to print the info we scrape onto the console. Let's explore the webpage we like to scrape.
 
 ### Covid-19 USA Statistics Site
-We will use this [site](https://www.worldometers.info/coronavirus/country/us/) to scrape data from. The way we will organize our data is to separate countries and states. We will use classes to do this.
+We will use this [site](https://www.worldometers.info/coronavirus/country/us/) to scrape data from. The way we will organize our data is to separate `countries` and `states`. We will use classes to do this.
 
-### Preparing the Country and State classes
-We will go ahead and use Ruby Classes to structure the Covid-19 data for countries and states. 
-
-Create a file under lib called `country.rb`. Define a class called `Country`. 
+### Preparing the Country Class
+We will go ahead and use Ruby Classes to structure the Covid-19 data for countries and states. Create a file under lib called `country.rb`. Define a class called `Country`. 
 
 ```ruby
 class Country 
-
 end
 ```
-
+Let's include attribute accessors for name, confirmed_cases, overall_deaths, and recoveries. 
 
 ```ruby 
 class Country
     attr_accessor :name, :confirmed_cases, :overall_deaths, :recoveries
 end
 ```
-- declare attribute accessors name, confirmed_cases, overall_deaths and recoveries
-- attribute accessors give getters and setters to these properties so you can access them
-```ruby 
-class Country
-    attr_accessor :name, :confirmed_cases, :overall_deaths, :recoveries
-end
-```
+To store Country Instances, declare a class variable and set it to an empty array.
 
-- Create a property called @@Countries and set it to an empty array
 ```ruby 
 @@Countries = []
 ```
-- Create a class method all that returns the @@Countries property
-    - a class method can only be called from the Class itself. Instances do not have access to this.
+Create a class method all that returns the @@Countries property.
+
 ```ruby
 class Country
     attr_accessor :name, :confirmed_cases, :overall_deaths, :recoveries
@@ -315,10 +305,61 @@ class Country
 end
 ```
 
-- create an initialize method(acts as a constructor in other languages like JavaScript) that allows you to set your attribute accessors with metaprogramming
-  - instead of multiple lines we can use the each methd to access these key paired values
-  - In the statement, with the self method use the send method
-  - The first argument in send() is the message that you're sending to the object - that is, the name of a method. It could be string or symbol but symbols are preferred. Then arguments those need to pass in method, those will be the remaining arguments in send()
+Upon instantiation, we like to set the country attributes. To do this, define the intialize method. 
+
+```ruby
+    def initialize()
+    end
+```
+
+Let's add parameters to `initialize` to set each instance variable upon instantiation. 
+
+```ruby
+    def initialize(name, confirmed_cases, overall_deaths, recoveries)
+        @name = name
+        @confirmed_cases = confirmed_cases
+        @overall_deaths = overall_deaths
+        @recoveries = recoveries
+    end
+```
+
+### Basic Meta Programming using the built-in method send
+
+Assigning values to each instance variable is redundant. Lets incorporate some meta programming. Meta programming can be referred to as "code that writes code for us". Include only one parameter called attributes. Get rid of the code lines within the method definition aswell.
+
+```ruby
+    # Attributes will be a hash
+    def initialize(attributes)
+
+    end
+```
+Let's use the hash method `each` to iterate through the hash. Include a one line code block `{}`. By using the method each, we can reference each key and it's value by coding the following: 
+
+```ruby
+    # Attributes will be a hash
+    def initialize(attributes)
+        attributes.each {|key, value| }
+    end
+```
+
+In the one line statement, use `self` to invoke the `send` method. The send method will take in two arguments. The first will be the name of a method we like to execute. In this case, we like to execute a setter method for each attribute.
+
+```ruby
+    # Attributes will be a hash
+    def initialize(attributes)
+        attributes.each {|key, value| self.send("#{key}=") }
+    end
+```
+
+Remember `attr_accessor` provides these methods for each instance variable. For example, here is the setter for the inatance variable `name`:
+
+```ruby 
+    def name=(value)
+        @name = value;
+    end
+```
+
+Notice how this method definition also includes a parameter. We can pass in the value as a second argument in `send`.
 ```ruby 
     def initialize(attributes)
     # Example:
@@ -327,11 +368,8 @@ end
     end
 ```
 
-- Create a separate file called state.rb under lib
-    - define a class called state that inherits Country
-      - By inheriting Country, we get inherit attributes from the country class and the initialize method
-    - defined class property called @@states set to an empty array
-    - define a class method called all that returns @@states
+### Preparing the State Class
+After defining the Country class, let's create a file called `state.rb` under lib and define the `State` class. Let's allow the `State` class to be the subclass/inherit from Country.
 
 ```ruby
 class State < Country
@@ -342,14 +380,15 @@ class State < Country
 end
 ```
 
-- include country.rb and state.rb in USA_Covid_19_Tracker.rb
+### Loading country.rb and State.rb
+Include country.rb and state.rb in USA_Covid_19_Tracker.rb
 ```ruby
     require_relative "USA_Covid_19_Tracker/cli.rb"
     require_relative "./country.rb"
     require_relative "./state.rb"
 ```
 
-- test the cli to see if it works still
+This would be a good time to check if things work! :thumbsup:
 
 ### Scraping Setup
 
