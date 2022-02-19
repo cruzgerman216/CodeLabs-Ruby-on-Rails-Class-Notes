@@ -1,8 +1,15 @@
-
 # USA Covid CLI Tracker Part 2
 As of now, the CLI exits after input. Let's incorporate a while loop to prevent this from happening. 
 
-## Implementing a Loop to get User input or stop program
+---
+### Table of Contents 
+- <a href="#Implementing-a-Loop">Implementing a Loop</a>
+- <a href="#Choosing-Options-with-case/when">Choosing Options with case/when</a>
+--- 
+
+<div id="Implementing-a-Loop"></div>
+
+## Implementing a Loop
 Return the user input in the `menu` method. 
 
 ```ruby
@@ -24,7 +31,9 @@ In the `run` method, create a `while` loop. As it's condition, check to see if u
     end
 ```
 
-## Menu with case/when
+<div id="Choosing-Options-with-case/when"></div>
+
+## Choosing Options with case/when
 
 The user can see the list but the CLI does not react to the chosen option. Let's create a `case/when` block. Create a method `choose_option` that accepts one parameter. Define the `when` blocks. 
 

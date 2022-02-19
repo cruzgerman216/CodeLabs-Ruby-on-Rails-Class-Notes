@@ -10,7 +10,7 @@ Now we get into problem solving that involves even the basic features of most pr
 - <a href="#Case-Statements">Case Statements</a>
 - <a href="#Arrays">Arrays</a>
 - <a href="#Loops">Loops</a>
-- [Project - Covid-19 Tracker and CLI Part 2]()
+- [Project - Covid-19 Tracker and CLI Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-2/CLI_Project_part_2.md)
 --- 
 
 <div id="Return-Expressions-In-Methods"><div>
