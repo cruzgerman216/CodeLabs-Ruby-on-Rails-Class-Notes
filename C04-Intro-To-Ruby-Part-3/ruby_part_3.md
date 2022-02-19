@@ -7,7 +7,7 @@
 - <a href="#OOP">Object Oriented Programming (OOP)</a>
 - <a href="#Classes">Classes</a>
 - <a href="#Modules">Modules</a>
-- <a href="#Project-Covid-19-Tracker-and-CLI-Part-3">Project - Covid-19 Tracker and CLI Part 3</a>
+- [Project - Covid-19 Tracker and CLI Part 3](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C04-Intro-To-Ruby-Part-3/CLI_Project_part_3.md)
 --- 
 
 <div id="OOP"></div>
