@@ -12,6 +12,8 @@ In Part 3, we will will focus primarily on setting up classes `Country` and `Sta
 - <a href="#Loading-Country-and-State">Loading Country and State</a>
 - <a href="#Setting-up-Open-URI-and-Nokogiri-gems">Setting up Open-URI and Nokogiri gems</a>
 - <a href="#Data-Scraping">Data Scraping</a>
+- <a href="#Regex">Regex</a>
+- <a href="Printable-Module">Printable Module</a>
 --- 
 
 <div id="Site-Covid-19-Statistics"></div>
@@ -218,13 +220,18 @@ Run bundle install to install the necessary gems.
 <div id="Data-Scraping"></div>
 
 ## Data Scraping
+We must first require both `nokogiri` and `open-uri` at the top of the file. Then we can use the objects `Nokogiri` and `URI`. 
 
-Parse html using Nokogiri and open-uri
-At the top of the file, be sure to require both Nokogiri and open-uri
+
 ```ruby 
 require 'nokogiri'
 require "open-uri"
 ```
+
+Let's start the process of Data Scraping. First we will call `URI.open()`. This method call will take in a url and create an entirely new file instance with contents of the webpage.
+
+We can then use the `Nokogiri` and call `HTML`. The `HTML` takes in a document or a file that will parse the html and in return give us an object full of values and methods. We will pass in our file instance as an argument.
+
 ```ruby
     def self.scrape_usa
         doc = Nokogiri::HTML(URI.open(URL))
@@ -232,7 +239,7 @@ require "open-uri"
     end
 ```
 
-Test this out and call this method 
+Let's test this method out. 
 
 ```ruby
 Scrapper.scrape_usa
@@ -258,35 +265,48 @@ You should get something similiar to this. It should be a large document.
 .
 ```
 
-1. In the scrape_usa method, use the css method to target specific classes of the document. This should return an array of text. Use the dev tools to inspect the document of what specific elements you are interested in. In this case, usa main data. This might be tricky to locate the css classes.
+In the `scrape_usa` method, use the css method to target specific classes of the document. This should return an array of text. Use the dev tools to inspect the document of what specific elements you are interested in. In this case, usa main data. This might be tricky to locate the css classes.
 
 ```ruby 
     def self.scrape_usa
         doc = Nokogiri::HTML(URI.open("https://www.worldometers.info/coronavirus/country/us/"))
-        country_main = doc.css(".content-inner .maincounter-number")
+        country_main = doc.css(".maincounter-number")
 ```
-keep printing each value as we add things little by little.
 
-9. Store the first element. 
+`doc.css("")` will return to us an array of elements. We see that by testing and reading the values, we see that `country_main[0]` gives us one desired element.
+
 
 ```ruby 
 usa_confirmed_cases = country_main[0]
 ```
-
-10. Use the text method to get the content of the element 
+Use the text method to get the content of the element 
 
 ```ruby 
 usa_confirmed_cases = country_main[0].text
 
 ```
 
-11.  Use regex to get rid of every whitespace and comma. Then turn it into an interger.
+<div id="regex"></div>
+
+## Regex
+
+We will use the built in string method `gsub` to get rid of any unecessary spacing and commas. 
+
+```ruby
+    usa_confirmed_cases = country_main[0].text.gsub(/[]/)
+```
+
+Within the square brackets, include `\s` in which references every white space in the string. After `\s` include a `,`. 
+```ruby
+    usa_confirmed_cases = country_main[0].text.gsub(/\s,/)
+```
+Pass in empty strings as the second argument. This is saying, "Get rid of every white space and comma in this string".
 
 ```ruby
         usa_confirmed_cases = country_main[0].text.gsub(/[\s,]/,"").to_i
 ```
 
-12. Do this repeatedly for the confirmed deaths and recoveries.
+Do this repeatedly for the confirmed deaths and recoveries.
 
 ```ruby
     def self.scrape_usa
@@ -299,7 +319,11 @@ usa_confirmed_cases = country_main[0].text
 ```
 Let's refactor this.
 
-13. Create a ```concerns``` folder. Create a file called ```printable.rb```. In that, define a module called printable and in that module, define another module called styles.
+<div id="Printable-Module"></div>
+
+## Printable Module
+
+Create a ```concerns``` folder. Create a file called ```printable.rb```. In that, define a module called printable and in that module, define another module called styles.
 
 ```ruby
 module Printable
@@ -308,7 +332,19 @@ module Printable
 end
 ```
 
-14. Define a method called text_to_integer. Use the logic we used in the scrape_usa data to do this.
+Define a method called text_to_integer. Use the logic we used in the scrape_usa data to do this.
+
+```ruby
+module Printable
+    module Styles
+        def text_to_integer(text)
+            text.gsub(/[\s,]/,"").to_i
+        end
+    end
+end
+```
+
+There will be times where our value will be an empty string. In this case, we will return a 0.
 
 ```ruby
 module Printable
@@ -321,19 +357,19 @@ module Printable
 end
 ```
 
-15. Refactor the scraper class. Extend the printable module 
+Refactor the scraper class. Extend the printable module 
 
 ```ruby
 class Scrapper
     extend Printable::Styles
 ```
 
-16. Refactor the scrape_usa data
-
-At the top of the file 
+Refactor the `scrape_usa` method. At the top of the file, include:
 ```ruby 
 require_relative './concerns/printable.rb'
 ```
+Refactor using the method we defined.
+
 ```ruby
         usa_confirmed_cases = text_to_integer(country_main[0].text)
         usa_overall_deaths = text_to_integer(country_main[1].text)
@@ -341,7 +377,7 @@ require_relative './concerns/printable.rb'
     end
 ```
 
-1.  Initialize a Country instance with this data
+ Initialize a Country instance with this data
 At the top of the file 
 ```ruby 
 require_relative "./country.rb"
