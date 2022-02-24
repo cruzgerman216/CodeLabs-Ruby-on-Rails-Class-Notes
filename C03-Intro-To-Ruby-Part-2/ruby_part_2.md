@@ -85,7 +85,7 @@ if false
 elsif true 
     puts "Will print"
 else 
-    puts "Will print not print because the previous logic block is true"
+    puts "Will not print because the previous logic block is true"
 end 
 ```
 

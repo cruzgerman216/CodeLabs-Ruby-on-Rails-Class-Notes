@@ -195,7 +195,8 @@ In the gemfile, add gems Open-URI and Nokogiri. Open-URI allows you to make HTTP
     gem 'nokogiri', '~> 1.12', '>= 1.12.5'
     gem 'open-uri', '~> 0.1.0'
 ```
-Run ```bundle install```
+Run ```bundle install``` 
+(If you are in Replit, be sure to run this in the root directory. If you are in VS Code, run this in the project folder)
 
 <div id="Bundling-Issue"></div>
 
