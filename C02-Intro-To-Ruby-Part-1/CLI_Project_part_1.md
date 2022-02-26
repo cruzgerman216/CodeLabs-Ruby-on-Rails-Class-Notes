@@ -6,11 +6,11 @@ With ruby fundamentals, we will have enough knowledge to create a Command Line I
 ### Table of Contents 
 - <a href="#what-is-a-gem">What is a Gem?</a>
 - <a href="#creating-a-gem">Creating a Gem</a>
-- <a href="gem-setup">Gem setup</a>
-- <a href="folder-structure">Folder Structure</a>
-- <a href="getting-started">Getting Started</a>
-- <a href="preparing-the-cli-class">Preparing the CLI Class</a>
-- <a href="cli-menu">CLI Menu</a>
+- <a href="#gem-setup">Gem setup</a>
+- <a href="#folder-structure">Folder Structure</a>
+- <a href="#getting-started">Getting Started</a>
+- <a href="#preparing-the-cli-class">Preparing the CLI Class</a>
+- <a href="#cli-menu">CLI Menu</a>
 --- 
 
 <div id="what-is-a-gem"></div>
