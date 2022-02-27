@@ -1,9 +1,9 @@
-# The Ruby Programming Language
+# Class 5 - The Ruby Programming Language Part 4
 
 Topics covered
 
 ## Authentication Systems 
-Passwods are vulnerable to hackers. They are never stored as just strings in the database. To help combat security issues, there are tools that allow the programer to hash passwords to prevent these security vulnerabilities. We can use Bcrypt. 
+Passwords are vulnerable to hackers. They are never stored as just strings in the database. To help combat security issues, there are tools that allow the programer to hash passwords to prevent these security vulnerabilities. We can use Bcrypt. 
 
 ## Bcrypt 
 Bcrypt is a sophisticated and secure hash algorithm designed by The OpenBSD project for hashing passwords. The bcrypt Ruby gem provides a simple warpper for safely handling passwords. 
