@@ -16,7 +16,9 @@
     - Classes
     - Covid-19 Tracker and CLI Part 3
   - [Class 5 Ruby Part 4](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C05-Intro-To-Ruby-Part-4/ruby_part_4.md)
-  - [Class 6 Ruby part 5](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C06-Intro-To-Ruby-Part-5/ruby_part_5.md)
+    - Bcrypt
+    - Covid-19 Tracker and CLI part 4
+  - [Class 6 Review + Covid-19 Tracker and CLI Part 5](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C06-Intro-To-Ruby-Part-5/CLI_Project_part_5.md)
   - [Class 7 Intro to Ruby on Rails](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C07-Intro-To-Rails/ruby_on_rails_notes.md)
   - [Class 8 CRUD Operations Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C08-CRUD-Operations-Part-1/BookIt_app_part_1.md)
   - [Class 9 CRUD Operations Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C09-CRUD-Operations-Part-2/BookIt_app_part_2.md)

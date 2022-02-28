@@ -1,6 +1,6 @@
 # Class 5 - The Ruby Programming Language Part 4
 
-Topics covered
+- [Project - Covid-19 Tracker and CLI Part 4](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C05-Intro-To-Ruby-Part-4/CLI_Project_part_4.md)
 
 ## Authentication Systems 
 Passwords are vulnerable to hackers. They are never stored as just strings in the database. To help combat security issues, there are tools that allow the programer to hash passwords to prevent these security vulnerabilities. We can use Bcrypt. 
