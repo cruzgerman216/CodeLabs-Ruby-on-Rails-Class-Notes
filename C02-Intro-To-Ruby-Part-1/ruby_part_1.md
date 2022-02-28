@@ -371,6 +371,12 @@ puts (4 - 4*2/4) + 10 # 12
 ```
 ---
 
+
+## Covid-19 CLI Part 1 
+- [Project - Covid_19 Tracker and CLI Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C02-Intro-To-Ruby-Part-1/CLI_Project_part_1.md)
+
+--- 
+
 #### References
 - https://launchschool.com/books/ruby/read/introduction
 - https://en.wikipedia.org/wiki/Ruby_(programming_language)
@@ -389,5 +395,9 @@ puts (4 - 4*2/4) + 10 # 12
 - Parallel Assignment
 - BitWise Operators
 - Variable Scopes
+
+--- 
+- [Next Class](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-2/ruby_part_2.md)
+
 
 Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

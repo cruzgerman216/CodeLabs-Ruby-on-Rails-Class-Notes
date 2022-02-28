@@ -280,6 +280,11 @@ end
 > 4
 ```
 
+## Covid-19 CLI Part 2
+- [Project - Covid-19 Tracker and CLI Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-2/CLI_Project_part_2.md)
+
+---
+
 #### References
 - https://www.tutorialspoint.com/ruby/ruby_methods.html
 - https://www.geeksforgeeks.org/ruby-loops-for-while-do-while-until/
@@ -289,5 +294,8 @@ end
 - The Call Stack 
 - Infinite Loops
 - Recursion
+
+--- 
+- [Next Class](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C04-Intro-To-Ruby-Part-3/ruby_part_3.md)
 
 Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
