@@ -19,4 +19,4 @@ Don't get hashing and encrypting mixed up. They are both different. Encryption i
 - http://ruby-for-beginners.rubymonstas.org/advanced/modules.html#:~:text=In%20Ruby%2C%20modules%20are%20somewhat,not%20have%20a%20method%20new%20.
 
 --- 
-- [Next Class](./../C06-Intro-To-Ruby-Part-5/CLI_Project_part_5.md)
+- [Next Class](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C07-Intro-To-Rails/ruby_on_rails_notes.md)
