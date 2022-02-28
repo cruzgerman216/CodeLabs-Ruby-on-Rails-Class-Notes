@@ -1,9 +1,19 @@
 # Ruby on Rails Basics
 
+---
+### Table of Contents 
+- <a href="#scraping-state-statistics">Scraping State Statistics</a>
+- <a href="#creating-the-grabable-module">Creating The Grabable Module</a>
+- <a href="#save-method-refactoring">Save Method Refactoring</a>
+- <a href="#cli-scraping-setup">CLI/Scraping Setup</a>
+- <a href="#adding-logic-to-choose-option">Adding Logic To choose_option</a>
+--- 
+
+
+## What is Ruby on Rails?
+Ruby on Rails ('Rails' for short), is a web application framework written in Ruby. Rails is used to create websites or APIs using the general-purpose programming language Ruby.
+
 ## Topics covered
-- **Ruby on Rails**
-  - Rails is a web application framework written in Ruby. Rails is a framework used to create websites using the general-purpose programming language Ruby. 
-  - Rails can be used to create RESTful APIs
 - **MVC**
   - The Model-View-Controller (MVC) is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller. Each of these components are built to handle specific development aspects of an application. MVC is one of the most frequently used industry-standard web development framework to create scalable and extensible projects.
     - **Model**

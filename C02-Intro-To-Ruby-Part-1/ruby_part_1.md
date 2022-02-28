@@ -17,7 +17,7 @@ Learning Ruby will be just as important as learning Rails. Understanding the bas
 - <a href="#String-Expressions-and-Methods">String Expressions and Methods<a>
 - <a href="#Getting-User-Input">Getting User Input <a>
 - <a href="#Operators">Operators<a>
-- <a href="#Project-Covid-19-Tracker-and-CLI-Part-1">Project - Covid-19 Tracker and CLI Part 1<a>
+- [Project - Covid_19 Tracker and CLI Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C02-Intro-To-Ruby-Part-1/CLI_Project_part_1.md)
 ---
 
 ## History of Ruby and Layers of Abstraction
