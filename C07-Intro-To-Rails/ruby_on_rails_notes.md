@@ -13,43 +13,47 @@
 ## What is Ruby on Rails?
 Ruby on Rails ('Rails' for short), is a web application framework written in Ruby. Rails is used to create websites or APIs using the general-purpose programming language Ruby.
 
-## Topics covered
-- **MVC**
-  - The Model-View-Controller (MVC) is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller. Each of these components are built to handle specific development aspects of an application. MVC is one of the most frequently used industry-standard web development framework to create scalable and extensible projects.
-    - **Model**
-      - The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data. For example, a Customer object will retrieve the customer information from the database, manipulate it and update it data back to the database or use it to render data.
-    - **View**
-      - The View component is used for all the UI logic of the application. For example, the Customer view will include all the UI components such as text boxes, dropdowns, etc. that the final user interacts with.
-    - **Controller**
-      - Controllers act as an interface between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. For example, the Customer controller will handle all the interactions and inputs from the Customer View and update the database using the Customer Model. The same controller will be used to view the Customer data.
-  - **File/directories layout/structure**
-    - **ERB**
-      - Ruby embbeded code in an HTML file
-    - **routes.rb**
-      - A file that transpires a list of routes the user can request for
-    - **stylesheets**
-      - All css stylesheets are inserted in this directory
-    - **Channel**
-      - Channels acts as controllers for WebSocket requests by encapsulating the logic about particular works of unit, such as chat messages or notifications
-    - **Helper**
-      - Helper methods for the view
-    - **Javascript**
-      - Allows JavaScript to be executed throughout your application
-    - **Controllers**
-      - Managing requests from/to the view and managing the model logic of the application.
-    - **Model**
-      - Handling logic/structure of the data flow of your application
-    - **Views**
-      - Where your views get served in a full stack RoR application
-    - **Config**
-      - Configuration of files
-    - **credentials.yml.enc**
-      - hiding keys
-    - **db**
-      - Database in sqlite3 (can revert to posgresql which heroku prefers)
-    - **gemfile**
-      - similiar to package.json in a Javascript project, gems are a list of dependencies for development.
-        - run ```bundle``` when adding new gems to the gemfile
+
+## MVC 
+The Model-View-Controller (MVC) is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller. Each of these components are built to handle specific development aspects of an application. MVC is one of the most frequently used industry-standard web development framework to create scalable and extensible projects.
+
+### Model 
+The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data. For example, a Customer object will retrieve the customer information from the database.
+
+### View 
+The View component is used for all the UI logic of the application. For example, the Customer view will include all the UI components such as text boxes, dropdowns, etc. that the final user interacts with.
+
+### Controller 
+Controllers act as an interface between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. For example, the Customer controller will handle all the interactions and inputs from the Customer View and update the database using the Customer Model. The same controller will be used to view the Customer data.
+
+### File/directories layout/structure
+  - **ERB**
+    - Ruby embbeded code in an HTML file
+  - **routes.rb**
+    - A file that transpires a list of routes the user can request for
+  - **stylesheets**
+    - All css stylesheets are inserted in this directory
+  - **Channel**
+    - Channels acts as controllers for WebSocket requests by encapsulating the logic about particular works of unit, such as chat messages or notifications
+  - **Helper**
+    - Helper methods for the view
+  - **Javascript**
+    - Allows JavaScript to be executed throughout your application
+  - **Controllers**
+    - Managing requests from/to the view and managing the model logic of the application.
+  - **Model**
+    - Handling logic/structure of the data flow of your application
+  - **Views**
+    - Where your views get served in a full stack RoR application
+  - **Config**
+    - Configuration of files
+  - **credentials.yml.enc**
+    - hiding keys
+  - **db**
+    - Database in sqlite3 (can revert to posgresql which heroku prefers)
+   - **gemfile**
+    - similiar to package.json in a Javascript project, gems are a list of dependencies for development.
+      - run ```bundle``` when adding new gems to the gemfile
   - **Rails Database**
     - SQL database that aligns data flow with tables
   - **CRUD**
@@ -63,9 +67,9 @@ Ruby on Rails ('Rails' for short), is a web application framework written in Rub
     - model
     - controller
     - view
-### Creating a basic Rails App
 
-#### Generating a new Rails app
+
+## Generating a new Rails app
 
 1. In an Code Editor (such as VS code), in the terminal, generate a new rails app 
 
@@ -78,7 +82,7 @@ Ruby on Rails ('Rails' for short), is a web application framework written in Rub
 
 3. Go to localhost:3000 and there should be no errors
 
-#### Creating a Controller
+## Creating a Controller
 
 4. Manually create a controller called books_controller.rb
   - define a class called BooksController that inherits properties/methods from the ApplicationController class
@@ -99,7 +103,7 @@ class BooksController < ApplicationController
 end
 ```
 
-#### Creating a view/erb
+## Creating a view/erb
 6. Under views, create a folder called books, create a file called index.html.erb
 
 7. In library.html.erb, create an h1 element with content ```index```
@@ -136,7 +140,7 @@ end
 12.  Run ```rails s``` to test out the routes
 
 
-#### Create A Resource
+## Create A Resource
 
 There's a much more easier way to create a view, model and controller. 
 
