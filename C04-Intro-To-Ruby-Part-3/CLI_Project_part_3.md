@@ -390,7 +390,7 @@ require_relative "./country.rb"
 ```
 
 --- 
-- [Next Part](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-4/CLI_Project_part_4.md)
+- [Next Part](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C05-Intro-To-Ruby-Part-4/CLI_Project_part_4.md)
 
 ---
 

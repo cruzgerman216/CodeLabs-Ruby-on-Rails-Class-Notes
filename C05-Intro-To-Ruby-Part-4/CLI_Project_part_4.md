@@ -228,7 +228,7 @@ Result:
 ```
 
 --- 
-- [Next Part](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-5/CLI_Project_part_5.md)
+- [Next Part](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C06-Intro-To-Ruby-Part-5/CLI_Project_part_5.md)
 
 ---
 
