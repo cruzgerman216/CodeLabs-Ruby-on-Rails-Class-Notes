@@ -139,11 +139,7 @@ In the `choose_option` menu, print out all the instances the State class holds i
 
 ```ruby 
      when "1"
-      states = State.all
-      # sorting from least to greatest, calling the reverse method will reverse the array
-      states.sort_by { |state| state.confirmed_cases }.reverse
-      # Iterating through the first ten elements, printing each
-      states[0..9].each_with_index do |state, i|
+      State.all[0..9].each_with_index do |state, i|
         puts "#{i + 1}. #{state.name} confirmed cases: #{state.confirmed_cases}"
       end
 ```
@@ -151,10 +147,7 @@ For option 2, print/arrange the states from most to least confirmed cases.
 
 ```ruby
     when "2"
-      states = State.all
-      # sorting from least to greatest
-      states.sort_by { |state| state.confirmed_cases }
-      # Iterating through the first ten elements, printing each
+      states = State.all.sort_by { |state| state.confirmed_cases }
       states[0..9].each_with_index do |state, i|
         puts "#{i + 1}. #{state.name} confirmed cases: #{state.confirmed_cases}"
       end
