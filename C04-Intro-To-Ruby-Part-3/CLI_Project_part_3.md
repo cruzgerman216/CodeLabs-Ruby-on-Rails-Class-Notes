@@ -388,3 +388,10 @@ require_relative "./country.rb"
         usa = Country.new(name: "USA", confirmed_cases: usa_confirmed_cases, overall_deaths:usa_overall_deaths, recoveries:usa_recoveries)
     end
 ```
+
+--- 
+- [Next Part](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-2/CLI_Project_part_4.md)
+
+---
+
+Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

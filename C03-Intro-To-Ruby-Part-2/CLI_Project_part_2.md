@@ -77,4 +77,9 @@ Go head and test this.
 > have a great day!> 
 ```
 
-:wave: Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+--- 
+- [Next Part](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-2/CLI_Project_part_3.md)
+
+---
+
+Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

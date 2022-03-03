@@ -226,3 +226,10 @@ Result:
     > 3. Option 3
     > What would you like to choose?
 ```
+
+--- 
+- [Next Part](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-2/CLI_Project_part_5.md)
+
+---
+
+Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

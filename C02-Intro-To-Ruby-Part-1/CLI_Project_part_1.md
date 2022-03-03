@@ -369,4 +369,9 @@ ruby bin/tracker.rb
 > 1
 > have a great day!
 ```
+--- 
+- [Next Part](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-2/CLI_Project_part_2.md)
+
 ---
+
+Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
