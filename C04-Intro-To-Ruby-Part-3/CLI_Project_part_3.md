@@ -221,7 +221,7 @@ Run bundle install to install the necessary gems.
 <div id="Data-Scraping"></div>
 
 ## Data Scraping
-We must first require both `nokogiri` and `open-uri` at the top of the file. Then we can use the objects `Nokogiri` and `URI`. 
+We must first require both `nokogiri` and `open-uri` at the top of the scraper.rb file. Then we can use the objects `Nokogiri` and `URI`. 
 
 
 ```ruby 
