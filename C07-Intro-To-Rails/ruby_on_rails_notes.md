@@ -53,7 +53,7 @@ When adding new gems to your gem file, always run `bundle` in your terminal!
 
 You will see a newly created project folder! 
 
-![Project Structure](../assets/images/C7/project-structure.png)
+![Project Structure](../assets/images/C7/layout-structure.png)
 
 <div id="layout-structure"></div>
 
