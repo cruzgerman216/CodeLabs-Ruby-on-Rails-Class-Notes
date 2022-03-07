@@ -273,7 +273,7 @@ Use embedded tags to access info from the book instance
 
 <div id ="byebug" ></div>
 
-## byebug demonstration
+## ByeBug Demonstration
 
 In the `books` controller, use `byebug` to test the route/access variables. The `byebug` gem should be included in your gemfile, if not be sure to add it under development and test
 
@@ -296,6 +296,7 @@ Under the `show` method, include `byebug`
 Reload the page to the `/books/:id` route and your terminal should pause. Enter params and you should see key pair values such as id. Type `continue` to continue the action. Comment `byebug` as we don't need it for now.
 
 <div id="index-page"></div>
+
 ## Index page for Books
 
 In the `books` controller class, define an `index` instance method

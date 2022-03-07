@@ -31,7 +31,7 @@ Ruby on Rails ('Rails' for short), is a web application framework written in Rub
 
 ### Full Stack Rails
 
-- FoF Rails provides an MVC architecture to separate different parts of the logical layouts of a Full-Stack database driven web application
+- Full Stack Rails provides an MVC architecture to separate different parts of the logical layouts of a Full-Stack database driven web application
 - Rails provides features that make it easy to communicate with all three layers of the MVC model
 
 <div id="mvc"></div>
@@ -194,9 +194,9 @@ There's a much more easier way to create a view, model and controller.
 
 **DELETE/REMOVE all content created**
 
-- books conroller, view and routes as well as the root method in the application folder
+- books controller, view, routes
 
-Use the scaffold command to generate a book resource
+Use the scaffold command to generate a `book` resource
 
 `rails generate scaffold Book title:string author:string description:text`
 
@@ -217,12 +217,11 @@ Use the scaffold command to generate a book resource
 - **db/migrate**
   - migration files that will update the schema of the database
 
-Run `rails db:migrate` in the console
-The schema will be updated every time you run `rails db:migrate` if there are new migration files. If you like to go back on an update form a migration, you can always run `rails db:rollback`
+Run `rails db:migrate` in the console. The schema will be updated every time you run `rails db:migrate` if there are new migration files. If you like to go back on an update from a migration, you can always run `rails db:rollback`.
 
-Enter `rails routes --expanded`, scroll all the way to top to see the routes of Books. Notice the RESTful architecture rails creates with resources.
+Enter `rails routes --expanded`, scroll all the way to the top to see the routes of Books. Notice the RESTful architecture Rails creates with resources.
 
-To show routes in a much more clearer way, you can type in a random path that doesn't exist and rails will show you the specific routes that exist in the application.
+To show routes in a much more clearer way, you can type in a random path that doesn't exist and Rails will show you the specific routes that exist in the application.
 
 Go through the application `rails s` and navigate to `localhost:3000/books`
 
