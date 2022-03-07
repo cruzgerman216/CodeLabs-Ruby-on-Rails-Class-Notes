@@ -35,7 +35,7 @@
 
 
 ## Further Resources 
-- [Rails Resources](./assets/resources/rails_resource.md))
+- [Rails Resources](./assets/resources/rails_resource.md)
 - [Object Relational Mapping](./assets//resources/object_relational_mapping.md)
 - [Active Record](./assets//resources/active_record.md)
 - [Rails 6.1 docs](https://guides.rubyonrails.org/v6.1/)

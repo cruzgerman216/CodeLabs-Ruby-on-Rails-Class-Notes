@@ -1,28 +1,34 @@
 # BookIt App Part 1
 
 ---
-### Table of Contents 
+
+### Table of Contents
+
 - <a href="#generating-a-new-rails-app">Generating a new Rails app</a>
-- <a href="#adding-a-migration">Adding a migration</a>
-- 
---- 
+- <a href="#adding-a-migration">Generating a Migration file</a>
+- <a href="#adding-a-model">Creating a Model class</a>
+- <a href="#rails-console">Rails Console and ORM methods</a>
+- <a href="#adding-validations">Adding Validations</a>
+- <a href="#adding-validations">ByeBug</a>
+- <a href="#index-page">Index Page for books</a>
+
+---
 
 In part 1 of 7, we will be creating a Full-Stack Rails application called the BookIt application.
 
 ![Book It Application](../assets/images/C8/BookIt-App.png)
-
 
 <div id="generating-a-new-rails-app"></div>
 
 ## Generating a new Rails app
 
 In a Code Editor (such as VS code), in the terminal, generate a new rails app called `book-it`
-   
+
 ```
 rails new book-it
 ```
 
-Run `rails s` and go to "localhost:3000" to check if successfully created
+Run `rails s` and go to `localhost:3000` to check if successfully created
 
 <div id="adding-a-migration"></div>
 
@@ -51,7 +57,12 @@ Enter `rails db:migrate` to create the books table. Check the details of the tab
 . `rails db:migrate` will run any new migration files (running it again will not do anything unless we create a new migration file)
 
 Generate a new migration file to add the description attribute to the books table. Enter the following:
-   `rails g migration add_description_to_books` - add the table, field and type in the migration file we just created
+
+```
+rails g migration add_description_to_books
+```
+
+Call the `add_column` method within the change method and include the table name `books`, field `description` and the type `text` as arguments and symbols.
 
 ```ruby
 class AddDescriptionToBooks < ActiveRecord::Migration[6.1]
@@ -62,13 +73,14 @@ class AddDescriptionToBooks < ActiveRecord::Migration[6.1]
 end
 ```
 
-    - Because we added a new migration file, enter ```rails db:migrate```
-    - check to see if the schema updated from the latest migration
+Because we added a new migration file, enter `rails db:migrate`
+Check to see if the schema updated from the latest migration
 
-## Adding a model
+<div id="adding-a-model"></div>
 
-5. Create a file called book.rb under the models folder
-6. Define a Book class and inherit from ApplicationRecord
+## Creating a Model class
+
+Create a file called `book.rb` under the models folder. Define a `Book` class and inherit from `ApplicationRecord`.
 
 ```ruby
 class Book < ApplicationRecord
@@ -76,45 +88,54 @@ class Book < ApplicationRecord
 end
 ```
 
-## Rails console
+<div id="console"></div>
 
-7. Enter `rails c` in the console, and follow the lines of code.
+## Rails console and ORM methods
 
-   - Create a book and save to the database
+Enter `rails c` in the console, and follow the lines of code. Create a book and save it to the database
 
 ```ruby
     Book.all
-    Book.create(title: "first book", description: "Description of first article")
+    Book.create(title: "first book", description: "Description of first book")
     Book.all
 ```
 
-    - create a book and save to the database with the new and save method
+Create a book and save it to the database with the `new` and `save` method
 
 ```ruby
-    Book = Article.new
+    Book = Book.new
     Book.title = "second book"
-    Book.description = "description of second article"
+    Book.description = "description of second book"
     Book.save
     Book.all
 ```
 
-    - finding specific instances from the Books Tables
-    - Updating attributes
-    - Deleting Instances from the database with the destroy method
+Finding specific instances from the books table using `first`, `all`, `find` methods.
 
 ```ruby
     Book.first # gives you first instance from the Books table
     Book.all[0] # gives you the first instance from the Books table
     Book.find(1) # takes in an id and returns the specific book instance that holds id of 1
+
+```
+
+You can also update the attributes. Be sure to use the `save` method to be able to update the changes.
+
+```ruby
     book = Book.first
     book.title = "Updated title"
     book.save # saves updated attributes
+```
+
+Deleting the instances using the `destroy` method.
+
+```ruby
     book.last.destroy # deletes last record from the Book Table
 ```
 
-## adding validations
+## Adding Validations
 
-8. In the book model class, validate the title and description attributes
+In the `book` model class, validate the `title` and `description` attributes
 
 ```ruby
 class Book < ApplicationRecord
@@ -134,10 +155,13 @@ end
 
 ## Pages controller
 
-10. Generate a controller called pages
-    `rails g controller Pages`
+Generate a controller called `pages`
 
-11. Define methods home and about in the pages controller
+```
+rails g controller Pages
+```
+
+Define instance methods `home` and `about` in the `pages` controller
 
 ```ruby
     def home
@@ -149,7 +173,7 @@ end
     end
 ```
 
-12. Create a root path that corresponds to the home method and the about method that exists in the pages controller
+Create a `root` path that corresponds to the `home` method and the `about` method that exists in the `pages` controller
 
 ```ruby
 Rails.application.routes.draw do
@@ -159,20 +183,17 @@ end
 
 ```
 
-18. Create views for corresponding methods in the pages controller
+Create views for corresponding methods in the pages controller. Under the `views/pages`, create a `home.html.erb` file and create an `h1` element with content `Home`
 
-- under the views/pages, create a home.html.erb file and create an h1 element with content `Home`
-- Create another file called about.html.erband create an h1 element with content `About`
+Create another file called `about.html.erb` and create an `h1` element with content `About`
 
-- run `rails s` in the terminal
+Run `rails s` in the terminal
 
 **<em>NOTE</em> We don't have to render anything in the home and about methods, rails is smart enough to match the method names with the corresponding view file names in the file structure**
 
-## References
+## Adding a resource
 
-## Books Controller + Routes + Views
-
-19. Add a book resource under the routes file.
+Call the `resources` method and pass in `:books`. This will create a resource and generate routes for `index`, `show`, `edit`, `create`, `update` and `destroy` methods in your `books` controller file.
 
 ```ruby
 Rails.application.routes.draw do
@@ -182,15 +203,15 @@ Rails.application.routes.draw do
 end
 ```
 
-20. Create a file called books_controller.rb under controllers
-21. Define a BooksController class that inherits ApplicationController
+Create a file called `books_controller`.rb under controllers
+Define a `BooksController` class that inherits ApplicationController
 
 ```ruby
 class BooksController < ApplicationController
 end
 ```
 
-22. Define the show action under the books controller
+Define the show action under the books controller
 
 ```ruby
 class BooksController < ApplicationController
@@ -199,14 +220,13 @@ class BooksController < ApplicationController
 end
 ```
 
-23. Create a folder called books under the views directory. Create a file under books called show.html.erb.
-    - In show.html.erb, create an h1 element with content `Showing book details`
+Create a folder called `books` under the views directory. Create a file under `books` called `show.html.erb.` There, create an `h1` element with content `Showing book details`
 
 ```html
-<h1>Showing article details</h1>
+<h1>Showing book details</h1>
 ```
 
-24. Run rails s and go to the route `localhost/3000/books/1`
+Run rails s and go to the route `localhost/3000/books/1`
 
 - **NOTE** Be sure the instance that has this id exists. iI not, use another id in the route.
 - **EXPLANATION**
@@ -215,14 +235,11 @@ end
   resources :books
 ```
 
-- Resources define routes to certain actions from the given controller.
+- Resources define routes to certain actions from the given controller. For Example, the` /books/:id` route only refers to the show method. Run `rails routes` in the console. Scroll up to see each given route and their actions provided by this application.
 
-  - For Example, the /books/:id route only refers to the show method
+The `resources` method is a quick way to implement common CRUD operations for routes. Otherwise, we would have to define these routes ourselves.
 
-- run `rails routes` in the console. Scroll up to see each given route and their actions provided by this application.
-- resources is a quick way to implement common CRUD operations for routes. Otherwise, we would have to define these routes and actions ourselves.
-
-1.  Under the show method in the books_controller.rb file, retrieve the specific article using the params
+Under the show method in the `books_controller.rb `file, get the specific book using the params
 
 ```ruby
     def show
@@ -230,35 +247,35 @@ end
     end
 ```
 
-26. Declare book as an instance variable so our view can access it
+Declare book as an instance variable so our view can access it
 
 ```ruby
         @book = Book.find(params[:id])
 ```
 
-27. In show.html.erb under the books directory, include the following
+In `show.html.erb` under the books directory, include the following
 
 ```html
-<h1>Showing article details</h1>
+<h1>Showing book details</h1>
 
 <p><strong>Title: </strong></p>
 <p><strong>Description: </strong></p>
 ```
 
-28. Use embedded tags to access info from the book instance
+Use embedded tags to access info from the book instance
 
 ```html
-<h1>Showing article details</h1>
+<h1>Showing book details</h1>
 
 <p><strong>Title: </strong><%= @book.title %></p>
 <p><strong>Description: </strong><%= @book.description %></p>
 ```
 
+<div id ="byebug" ></div>
+
 ## byebug demonstration
 
-29. In the books controller, use byebug to test the route/access variables
-
-- the byebug gem should be included in your gemfile, if not be sure to add it under development and test
+In the `books` controller, use `byebug` to test the route/access variables. The `byebug` gem should be included in your gemfile, if not be sure to add it under development and test
 
 ```ruby
 group :development, :test do
@@ -267,7 +284,7 @@ group :development, :test do
 end
 ```
 
-- under the show method, include byebug
+Under the `show` method, include `byebug`
 
 ```ruby
     def show
@@ -276,12 +293,12 @@ end
     end
 ```
 
-- reload the page to the /books/:id route and your terminal should pause. Enter params and you should see key pair values such as id.
-- type continue to continue the action. Remove byebug as we don't need it for now.
+Reload the page to the `/books/:id` route and your terminal should pause. Enter params and you should see key pair values such as id. Type `continue` to continue the action. Comment `byebug` as we don't need it for now.
 
+<div id="index-page"></div>
 ## Index page for Books
 
-30. In the books controller class, define a index method
+In the `books` controller class, define an `index` instance method
 
 ```ruby
     def show
@@ -293,15 +310,15 @@ end
     end
 ```
 
-31. Create a erb view for index called index.html.erb under views/books directory. Include the following
+Create a erb view for index called index.html.erb under views/books directory. Include the following
 
 ```html
-<h1>Books isting page</h1>
+<h1>Books listing page</h1>
 ```
 
-- run rails s and enter the `localhost:3000/books` in the url bar to test the route
+Run `rails s `and enter the `localhost:3000/books` in the url bar to test the route
 
-32. Under the index method, store all Books from the database in an instance variable called books
+Under the `index` method, store all Books from the database in an instance variable called books
 
 ```ruby
     def index
@@ -309,10 +326,10 @@ end
     end
 ```
 
-33. In index.html.erb, iterate through @books and print out each content
+In `index.html.erb`, iterate through `@books` and print out each content
 
 ```html
-<h1>Books isting page</h1>
+<h1>Books listing page</h1>
 
 <table>
   <thead>
@@ -336,4 +353,4 @@ end
 ```
 
 - https://blog.saeloun.com/2020/04/21/rails-adds-support-for-db-rollback-name-for-multiple-database-applications.html#:~:text=To%20revert%20such%20mistakes%20we,the%20latest%20migration%20was%20run.&text=We%20can%20also%20pass%20STEP,number%20of%20migrations%20to%20revert
-- <em>byebug</em> https://github.com/deivid-rodriguez/byebug
+- https://github.com/deivid-rodriguez/byebug
