@@ -399,5 +399,5 @@ puts (4 - 4*2/4) + 10 # 12
 --- 
 - [Next Class](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C03-Intro-To-Ruby-Part-2/ruby_part_2.md)
 
-
-Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+---
+Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
