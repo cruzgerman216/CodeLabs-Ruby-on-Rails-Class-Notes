@@ -9,7 +9,7 @@
 - <a href="#layout-structure">File/Directories layout/structure</a>
 - <a href="#creating-controller">Creating a Controller</a>
 - <a href="#view">Creating a view/erb file</a>
-- <a href="#route">route</a>
+- <a href="#route">Adding a route</a>
 - <a href="#scaffold">Creating a scaffold</a>
 --- 
 
