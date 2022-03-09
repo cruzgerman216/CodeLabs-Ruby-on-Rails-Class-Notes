@@ -154,7 +154,7 @@ Rails.application.routes.draw do
 end
 ```
 
-The `get` method is an HTTP verb and Rails is highly attached to HTTP verbs. The `get` method accepts two parameters:
+The `get` method is an HTTP verb and Rails is highly attached to HTTP verbs. The `get` method accepts two arguments:
 
 - First, the url extension such as 'books' that the user will request for such as `localhost:3000/books`.
 - The second parameter is specifying a hash. This is the short hand way of passing in a key-value pair. The key `to` and the value `books#index`. `books` refers to the controller name follow by the name of the action, `index`. This is Rails way of connecting what each request should execute what method.

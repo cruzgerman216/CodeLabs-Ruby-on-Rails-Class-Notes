@@ -20,6 +20,8 @@ In part 1 of 7, we will be creating a Full-Stack Rails application called the Bo
 
 <div id="generating-a-new-rails-app"></div>
 
+--- 
+
 ## Generating a new Rails app
 
 In a Code Editor (such as VS code), in the terminal, generate a new rails app called `book-it`
@@ -31,6 +33,8 @@ rails new book-it
 Run `rails s` and go to `localhost:3000` to check if successfully created
 
 <div id="adding-a-migration"></div>
+
+--- 
 
 ## Adding a migration
 
@@ -78,6 +82,8 @@ Check to see if the schema updated from the latest migration
 
 <div id="adding-a-model"></div>
 
+--- 
+
 ## Creating a Model class
 
 Create a file called `book.rb` under the models folder. Define a `Book` class and inherit from `ApplicationRecord`.
@@ -89,6 +95,8 @@ end
 ```
 
 <div id="console"></div>
+
+--- 
 
 ## Rails console and ORM methods
 
@@ -133,6 +141,8 @@ Deleting the instances using the `destroy` method.
     book.last.destroy # deletes last record from the Book Table
 ```
 
+--- 
+
 ## Adding Validations
 
 In the `book` model class, validate the `title` and `description` attributes
@@ -144,7 +154,7 @@ class Book < ApplicationRecord
 end
 ```
 
-9. Validate necessary lengths for both title and description
+Validate necessary lengths for both title and description
 
 ```ruby
 class Book < ApplicationRecord
@@ -152,6 +162,7 @@ class Book < ApplicationRecord
     validates :description, presence:true, length: {minimum: 6, maximum: 200}
 end
 ```
+--- 
 
 ## Pages controller
 
@@ -190,6 +201,8 @@ Create another file called `about.html.erb` and create an `h1` element with cont
 Run `rails s` in the terminal
 
 **<em>NOTE</em> We don't have to render anything in the home and about methods, rails is smart enough to match the method names with the corresponding view file names in the file structure**
+
+--- 
 
 ## Adding a resource
 
@@ -235,7 +248,7 @@ Run rails s and go to the route `localhost/3000/books/1`
   resources :books
 ```
 
-- Resources define routes to certain actions from the given controller. For Example, the` /books/:id` route only refers to the show method. Run `rails routes` in the console. Scroll up to see each given route and their actions provided by this application.
+Resources define routes to certain actions from the given controller. For Example, the` /books/:id` route only refers to the show method. Run `rails routes` in the console. Scroll up to see each given route and their actions provided by this application.
 
 The `resources` method is a quick way to implement common CRUD operations for routes. Otherwise, we would have to define these routes ourselves.
 
@@ -273,6 +286,8 @@ Use embedded tags to access info from the book instance
 
 <div id ="byebug" ></div>
 
+--- 
+
 ## ByeBug Demonstration
 
 In the `books` controller, use `byebug` to test the route/access variables. The `byebug` gem should be included in your gemfile, if not be sure to add it under development and test
@@ -296,6 +311,8 @@ Under the `show` method, include `byebug`
 Reload the page to the `/books/:id` route and your terminal should pause. Enter params and you should see key pair values such as id. Type `continue` to continue the action. Comment `byebug` as we don't need it for now.
 
 <div id="index-page"></div>
+
+--- 
 
 ## Index page for Books
 
@@ -353,5 +370,5 @@ In `index.html.erb`, iterate through `@books` and print out each content
 </table>
 ```
 
-- https://blog.saeloun.com/2020/04/21/rails-adds-support-for-db-rollback-name-for-multiple-database-applications.html#:~:text=To%20revert%20such%20mistakes%20we,the%20latest%20migration%20was%20run.&text=We%20can%20also%20pass%20STEP,number%20of%20migrations%20to%20revert
-- https://github.com/deivid-rodriguez/byebug
+---
+Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

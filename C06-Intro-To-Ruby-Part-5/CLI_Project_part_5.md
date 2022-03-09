@@ -153,7 +153,7 @@ For option 2, print/arrange the states from most to least confirmed cases.
       end
 ```
 
-Demoo the CLI
+Demo the CLI
 
 **Note: Feel free to finish the rest of the options**
 
