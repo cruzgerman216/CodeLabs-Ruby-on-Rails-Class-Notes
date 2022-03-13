@@ -1,62 +1,75 @@
-  # Ruby on Rails - CRUD Operations part 3
-  ## BookIt App Part 3
+# BookIt App Part 3
 
-## Topics covered
-  - ***<em>DRY</em>** - Don't Repeat Yourself
+### Table of Contents
 
-#### Adding more links to books path
+- <a href="#adding-links">Adding Links to Edit or Create Books</a>
+- <a href="#links-show">Adding Links to Views</a>
+- <a href="#refactoring-books">Refactoring Books Controller</a>
+- <a href="#refactoring-messages">Creating a messages partial</a>
+- <a href="#form-partial">Creating a Form Partial</a>
+- <a href="#heroku-deployment">Heroku Deployment</a>
 
-1. Navigate to index.html.erb, and create a link with content `edit`. Use edit_book and pass in the local reference book in the iterator to be included in the link tag.
+---
+
+<div id="adding-links"></div>
+
+## Adding links for edit and create
+
+Navigate to `index.html.erb`, and create a link with content `edit`. Use the `edit_book` method and pass in the local reference book in the iterator to be included in the link tag.
 
 ```html 
         <td><%= link_to 'Edit', edit_book_path(book)%>
         <td><%= link_to 'Show', book_path(book)%>
 ```
 
-2. In the bottom of the html file, include a link to create a new book. 
+In the bottom of the html file, include a link to create a new book. 
 
 ```html
     <%= link_to 'Create Book', new_book_path %>
 ```
 
-#### Adding links edit, delete and return to books page to show.html.erb
+<div id="links-show"></div>
 
-3. Navigate to show.html.erb, add a link to redirect to the edit page of the book.
+## Adding links to views 
+
+Navigate to `show.html.erb`, add a link to redirect to the edit page of the book.
 
 ```html
 <%= link_to 'Edit', edit_book_path(@book)%>
 ```
 
-4. Add a link to delete the specific book. Be sure to include the method argument that is set to delete, to delete the particular book
+Add a link to delete the specific book. Be sure to include the method argument that is set to delete, to delete the particular book. Include a confirm prompt.
 
 ```html
-<%= link_to 'Edit', edit_book_path(@book)%> | 
-<%= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure"} %> 
+<%= link_to 'Edit', edit_book_path(@book)%> | <%= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure"} %> 
 ```
-- include a confirm prompt 
 
-
-5. Add a link to redirect to the index page
+Add a link to redirect to the index page
 
 ```html
 <%= link_to 'Edit', edit_book_path(@book)%> | 
 <%= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure"} %> |
-<%= link_to 'Return to books page', books_path%>
+<%= link_to 'Return to books page', books_path %>
 ```
 
 #### more links 
 
-6. Navigate to edit.html.erb, in the bottom of the page, include a link with content "Cancel and go back to books index" and redirect to the book index page.
+Navigate to edit.html.erb, in the bottom of the page, include a link with content "Cancel and go back to book index" and redirect to the book index page.
+```
+<%= link_to 'Cancel and go back to book index', books_path %>
+```
 
-7. Navigate to home.html.erb, include links to the books index page and the about page.
+Navigate to home.html.erb, include links to the books index page and the about page.
 
 ```html
 <%= link_to 'Books Listing', books_path %> |
 <%= link_to 'About page', about_path%>
 ```
 
-#### refactoring books controller
-8. create a private method called set_book. Find the book with the particular id that exists from the params hash and store it in an intance variable called book.
+<div id="refactoring-books"></div>
+
+## Refactoring Books Controller
+Create a private method called set_book. Find the book with the particular id that exists from the params hash and store it in an intance variable called book.
 
 ```ruby
     private 
@@ -67,7 +80,7 @@
 
 ```
 
-9. Get read of all methods that include the statement `@book = Book.find(params[:id])` from methods show, edit, update, destroy
+Get read of all methods that include the statement `@book = Book.find(params[:id])` from methods show, edit, update, destroy
 
 ```ruby
     
@@ -113,16 +126,16 @@
     
     def set_book
         @book = Book.find(params[:id])
-end
+    end
 ```
 
-10. use `before_action` to execute `set_book` only for methods show, edit, destroy and update. `Set_book` will execute before the actions are called. This gets rid of repeated code.
+Use `before_action` to execute `set_book` only for methods show, edit, destroy and update. `Set_book` will execute before the actions are called. This gets rid of repeated code.
 
 ```ruby
     before_action :set_book, only: [:show, :edit, :destroy, :update]
 ```
  
-11. Define a private method called `book_params` that will return the permitted attributes from the params hash.
+Define a private method called `book_params` that will return the permitted attributes from the params hash.
 
 ```ruby
     def book_params
@@ -130,7 +143,7 @@ end
     end
 ```
 
-12.  Remove Dry code by using `book_params` in methods create and  update
+Remove Dry code by using `book_params` in methods create and  update
 ```ruby
     def create 
         @book = Book.new(book_params)
@@ -155,18 +168,22 @@ end
     end
 ```
 
-#### Refactoring messsages
-13. Create a file called _messages.html.erb under the layouts directory
+<div id="refactoring-messages"></div>
+
+## Creating a Messages Partial
+Create a file called _messages.html.erb under the layouts directory
     - navigate to application.html.erb, copy the code containing flash, cut and paste into _messages.html.erb. 
 
-14. In application.html.erb, render _messages.html.erb
+In application.html.erb, render _messages.html.erb
 
 ```html
     <%= render 'layouts/messages' %>
 ```
 
-#### Refactoring forms, creating form.html.erb
-15.  Under views/books directory, create a file calld _form.html.erb. In edit.html.erb, copy the html that includes any error messages and the entire form. Paste the html in _form.html.erb.
+<div id="form-partial"></div>
+
+## Creating a Form Partial
+Under views/books directory, create a file calld _form.html.erb. In edit.html.erb, copy the html that includes any error messages and the entire form. Paste the html in _form.html.erb.
 
 ```html
 <% if @book.errors.any? %>
@@ -184,7 +201,7 @@ end
 <% end %>
 ```
 
-16. In both edit.html.erb, new.html.erb
+In both edit.html.erb, new.html.erb
 
 - Replace the form and the error messages html with the following
 
@@ -202,7 +219,9 @@ end
 <%= link_to 'Cancel and go back to books index', books_path%>
 ```
 
-#### Deploying BookIt Application to Heroku
+<div id="heroku-deployment"></div>
+
+## Heroku Deployment
 - NOTE: Refer to Section 3 video 70
 17.   Navigate to the gemfile. For production, use the pg gem. 
 
