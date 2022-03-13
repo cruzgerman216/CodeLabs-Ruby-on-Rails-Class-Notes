@@ -1,4 +1,5 @@
 # BookIt App Part 2
+![books index](../assets/images/C9/book-index-2.png)
 
 ### Table of Contents
 
@@ -343,7 +344,7 @@ Create a link with content with content `Show` that will send a get request to `
 <td><%= link_to 'Show', book_path(book)%></td>
 <td><%= link_to 'Delete', book_path(book), method: :delete%></td>
 ```
-![books index](../assets/images/C9/books-index.png)
+![books index](../assets/images/C9/book-index-2.png)
 ---
 
 Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
