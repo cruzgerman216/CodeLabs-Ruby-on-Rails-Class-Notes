@@ -14,7 +14,7 @@
 
 ---
 
-In part 1 of 7, we will be creating a Full-Stack Rails application called the BookIt application.
+In a 7 part series, we will be creating a Full-Stack Rails application called the BookIt application.
 
 ![Book It Application](../assets/images/C8/BookIt-App.png)
 
