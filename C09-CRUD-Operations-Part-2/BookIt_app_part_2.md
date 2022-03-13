@@ -272,3 +272,7 @@ def update
                 <td><%= link_to 'Show', book_path(@book)%>
                 <td><%= link_to 'Delete', book_path(book), method: :delete%></td>
 ```
+
+
+---
+Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
