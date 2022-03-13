@@ -184,7 +184,7 @@ Define instance methods `home` and `about` in the `pages` controller
     end
 ```
 
-Create a `root` path that corresponds to the `home` method and the `about` method that exists in the `pages` controller
+In `routes.rb`, create a `root` path that corresponds to the `home` method and the `about` method that exists in the `pages` controller
 
 ```ruby
 Rails.application.routes.draw do
