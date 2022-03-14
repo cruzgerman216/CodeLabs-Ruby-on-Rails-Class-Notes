@@ -18,15 +18,16 @@
 Navigate to `index.html.erb`, and create a link with content `edit`. Use the `edit_book_path` method and pass in the local reference `book` as an argument.
 
 ```html 
-        <td><%= link_to 'Edit', edit_book_path(book)%>
-        <td><%= link_to 'Show', book_path(book)%>
+        <td><%= link_to 'Edit', edit_book_path(book)%> </td>
+        <td><%= link_to 'Show', book_path(book)%> </td>
 ```
 
-In the bottom of the html file, include a link to create a new book. Let's include the `new_book_path` method.
+In the bottom of the erb file, include a link to create a new book. Let's use the `new_book_path` method to make this request.
 
 ```html
     <%= link_to 'Create Book', new_book_path %>
 ```
+![add-links-to-index-page](../assets/images/C10/links-1.png)
 
 <div id="links-show"></div>
 
@@ -41,7 +42,7 @@ Navigate to `show.html.erb`, add a link to redirect to the edit page of the book
 Add a link to delete the specific book. Include `method` that takes in `:delete` as an argument. Include a confirm prompt.
 
 ```html
-<%= link_to 'Edit', edit_book_path(book)%> | <%= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure"} %> 
+<%= link_to 'Edit', edit_book_path(@book)%> | <%= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure"} %> 
 ```
 
 Use `books_path` to redirect to the page. Add a link to redirect to the index page
@@ -51,20 +52,24 @@ Use `books_path` to redirect to the page. Add a link to redirect to the index pa
 <%= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure"} %> |
 <%= link_to 'Return to books page', books_path %>
 ```
+![more links to show.html.erb](../assets/images/C10/show-file-links.png)
 
-#### more links 
+### More Links 
 
 Navigate to `edit.html.erb`, in the bottom of the page, include a link with content "Cancel and go back to book index" and redirect to the book index page.
 ```
 <%= link_to 'Cancel and go back to book index', books_path %>
 ```
 
+![more links to edit.hmtl.erb](../assets/images/C10/edit-file-links.png)
+
 Navigate to `home.html.erb`, include links to the books index page and the about page.
 
 ```html
-<%= link_to 'Books Listing', books_path %> |
-<%= link_to 'About page', about_path%>
+<%= link_to 'Books Listing', books_path %>
 ```
+
+![more links to home.html.erb](../assets/images/C10/home-file-links.png)
 
 <div id="refactoring-books"></div>
 
@@ -137,7 +142,7 @@ In `application.html.erb`, render the `messages` partial file.
 <div id="form-partial"></div>
 
 ## Creating a Form Partial
-Under views/books directory, create a file called `_form.html.erb`. In `edit.html.erb`, copy the html that includes any error messages and the entire form. Paste the embedded code in `_form.html.erb`.
+Under `views/books` directory, create a file called `_form.html.erb`. Navigate to `edit.html.erb`, copy the html that includes any error messages and the entire form. Paste the embedded code in `_form.html.erb`.
 
 ```html
 <% if @book.errors.any? %>
@@ -158,7 +163,7 @@ Under views/books directory, create a file called `_form.html.erb`. In `edit.htm
 In both `edit.html.erb`, `new.html.erb`, replace the form and the error messages html with the following
 
 ```html
-    <%= render 'form'>
+    <%= render 'form' %>
 ```
 
 Example `edit.html.erb`:
@@ -174,12 +179,13 @@ Example `edit.html.erb`:
 <div id="heroku-deployment"></div>
 
 ## Heroku Deployment
-Navigate to the `gemfile`. For production, use the pg gem. 
+Navigate to the `gemfile`. For production, use the `pg` gem. Copy and paste the following:
 
 ```ruby
 group :production do 
   gem 'pg'
 end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ```
@@ -199,18 +205,31 @@ run `bundle install` to install the necessary gems.
 
 1.    Push your code to github
 2.    Create a Heroku Account
+
+![create heroku account](../assets/images/C10/signup-heroku.png)
+
 3.    Install the Heroku CLI
-4.    Enter `heroku login` to login to your heroku account from the browser
-5.    Enter `heroku create`
-6.    Make sure you push everything to GitHub. Run `git push heroku main`. or `git push heroku master` depending on what branch you are in.
+
+![heroku cli](../assets/images/C10/heroku-cli.png)
+
+1.    Enter `heroku login` in the terminal to login to your heroku account from the browser
+2.    Enter `heroku create` in the terminal
+3.    Make sure you push everything to GitHub. Run `git push heroku main`. or `git push heroku master` depending on what branch you are in.
 
 You may get an error such as 
 
 ```
 remote:        Bundler Output: Your bundle only supports platforms ["x86_64-darwin-20"] but your local platform remote: is x86_64-linux. Add the current platform to the lockfile with `bundle lock remote:        --add-platform x86_64-linux` and try again. remote: 
 ```
-- enter `bundle lock --add-platform x86_64-linux`. Push code to heroku master.
+Enter `bundle lock --add-platform x86_64-linux`. Push to GitHub. Then, push code to heroku master `git push heroku main` or `git push heroku master`.
 
 1.  Migrate your database on heroku. Enter `heroku run rails db:migrate`
 2.  Change the name by entering `heroku rename app-name`
 3.  Enter `heroku open` to open the application in the browser.
+
+
+![Deployed](../assets/images/C10/Deployed.png)
+
+---
+
+Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
