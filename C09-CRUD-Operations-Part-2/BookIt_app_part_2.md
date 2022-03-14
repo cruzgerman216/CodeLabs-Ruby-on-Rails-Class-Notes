@@ -190,7 +190,7 @@ In the `create` method, use an `if/else` statement to see if the instance saved 
   end
 ```
 
-In `new.html.erb`, use an `if statement` and embbeded tags to check any error messages the instance variable holds.
+In `new.html.erb`, use an `if statement` and embedded tags to check any error messages the instance variable holds.
 
 ```html
 <h1>Create a new Book</h1>
@@ -338,7 +338,7 @@ Navigate to the `index.html.erb` file to update the placeholder actions. Create 
 </tr>
 ```
 
-Create a link with content with content `Show` that will send a get request to `books/:id` of the particular book.
+Create a link with content `Show` that will send a get request to `books/:id` of the particular book.
 
 ```html
 <td><%= link_to 'Show', book_path(book)%></td>
