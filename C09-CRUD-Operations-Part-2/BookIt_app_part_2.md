@@ -75,7 +75,7 @@ Create fields for `title` and `description`
 ```html
   <%= form.label :title, "Title:" %>
   <%= form.text_field :title %>
-  <%= form.label :title, "description:" %>
+  <%= form.label :description, "description:" %>
   <%= form.text_area :description %>
 ```
 
