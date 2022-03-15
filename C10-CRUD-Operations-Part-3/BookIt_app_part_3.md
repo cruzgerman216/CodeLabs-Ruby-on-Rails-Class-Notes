@@ -179,15 +179,18 @@ Example `edit.html.erb`:
 <div id="heroku-deployment"></div>
 
 ## Heroku Deployment
-Navigate to the `gemfile`. For production, use the `pg` gem. Copy and paste the following:
+Navigate to the `gemfile`. Remove the following line 
+
+```ruby 
+gem 'sqlite3', '~> 1.4'
+```
+
+For production, use the `pg` gem. Copy and paste the following:
 
 ```ruby
 group :production do 
   gem 'pg'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ```
 For test and development, use the sqlite3 gem
 
