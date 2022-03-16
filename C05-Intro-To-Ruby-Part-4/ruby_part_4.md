@@ -20,3 +20,5 @@ Don't get hashing and encrypting mixed up. They are both different. Encryption i
 
 --- 
 - [Next Class](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C07-Intro-To-Rails/ruby_on_rails_notes.md)
+
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!

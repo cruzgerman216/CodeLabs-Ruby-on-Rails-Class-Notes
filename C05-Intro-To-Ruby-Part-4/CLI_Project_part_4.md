@@ -232,4 +232,4 @@ Result:
 
 ---
 
-Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!

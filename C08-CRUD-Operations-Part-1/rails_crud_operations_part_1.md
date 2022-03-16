@@ -23,3 +23,4 @@
   - **<em>byebug</em>**
     - Ruby gem used for testing
     - <em>The debugger permits the ability to understand what is going on inside a Ruby program while it executes </em>
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!

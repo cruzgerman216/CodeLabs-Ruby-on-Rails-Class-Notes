@@ -158,4 +158,5 @@ Demo the CLI
 **Note: Feel free to finish the rest of the options**
 
 ---
-Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!

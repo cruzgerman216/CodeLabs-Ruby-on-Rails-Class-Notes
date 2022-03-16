@@ -14,4 +14,4 @@
     - Prevents parameters requested to an object unless specifically permitted.
 
 ---
-Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

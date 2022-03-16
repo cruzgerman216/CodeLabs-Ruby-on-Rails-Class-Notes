@@ -89,3 +89,5 @@ For now we will use [Replit](https://replit.com/~). Replit is an online IDE for 
 
 ### Next Section - The Ruby Programming Language
 - Before further exploring Rails, we have to first establish a good foundation of the Ruby programming language. In these next couple of weeks, we will focus on doing just that.
+
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!

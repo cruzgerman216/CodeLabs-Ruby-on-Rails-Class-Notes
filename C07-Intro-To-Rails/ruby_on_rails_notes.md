@@ -236,4 +236,4 @@ Go through the application `rails s` and navigate to `localhost:3000/books`
 
 ---
 
-Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!

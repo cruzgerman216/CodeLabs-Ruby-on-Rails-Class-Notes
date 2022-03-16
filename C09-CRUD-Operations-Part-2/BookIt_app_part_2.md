@@ -347,4 +347,4 @@ Create a link with content `Show` that will send a get request to `books/:id` of
 ![books index](../assets/images/C9/book-index-2.png)
 ---
 
-Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
