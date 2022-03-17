@@ -5,7 +5,7 @@
 - <a href="#adding-links">Adding Links to Edit or Create Books</a>
 - <a href="#links-show">Adding Links to Views</a>
 - <a href="#refactoring-books">Refactoring Books Controller</a>
-- <a href="#refactoring-messages">Creating a messages partial</a>
+- <a href="#refactoring-messages">Creating a Messages partial</a>
 - <a href="#form-partial">Creating a Form Partial</a>
 - <a href="#heroku-deployment">Heroku Deployment</a>
 
@@ -15,7 +15,7 @@
 
 ## Adding Links to Edit or Create Books
 
-Navigate to `index.html.erb`, and create a link with content `edit`. Use the `edit_book_path` method and pass in the local reference `book` as an argument.
+Navigate to `index.html.erb` and create a link with content `edit`. Use the `edit_book_path` method and pass in the local reference `book` as an argument.
 
 ```html 
         <td><%= link_to 'Edit', edit_book_path(book)%> </td>
@@ -39,7 +39,7 @@ Navigate to `show.html.erb`, add a link to redirect to the edit page of the book
 <%= link_to 'Edit', edit_book_path(@book)%>
 ```
 
-Add a link to delete the specific book. Include `method` that takes in `:delete` as an argument. Include a confirm prompt.
+Add a link to delete the specific book. Include `method` that takes `:delete` as an argument. Include a confirm prompt.
 
 ```html
 <%= link_to 'Edit', edit_book_path(@book)%> | <%= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure"} %> 
@@ -130,8 +130,7 @@ Remove Dry code by using `book_params` in methods create and  update
 <div id="refactoring-messages"></div>
 
 ## Creating a Messages Partial
-Create a file called `_messages.html.erb` under the layouts directory
-    - navigate to `application.html.erb`, copy the code containing flash, cut and paste into `_messages.html.erb`. 
+Create a file called `_messages.html.erb` under the layouts directory. Navigate to `application.html.erb`, copy the code containing flash, cut and paste into `_messages.html.erb`. 
 
 In `application.html.erb`, render the `messages` partial file.
 
