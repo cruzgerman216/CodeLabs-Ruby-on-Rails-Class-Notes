@@ -18,8 +18,8 @@
 Navigate to `index.html.erb` and create a link with content `edit`. Use the `edit_book_path` method and pass in the local reference `book` as an argument.
 
 ```html 
-        <td><%= link_to 'Edit', edit_book_path(book)%> </td>
-        <td><%= link_to 'Show', book_path(book)%> </td>
+    <td><%= link_to 'Edit', edit_book_path(book)%> </td>
+    <td><%= link_to 'Show', book_path(book)%> </td>
 ```
 
 In the bottom of the erb file, include a link to create a new book. Let's use the `new_book_path` method to make this request.
@@ -232,6 +232,24 @@ Enter `bundle lock --add-platform x86_64-linux`. Push to GitHub. Then, push code
 
 ![Deployed](../assets/images/C10/Deployed.png)
 
+<br>
+
 ---
 
-Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
+## *Additional Resource*s
+
+### Docs 
+- [link_to method](https://apidock.com/rails/v6.1.3.1/ActionView/Helpers/UrlHelper/link_to)
+- [Deploying to Heroku](https://devcenter.heroku.com/articles/getting-started-with-rails6)
+
+### Videos 
+- [link_to method](https://www.youtube.com/watch?v=Hj_h2v36e1M&ab_channel=GoRails)
+- [Deploying to Heroku](https://www.youtube.com/watch?v=bQ2wXZf9irA&ab_channel=GoRails)
+- [Partials](https://www.youtube.com/watch?v=6wS9-6BFBbs&ab_channel=GoRails)
+
+
+<br>
+
+---
+
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
