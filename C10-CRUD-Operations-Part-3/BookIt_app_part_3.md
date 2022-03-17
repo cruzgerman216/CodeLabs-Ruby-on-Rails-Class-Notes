@@ -236,6 +236,12 @@ Enter `bundle lock --add-platform x86_64-linux`. Push to GitHub. Then, push code
 
 ---
 
+## *Class Exercises* 
+- [link](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Exercises/blob/main/exercises/Ruby%20on%20Rails/C10-CRUD-OP-Part-3.md) 
+
+<br>
+
+---
 ## *Additional Resource*s
 
 ### Docs 
