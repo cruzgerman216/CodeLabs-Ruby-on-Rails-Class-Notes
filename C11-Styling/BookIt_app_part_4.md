@@ -214,6 +214,8 @@ Render `_navigation.html.erb ` in `application.html.erb`
     <%= yield %>
 ```
 
+![navbar](../assets/images/C11/navbar.png)
+
 <div id="homepage"></div>
 
 ## Styling Home
@@ -221,7 +223,8 @@ Render `_navigation.html.erb ` in `application.html.erb`
 Navigate to `assets/stylesheets/pages.scss` and copy/paste the following
 
 ```css
-@import "bootstrap/dist/css/bootstrap";
+/* Installing bootstrap manually will require this (CDN do not provide us this option) */
+@import "bootstrap/dist/css/bootstrap"; 
 
 .home-background {
   padding: 5% 2%;
@@ -409,6 +412,7 @@ In `views/pages/home.html.erb`, let's add an intro paragraph and related user bu
   </button>
 </div>
 ```
+![homepage style](../assets/images/C11/homepage-style.png)
 
 Let's add another section called `library`. This section will contain a header and cards containig book information. Copy and paste the following
 
@@ -500,17 +504,7 @@ Let's add another section called `library`. This section will contain a header a
 </div>
 ```
 
-At the bottom, include a footer.
-
-```html
-<div
-  class="footer text-center"
-  style="background-color:rgb(51, 51, 51); color: white; padding: 1% 0%; position:sticky; width:100%; bottom: 0; position: fixed;"
->
-  Copyright ©
-  <a style="color: white" href="https://github.com" target="_blank">Book It</a>
-</div>
-```
+![Library Section](../assets/images/C11/homepage-library-section.png)
 
 <div id="index-page"></div>
 
@@ -575,36 +569,32 @@ In `application.css`,
 }
 ```
 
-Include Create button.
-
-```html
-<button class="btn btn-success" style="margin: 5% 0%">
-  <%= link_to 'Create Book', new_book_path, class:"link" %>
-</button>
-```
+![index page style](../assets/images/C11/index-page-style.png)
 
 <div id="form"></div>
 
 ## Styling Form
 
-Use bootstrap to style the form partial
+Use Bootstrap to style the form partial
 
 ```html
-<% if @book.errors.any? %> <% @book.errors.full_messages.each do |message| %>
-<p><%= message %></p>
-<% end %> <% end %>
+<% if @book.errors.any? %> 
+  <% @book.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %> 
+<% end %>
 
 <div style="margin: 0 25%; width:50%">
   <%= form_with(model: @book) do |form| %>
   <div class="mb-3">
-    <%= form.label :title, "Title:", class:"form-label" %> <%= form.text_field
-    :title, class:"form-control" %>
+    <%= form.label :title, "Title:", class:"form-label" %>
+    <%= form.text_field :title, class:"form-control" %>
   </div>
   <div class="mb-3">
-    <%= form.label :description, "Description:", class:"form-label" %> <%=
-    form.text_area :description, class:"form-control" %>
+    <%= form.label :description, "Description:", class:"form-label" %> 
+    <%=form.text_area :description, class:"form-control" %>
   </div>
-  <%= form.submit "Update Book", class:"btn btn-primary" %> <% end %>
+  <%= form.submit "Save Book", class:"btn btn-primary" %> <% end %>
 </div>
 ```
 
@@ -619,6 +609,10 @@ Navigate to `edit.html.erb` and add the class text-center to the h1 element. Sty
 </div>
 ```
 
+Repeat the same process `new.html.erb`.
+
+
+![styling form](../assets/images/C11/styling-form.png)
 <div id="messages"></div>
 
 ## Styling messages
@@ -653,6 +647,9 @@ Render the errors partial file in `_form.html.erb`
                 <div class="mb-3">
 ```
 
+
+![Error styling](../assets/images/C11/errors-style.png)
+
 Navigate to `_messages.html.erb`, use bootstrap to style the embbedded tags.
 
 ```html
@@ -668,6 +665,8 @@ Navigate to `_messages.html.erb`, use bootstrap to style the embbedded tags.
 </ul>
 <% end %>
 ```
+
+![messages-style](../assets/images/C11/messages-style.png)
 
 <div id="show-page"></div>
 
@@ -710,20 +709,37 @@ Use Bootstrap to style book details
 </div>
 ```
 
+![Show style](../assets/images/C11/show-style.png)
+
 <div id="footer"></div>
 
-## Footer
+## Creating a Footer
 
-Create `_footer.html.erb` under layouts and copy and paste the footer element that exists in home.html.erb to the corresponding file.
+Create `_footer.html.erb` under layouts and create a footer.
 
-Render the file in application.html.erb
+```html
+<div
+  class="footer text-center"
+  style="background-color:rgb(51, 51, 51); color: white; padding: 1% 0%; position:sticky; width:100%; bottom: 0; position: fixed;"
+>
+  Copyright ©
+  <a style="color: white" href="https://github.com" target="_blank">Book It</a>
+</div>
+```
+
+
+Render the footer in `application.html.erb`
 
 ```html
 <body>
-  <%= render 'layouts/navigation' %> <%= render 'layouts/messages' %> <%= yield
-  %> <%= render 'layouts/footer' %>
+  <%= render 'layouts/navigation' %>
+  <%= render 'layouts/messages' %>
+  <%= yield%>
+  <%= render 'layouts/footer' %>
 </body>
 ```
+
+![footer](../assets/images/C11/footer.png)
 
 <div id="image-path"></div>
 
@@ -739,7 +755,7 @@ In the migration file, include a default value such as
   add_column :books, :image_path, :string, :default => "https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg"
 ```
 
-- run `rails db:migrate`
+Run `rails db:migrate`
 
 Navigate to the `books_controllers.rb` file, include the image_path attribute in the required params.
 
@@ -753,8 +769,8 @@ Navigate to `views/books/_form.html.erb`, add a label and field for the `image_p
 
 ```html
 <div class="mb-3">
-  <%= form.label :image_path, "Image URL:", class:"form-label" %> <%=
-  form.text_area :image_path, class:"form-control" %>
+  <%= form.label :image_path, "Image URL:", class:"form-label" %> 
+  <%=form.text_area :image_path, class:"form-control" %>
 </div>
 ```
 
@@ -763,6 +779,9 @@ Navigate to `index.html.erb`, and get rid of the img element. Use the built in r
 ```html
 <%= image_tag book.image_path, class: "card-img-top" %>
 ```
+
+
+![index page images](../assets/images/C11/index-page-images.png)
 
 In `models/books.rb`, create a custom validation to check to see if the image url is valid using `net/http`. Create a method called image_path_exists. In this method, use `net/http` to check the image_path is a valid URL as well as its content to be an image.
 
@@ -813,7 +832,7 @@ We can be more creative with this and get 8 random books from our database
   end
 ```
 
-- What happens if our Database is inintally empty? We like to return an empty array if that is the case
+What happens if our Database is initially empty? We like to return an empty array if that is the case
 
 ```ruby
     if Book.all.count == 0
@@ -866,6 +885,8 @@ Instead of iterating through `@books`, replace `@books` with the `get_eight_book
 <% get_eight_books.each do |book| %>
 ```
 
+![homepage-books](../assets/images/C11/homepage-books.png)
+
 <div id="deploying-changes"></div>
 
 ## Deploying changes
@@ -904,7 +925,7 @@ Navigate to `db/seeds.rb`. Require faker at the top of the file
 require 'faker'
 ```
 
-Create a local variable called images that contain 4 image address(you can google these).
+Create a local variable called images that contain 4 image address(you can google these). 
 
 ```ruby
 require 'faker'
@@ -932,6 +953,8 @@ end
 ```
 
 Run `rails db:seed`
+
+![seed file](../assets/images/C11/seed-records.png)
 
 ---
 
