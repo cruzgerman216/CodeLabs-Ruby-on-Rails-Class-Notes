@@ -21,6 +21,7 @@
 
 ## Adding Bootstrap 5
 
+### OPTION ONE
 Add `bootstrap 5` to the application by entering `yarn add bootstrap jquery @popperjs/core` or `npm install bootstrap jquery @popperjs/core` for windows.
 
 Navigate to package.json and you should see the latest version of bootstrap 5 installed
@@ -78,11 +79,38 @@ Navigate to `app/assets/stylesheets` and create `custom.css.scss`. To overwrite 
 @import "bootstrap/dist/css/bootstrap";
 ```
 
+### OPTION TWO
+Include CDN links to your project. Navigate to [https://www.bootstrapcdn.com/](https://www.bootstrapcdn.com/) and copy the the cdn links of css and html. 
+
+Navigate to your `views/layouts/application.html.erb` file and include both links like so.
+
+```html
+  <head>
+    <title>BookIt</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <%= csrf_meta_tags %> 
+    <%= csp_meta_tag %> 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+```
+
 <div id="navbar"></div>
 
 ## Adding a Navbar
 
-Navigate to `app/assets/stylesheets/application.css`, and color the background of the body element.
+Navigate to `app/assets/stylesheets/application.css`, and change the background color of the body element.
 
 ```css
 body {
@@ -90,7 +118,8 @@ body {
 }
 ```
 
-Navigate to `app/views/layouts` and create a new file called `_navigation.html.erb`. Copy and paste the code
+Navigate to `app/views/layouts` and create a new file called `_navigation.html.erb`. The code below was taken from the [bootstrap 5 docs](https://getbootstrap.com/docs/5.0/components/navbar/#supported-content). Copy and paste the following:
+
 
 ```html
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -166,12 +195,6 @@ Transform the anchor tag containing `Book It` into a link that navigates the use
 
 ```
     <%= link_to "Book It", root_path, class: "navbar-brand", style:"font-family: arial; font-size: 2rem; font-weight; bold" %>
-```
-
-Alter the home navlink to `Books` and use embedded Ruby tags to navigate to the books path.
-
-```
-    <%= link_to "Books", books_path, class: "nav-link" %>
 ```
 
 Include drop down items
