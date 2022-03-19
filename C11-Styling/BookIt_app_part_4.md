@@ -1,5 +1,5 @@
 # BookIt App Part 4 - Styling
-
+![Intro Cover](../assets/images/C11/homepage-style.png)
 ### Table of Contents
 
 - <a href="#adding-bootstrap">Adding Bootstrap 5</a>
@@ -17,6 +17,31 @@
 
 ---
 
+## Terminology
+<details>
+<summary><strong>Bootstrap</strong></summary>
+<em>Bootstrap</em> is a CSS Front End Framework used to design and layout web Applications easily. What makes Bootstrap great is that it's beginner friendly and it allows making web applications responsive a painless process. As of today, Bootstrap 5 is the latest version.
+</details>
+<details>
+<summary><strong>Rails Seed</strong></summary>
+<em>Rails seed</em> is a process of populating the database without having to manually do so. This allows us to create scenarios for testing and development environments.
+</details>
+<details>
+<summary><strong>Faker Gem</strong></summary>
+<em>Faker</em> is a gem used to create fake data. Faker provides a range of categories to percieve as data such as book titles, movie titles, usernames, emails, first names, last names, and more. Each time a value is generated, it is set at random. 
+</details>
+<details>
+<summary><strong>net/http</strong></summary>
+<em>net/http</em> is a default Ruby class to work with routing, requests, responses and more.
+</details>
+<details>
+<summary><strong>openURI</strong></summary>
+<em>openURI</em> is a way to "open" a http or https URL as though it were a file. 
+</details>
+
+<br>
+
+---
 <div id="adding-bootstrap"></div>
 
 ## Adding Bootstrap 5
@@ -983,6 +1008,8 @@ Run `rails db:seed`
 - [Seed data](https://launchschool.com/books/demystifying_rails/read/seeding_the_database)
 <br>
 
+### Other Resources 
+- [The History of Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework))
 ---
 
 :wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
