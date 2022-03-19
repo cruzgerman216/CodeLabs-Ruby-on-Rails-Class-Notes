@@ -727,7 +727,6 @@ Create `_footer.html.erb` under layouts and create a footer.
 </div>
 ```
 
-
 Render the footer in `application.html.erb`
 
 ```html
@@ -955,6 +954,34 @@ end
 Run `rails db:seed`
 
 ![seed file](../assets/images/C11/seed-records.png)
+
+<br>
+
+---
+
+## *Class Exercises* 
+- [link](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Exercises/blob/main/exercises/Ruby%20on%20Rails/C10-CRUD-OP-Part-3.md) 
+
+<br>
+
+---
+## *Additional Resource*s
+
+### Docs 
+- [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+- [Faker Gem](https://github.com/faker-ruby/faker)
+- [net/http](https://ruby-doc.org/stdlib-3.1.1/libdoc/net/http/rdoc/Net/HTTP.html)
+
+### Videos 
+- [Bootstrap 5 Crash Course](https://www.youtube.com/watch?v=4sosXZsdy-s&ab_channel=TraversyMedia)
+- [Faker Gem](https://www.youtube.com/watch?v=Df97jFmq2Fo&ab_channel=BrainTrustDigital) 
+- [Seeding Data in Rails Overview](https://www.youtube.com/watch?v=_HSudwhdAR8&ab_channel=MikeRogers)
+- [Seeding Data in Rails Demonstration](https://www.youtube.com/watch?v=scYmaok52j8&ab_channel=APPSIMPACTAcademy)
+
+### Articles 
+- [Faker Gem](https://tosbourn.com/using-faker-with-rspec/)
+- [Seed data](https://launchschool.com/books/demystifying_rails/read/seeding_the_database)
+<br>
 
 ---
 
