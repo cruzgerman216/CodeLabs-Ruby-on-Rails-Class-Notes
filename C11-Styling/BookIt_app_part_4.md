@@ -1,5 +1,7 @@
 # BookIt App Part 4 - Styling
+
 ![Intro Cover](../assets/images/C11/homepage-style.png)
+
 ### Table of Contents
 
 - <a href="#adding-bootstrap">Adding Bootstrap 5</a>
@@ -18,6 +20,7 @@
 ---
 
 ## Terminology
+
 <details>
 <summary><strong>Bootstrap</strong></summary>
 <em>Bootstrap</em> is a CSS Front End Framework used to design and layout web Applications easily. What makes Bootstrap great is that it's beginner friendly and it allows making web applications responsive a painless process. As of today, Bootstrap 5 is the latest version.
@@ -42,11 +45,14 @@
 <br>
 
 ---
+
 <div id="adding-bootstrap"></div>
 
 ## Adding Bootstrap 5
 
-### OPTION ONE
+<details>
+<summary>OPTION ONE</summary>
+
 Add `bootstrap 5` to the application by entering `yarn add bootstrap jquery @popperjs/core` or `npm install bootstrap jquery @popperjs/core` for windows.
 
 Navigate to package.json and you should see the latest version of bootstrap 5 installed
@@ -104,38 +110,42 @@ Navigate to `app/assets/stylesheets` and create `custom.css.scss`. To overwrite 
 @import "bootstrap/dist/css/bootstrap";
 ```
 
-### OPTION TWO
-Include CDN links to your project. Navigate to [https://www.bootstrapcdn.com/](https://www.bootstrapcdn.com/) and copy the the cdn links of css and html. 
+</details>
+
+<details>
+<summary>OPTION TWO</summary>
+Include CDN links to your project. Navigate to [https://www.bootstrapcdn.com/](https://www.bootstrapcdn.com/) and copy the the cdn links of css and html.
 
 Navigate to your `views/layouts/application.html.erb` file and include both links like so.
 
 ```html
-  <head>
-    <title>BookIt</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <%= csrf_meta_tags %> 
-    <%= csp_meta_tag %> 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+<head>
+  <title>BookIt</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <%= csrf_meta_tags %> <%= csp_meta_tag %> <%= stylesheet_link_tag
+  'application', media: 'all', 'data-turbolinks-track': 'reload' %> <%=
+  javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"
+  ></script>
+</head>
 ```
+</details>
 
+<br>
 <div id="navbar"></div>
 
 ## Adding a Navbar
 
-Navigate to `app/assets/stylesheets/application.css`, and change the background color of the body element.
+Navigate to `app/assets/stylesheets/application.css` and change the background color of the body element.
 
 ```css
 body {
@@ -143,8 +153,7 @@ body {
 }
 ```
 
-Navigate to `app/views/layouts` and create a new file called `_navigation.html.erb`. The code below was taken from the [bootstrap 5 docs](https://getbootstrap.com/docs/5.0/components/navbar/#supported-content). Copy and paste the following:
-
+Navigate to `app/views/layouts` and create a new file called `_navigation.html.erb`. The code below was taken from the [bootstrap 5 docs](https://getbootstrap.com/docs/5.0/components/navbar/#supported-content) and was edited. Copy and paste the following:
 
 ```html
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -222,7 +231,7 @@ Transform the anchor tag containing `Book It` into a link that navigates the use
     <%= link_to "Book It", root_path, class: "navbar-brand", style:"font-family: arial; font-size: 2rem; font-weight; bold" %>
 ```
 
-Include drop down items
+Include drop down items for the user to navigate to the index page and also to be able to create a book.
 
 ```html
 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -249,7 +258,7 @@ Navigate to `assets/stylesheets/pages.scss` and copy/paste the following
 
 ```css
 /* Installing bootstrap manually will require this (CDN do not provide us this option) */
-@import "bootstrap/dist/css/bootstrap"; 
+@import "bootstrap/dist/css/bootstrap";
 
 .home-background {
   padding: 5% 2%;
@@ -419,7 +428,12 @@ Navigate to `assets/stylesheets/pages.scss` and copy/paste the following
 }
 ```
 
-In `views/pages/home.html.erb`, let's add an intro paragraph and related user buttons
+In `views/pages/home.html.erb`, let's add an intro paragraph and user related buttons. 
+
+<details>
+<summary><strong>Note</strong></summary>
+This application will eventually implement a login/signup system.
+</details>
 
 ```html
 <div class="home-background">
@@ -437,6 +451,7 @@ In `views/pages/home.html.erb`, let's add an intro paragraph and related user bu
   </button>
 </div>
 ```
+
 ![homepage style](../assets/images/C11/homepage-style.png)
 
 Let's add another section called `library`. This section will contain a header and cards containig book information. Copy and paste the following
@@ -603,20 +618,18 @@ In `application.css`,
 Use Bootstrap to style the form partial
 
 ```html
-<% if @book.errors.any? %> 
-  <% @book.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
-  <% end %> 
-<% end %>
+<% if @book.errors.any? %> <% @book.errors.full_messages.each do |message| %>
+<p><%= message %></p>
+<% end %> <% end %>
 
 <div style="margin: 0 25%; width:50%">
   <%= form_with(model: @book) do |form| %>
   <div class="mb-3">
-    <%= form.label :title, "Title:", class:"form-label" %>
-    <%= form.text_field :title, class:"form-control" %>
+    <%= form.label :title, "Title:", class:"form-label" %> <%= form.text_field
+    :title, class:"form-control" %>
   </div>
   <div class="mb-3">
-    <%= form.label :description, "Description:", class:"form-label" %> 
+    <%= form.label :description, "Description:", class:"form-label" %>
     <%=form.text_area :description, class:"form-control" %>
   </div>
   <%= form.submit "Save Book", class:"btn btn-primary" %> <% end %>
@@ -636,8 +649,8 @@ Navigate to `edit.html.erb` and add the class text-center to the h1 element. Sty
 
 Repeat the same process `new.html.erb`.
 
-
 ![styling form](../assets/images/C11/styling-form.png)
+
 <div id="messages"></div>
 
 ## Styling messages
@@ -671,7 +684,6 @@ Render the errors partial file in `_form.html.erb`
         <%= form_with(model: @book) do |form| %>
                 <div class="mb-3">
 ```
-
 
 ![Error styling](../assets/images/C11/errors-style.png)
 
@@ -756,10 +768,8 @@ Render the footer in `application.html.erb`
 
 ```html
 <body>
-  <%= render 'layouts/navigation' %>
-  <%= render 'layouts/messages' %>
-  <%= yield%>
-  <%= render 'layouts/footer' %>
+  <%= render 'layouts/navigation' %> <%= render 'layouts/messages' %> <%=
+  yield%> <%= render 'layouts/footer' %>
 </body>
 ```
 
@@ -793,7 +803,7 @@ Navigate to `views/books/_form.html.erb`, add a label and field for the `image_p
 
 ```html
 <div class="mb-3">
-  <%= form.label :image_path, "Image URL:", class:"form-label" %> 
+  <%= form.label :image_path, "Image URL:", class:"form-label" %>
   <%=form.text_area :image_path, class:"form-control" %>
 </div>
 ```
@@ -803,7 +813,6 @@ Navigate to `index.html.erb`, and get rid of the img element. Use the built in r
 ```html
 <%= image_tag book.image_path, class: "card-img-top" %>
 ```
-
 
 ![index page images](../assets/images/C11/index-page-images.png)
 
@@ -949,7 +958,7 @@ Navigate to `db/seeds.rb`. Require faker at the top of the file
 require 'faker'
 ```
 
-Create a local variable called images that contain 4 image address(you can google these). 
+Create a local variable called images that contain 4 image address(you can google these).
 
 ```ruby
 require 'faker'
@@ -984,32 +993,39 @@ Run `rails db:seed`
 
 ---
 
-## *Class Exercises* 
-- [link](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Exercises/blob/main/exercises/Ruby%20on%20Rails/C10-CRUD-OP-Part-3.md) 
+## _Class Exercises_
+
+- [link](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Exercises/blob/main/exercises/Ruby%20on%20Rails/C10-CRUD-OP-Part-3.md)
 
 <br>
 
 ---
+
 ## *Additional Resource*s
 
-### Docs 
+### Docs
+
 - [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 - [Faker Gem](https://github.com/faker-ruby/faker)
 - [net/http](https://ruby-doc.org/stdlib-3.1.1/libdoc/net/http/rdoc/Net/HTTP.html)
 
-### Videos 
+### Videos
+
 - [Bootstrap 5 Crash Course](https://www.youtube.com/watch?v=4sosXZsdy-s&ab_channel=TraversyMedia)
-- [Faker Gem](https://www.youtube.com/watch?v=Df97jFmq2Fo&ab_channel=BrainTrustDigital) 
+- [Faker Gem](https://www.youtube.com/watch?v=Df97jFmq2Fo&ab_channel=BrainTrustDigital)
 - [Seeding Data in Rails Overview](https://www.youtube.com/watch?v=_HSudwhdAR8&ab_channel=MikeRogers)
 - [Seeding Data in Rails Demonstration](https://www.youtube.com/watch?v=scYmaok52j8&ab_channel=APPSIMPACTAcademy)
 
-### Articles 
+### Articles
+
 - [Faker Gem](https://tosbourn.com/using-faker-with-rspec/)
 - [Seed data](https://launchschool.com/books/demystifying_rails/read/seeding_the_database)
-<br>
+  <br>
 
-### Other Resources 
-- [The History of Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework))
+### Other Resources
+
+- [The History of Bootstrap](<https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)>)
+
 ---
 
 :wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
