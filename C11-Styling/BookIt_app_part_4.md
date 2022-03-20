@@ -34,10 +34,6 @@
 <em>Faker</em> is a gem used to create fake data. Faker provides a range of categories to percieve as data such as book titles, movie titles, usernames, emails, first names, last names, and more. Each time a value is generated, it is set at random. 
 </details>
 <details>
-<summary><strong>net/http</strong></summary>
-<em>net/http</em> is a default Ruby class to work with routing, requests, responses and more.
-</details>
-<details>
 <summary><strong>openURI</strong></summary>
 <em>openURI</em> is a way to "open" a http or https URL as though it were a file. 
 </details>
@@ -454,52 +450,12 @@ This application will eventually implement a login/signup system.
 
 ![homepage style](../assets/images/C11/homepage-style.png)
 
-Let's add another section called `library`. This section will contain a header and cards containig book information. Copy and paste the following
+Let's add another section. This section will contain information about a series of books. We can use [this style](https://getbootstrap.com/docs/5.0/components/card/). Copy and paste the following
 
 ```html
 <h1 style="font-size: 5rem; text-align:center" id="library">Popular Books</h1>
 <div class="container" style="padding: 5% 0%">
   <div class="row">
-    <div class="col-md-3">
-      <div class="card">
-        <img
-          src="https://i.ebayimg.com/images/g/SSIAAOSwmlpf~f~5/s-l500.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card">
-        <img
-          src="https://i.ebayimg.com/images/g/SSIAAOSwmlpf~f~5/s-l500.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-    </div>
     <div class="col-md-3">
       <div class="card">
         <img
@@ -550,9 +506,7 @@ Let's add another section called `library`. This section will contain a header a
 
 ## Styling Books Index Page
 
-Navigate to `views/books/index.html.erb`. Get rid of all content in the file.
-
-- At the top include the following heading, follow these series elements
+Navigate to `views/books/index.html.erb`. Get rid of all content in the file. Include the following
 
 ```html
 <h1 style="font-size: 5rem; text-align:center" id="library">Library</h1>
@@ -561,7 +515,7 @@ Navigate to `views/books/index.html.erb`. Get rid of all content in the file.
 </div>
 ```
 
-Within the `row div`, use embedded tags to iterate through each book record. As we iterate through each book, we can include a col-md-3 div for each record. This class will allow each element to be equally spaced. Use the instance variable and embedded tags to output title and description.
+Within the div that has class name 'row', use embedded tags to iterate through each book record. As we iterate through each book, we can include a `col-md-3 div ` for each record. This class will allow each element to be equally spaced. Use the instance variable and embedded tags to output title and description.
 
 ```html
 <% @books.each do |book| %>
@@ -589,24 +543,9 @@ Include buttons to edit, show or delete the book.
 ```html
 <h5 class="card-title"><%= book.title%></h5>
 <p class="card-text"><%= book.description%></p>
-<button class="btn btn-primary">
-  <%= link_to 'Edit', edit_book_path(book), class:"link" %>
-</button>
-<button class="btn btn-secondary">
-  <%= link_to 'Show', book_path(book), class:"link" %>
-</button>
-<button class="btn btn-danger">
-  <%= link_to 'Delete', book_path(book), method: :delete, class:"link" %>
-</button>
-```
-
-In `application.css`,
-
-```css
-.link {
-  color: white;
-  text-decoration: none;
-}
+  <%= link_to 'Edit', edit_book_path(book), class:"link btn btn-primary" %>
+  <%= link_to 'Show', book_path(book), class:"link btn btn-secondary" %>
+  <%= link_to 'Delete', book_path(book), method: :delete, class:"link btn btn-danger" %>
 ```
 
 ![index page style](../assets/images/C11/index-page-style.png)
@@ -618,9 +557,11 @@ In `application.css`,
 Use Bootstrap to style the form partial
 
 ```html
-<% if @book.errors.any? %> <% @book.errors.full_messages.each do |message| %>
-<p><%= message %></p>
-<% end %> <% end %>
+<% if @book.errors.any? %> 
+  <% @book.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %> 
+<% end %>
 
 <div style="margin: 0 25%; width:50%">
   <%= form_with(model: @book) do |form| %>
@@ -647,7 +588,7 @@ Navigate to `edit.html.erb` and add the class text-center to the h1 element. Sty
 </div>
 ```
 
-Repeat the same process `new.html.erb`.
+Repeat the same process for `new.html.erb`.
 
 ![styling form](../assets/images/C11/styling-form.png)
 
@@ -768,7 +709,8 @@ Render the footer in `application.html.erb`
 
 ```html
 <body>
-  <%= render 'layouts/navigation' %> <%= render 'layouts/messages' %> <%=
+  <%= render 'layouts/navigation' %> 
+  <%= render 'layouts/messages' %> <%=
   yield%> <%= render 'layouts/footer' %>
 </body>
 ```
@@ -816,26 +758,27 @@ Navigate to `index.html.erb`, and get rid of the img element. Use the built in r
 
 ![index page images](../assets/images/C11/index-page-images.png)
 
-In `models/books.rb`, create a custom validation to check to see if the image url is valid using `net/http`. Create a method called image_path_exists. In this method, use `net/http` to check the image_path is a valid URL as well as its content to be an image.
+In `models/books.rb`, create a custom validation to check to see if the image url is valid. Let's use open-uri.
+
+Add `open-uri` to your gemfile. 
+```ruby
+gem 'open-uri'
+```
+
+Check to see if the image path url is a valid url and its content type is an image.
 
 ```ruby
-  validate :image_path_exists
-
-  def image_path_exists
-    require "net/http"
-    if (image_path == nil || image_path.starts_with?("http") == false)
-        errors.add(:image_path, "is an invalid request")
-        return
+    def image_path_exists
+      require 'open-uri'
+      begin 
+        url = URI.open(image_path)
+        errors.add(:image_path, "does not contain image") and return unless url.content_type.starts_with?("image")
+      rescue
+        errors.add(:image_path, "Invalid URL")
+      end
     end
-    url = URI.parse(image_path)
-    req = Net::HTTP.new(url.host, url.port)
-    if (image_path.starts_with?("https"))
-      req.use_ssl = true
-    end
-    res = req.request_head(url.path)
-    errors.add(:image_path, "does return image") and return unless res.code == "200" && res.content_type.starts_with?("image")
-  end
 ```
+
 
 Navigate to `views/books/show.html.erb`, replace the `img` element with the built in image_tag provided by Rails.
 
@@ -995,7 +938,7 @@ Run `rails db:seed`
 
 ## _Class Exercises_
 
-- [link](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Exercises/blob/main/exercises/Ruby%20on%20Rails/C10-CRUD-OP-Part-3.md)
+- [link](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Exercises/blob/main/exercises/Ruby%20on%20Rails/C11-Styling.md)
 
 <br>
 
