@@ -10,10 +10,6 @@
 - <a href="#edit-users">Edit Users</a>
 - <a href="#profile-page">Profile Page</a>
 - <a href="#user-index">User Index</a>
-- <a href="#image-path">Adding Image Path</a>
-- <a href="#display-eight-random-books">Display Eight Random Books</a>
-- <a href="#deploying-changes">Deploying Changes</a>
-- <a href="#seed-file">seed.rb and The Faker Gem</a>
 
 ---
 
