@@ -768,6 +768,8 @@ gem 'open-uri'
 Check to see if the image path url is a valid url and its content type is an image.
 
 ```ruby
+    validate :image_path_exists
+
     def image_path_exists
       require 'open-uri'
       begin 
