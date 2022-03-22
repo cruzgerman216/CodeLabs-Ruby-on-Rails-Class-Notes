@@ -73,7 +73,7 @@ Navigate to `app/assets/stylesheets/application.css` and copy/paste the followin
  */
 ```
 
-Navigate to `config/webpack/environment.ts`. Copy and paste the following
+Navigate to `config/webpack/environment.js`. Copy and paste the following
 
 ```typescript
 const { environment } = require("@rails/webpacker");
