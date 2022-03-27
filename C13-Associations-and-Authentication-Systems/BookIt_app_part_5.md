@@ -1,4 +1,4 @@
-# # BookIt App Part 4 - Associations and Authentication Systems Part 1
+# BookIt App Part 4 - Associations and Authentication Systems Part 1
 
 ### Table of Contents
 
@@ -18,22 +18,22 @@
 <details>
 <summary><strong>Associations</strong></summary>
 <em>Association</em> is a type of relationship between two models (Ex: books and authors)
-</details>
-<details>
-<summary><strong>Has many association</strong></summary>
-<em>Has many association</em> indicates that one instance of a model has either one or more instances of another model (Ex: An author has many books)
-</details>
-<details>
-<summary><strong>Has one</strong></summary>
-<em>Has one</em> indicates an instance model in relation to another model instance and no more (Ex: A user has one profile).
-</details>
-<details>
-<summary><strong>Belongs to</strong></summary>
-<em>Belongs to</em> indicates an instance model in relation to another model instance in which it belongs to that model (EX: A book belongs to a user.)
-</details>
-<details>
-<summary><strong>Many to Many</strong></summary>
-<em>Many to Many</em> indicates two model instances that have more than one relation with each other (EX: An author has many books. A book has many authors).
+  <details style="margin-left:10px">
+  <summary><strong>Has many </strong></summary>
+  <em>Has many </em> indicates that one instance of a model has either one or more instances of another model (Ex: An author has many books)
+  </details>
+  <details style="margin-left:10px">
+  <summary><strong>Has one</strong></summary>
+  <em>Has one</em> indicates an instance of a model in relation to another model instance and no more (Ex: A user has one profile).
+  </details>
+  <details style="margin-left:10px">
+  <summary><strong>Belongs to</strong></summary>
+  <em>Belongs to</em> indicates an instance of a model in relation to another model instance in which it belongs to that model. This table requires a foreign key. (EX: A book belongs to a user.)
+  </details>
+  <details style="margin-left:10px">
+  <summary><strong>Many to Many</strong></summary>
+  <em>Many to Many</em> indicates two model instances that have more than one relation with each other (EX: An author has many books. A book has many authors). A many to many association requires a third table to that holds two foreign keys of both models.
+  </details>
 </details>
 <details>
 <summary><strong>ERD or Entity Relationship Diagram</strong></summary>
@@ -105,6 +105,7 @@ To validate the email with the correct format we can user the built in Ruby URI 
 <div id="association"></div>
 
 ## Associations Between Users and Books
+
 ### Has many association
 
 We need to add a `user_id` to the book's table so we can create a one to many association. Let's generate a migration file with the following `rails generate migration add_user_id_to_books`. Navigate to the migration file under migrate and add a new column to the books table called `user_id` that is of type `int`.
@@ -130,6 +131,7 @@ end
 ```
 
 ### Belongs to association
+
 ```ruby
 class Book < ApplicationRecord
     belongs_to :user
@@ -156,7 +158,6 @@ Navigate to controllers/books_controller.rb, under the create method. Assign eac
       redirect_to @book
     else
 ```
-
 
 <div id="user-info"></div>
 
@@ -270,6 +271,7 @@ Navigate to` _form.html.erb`. Copy the form from `books/_form.html.erb` and past
 ```
 
 ### Refactoring errors partial
+
 An error will occur in `shared/errors` as we render `new.html.erb` due to being instance specific to book. Let's change this to make it be flexible to any instance. Navigate to `_errors.hmtl.erb`.
 
 ```html
