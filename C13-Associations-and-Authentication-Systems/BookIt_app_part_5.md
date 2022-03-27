@@ -1,4 +1,4 @@
-# BookIt App Part 4 - Associations and Authentication Systems Part 1
+# BookIt App Part 5 - Associations and Authentication Systems Part 1
 
 ### Table of Contents
 
@@ -18,19 +18,19 @@
 <details>
 <summary><strong>Associations</strong></summary>
 <em>Association</em> is a type of relationship between two models (Ex: books and authors)
-  <details style="margin-left:10px">
+  <details>
   <summary><strong>Has many </strong></summary>
   <em>Has many </em> indicates that one instance of a model has either one or more instances of another model (Ex: An author has many books)
   </details>
-  <details style="margin-left:10px">
+  <details>
   <summary><strong>Has one</strong></summary>
   <em>Has one</em> indicates an instance of a model in relation to another model instance and no more (Ex: A user has one profile).
   </details>
-  <details style="margin-left:10px">
+  <details>
   <summary><strong>Belongs to</strong></summary>
   <em>Belongs to</em> indicates an instance of a model in relation to another model instance in which it belongs to that model. This table requires a foreign key. (EX: A book belongs to a user.)
   </details>
-  <details style="margin-left:10px">
+  <details>
   <summary><strong>Many to Many</strong></summary>
   <em>Many to Many</em> indicates two model instances that have more than one relation with each other (EX: An author has many books. A book has many authors). A many to many association requires a third table to that holds two foreign keys of both models.
   </details>
@@ -67,27 +67,7 @@ class User < ApplicationRecord
 end
 ```
 
-### Add user validations to User class
-
-In `models/users.rb`, let's create a validation that will allow each username to be unique.
-
-```ruby
-class User < ApplicationRecord
-    validates :username, uniqueness: true
-    validates :email, uniqueness: true
-end
-```
-
-Make both username and email present in each creation.
-
-```ruby
-class User < ApplicationRecord
-    validates :username, uniqueness: true, presence: true,
-    validates :email, uniqueness: true, presence: true,
-end
-```
-
-Make the length of the username minimum 3 and maximum 25. Validate email to be a maximum of 25 characters.
+Let's add some validations.
 
 ```ruby
 class User < ApplicationRecord
@@ -108,7 +88,7 @@ To validate the email with the correct format we can user the built in Ruby URI 
 
 ### Has many association
 
-We need to add a `user_id` to the book's table so we can create a one to many association. Let's generate a migration file with the following `rails generate migration add_user_id_to_books`. Navigate to the migration file under migrate and add a new column to the books table called `user_id` that is of type `int`.
+We need to add a `user_id` to the book's table so we can create a `one to many `association. This will be our foreign key. Let's generate a migration file with the following `rails generate migration add_user_id_to_books`. Navigate to the migration file under migrate and add a new column to the books table called `user_id` that is of type `int`.
 
 ```ruby
 class AddUserIdToBooks < ActiveRecord::Migration[6.1]
@@ -120,7 +100,7 @@ end
 
 Run `rails db:migrate` to reflect these migrations towards the DB/schema.
 
-Let's now create a one to many association between Users and Books.
+Let's now create a `one to many` association between Users and Books.
 
 ```ruby
 class User < ApplicationRecord
@@ -130,8 +110,14 @@ class User < ApplicationRecord
 end
 ```
 
-### Belongs to association
+Let's create a user record record that we will use shortly.
 
+```
+User.create(username: test123, email: test@test.com)
+```
+
+### Belongs to association
+Let's create a `belongs_to` association. Each record will now require a user id to be created.
 ```ruby
 class Book < ApplicationRecord
     belongs_to :user
@@ -140,15 +126,7 @@ class Book < ApplicationRecord
 end
 ```
 
-In order to create a Book, each book record now needs a `user_id` due to the `belongs_to` association. This creates a connection between the book record and user record. Every book now belongs to a particular user.
-
-Create a user record in `rails c`
-
-```
-User.create(username: test123, email: test@test.com)
-```
-
-Navigate to controllers/books_controller.rb, under the create method. Assign each book that gets created to the first User in the db, for now.
+Navigate to `controllers/books_controller.rb`, under the `create` method. Assign each book that gets created to the first user record from the db, for now.
 
 ```ruby
     @book = Book.new(book_params)
@@ -163,7 +141,7 @@ Navigate to controllers/books_controller.rb, under the create method. Assign eac
 
 ## Show User Info In Book Cards
 
-Navigate to `views/books/index.html.erb`, let's creates a card header that show's the info of the user that belongs to that books. If a book belongs to the user, then print the username.
+Navigate to `views/books/index.html.erb`, let's creates a card header that shows the info of the user that belongs to that book. If a book belongs to the user, then print the username.
 
 ```html
 <div class="col-md-3">
@@ -175,17 +153,7 @@ Navigate to `views/books/index.html.erb`, let's creates a card header that show'
 </div>
 ```
 
-Repeat the same process in `show.html.erb`.
-
-```html
-<div class="container">
-  <div class="card" style="margin: 10% 25%">
-    <div class="card-header">
-      <%= "By " + book.user.username if book.user %>
-    </div>
-  </div>
-</div>
-```
+Repeat the same process for `show.html.erb`.
 
 <div id="bcrypt"></div>
 
@@ -232,7 +200,7 @@ Build a route that navigates the user to the sign up page.
   get 'signup', to: 'users#new'
 ```
 
-Create a new file under controllers called `users_controller.rb`. Create a `UsersController` that inherits `ApplicationController`. Define a method called `new`
+Create a new file under controllers called `users_controller.rb`. Define a class called `UsersController` that inherits `ApplicationController`. Define a method called `new`
 
 ```ruby
 class UsersController < ApplicationController
@@ -518,5 +486,28 @@ Navigate to `books/index.html.erb`, copy the container element. Paste that into 
   </div>
 </div>
 ```
+
+## *Additional Resource*s
+
+### Docs
+
+- [Active Record Assocation](https://guides.rubyonrails.org/association_basics.html)
+
+### Videos
+
+- [Creating an ERD Diagram](https://www.youtube.com/watch?v=lAtCySGDD48&ab_channel=Dr.DanielSoper)
+- [Associations and Foreign keys](https://www.youtube.com/watch?v=MaMslkxowbQ&ab_channel=saasbook)
+- [Understanding Active Record Associations](https://www.youtube.com/watch?v=5mhuNSkV_vQ&ab_channel=Web-Crunch)
+
+### Articles
+
+- [Everything There Is to Know About Associations in Rails](https://dev.to/neshaz/everything-there-is-to-know-about-associations-in-rails-52ii)
+  <br>
+
+### Other Resources
+
+- [The Odin Project - ACTIVE RECORD ASSOCIATIONS](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/active-record-associations)
+
+---
 
 :wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
