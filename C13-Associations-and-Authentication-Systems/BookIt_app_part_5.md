@@ -104,7 +104,7 @@ Let's now create a `one to many` association between Users and Books.
 
 ```ruby
 class User < ApplicationRecord
-  has_many :books
+  has_many :books, dependent: :destroy
   validates :username, uniqueness: true, presence: true, length: { minimum: 3, maximum: 25 }
   validates :email, uniqueness: true, presence: true, length: { maximum: 25 }, format: { with: URI::MailTo::EMAIL_REGEXP }
 end
@@ -117,7 +117,9 @@ User.create(username: test123, email: test@test.com)
 ```
 
 ### Belongs to association
+
 Let's create a `belongs_to` association. Each record will now require a user id to be created.
+
 ```ruby
 class Book < ApplicationRecord
     belongs_to :user
@@ -152,6 +154,8 @@ Navigate to `views/books/index.html.erb`, let's creates a card header that shows
   </div>
 </div>
 ```
+
+![user in books](../assets/images/C13/username-index.png)
 
 Repeat the same process for `show.html.erb`.
 
@@ -221,18 +225,19 @@ Navigate to` _form.html.erb`. Copy the form from `books/_form.html.erb` and past
 
 ```html
 <div style="margin: 0 25%; width: 50%">
-  <%= render 'shared/errors' %> <%= form_with(model: @user) do |form| %>
+  <%= render "errors" %> 
+  <%= form_with(model: @user) do |form| %>
   <div class="mb-3">
-    <%= form.label :username, "Username:", class:"form-label" %> <%=
-    form.text_field :username, class:"form-control" %>
+    <%= form.label :username, "Username:", class:"form-label" %>
+    <%=form.text_field :username, class:"form-control" %>
   </div>
   <div class="mb-3">
-    <%= form.label :email, "Email:", class:"form-label" %> <%= form.text_field
-    :email, class:"form-control" %>
+    <%= form.label :email, "Email:", class:"form-label" %> 
+    <%= form.text_field :email, class:"form-control" %>
   </div>
   <div class="mb-3">
-    <%= form.label :password, "Password:", class:"form-label" %> <%=
-    form.password_field :password, class:"form-control" %>
+    <%= form.label :password, "Password:", class:"form-label" %>
+    <%= form.password_field :password, class:"form-control" %>
   </div>
   <%= form.submit "Sign up", class:"btn btn-primary" %> <% end %>
 </div>
@@ -240,7 +245,7 @@ Navigate to` _form.html.erb`. Copy the form from `books/_form.html.erb` and past
 
 ### Refactoring errors partial
 
-An error will occur in `shared/errors` as we render `new.html.erb` due to being instance specific to book. Let's change this to make it be flexible to any instance. Navigate to `_errors.hmtl.erb`.
+Create a new folder called `shared` and transfer the `_errors` partial. Let's change this to make it be flexible to any instance. Navigate to `shared/_errors.hmtl.erb`.
 
 ```html
 <% if obj.errors.any? %>
@@ -293,9 +298,10 @@ Create a resource route for users
 end
 ```
 
+![sign up form](../assets/images/C13/sign-up-form.png)
 ### Create new users
 
-In the users controller, create a private method named `user_params`. Use params to require the specific set of info: `username`, `email`, `password`.
+In the users controller, define a private method called `user_params`. Use params to require the specific set of info: `username`, `email`, `password`.
 
 ```ruby
     def user_params
@@ -364,30 +370,13 @@ Under `views/users` create a file called `edit.html.erb` that renders the form p
 Navigate to` users/_form.html.erb`, let's change the submit button. Use a ternary operator to edit the content of the button to check if the user is a new user.
 
 ```html
-<%= form.submit(@user.new_record? ? "Sign up" : "Edit profile" , class:"btn
-btn-primary") %>
+<%= form.submit(@user.new_record? ? "Sign up" : "Edit profile" , class:"btn btn-primary") %>
 ```
 
 Navigate to `views/books/_form.html.erb` and repeat the same process for the creation/edit of books for the submit button
 
 ```html
-<%= form.submit(@book.new_record? ? "Create book" : "Update book", class:"btn
-btn-primary") %>
-```
-
-Navigate to `controllers/users_controller.rb`, in the update method, update the specified user. If update was successful, create a flash message and redirect to the books index page otherwise render the edit page.
-
-```ruby
-    def update
-        @user = User.find(params[:id])
-
-        if @user.update(user_params)
-            flash[:notice] = "Your account information was succesfully updated"
-            redirect_to books_path
-        else
-            render 'edit'
-        end
-    end
+<%= form.submit(@book.new_record? ? "Create book" : "Update book", class:"btn btn-primary") %>
 ```
 
 <div id="profile-page"></div>
@@ -465,19 +454,18 @@ Navigate to `books/index.html.erb`, copy the container element. Paste that into 
 
 ```html
 <div class="container text-center">
-  <div class="row" style="margin: 0 0 5% 0">
+  <div class="row" >
     <% @users.each do |user| %>
     <div class="col-md-12" style="margin: 1% 0 ">
       <div class="card">
         <div class="card-header"><%= user.username %></div>
         <div class="card-body">
           <h5 class="card-title"><%= user.books.count %> books</h5>
-          <p class="card-text"><%= user.books.count %></p>
           <button class="btn btn-primary">
-            <%= link_to 'Edit Profile', edit_user_path(user), class:"link" %>
+            <%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-outline-secondary"  %>
           </button>
           <button class="btn btn-secondary">
-            <%= link_to 'Show Profile', user_path(user), class:"link" %>
+            <%= link_to 'Show Profile', user_path(user), class: "btn btn-outline-success" %>
           </button>
         </div>
       </div>
@@ -486,6 +474,8 @@ Navigate to `books/index.html.erb`, copy the container element. Paste that into 
   </div>
 </div>
 ```
+
+![user-index](../assets/images/C13/username-index.png)
 
 ## *Additional Resource*s
 
