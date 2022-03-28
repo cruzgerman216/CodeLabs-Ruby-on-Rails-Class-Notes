@@ -176,7 +176,6 @@ Include `has_secure_password` in your user model
 ```ruby
 class User < ApplicationRecord
     has_secure_password
-    before_save { self.email = email.downcase }
     has_many :books
 ```
 
@@ -477,7 +476,11 @@ Navigate to `books/index.html.erb`, copy the container element. Paste that into 
 
 ![user-index](../assets/images/C13/user-index.png)
 
+## *Class Exercises* 
+- [Link](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Exercises/blob/main/exercises/Ruby%20on%20Rails/C13-Associations-and-authentication-systems-part-1.md 
+
 ## *Additional Resource*s
+
 
 ### Docs
 
