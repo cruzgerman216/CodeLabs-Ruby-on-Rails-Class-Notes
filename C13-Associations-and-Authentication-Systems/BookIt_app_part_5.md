@@ -155,7 +155,7 @@ Navigate to `views/books/index.html.erb`, let's creates a card header that shows
 </div>
 ```
 
-![user in books](../assets/images/C13/username-index.png)
+![user in books](../assets/images/C13/book-index.png)
 
 Repeat the same process for `show.html.erb`.
 
