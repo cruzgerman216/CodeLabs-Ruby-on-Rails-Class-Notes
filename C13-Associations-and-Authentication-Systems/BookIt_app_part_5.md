@@ -475,7 +475,7 @@ Navigate to `books/index.html.erb`, copy the container element. Paste that into 
 </div>
 ```
 
-![user-index](../assets/images/C13/username-index.png)
+![user-index](../assets/images/C13/user-index.png)
 
 ## *Additional Resource*s
 
