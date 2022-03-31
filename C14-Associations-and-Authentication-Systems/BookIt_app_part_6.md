@@ -2,9 +2,8 @@
 
 ### Table of Contents
 
-- <a href="#cleanup-layout">Cleanup Layout</a>
-- <a href="#login-logout">Login and Logout users</a>
-- <a href="#helper-methods">Authentication Helper Methods</a>
+- <a href="#login-logout">Login/Logout Users</a>
+- <a href="#authentication-helper-methods">Authentication Helper Methods</a>
 - <a href="#helper-methods-controllers">Using Helper Methods in Controllers</a>
 - <a href="#restrict-actions-from-ui">Restrict Actions from UI</a>
 - <a href="#navigation-helpers">Modify Navigation Based on Helpers</a>
@@ -15,49 +14,18 @@
 
 ---
 
-<div id="cleanup-layout"></div>
+<div id="login-logout"></div>
 
-## Cleanup Layout
+### Add Login Form
 
-Navigate to `views/users/show.html.erb`, add a `edit profile` button that navigates to the user's edit path.
-
-```html
-<h1 class="text-center"><%= @user.username %> profile</h1>
-<div class="text-center">
-  <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn primary
-  mt-4 mb-4", style:"border: 1px solid blue; color: blue;"%>
-</div>
-```
-
-When updating the profile, instead of navigating to the books index page, redirect the user to their show page. Navigate to `users_controller.rb`, to update the `update` method.
-
-```ruby
-        if @user.update(user_params)
-            flash[:notice] = "Your account information was succesfully updated"
-            redirect_to @user
-        else
-```
-
-Navigate to `users/index.html.erb`. In the books index page, make each username text into a link to redirect to the corresponding user's profile page. 
-
-```html
-<div class="card">
-  <div class="card-header">
-    By <%= link_to book.user.username, user_path(book.user)%>
-  </div>
-</div>
-```
-
-## Add Login Form
-
-Navigate to `routes.rb`, create a `get` request to the route 'login'
+Navigate to `routes.rb`, create a `get` request to the route 'login'. The controller should be `sessions` and the `new` action will handle the request.
 
 ```ruby
   resources :users, except: [:new]
   get 'login', to: 'sessions#new'
 ```
 
-Create a `post` request to be sent when submitting login form
+Create a `post` request to be sent when submitting login form.
 
 ```ruby
   get 'login', to: 'sessions#new'
@@ -92,13 +60,14 @@ Define methods new, create and destroy
   end
 ```
 
-Create a `sessions` folder under views. Create a file called `new.html.erb`.
-Create form corresponding to the login path.
+Create a `sessions` folder under views. Create a file called `new.html.erb`. 
 
 ```html
 <h1 class="text-center">Login</h1>
 <div style="margin: 0 25%; width: 50%">
   <%= form_with(scope: :sessions, url: login_path) do |form| %>
+
+  <% end %>
 </div>
 ```
 
@@ -120,7 +89,6 @@ Add fields email and password as well as a login submit button
 </div>
 ```
 
-<div id="login-logout"></div>
 
 ## Login and Logout users
 
@@ -147,7 +115,7 @@ Use a condition that checks if the user has been found and that has been authent
     end
 ```
 
-Use session to store the user id
+Use session to store the user id. The sessions hash is encrypted so you wouldn't be able to view it in plain text from the browser. So this is safe.
 
 ```ruby
             session[:user_id] = user.id
@@ -156,7 +124,7 @@ Use session to store the user id
 
 In the navigation bar, include a nav link to login.
 
-```ruby
+```
         <li class="nav-item">
           <%= link_to "Log in", login_path, class:"nav-link" %>
         </li>
@@ -174,13 +142,13 @@ In `sessions_controller.rb`, under `destroy`, set sessions of user_id to nil. Re
 
 In the navigation bar, include a nav link to logout. Specify the request to be a delete request.
 
-```ruby
+```
         <li class="nav-item">
           <%= link_to "Log out", logout_path, class:"nav-link", method: :delete %>
         </li>
 ```
 
-<divi id="helper-methods"></div>
+<divi id="authentication-helper-methods"></div>
 
 ## Authentication Helper Methods
 
@@ -233,13 +201,6 @@ In the else, add a sign up link.
 </li>
 ```
 
-Using `current_user`, create a link that will link to the current user's profile
-
-```html
-<% if logged_in? %> <%= link_to @current_user.username,
-user_path(@current_user), class:"nav-link" %>
-```
-
 Navigate to `users_controller.rb`, upon creation of the user, store the user id to a session hash.
 
 ```ruby
@@ -285,16 +246,12 @@ When a logged in user goes to the home page, let's redirect him to the books ind
 
 ## Restrict Actions from UI
 
-In `views/books/_book.html.erb`, let's restrict the edit and delete buttons to only the user that is logged in that associated with each book. Use the `logged_in` helper method and a conditional to do this.
+In `views/books/_book.html.erb`, let's restrict the edit and delete buttons to only the user that is logged in that's associated with each book. Use the `logged_in` helper method and a conditional to do this.
 
 ```html
 <% if logged_in? && book.user == current_user %>
-<button class="btn btn-primary">
-  <%= link_to 'Edit', edit_book_path(book), class:"link" %>
-</button>
-<button class="btn btn-danger">
-  <%= link_to 'Delete', book_path(book), method: :delete, class:"link" %>
-</button>
+  <%= link_to 'Edit', edit_book_path(book), class: "btn btn-outline-secondary" %>
+  <%= link_to 'Delete', book_path(book), method: :delete, class:"btn btn-outline-danger" %>
 <% end %>
 ```
 
@@ -304,20 +261,8 @@ Navigate to `users/index.html.erb`. We don't want a user to be able to edit anyo
 
 ```html
 <% if logged_in? && user == current_user %>
-<button class="btn btn-primary">
-  <%= link_to 'Edit Profile', edit_user_path(user), class:"link" %>
-</button>
+  <%= link_to 'Edit Profile', edit_user_path(user), class:"btn btn-outline-secondary" %>
 <% end %>
-```
-
-Repeat the same process for `show.html.erb` under users.
-
-```html
-<% if logged_in? && @user == current_user %>
-<div class="text-center">
-  <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn primary
-  mt-4 mb-4", style:"border: 1px solid blue; color: blue;"%>
-</div>
 ```
 
 <div id="navigation-helpers"></div>
@@ -332,7 +277,7 @@ Navigate to `_navigation.html.erb`, check to see if the user is logged in, if so
 <%end%>
 ```
 
-To allow easy access to edit/view profile, turn the navlink that holds the username into a dropdown.
+To allow easy access to edit/view profile, create a dropdown.
 
 ````html
 ```html
@@ -386,7 +331,7 @@ Users whom aren't logged in can still access certain pages such as the create ne
 ```ruby
 class ApplicationController < ActionController::Base
     def require_user
-        if !helpers.logged_in? #Again, this is rails 6 implementation
+        if !helpers.logged_in? 
             flash[:notice] = "You must be logged in to perform this action"
             redirect_to login_path
         end
@@ -400,7 +345,7 @@ In `books_controller.rb`, use before_action to implement require_user to edit, n
     before_action :require_user, except: [:show, :index]
 ```
 
-Users can still edit other users books. Let's prevent this. Define a private method called require_same_user that checks to see if the book association with a user is the same as current user.
+Users can still edit other users books. Let's prevent this. In application_controller.rb, define a private method called require_same_user that checks to see if the book association with a user is the same as current user.
 
 ```ruby
   def require_same_user
@@ -411,7 +356,7 @@ Users can still edit other users books. Let's prevent this. Define a private met
   end
 ```
 
-Use before action to implement this methd to actions such as edit, destroy and update.
+In `books_controller.rb`, use `before_action` on actions such as edit, destroy and update.
 
 ```ruby
   before_action :require_same_user, only: [ :update, :destroy, :edit]
@@ -423,23 +368,6 @@ Use before action to implement this methd to actions such as edit, destroy and u
     before_action :require_user, only: [:edit, :update]
 ```
 
-Define a method called `require_same_user`. Redirect the current user if it is not their profile.
-
-```ruby
-    def require_same_user
-        if helpers.current_user != @user
-          flash[:notice] = "You can only edit your own profile"
-          redirect_to helpers.current_user
-        end
-      end
-```
-
-Implement `before_action` to edit and update
-
-```ruby
-    before_action :require_user, :require_same_user, only: [:edit, :update]
-```
-
 <div id="delete-user"></div>
 
 ## Delete User
@@ -448,12 +376,10 @@ Navigate to _navigation.html.erb, under the profile dropdown, let's add an addit
 
 ```html
 <li>
-  <%= link_to "Edit Profile", edit_user_path(@current_user), class:
-  "dropdown-item"%>
+  <%= link_to "Edit Profile", edit_user_path(@current_user), class:v"dropdown-item"%>
 </li>
 <li>
-  <%= link_to "Delete Profile", user_path(@current_user), class: "dropdown-item
-  text-danger", method: :delete , data:{confirm: "are you sure"} %>
+  <%= link_to "Delete Profile", user_path(@current_user), class: "dropdown-item text-danger", method: :delete , data:{confirm: "are you sure"} %>
 </li>
 ```
 
@@ -474,12 +400,6 @@ Implement `require_user` and `require_same_user` before the destroy action.
     before_action :require_user, :require_same_user, only: [:edit, :update, :destroy]
 ```
 
-Before deleting the user, let's destroy all of their books. Navigate to models/user.rb, use the dependent control to delete every book that's associated with the user once the user no longer exists.
-
-```ruby
-  has_many :books, dependent: :destroy
-```
-
 <div id="admin-functionality"></div>
 
 ## Admin Functionality
@@ -495,7 +415,6 @@ In the terminal, enter the following `rails g migration add_admin_to_users`.
 ```
 
 Run `rails db:migrate`
-In the console, you can use the toggle method (or manually do it) to set admin to true for a paricular user.
 
 <div id="admin-access"></div>
 
@@ -511,13 +430,11 @@ In the navlink that contains the username, include text "(Admin)" if current use
           </a>
 ```
 
-Navigate to _books.html.erb, let's allow admins to also edit or delete books.
+Navigate to _books.html.erb, allow admins to also edit or delete books.
 
 ```html
 <% if logged_in? && book.user == current_user || current_user.admin? %>
-<button class="btn btn-primary">
-  <%= link_to 'Edit', edit_book_path(book), class:"link" %>
-</button>
+  <%= link_to 'Edit', edit_book_path(book), class:"btn btn-outline-secondary" %>
 ```
 
  Navigate to `books_controller`, in `require_same_user`, we don't want to redirect the admin to the book page.
@@ -539,9 +456,7 @@ Navigate to `users/users.index.html.erb`. Allow admin to edit any profile.
 
 ```html
 <% if logged_in? && (user == current_user || current_user.admin?) %>
-<button class="btn btn-primary">
-  <%= link_to 'Edit Profile', edit_user_path(user), class:"link" %>
-</button>
+  <%= link_to 'Edit Profile', edit_user_path(user), class:"btn btn-outline-secondary" %>
 <% end %>
 ```
 
@@ -549,11 +464,7 @@ Create a button element to delete a profile. Let's allow only admins to do this.
 
 ```html
 <% if logged_in? && current_user.admin? %>
-<button class="btn btn-danger">
-  <%= link_to 'Delete Profile', user_path(user),style:"color:white;
-  text-decoration: none", method: :delete, data: {confirm: "Are you sure you
-  want to delete " + user.username + "?"} %>
-</button>
+  <%= link_to 'Delete Profile', user_path(user), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure you want to delete " + user.username + "?"} %>
 <% end %>
 ```
 
@@ -580,8 +491,6 @@ Push your code to github and then to heroku
 
 1. `git push heroku master`
 2. `Heroku run rails db:migrate`
-- You can also give a user admin privileges in the heroku command line `User.find(1).toggle!(:admin)`
-
 
 ## *Additional Resource*s
 
