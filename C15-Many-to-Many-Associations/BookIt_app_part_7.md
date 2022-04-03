@@ -4,17 +4,28 @@
 
 - <a href="#test-models">Testing Models and Creating Categories</a>
 - <a href="#test-controllers">Categories Controller and Tests</a>
+- <a href="#testing-the-creation-of-categories">Testing the Creation of Categories</div>
+- <a href="#integration-test">Integration Tests</div>
+- <a href="#Testing Admin Requiements">Testing Admin Requirements</div>
 - <a href="#many-to-many-association">Many to Many Assocation</a>
 
 ---
 
-## Topics Covered
+## Terminology
 
-- Many to Many Associations
-- Testing
-  - Automated
-  - Functional
-  - Integration
+<details>
+<summary><strong>Many to Many assocation</strong></summary>
+<em>Many to Many assocation</em> "indicates that the declaring model can be matched with zero or more instances of another model by proceeding through a third model" <a href="https://guides.rubyonrails.org/testing.html">Source</a>
+</details>
+<details>
+<summary><strong>Rails Testing</strong></summary>
+<em>Rails Testing</em> "can ensure your code adheres to the desired functionality even after some major code refactoring." <a href="https://guides.rubyonrails.org/testing.html">Source</a>
+</details>
+<details>
+<summary><strong>Integration Tests</strong></summary>
+<em>Integration Tests</em> features testing bundle groups together. In Rails, integration tests are used to test out the workflow of the application. For example, when a user creates a book, he/she should be redirected to this view and this view should contain this information. This tests the request to create the book and the view.
+</details>
+<br>
 
 <div id="test-models"></div>
 
@@ -243,7 +254,9 @@ Navigate to `test/controllers/categories_controllers_test.rb` and update the `sh
 
 Run `rails test` and all tests should pass.
 
-## Test creation of Categories
+<div id="testing-the-creation-of-categories"></div>
+
+## Testing the Creation of Categories
 
 Navigate to `views/categories/new.html.erb`. Create a form using `form_with` and create a label and text field for the `name` attribute.
 
@@ -306,6 +319,8 @@ Navigate to `categories_controller_test.rb` and uncomment the specific test with
 ```
 
 Run `rails test`
+
+<div id="integration-test"></div>
 
 ## Integration test
 
@@ -391,14 +406,13 @@ To pass the test, navigate to `views/categories/index.html.erb`. Here is the con
 <h1 class="text-center">List of Categories</h1>
 
 <div class="container text-center">
-  <% @categories.each do |category| %> <%= link_to category.name,
-  category_path(category), style:"border: 1px solid black; width:50%; margin: 0
-  25%; padding: 5%; display: block; font-size: 3rem;text-decoration: none" %> <%
-  end %>
+  <% @categories.each do |category| %> 
+  <%= link_to category.name, category_path(category), style:"border: 1px solid black; width:50%; margin: 0 25%; padding: 5%; display: block; font-size: 3rem;text-decoration: none" %> 
+  <%end %>
 </div>
 ```
 
-In `categories_controller.rb`, under the `index` method, store all category instances in an instance variable.
+In `controllers/categories_controller.rb`, under the `index` method, store all category instances in an instance variable.
 
 ```ruby
     def index
@@ -408,7 +422,9 @@ In `categories_controller.rb`, under the `index` method, store all category inst
 
 Run `rails test`
 
-### Admin requirement and test
+<div id="Testing Admin Requiements"></div>
+
+## Testing Admin Requirements
 
 Navigate to `categories_controller_test.rb`. We will test for the following:
 
@@ -519,7 +535,7 @@ Navigate to `_navigation.html.erb`, and add a dropdown for categories similiar t
 
 ## Many to Many Association
 
-Create a migration file to create the association between book and categories `rails g migration create_book_categories`
+Create a migration file to create the `many to many` association between book and categories `rails g migration create_book_categories`
 
 ```ruby
 class CreateBookCategories < ActiveRecord::Migration[6.1]
@@ -533,13 +549,12 @@ class CreateBookCategories < ActiveRecord::Migration[6.1]
 end
 ```
 
-- `rails db:migrate`
+Run`rails db:migrate`
 
-Under models, create` book_category.rb`.
+Under `models`, create ` book_category.rb`.
 
 ```ruby
 class BookCategory < ApplicationRecord
-
 end
 ```
 
@@ -552,7 +567,7 @@ class BookCategory < ApplicationRecord
 end
 ```
 
-Navigate to books.rb and use the controller `through` to create the many associate.
+Navigate to `models/book.rb` and implement a `has_many :through` assocation.
 
 ```ruby
 class Book < ApplicationRecord
@@ -561,7 +576,7 @@ class Book < ApplicationRecord
     has_many :categories, through: :book_categories
 ```
 
-Navigate to category.rb and create the has_many association.
+Navigate to `category.rb` and create the `has_many` association.
 
 ```ruby
     has_many :book_categories
@@ -571,13 +586,14 @@ end
 
 Let's test this in the console
 
-- `rails c`
-- `BookCategory.create(book_id: Book.first.id, category_id. Category.first.id)`
-- `Book.first.categories` It should output categories associated with the book.
+Run `rails c`
+- `Category.create(name: "Sports")`
+- Enter `BookCategory.create(book_id: Book.first.id, category_id: Category.first.id)`
+- Enter `Book.first.categories` It should output categories associated with the book.
 
-## Add association from UI
+### Add association from UI
 
-In `books_controler.rb`, update the book_params to accept more than 1 category ids.
+In `books_controler.rb`, update the `book_params` to accept more than 1 category ids.
 
 ```ruby
   def book_params
@@ -600,8 +616,7 @@ Navigate to `books/_form.html.erb`. Let's add the categories dropdown.
 Create `_category.html.erb` under `views/categories`. The content of this file contains a category instance we've recieved that is being used as a link.
 
 ```html
-<%= link_to category.name, category_path(category), class:"badge bg-info
-text-dark" , style:"text-decoration: none" %>
+<%= link_to category.name, category_path(category), class:"badge bg-info text-dark", style:"text-decoration: none" %>
 ```
 
 Navigate to `books/show.html.erb`, here I render the category partial while iterating through the books categories.
@@ -614,12 +629,12 @@ Navigate to `books/show.html.erb`, here I render the category partial while iter
 </div>
 ```
 
-Navigate to `books/_books.html.erb`. Let's render the categories again.
+Navigate to `_books.html.erb` partial. Let's render the categories again.
 
 ```html
 <div class="card-header">
-  By <%= link_to book.user.username, user_path(book.user)%> <% if
-  book.categories.any? %>
+  By <%= link_to book.user.username, user_path(book.user)%> 
+  <% if book.categories.any? %>
   <div><%= render book.categories %></div>
   <% end %>
 </div>
@@ -627,6 +642,27 @@ Navigate to `books/_books.html.erb`. Let's render the categories again.
 
 ### Deploy
 
-Push to github
+Push to GitHub
 Enter `git push heroku master`
 Enter `heroku run rails db:migrate`
+
+## *Additional Resource*s
+
+### Videos
+
+- [How to Correctly Define Many-To-Many Relationships in Database Design](https://www.youtube.com/watch?v=1eUn6lsZ7c4&ab_channel=DatabaseStar)
+- [Has many through associations in Ruby on Rails](https://www.youtube.com/watch?v=YsgyM0qOt1U&ab_channel=CJAvilla)
+
+### Articles
+
+- [Master Many-to-Many Associations with ActiveRecord](https://www.sitepoint.com/master-many-to-many-associations-with-activerecord/)
+
+<br>
+
+### Other Resources
+- [Episode #100 - Basic Testing Introduction in Rails](https://www.youtube.com/watch?v=jQvB0QWe5Bs&ab_channel=DriftingRuby)
+- [RSpec TDD - How To Unit Test Ruby On Rails 6 Apps For Absolute Beginners | 20in20 - Week 14](https://www.youtube.com/watch?v=AAqPc0j_2bg&t=20s&ab_channel=Deanin)
+
+---
+
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
