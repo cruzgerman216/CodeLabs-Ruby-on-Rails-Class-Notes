@@ -26,13 +26,71 @@
     - Project Folder explained
     - Scaffolding an entire application
   - [Class 8 CRUD Operations Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C08-CRUD-Operations-Part-1/BookIt_app_part_1.md)
+    - Generating a new Rails app
+    - Generating a Migration file
+    - Creating a Model class 
+    - Rails Console and ORM methods
+    - Adding Validations
+    - ByeBug
+    - Index Page for books
   - [Class 9 CRUD Operations Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C09-CRUD-Operations-Part-2/BookIt_app_part_2.md)
+    - Creating a form to save a book
+    - Create and New action
+    - Authenticity Token
+    - Error Messages
+    - Flash Messages
+    - Add Form to Edit Book
+    - Edit and Update Actions
+    - Destroy Action
+    - Delete Request in view
   - [Class 10 CRUD Operations Part 3](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C10-CRUD-Operations-Part-3/BookIt_app_part_3.md)
+    - Adding Links to Edit or Create Books
+    - Adding Links to Views
+    - Refactoring Books Controller
+    - Creating a Messages partial
+    - Creating a Form Partial
+    - Heroku Deployment
   - [Class 11 Styling with Bootstrap](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C11-Styling/BookIt_app_part_4.md)
-  - [Class 13 Associations and Authentication Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C13-Associations-and-Authentication-Systems/BookIt_app_part_5.md)
-  - [Class 14 Associations and Authentication Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C14-Associations-and-Authentication-Systems/BookIt_app_part_6.md)
-  - [Class 15 Many to Many Associations and Automated Testing](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C15-Many-to-Many-Associations/BookIt_app_part_7.md)
+    - Adding Bootstrap 5
+    - Creating a Navbar
+    - Styling The Homepage
+    - Styling Books Index Page
+    - Styling Form
+    - Styling Messages
+    - Styling Show Page
+    - Creating a footer
+    - Adding Image Path
+    - Display Eight Random Books
+    - Deploying Changes
+    - seed.rb and The Faker Gem
 
+  - [Class 13 Associations and Authentication Part 1](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C13-Associations-and-Authentication-Systems/BookIt_app_part_5.md)
+    - Adding Users
+    - Associations Between Users and Books
+    - Show User Info In Book Cards
+    - Hashing passwords with Bcrpyt
+    - Allow Users to Sign Up
+    - Edit Users
+    - Profile Page
+    - User Index
+  - [Class 14 Associations and Authentication Part 2](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C14-Associations-and-Authentication-Systems/BookIt_app_part_6.md)
+    - Login/Logout Users
+    - Authentication Helper Methods
+    - Using Helper Methods in Controllers
+    - Restrict Actions from UI
+    - Modify Navigation Based on Helpers
+    - Restrict Actions at the Controller Level
+    - Delete User
+    - Admin-functionality
+    - Admin Access
+
+  - [Class 15 Many to Many Associations and Automated Testing](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C15-Many-to-Many-Associations/BookIt_app_part_7.md)
+    - Testing Models and Creating Categories
+    - Categories Controller and Tests
+    - Testing the Creation of Categories
+    - Integration Tests
+    - Testing Admin Requirements
+    - Many to Many Assocation
 
 ## Further Resources 
 - [Rails Resources](./assets/resources/rails_resource.md)
