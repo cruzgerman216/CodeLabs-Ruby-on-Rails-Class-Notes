@@ -214,7 +214,7 @@ end
 
 Let's use scaffold to create the rest of our tests for category.
 Run `rails g test_unit:scaffold category`
-Comment all each test except `index`, `new`, `show`, `create`
+Comment out each test except `index`, `new`, `show`, `create`
 Update the `setup` method to give category a specific name of "Sports"
 
 ```ruby
