@@ -595,16 +595,16 @@ Navigate to `books/_form.html.erb`. Let's add the categories dropdown.
 Create `_category.html.erb` under `views/categories`. The content of this file contains a category instance we've recieved that is being used as a link.
 
 ```html
-<%= link_to category.name, category_path(category), class:"badge bg-info
-text-dark", style:"text-decoration: none" %>
+<%= link_to category.name, category_path(category), class:"badge bg-info text-dark", style:"text-decoration: none" %>
 ```
 
 Navigate to `books/show.html.erb`, here I render the category partial while iterating through the books categories.
 
 ```html
 <div class="card-header">
-  By <%= @book.user.username %> <% if @book.categories.any? %>
-  <div><%= render @book.categories %></div>
+  By <%= @book.user.username %> 
+  <% if @book.categories.any? %>
+    <div><%= render @book.categories %></div>
   <% end %>
 </div>
 ```
