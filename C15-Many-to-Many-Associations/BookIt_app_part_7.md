@@ -2,7 +2,7 @@
 
 ### Table of Contents
 
-- <a href="#test-models">Testing Models and Creating Categories</a>
+- <a href="#test-models">Unit Testing and Creating Categories</a>
 - <a href="#test-controllers">Categories Controller and Tests</a>
 - <a href="#testing-the-creation-of-categories">Testing the Creation of Categories</div>
 - <a href="#integration-test">Integration Tests</div>
@@ -29,9 +29,21 @@
 
 <div id="test-models"></div>
 
-## Testing models and Creating Categories
+## Unit Testing and Creating Categories
 
-Navigate to `test/models`. We will go ahead and test out our model validations. We haven't yet created out `category` model but we will do so after defining a few test cases.
+Let's go ahead and create the categories table and the model file.
+
+Run `rails generate migration create_categories name:string`
+Run `rails db:migrate`
+
+Navigate to `app/models` and `create category.rb`
+
+```ruby
+class Category < ApplicationRecord
+end
+```
+
+Navigate to `test/models`. We will go ahead and test out our model validations.
 
 Create `category_test.rb`. Require `test_helper` at the top of the file and define a class called `CategoryTest` that inherits `AciveSupport::TestCase`.
 
@@ -59,29 +71,7 @@ Create a new Category instance and use the keyword `assert` to see if the creati
     end
 ```
 
-Run `rails test` and we get an error.
-
-```
-Error:
-CategoryTest#test_category_must_be_valid:
-NameError: uninitialized constant CategoryTest::Category
-    test/models/category_test.rb:5:in `block in <class:CategoryTest>'
-```
-
-That's because we haven't added our categories table and defined our model just yet!
-
-Navigate to `app/models` and `create category.rb`
-
-```ruby
-class Category < ApplicationRecord
-end
-```
-
-Run `rails generate migration create_categories name:string`
-Run `rails db:migrate`
-Run `rails test`
-
-## Validations Using Unit Tests
+### Validations Using Unit Tests
 
 Navigate to `test/model/category_test.rb`. Let's test the following tests
 
@@ -140,7 +130,7 @@ To get rid of DRY code, define a method called `setup` to create the category in
     end
 ```
 
-Names should be unique. Save @category and create a new instance with the same name.
+Names should be unique. Save `@category` and create a new instance with the same name.
 
 ```ruby
     test "name should be unique" do
@@ -190,20 +180,7 @@ end
 
 ## Categories Controller and Tests
 
-Let's use scaffold to create the rest of our tests for category.
-Run `rails g test_unit:scaffold category`
-Comment all each test except index, new, show
-Update the `setup` method to give category a specific name of "Sports"
-
-```ruby
-  setup do
-    @category = Category.create(name: "Sports")
-  end
-```
-
-Run `rails test test/controllers/categories_controller_test` to specify the test.
-
-We fail our tests. Let's resolve them by defining category routes in `route.rb`.
+Let's routes for categories in `routes.rb`
 
 ```ruby
   delete 'logout', to: 'sessions#destroy'
@@ -221,42 +198,44 @@ Define `new`, `create`, `index`, and `show` methods.
 
 ```ruby
 class CategoriesController < ApplicationController
-    def new
-
-    end
-
-    def create
-
-    end
-
     def index
-
     end
 
     def show
     end
+
+    def new
+    end
+
+    def create
+    end
 end
 ```
 
-Run `rails test`. We get specific errors referring to missing templates for `new`, `index` and `show`.
+Let's use scaffold to create the rest of our tests for category.
+Run `rails g test_unit:scaffold category`
+Comment all each test except `index`, `new`, `show`, `create`
+Update the `setup` method to give category a specific name of "Sports"
 
-Create templates for each corresponding action: `new`, `index`, `show`. Under views, create a `categories` folder. In categories, create `index.html.erb`, `new.html.erb`, `show.html.erb`
-
-Navigate to `test/controllers/categories_controllers_test.rb` and update the `show` test case.
-
-```
-  test "should show category" do
-    @category.save
-    get category_url(@category)
-    assert_response :success
+```ruby
+  setup do
+    @category = Category.create(name: "Sports")
   end
 ```
 
-Run `rails test` and all tests should pass.
+Run `rails test test/controllers/categories_controller_test` to specify the test.
+
+We get specific errors referring to missing templates for `new`, `index` and `show`.
+
+Create templates for each corresponding action: `new`, `index`, `show`. Under views, create a `categories` folder. In `categories`, create `index.html.erb`, `new.html.erb`, `show.html.erb`
+
+Run `rails test` and all tests should pass except the create.
 
 <div id="testing-the-creation-of-categories"></div>
 
 ## Testing the Creation of Categories
+
+We like to see if the creation of categories is successful in `new.html.erb`.
 
 Navigate to `views/categories/new.html.erb`. Create a form using `form_with` and create a label and text field for the `name` attribute.
 
@@ -264,11 +243,11 @@ Navigate to `views/categories/new.html.erb`. Create a form using `form_with` and
 <h1 class="text-center">New Category Creation form</h1>
 
 <div style="margin: 0 25%; width: 50%">
-  <%= render 'shared/errors', obj: @category %> <%= form_with(model: @category)
-  do |form| %>
+  <%= render 'shared/errors', obj: @category %> 
+  <%= form_with(model: @category) do |form| %>
   <div class="mb-3">
-    <%= form.label :name, "Name:", class:"form-label", placeholder: "Enter a
-    name" %> <%= form.text_field :name, class:"form-control" %>
+    <%= form.label :name, "Name:", class:"form-label", placeholder: "Enter a name" %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
   <%= form.submit("Create Category", class:"btn btn-primary") %> <% end %>
 </div>
@@ -284,7 +263,7 @@ class CategoriesController < ApplicationController
 
 ```
 
-In the `create` method, use the params hash to create a category as well category_params
+In the `create` method, use the `params` hash to create a category as well category_params
 
 ```ruby
     def create
@@ -328,17 +307,16 @@ Create an integration test for category.
 
 Run `rails g integration_test create_category`
 
-Navigate to `test/integration/create_category_test.rb`. Create a test with the description "get new category form and create category
+Navigate to `test/integration/create_category_test.rb`. Create a test with the description "get new category form and create category"
 
 ```ruby
 class CreateCategoryTest < ActionDispatch::IntegrationTest
   test "get new category form and create category" do
-
   end
 end
 ```
 
-Use the key word `get` to send a `get request` to "/categories/new". Use assert_response to record the outcome of the request
+Use the method `get` to send a `get request` to "/categories/new". Use `assert_response` to record the outcome of the request
 
 ```ruby
   test "get new category form and create category" do
@@ -377,7 +355,7 @@ Navigate to `controllers/categories_controller.rb`, under the `show` method, loc
     end
 ```
 
-Run `rails test`
+Run `rails test`. You should have no failures/errors.
 
 ### Integration test and feature: List categories
 
@@ -400,6 +378,14 @@ We will check the contents of `/categories` and test for contents of links of ea
   end
 ```
 
+In `controllers/categories_controller.rb`, under the `index` method, store all category instances in an instance variable.
+
+```ruby
+    def index
+        @categories = Category.all
+    end
+```
+
 To pass the test, navigate to `views/categories/index.html.erb`. Here is the content to successfully pass the test.
 
 ```html
@@ -407,17 +393,9 @@ To pass the test, navigate to `views/categories/index.html.erb`. Here is the con
 
 <div class="container text-center">
   <% @categories.each do |category| %> 
-  <%= link_to category.name, category_path(category), style:"border: 1px solid black; width:50%; margin: 0 25%; padding: 5%; display: block; font-size: 3rem;text-decoration: none" %> 
+    <%= link_to category.name, category_path(category), style:"border: 1px solid black; width:50%; margin: 0 25%; padding: 5%; display: block; font-size: 3rem;text-decoration: none" %>
   <%end %>
 </div>
-```
-
-In `controllers/categories_controller.rb`, under the `index` method, store all category instances in an instance variable.
-
-```ruby
-    def index
-        @categories = Category.all
-    end
 ```
 
 Run `rails test`
@@ -472,7 +450,6 @@ Navigate to `integration/categories_controller_test.rb`, define the `setup` meth
   setup do
     @category = Category.create(name: "Sports")
     @admin = User.create(username:"admin", email:"admin@gmail.com", password:"Admin", admin: true)
-    sign_in(user)
   end
 ```
 
@@ -496,6 +473,7 @@ Navigate to `create_category_test.rb`. Define setup and use `sign_in` to verify 
   setup do
     @admin = User.create(username:"1admin", email:"1admin@gmail.com", password:"Admin", admin: true)
   end
+  
   test "get new category form and create category" do
     sign_in(@admin)
 ```
@@ -558,7 +536,7 @@ class BookCategory < ApplicationRecord
 end
 ```
 
-Add belongs_to to category and book to validate each upon creation.
+Add `belongs_to` to category and book to validate each upon creation.
 
 ```ruby
 class BookCategory < ApplicationRecord
@@ -587,6 +565,7 @@ end
 Let's test this in the console
 
 Run `rails c`
+
 - `Category.create(name: "Sports")`
 - Enter `BookCategory.create(book_id: Book.first.id, category_id: Category.first.id)`
 - Enter `Book.first.categories` It should output categories associated with the book.
@@ -611,12 +590,13 @@ Navigate to `books/_form.html.erb`. Let's add the categories dropdown.
 </div>
 ```
 
-### Update book views to display categories
+### Update Book Views to Display Categories
 
 Create `_category.html.erb` under `views/categories`. The content of this file contains a category instance we've recieved that is being used as a link.
 
 ```html
-<%= link_to category.name, category_path(category), class:"badge bg-info text-dark", style:"text-decoration: none" %>
+<%= link_to category.name, category_path(category), class:"badge bg-info
+text-dark", style:"text-decoration: none" %>
 ```
 
 Navigate to `books/show.html.erb`, here I render the category partial while iterating through the books categories.
@@ -633,10 +613,8 @@ Navigate to `_books.html.erb` partial. Let's render the categories again.
 
 ```html
 <div class="card-header">
-  By <%= link_to book.user.username, user_path(book.user)%> 
-  <% if book.categories.any? %>
+  By <%= link_to book.user.username, user_path(book.user)%> <% if
   <div><%= render book.categories %></div>
-  <% end %>
 </div>
 ```
 
@@ -660,6 +638,7 @@ Enter `heroku run rails db:migrate`
 <br>
 
 ### Other Resources
+
 - [Episode #100 - Basic Testing Introduction in Rails](https://www.youtube.com/watch?v=jQvB0QWe5Bs&ab_channel=DriftingRuby)
 - [RSpec TDD - How To Unit Test Ruby On Rails 6 Apps For Absolute Beginners | 20in20 - Week 14](https://www.youtube.com/watch?v=AAqPc0j_2bg&t=20s&ab_channel=Deanin)
 
