@@ -269,8 +269,8 @@ end
 
 ```ruby
     def remove_friend 
-        Friendship.find_by(user_id: current_user.id, friend_id: params[:friend_id])
-        Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
+        Friendship.find_by(user_id: current_user.id, friend_id: params[:friend_id]).destroy
+        Friendship.find_by(user_id: params[:friend_id], friend_id: current_user.id).destroy
         redirect_to user_index_path
     end
 ```
