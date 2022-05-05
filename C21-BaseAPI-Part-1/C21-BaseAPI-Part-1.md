@@ -5,6 +5,9 @@
 
 ![Rails API](https://miro.medium.com/max/1400/0*CUdFIQoT8xDr3rW8.png)
 
+### Video Introduction
+[Base API Intro/using Postman to test API endpoints](https://www.youtube.com/watch?v=yPEIUxj2SyU&ab_channel=GermanCruz)
+
 # Getting Started with the Base API
 
 ---
