@@ -92,7 +92,22 @@
     - Testing Admin Requirements
     - Many to Many Assocation
   - [C21 Base API Part 1 - Schema/Models](./C21-BaseAPI-Part-1/C21-BaseAPI-Part-1.md)
+    - Introduction to the Base API
+    - ReadMe.md
+    - Version Requirement
+    - Setup
+    - Environmental Variables
+    - Access Rails Environment Variables
+    - Test Suite
+    - Background Processing
+    - GemFile
+    - Base API Start
+    - Schema
+    - Models
   - [C22 Base API Part 2 - Routes/Controllers](./C22-BaseAPI-Part-2/C22-BaseAPI-Part-2.md)
+    - Routes 
+    - Versioning
+    - Controllers
   - [C23 Base API Part 3 - Services](./C23-BaseAPI-Part-3/C23-BaseAPI-Part-3.md)
 
 ## Further Resources 
