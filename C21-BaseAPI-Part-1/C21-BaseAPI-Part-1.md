@@ -134,7 +134,7 @@ Once you have opened `credentials.yml.enc`, go ahead and include all environment
 
 These are keys used throughout the baseAPI. Most of these keys are placed already in the application.
 
-Let's go ahead and set the `max_threads` and `min_threads` to 5 like so 
+Let's go ahead and set the `max_threads` and `min_threads` to 5 like so
 
 ```
     workers:
@@ -159,6 +159,7 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 ```
+
 ---
 
 <div id="gemfile"></div>
@@ -435,7 +436,6 @@ More on [scopes](https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/).
 
 Before every user is created, an invitation token is generated. This is mainly for verifying emails. Let's inspect `generate_invitation_token`, a method defined in the user model class.
 
-
 ```ruby
   def generate_invitation_token
     self.invitation_expiration = DateTime.current + 7.day
@@ -450,8 +450,8 @@ Before every user is created, an invitation token is generated. This is mainly f
 ```ruby
     self.invitation_expiration = DateTime.current + 7.day
 ```
-`generate_invitation_token` stores the expiration date in `invitation_expiration` that is 7 days long. This is always changeable. Some expiration dates are 24 hours. Depending on your opinion/use case/argument.
 
+`generate_invitation_token` stores the expiration date in `invitation_expiration` that is 7 days long. This is always changeable. Some expiration dates are 24 hours. Depending on your opinion/use case/argument.
 
 ```ruby
     loop do
@@ -460,6 +460,7 @@ Before every user is created, an invitation token is generated. This is mainly f
       break unless self.class.exists?(invitation_token: invitation_token)
     end
 ```
+
 The next part of our method is a loop. You might've never seen a `loop` like this (I'd be careful, you don't want to start an infinite loop and break everything!) but it will stop when `break` is called.
 
 `SecureRandom.alphanumeric(15)` is going to combine a set of random digits and letters, about 15 of them in one long unreadable text. As mentioned in the ruby docs `This library (SecureRandom) is an interface to secure random number generators which are suitable for generating session keys in HTTP cookies, etc.` More on [SecureRandom](https://ruby-doc.org/stdlib-2.7.0/libdoc/securerandom/rdoc/SecureRandom.html).
@@ -474,16 +475,15 @@ Again, notice how descriptive the method name is `generate_invitation_token`, cl
 
 In case the `invitation_token` changes before saving the user, generate an invitation token instead. More on `will_save_change_to_attribute` [here](https://apidock.com/rails/v6.0.0/ActiveRecord/AttributeMethods/Dirty/will_save_change_to_attribute%3F).
 
-
 ### Sending Email to Invite User
 
-```ruby 
+```ruby
   after_commit :invite_user, if: :saved_change_to_invitation_token?
 ```
 
 `after_commit`, will execute the following method `invite_user` after the user has been saved only if the `invitation_token` attribute was changed. More on `saved_changed_to_attribute` [here](https://apidock.com/rails/v5.2.3/ActiveRecord/AttributeMethods/Dirty/saved_change_to_attribute).
 
-But what does `invite_user` do? 
+But what does `invite_user` do?
 
 ```ruby
   def invite_user
@@ -494,7 +494,6 @@ But what does `invite_user` do?
 
 `invite_user` is another `User` method that sends a user an email via`invitation_token`. Notice how that is being performed by `InvitationWorker`. What is that? And where does that exist? Navigate to `workers/invitation_worker.rb` and you'll see the configuration setup for sending an email. We aren't going to dive into emailing users but you can find a set of notes of a step by step process to do so [here](./../other/email-users-with-sendgrid-and-sidekiq.md).
 
-
 ```ruby
   def invitation_accepted_at!
     update(invitation_accepted: true, invitation_token: nil, invitation_expiration: nil)
@@ -504,15 +503,18 @@ But what does `invite_user` do?
 `invitation_accepted_at` will update the invitation attributes for when the user accepts the invitation.
 
 ### Token Model
+
 ```ruby
 class Token < ApplicationRecord
   belongs_to :user
 end
 ```
+
 The token model creates the association between tokens and users.
 
 ### user_role Model
-```ruby 
+
+```ruby
 # Join model that connects users to roles
 class UserRole < ApplicationRecord
   belongs_to :user
@@ -523,6 +525,7 @@ end
 ```
 
 ### Role Model
+
 ```ruby
 # frozen_string_literal: true
 
@@ -539,7 +542,7 @@ class Role < ApplicationRecord
 end
 ```
 
-## More 
+## More
 
 ### Test Suite
 
@@ -551,11 +554,12 @@ This project comes with [Sidekiq](https://github.com/mperham/sidekiq) and [Sidek
 
 You may want to look into utilizing something like Foreman to turn on and off all of your services at once. Otherwise, you can start Sidekiq in a new terminal by running `bundle exec sidekiq`.
 
-
 ## *Additional Resource*s
 
 ### Documentation
+
 - [Rails as an api](https://guides.rubyonrails.org/api_app.html)
+
 ### Videos
 
 - [Sidekiq and Redis](https://www.youtube.com/watch?v=aaGSh38nzq8&ab_channel=GoRails)
@@ -572,6 +576,7 @@ You may want to look into utilizing something like Foreman to turn on and off al
 - [How to Use Scopes in Ruby on Rails](https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/)
 - [Creating a Simple Rest Api with Rails](https://medium.com/@SJTGs/creating-a-simple-rest-api-with-rails-2e913acfc46)
 - [Building a RESTful API in a Rails Application]()
+
 ---
 
 ### Other Resources
