@@ -91,6 +91,9 @@
     - Integration Tests
     - Testing Admin Requirements
     - Many to Many Assocation
+  - [C21 Base API Part 1 - Schema/Models](./C21-BaseAPI-Part-1/C21-BaseAPI-Part-1.md)
+  - [C22 Base API Part 2 - Routes/Controllers](./C22-BaseAPI-Part-2/C22-BaseAPI-Part-2.md)
+  - [C23 Base API Part 3 - Routes/Controllers](./C23-BaseAPI-Part-3/C23-BaseAPI-Part-3.md)
 
 ## Further Resources 
 - [Rails Resources](./assets/resources/rails_resource.md)
