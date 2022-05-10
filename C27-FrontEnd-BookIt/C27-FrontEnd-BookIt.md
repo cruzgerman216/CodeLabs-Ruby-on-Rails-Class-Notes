@@ -41,9 +41,9 @@ Change Urls to the local server rails creates so we can test our Front End local
 
 ```ts
 const SIGN_UP_URL =
-  "https://bookit-api-test-run.herokuapp.com/api/v1/users/create";
+  "https://paducah-bookit-api.herokuapp.com/api/v1/users/create";
 const SIGN_IN_URL =
-  "https://bookit-api-test-run.herokuapp.com/api/v1/users/login";
+  "https://paducah-bookit-api.herokuapp.com/api/v1/users/login";
 ```
 
 Send a post request using the correct URL and remove the environment key as it's no longer needed. Also remove `returnSecureToken`. I went ahead and removed the pipe method and everything. This is mainly because I didn't want the user to be authenticated as soon as he/she signed up. In the future we can perhaps, send an email confirmed to make sure they own the email they are using.
@@ -285,7 +285,7 @@ Navigate to `shared/http/http.service.ts`. Let's redefine `fetchBooksFromFirebas
 
 ```ts
   fetchBooks() {
-    return this.http.get("https://bookit-api-test-run.herokuapp.com/api/v1/books/my_books", {}).pipe(
+    return this.http.get("https://paducah-bookit-api.herokuapp.com/api/v1/books/my_books", {}).pipe(
       tap((res: any) => {
         this.bookshelfService.setBooks(res.payload);
       })
@@ -362,7 +362,7 @@ Let's navigate to `http.service.ts` and replace `saveBooksToFirebase` to `saveBo
 
 ```ts
   saveBook(book) {
-    this.http.post("https://bookit-api-test-run.herokuapp.com/api/v1/books", book).subscribe((res:any) => {
+    this.http.post("https://paducah-bookit-api.herokuapp.com/api/v1/books", book).subscribe((res:any) => {
       this.bookshelfService.saveBook(res.payload.book)
     });
   }
@@ -402,7 +402,7 @@ Navigate to `http.service.ts` and define `deleteBook`. Send a delete request to 
 
 ```ts
   deleteBook(id) {
-    return this.http.delete(`https://bookit-api-test-run.herokuapp.com/api/v1/books/${id}`)
+    return this.http.delete(`https://paducah-bookit-api.herokuapp.com/api/v1/books/${id}`)
   }
 ```
 
@@ -588,7 +588,7 @@ Navigate to `bookshelf.service.ts` and define `updateBook`.
 
 ```ts
   updateBook(book) {
-    return this.http.put(`https://bookit-api-test-run.herokuapp.com/api/v1/books/${book.id}`, book)
+    return this.http.put(`https://paducah-bookit-api.herokuapp.com/api/v1/books/${book.id}`, book)
   }
 ```
 
