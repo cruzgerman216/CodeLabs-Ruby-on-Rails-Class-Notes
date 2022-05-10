@@ -23,14 +23,13 @@
 
 ## Getting Started
 
-Navigate to [Angular repo](https://github.com/NolanHovis/Angular-Bootcamp_Students-App)
+Navigate to the [Angular repo](https://github.com/cruzgerman216/Front-End-Book-It-Application)
 
-- clone repo/open in github desktop
-- open project in finder
-  - delete .git(if you can't find .git, press shift + cmd + .)
-- find and open the project in github desktop
-- publish repo, open in vs code and run npm install
-- Make sure you have the API running locally
+- Select `use this template`
+- Follow the steps to create a repo
+- Open in GitHub desktop 
+- Open in vs code and run npm install
+- Make sure you have the API running locally if not you can use the deployed API: https://paducah-bookit-api.herokuapp.com/ to follow along with.
 
 <div id="signing-up"></div>
 
