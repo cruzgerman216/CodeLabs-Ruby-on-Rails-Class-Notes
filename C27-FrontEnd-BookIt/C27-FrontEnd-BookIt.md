@@ -821,9 +821,9 @@ Navigate to `book-details.component.ts` and inject HttpService.
 ```
 
 
-## Other not important Tasks
+### Other
 
-_bookshelf.component.ts_
+`bookshelf.component.ts`
 
 ```ts
 const alertMsg = `Successful request`;
@@ -840,15 +840,13 @@ _Terminal_:
 
 - Install the latest version of the `@angular/cli@latest` and `@angular/compiler-cli` packages as developer dependencies.
 
-- Install "express" (a package for create nodeJS servers) and "path" (for working with computer file-paths).
+- Install "express" (a package for create nodeJS servers)
 
 - Check your version of "node" and "npm" by running two commands. Save these values for later.
 
 ```zsh
-# Only if you are not on version 12... version 13 will break this!
-npm install --save-dev @angular/cli@latest @angular/compiler-cli
 # . . .
-npm install express path
+npm install express 
 # . . .
 node -v
 # . . .
@@ -865,7 +863,16 @@ _package.json file_:
 
 - Change the "start" script to run "node server.js"... a file we will create in the next step.
 
-- Under the "devDependencies" object, add a new property "engines" that is set to an object containing the "node" and "npm" versions gathered earlier.
+```json
+  "scripts": {
+    "ng": "ng",
+    "start": "node server.js",
+    "build": "ng build",
+    "heroku-postbuild": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+```
 
 - _Note_: If the versions you have are throwing errors, paste these in: `"@angular/cli": "^12.2.1", "@angular/compiler-cli": "^12.1.5", "typescript": "~4.3.2"` and run `npm i`.
 
@@ -911,10 +918,6 @@ _package.json file_:
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.3.2"
-  },
-  "engines": {
-    "node": "16.5.0",
-    "npm": "7.20.0"
   }
 }
 ```
@@ -923,16 +926,15 @@ _package.json file_:
 
 _server.js file_:
 
-- Inside the root of the application, create a new file called "server.js".
+- Inside the root of the project folder(outside of the src folder), create a new file called "server.js".
 
-- This file should import the "express" and "path" packages, initialize `express()`, serve the static build files from the "dist" folder, route incoming server requests to the correct location, and listen on a new port.
+- This file should import the "express" initialize `express()`, serve the static build files from the "dist" folder, route incoming server requests to the correct location, and listen on a new port.
 
 - _Note_: To find out the projects name, run "ng build" in the terminal and check the file located directly under the "dist" directory.
 
 ```javascript
 // Import Express & Path Packages
 const express = require("express");
-const path = require("path");
 
 // Initialize express
 const app = express();
@@ -955,21 +957,10 @@ app.listen(process.env.PORT || 8080);
 
 ### STEP 4 - Hooking Up Heroku
 
-_Heroku Website_:
-
-- In the browser, head on over to [https://www.heroku.com/](https://www.heroku.com/).
-
-- Create an account.
-
-- Create a new app.
-
-- In the "Deployment Method" tab, choose the "Connect to GitHub" option.
-
-- Select the repository the main project is located inside.
-
-- Enable Automatic Deploys.
-
-- Click Deploy Branch.
+Enter `heroku create` in the terminal. 
+Enter `heroku rename BookItApp`
+Enter `git push heroku main`
+Enter `heroku open`
 
 ---
 
