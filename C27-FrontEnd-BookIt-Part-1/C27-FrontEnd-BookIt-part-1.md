@@ -238,7 +238,6 @@ const modifiedReq = req.clone({
 ```
 
 We don't want every request to attach the token, specifically when we want requests from `openlibrary`.
-
 ```ts
       exhaustMap((user) => {
         // Make sure we have a user
@@ -318,7 +317,7 @@ this.user = user;
 this.isAuthenticated = !!user;
 ```
 
-The navigate to `bookshelf/book-resolver.servcice.ts`, replace `fetchBooksFromFirebase()` to `fetchBooks`.
+The navigate to `bookshelf/book-resolver.service.ts`, replace `fetchBooksFromFirebase()` to `fetchBooks`.
 
 ```ts
   autoSignIn() {
