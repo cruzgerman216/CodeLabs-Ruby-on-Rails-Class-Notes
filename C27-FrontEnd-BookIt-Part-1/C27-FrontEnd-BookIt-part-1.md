@@ -38,7 +38,7 @@ Navigate to [Angular repo](https://github.com/NolanHovis/Angular-Bootcamp_Studen
 
 Navigate to _shared/auth/auth.service.ts_ to configure the authentication setting. Removing all Firebase URLs/logic.
 
-Change Urls to the local server rails creates so we can test our Front End locally or you can use the deployed applicaiton. I will pick the deployed API.
+Change Urls to the local server rails creates so we can test our Front End locally or you can use the deployed application. I will pick the deployed API.
 
 ```ts
 const SIGN_UP_URL =
@@ -47,7 +47,7 @@ const SIGN_IN_URL =
   "https://bookit-api-test-run.herokuapp.com/api/v1/users/login";
 ```
 
-Send a post request using the correct URL and remove the environemnt key as it's no longer needed. Also remove `returnSecureToken`. I went ahead and removed the pipe method and everything. This is mainly because I didn't want the user to be authenticated as soon as he/she signed up. In the future we can perhaps, send an email confirmed to make sure they own the email they are using.
+Send a post request using the correct URL and remove the environment key as it's no longer needed. Also remove `returnSecureToken`. I went ahead and removed the pipe method and everything. This is mainly because I didn't want the user to be authenticated as soon as he/she signed up. In the future we can perhaps, send an email confirmed to make sure they own the email they are using.
 
 ```ts
   signUp(email: string, password: string) {
@@ -132,7 +132,7 @@ Navigate to _auth.component.html_, and include `msg`.
 <p class="alert alert-success mt-3" *ngIf="msg">{{ msg }}</p>
 ```
 
-We Have a bug, when the user logs in, the user isn't able to navigate to bookshelf. Navigate to `auth.service.ts`, under `handleAuth`: we no longer need to multiply the expiration time by 1000 because it is already in MS. Also, because `this.autoSignOut(expiresIn \*1000) includes the added multiplicated, setTimeout will break because it's too big of a number. Either way, we don't want to multiply by 1000 because it's in MS already.
+We Have a bug, when the user logs in, the user isn't able to navigate to bookshelf. Navigate to `auth.service.ts`, under `handleAuth`: we no longer need to multiply the expiration time by 1000 because it is already in MS. Also, because `this.autoSignOut(expiresIn \*1000) includes the added multiplication, setTimeout will break because it's too big of a number. Either way, we don't want to multiply by 1000 because it's in MS already.
 
 ```ts
     const expDate = new Date(new Date().getTime() + expiresIn);
@@ -146,7 +146,7 @@ We Have a bug, when the user logs in, the user isn't able to navigate to bookshe
 
 ## Auto Login and Bugs
 
-Now that we have sign up and logging in handled. Let's go ahead and allow the user to auto login. After logging in and refreshing the page, we are redirected to the auth page. Let's create a guard to redirect the user if the user user has a token stored in local staorage.
+Now that we have sign up and logging in handled. Let's go ahead and allow the user to auto login. After logging in and refreshing the page, we are redirected to the auth page. Let's create a guard to redirect the user if the user user has a token stored in local storage.
 
 Run `ng g shared/auth/session` and enter for `CanActivate`.
 
@@ -207,7 +207,7 @@ map((user) => {
 });
 ```
 
-When the user does exist, execute `autoSignIn` from `authService`. This will setup the user as well as the auto signout.
+When the user does exist, execute `autoSignIn` from `authService`. This will setup the user as well as the auto sign out.
 
 ```ts
         if (userData || user) {
@@ -282,7 +282,7 @@ this.currUser.next(formUser);
 this.httpService.fetchBooks().subscribe();
 ```
 
-Navigate to `shared/http/http.service.ts`. Let's redefine `fetcchBooksFromFirebase` to `fetchBooks`. Instead of URL being firebase's url, change it to the correct url `my_books` endpoint from the book it api. Be sure to pass in the correct value of books from `res.payload`.
+Navigate to `shared/http/http.service.ts`. Let's redefine `fetchBooksFromFirebase` to `fetchBooks`. Instead of URL being firebase's url, change it to the correct url `my_books` endpoint from the book it api. Be sure to pass in the correct value of books from `res.payload`.
 
 ```ts
   fetchBooks() {
@@ -418,7 +418,7 @@ Inject HttpService.
   }
 ```
 
-Let's also adjust `this.bookshelfService.removeBook(id)`. Navigate to `bookhelf.service.ts`, and then let's define a method called `getBookById(id)`.
+Let's also adjust `this.bookshelfService.removeBook(id)`. Navigate to `bookshelf.service.ts`, and then let's define a method called `getBookById(id)`.
 
 ```ts
   getBookById(id){
@@ -444,7 +444,7 @@ Let's also adjust `this.bookshelfService.removeBook(id)`. Navigate to `bookhelf.
   }
 ```
 
-Let's Adjust `book-list.component.html`. Pass down the book id to the book component as well as to `onRemoveBook` as an arugment. We no longer want to rely on the index to display information because it'll be redundant for us to navigate the id using the index. Also, our requests rely on ids rather than index.
+Let's Adjust `book-list.component.html`. Pass down the book id to the book component as well as to `onRemoveBook` as an argument. We no longer want to rely on the index to display information because it'll be redundant for us to navigate the id using the index. Also, our requests rely on ids rather than index.
 
 ```html
   <div

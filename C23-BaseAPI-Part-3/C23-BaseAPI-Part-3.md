@@ -17,7 +17,7 @@
 
 ### Fat Model Thin Controller Demonstration
 
-"Fat Model Thin Controller" is a pattern for when actions aren't compact with too much logic and instead are extracted into the model. Here's an example. I went ahead and refactored the `login` action from `controllers/user_controler.rb` to demonstrate this concept.
+"Fat Model Thin Controller" is a pattern for when actions aren't compact with too much logic and instead are extracted into the model. Here's an example. I went ahead and refactored the `login` action from `controllers/user_controller.rb` to demonstrate this concept.
 
 ```ruby
       def login
@@ -36,7 +36,7 @@
       end
 ```
 
-Notice how difficult this is to read. It's hard to manage and figure out what exactly is going on and what is dealing with the `login` logic. This is referred to as a `fat` controller action. There will be use cases where a controller method can be as big as 20 lines of code and there's not a way for it to extract it and that is fine. This is just a commmonly used pattern for readability purposes. Let's go ahead and extract this logic into a model to confirm to the `fat model thin controller` pattern.
+Notice how difficult this is to read. It's hard to manage and figure out what exactly is going on and what is dealing with the `login` logic. This is referred to as a `fat` controller action. There will be use cases where a controller method can be as big as 20 lines of code and there's not a way for it to extract it and that is fine. This is just a commonly used pattern for readability purposes. Let's go ahead and extract this logic into a model to confirm to the `fat model thin controller` pattern.
 
 ```ruby
       def login
@@ -484,5 +484,6 @@ There are several files we haven't fully explored but I urge you to go through t
 
 ---
 
+---
 :wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
 

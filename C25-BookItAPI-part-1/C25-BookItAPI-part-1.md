@@ -23,7 +23,7 @@
 
 ## Overview - Angular/Rails Stack
 
-It's time to start adding endpoints to the Base API. The best way to get adjusted to a code base is to start expirementing (locally that is of course) and start adding new features.
+It's time to start adding endpoints to the Base API. The best way to get adjusted to a code base is to start experimenting (locally that is of course) and start adding new features.
 
 Do you remember the application we developed in the Front End, that's right, the Book It App. Of course you do. You can probably see where this is going. That's right, we are going to take that Front End App and connect that to our Book It API. But first let's start with the API. That way we know what data we are going to deal with and what requests to be handled.
 
@@ -338,5 +338,9 @@ In the command line, enter `heroku config:set RAILS_MASTER_KE2Y=YOUR_MASTER_KEY`
 ### Testing in Postman
 
 Go ahead and test your API in postman.
+
+---
+
+---
 
 :wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!

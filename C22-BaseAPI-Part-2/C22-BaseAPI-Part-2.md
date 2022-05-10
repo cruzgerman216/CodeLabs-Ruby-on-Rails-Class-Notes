@@ -52,7 +52,7 @@ This is a Sidekiq configuration block of code. `scope :monitoring` is prefixing 
   end
 ```
 
-Namespacing is just another way of prexing the defined paths such as
+Namespacing is just another way of prefixing the defined paths such as
 
 - logging in a user by sending a post request to `/api/v1/users/login`
 - logging out a user by sending a delete request to `/api/v1/users/logout`
@@ -87,7 +87,7 @@ end
 
 ### Application Controller
 
-Now, let's get to the meat of the API and move onto controllers. So far we've talk about the layout of the database, the models and associations as well as the defined routes users can request. Now how do we deal with these requests? Let's navigate to `controllers/application_controller.rb`. This class isn't inherited by any other controller class in the application but is a great baseline. Let's disect this before moving onto version one controllers.
+Now, let's get to the meat of the API and move onto controllers. So far we've talk about the layout of the database, the models and associations as well as the defined routes users can request. Now how do we deal with these requests? Let's navigate to `controllers/application_controller.rb`. This class isn't inherited by any other controller class in the application but is a great baseline. Let's dissect this before moving onto version one controllers.
 
 ```ruby
 class ApplicationController < ActionController::API
@@ -230,7 +230,7 @@ This method will check to see if the token exists and also checks to see if the 
 
 `success` is automatically set to false. This is because when our Front End takes this response, we can include a condition that checks whether or not their request had failed.
 
-`internval server error` is the status of the response, specifically a 500 error which means that something went wrong with the server.
+`internal server error` is the status of the response, specifically a 500 error which means that something went wrong with the server.
 
 ### render_success
 
@@ -336,7 +336,7 @@ Let's dive deep into the logic action and talk about the api's pattern in contro
       end
 ```
 
-We're use to authenticating the user within this action here but we're extracted that into a module(service) called `BaseApi::Auth`. We aren't yet concerned with what login does at the moment but we know that it will handle authenticating the user. We've been doing that the entire time during our programming journey, using methods that we didn't create. This one is no difference. It takes in three parameters, email and password as well as `@ip`. `@ip` should be regarded as `reuest.remote_ip` which provides the ip address of the user.
+We're use to authenticating the user within this action here but we're extracted that into a module(service) called `BaseApi::Auth`. We aren't yet concerned with what login does at the moment but we know that it will handle authenticating the user. We've been doing that the entire time during our programming journey, using methods that we didn't create. This one is no difference. It takes in three parameters, email and password as well as `@ip`. `@ip` should be regarded as `request.remote_ip` which provides the ip address of the user.
 
 `@ip` is used to create the token when logging in.
 
@@ -645,12 +645,6 @@ When `invite_token_is` returns this specific user, `invite_not_expired` is calle
 
 ---
 
+---
+
 :wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
-
-```
-
-```
-
-```
-
-```

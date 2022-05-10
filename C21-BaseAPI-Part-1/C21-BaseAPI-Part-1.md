@@ -26,7 +26,7 @@
 
 <details>
   <summary><strong>API</strong></summary>
-  <em>API</em> is an ancronym for application programming interface. An API is a rigid guildline in allowing two applications to communicate with each other. 
+  <em>API</em> is an acronym for application programming interface. An API is a rigid guideline in allowing two applications to communicate with each other. 
 </details>
 
 ---
@@ -47,7 +47,7 @@ REST stands for Representational State Transfer. In REST, HTTP verbs are standar
 
 ### Client-Server Architecture
 
-The specific type of relationship we like to build is the client-server architecture. This style pattern allows our client side application (Angular app) to communicate with our server/Back End Rails API. This standard principle introduces a separation of concerns in which dissembles two applications. One side, client side. The other side, server side. This improves scalability and "it allows components to evolve indepedently".
+The specific type of relationship we like to build is the client-server architecture. This style pattern allows our client side application (Angular app) to communicate with our server/Back End Rails API. This standard principle introduces a separation of concerns in which dissembles two applications. One side, client side. The other side, server side. This improves scalability and "it allows components to evolve independently".
 
 <img src="https://i.pinimg.com/originals/d6/a1/27/d6a12727a608673c4a097378abcee581.jpg" width="400px">
 
@@ -59,15 +59,15 @@ The specific type of relationship we like to build is the client-server architec
 
 Before we start, keep in mind when reading code, how descriptive and how meaningfully worded each method, attributes, ect are. Clean code will really help you understand what something will do without knowing the logic behind it.
 
-The Base API, provided by the Codefi team, is an **AWESOME** starter kit for developing a Rails API. The purpose of this section of the Back End is to get use to pre-existing code that's been handed to you, absorb all of it's available features and develop amazing APIs. We expect that when you are going into a technical interview, you will explain the workflow of the API and how you used it to your advantage. Keep in mind, we won't be using all of it's features (sending emails to users unless you really want to pay for that service) in the course but perhaps later down the road, you will. Sure you can [develop your own API from sratch](https://guides.rubyonrails.org/api_app.html) but again, the purpose of this module is to add features to pre-existing code and create a Full Stack Application (Front End Angular/Back End Rails). When you get hired, the first thing you'll do is get use to the code base and from there, add features. We are simulating that environment here.
+The Base API, provided by the Codefi team, is an **AWESOME** starter kit for developing a Rails API. The purpose of this section of the Back End is to get use to pre-existing code that's been handed to you, absorb all of it's available features and develop amazing APIs. We expect that when you are going into a technical interview, you will explain the workflow of the API and how you used it to your advantage. Keep in mind, we won't be using all of it's features (sending emails to users unless you really want to pay for that service) in the course but perhaps later down the road, you will. Sure you can [develop your own API from scratch](https://guides.rubyonrails.org/api_app.html) but again, the purpose of this module is to add features to pre-existing code and create a Full Stack Application (Front End Angular/Back End Rails). When you get hired, the first thing you'll do is get use to the code base and from there, add features. We are simulating that environment here.
 
 Here is the [remote repository](https://github.com/leehodges/CodeLabsApi) for the base API we will be using. Click `use this template`.
 
-Please fork the repo and start using it. These notes will guide you in understanding the Base API and explore it's available features. Expirement. Get curious and start building!
+Please fork the repo and start using it. These notes will guide you in understanding the Base API and explore it's available features. Experiment. Get curious and start building!
 
 ### README
 
-The `README.md` should be the very first thing you go over. The `README.md` file will go over the necessary steps to confguring the API. Let's go over it!
+The `README.md` should be the very first thing you go over. The `README.md` file will go over the necessary steps to configuring the API. Let's go over it!
 
 ### Version Requirement
 
@@ -103,7 +103,7 @@ In order to run this command, you would first need to include your code editor i
 
 <details>
   <summary><strong>Note</strong></summary>
-In order for you to decrypt `credentials.yml.enc` and see your hidden keys, you first would need the `master.key`. When running `EDITOR="code --wait" bin/rails credentials:edit` again, Rails will look for `master.key` and use it to decrypt `credentials.yml.enc`. `mastery.key` holds a value that you want to share with your team (this file is automatically ignored so we don't have to worry about accidently pushing to github).
+In order for you to decrypt `credentials.yml.enc` and see your hidden keys, you first would need the `master.key`. When running `EDITOR="code --wait" bin/rails credentials:edit` again, Rails will look for `master.key` and use it to decrypt `credentials.yml.enc`. `mastery.key` holds a value that you want to share with your team (this file is automatically ignored so we don't have to worry about accidentally pushing to github).
 </details>
 
 ### Adding Environmental Variables
@@ -393,7 +393,7 @@ References will create an index for user and role. An index is a schema object t
 
 ## Models
 
-Let's talk about the models of the Base API. Remember, models provide methods that are commonly used queries. We sometimes make our own custom queries. These methods don't have to be only for custom queries, maybe we like to add validations to prevent what can be saved to the database. Even as important are associations, relationships amongs two types of entities in our DB.
+Let's talk about the models of the Base API. Remember, models provide methods that are commonly used queries. We sometimes make our own custom queries. These methods don't have to be only for custom queries, maybe we like to add validations to prevent what can be saved to the database. Even as important are associations, relationships amongst two types of entities in our DB.
 
 ### User model
 
@@ -593,6 +593,8 @@ You may want to look into utilizing something like Foreman to turn on and off al
 - Display tables in Rails console
   - Enter `rails c`
   - Enter `ActiveRecord::Base.connection.tables`
+
+---
 
 ---
 
