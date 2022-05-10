@@ -10,6 +10,7 @@
 - <a href="#auto-login-and-bugs">Auto Login and Bugs</a>
 - <a href="#authorizing-user-requests">Authorizing User Requests</a>
 - <a href="#auto-fetching-books">Auto Fetching books</a>
+- <a href="#logout">Logging out User</a>
 - <a href="#saving-a-book-from-bookshelf">Saving a Book from Bookshelf</a>
 - <a href="#saving-a-book-from-open-library">Saving a Book from Open Library</a>
 - <a href="#deleting-books">Deleting Books</a>
@@ -35,9 +36,9 @@ Navigate to the [Angular repo](https://github.com/cruzgerman216/Front-End-Book-I
 
 ## Updating Sign Up
 
-Navigate to _shared/auth/auth.service.ts_ to configure the authentication setting. Removing all Firebase URLs/logic.
+Navigate to `shared/auth/auth.service.ts` to configure the authentication setting. Remove all Firebase URLs/logic.
 
-Change Urls to the local server rails creates so we can test our Front End locally or you can use the deployed application. I will pick the deployed API.
+Change Urls to the local server Rails creates so we can test our Front End locally or you can use the deployed application. I will pick the deployed API.
 
 ```ts
 const SIGN_UP_URL =
@@ -46,7 +47,7 @@ const SIGN_IN_URL =
   "https://paducah-bookit-api.herokuapp.com/api/v1/users/login";
 ```
 
-Send a post request using the correct URL and remove the environment key as it's no longer needed. Also remove `returnSecureToken`. I went ahead and removed the pipe method and everything. This is mainly because I didn't want the user to be authenticated as soon as he/she signed up. In the future we can perhaps, send an email confirmed to make sure they own the email they are using.
+Send a post request using the correct URL and remove the environment key as it's no longer needed. Also remove `returnSecureToken`. I went ahead and removed the pipe method and everything along with it.  In the future we can perhaps, send an email confirmed to make sure they own the email they are using.
 
 ```ts
   signUp(email: string, password: string) {
@@ -58,13 +59,13 @@ Send a post request using the correct URL and remove the environment key as it's
   }
 ```
 
-Test to see if it works.
+Test to see if it works. Check the console for a successful response after signing up.
 
 <div id="signing-in"></div>
 
 ## Signing In
 
-In _shared/auth/auth.service.ts_, alter the `signIn` to the correct url and remove `returnSecureToken`
+In `shared/auth/auth.service.ts`, alter the `signIn` to the correct url and remove `returnSecureToken`. Be sure sure to include pipe. The `tap` operator will execute `handleAuth` which will authenticate the user.
 
 ```ts
   signIn(email: string, password: string) {
@@ -73,17 +74,73 @@ In _shared/auth/auth.service.ts_, alter the `signIn` to the correct url and remo
         email,
         password,
       })
+      .pipe(
+        tap((res) => {
+          // Use "object destructuring" to get acess to all response values
+          const { email, localId, idToken, expiresIn } = res;
+          // Pass the response values into handleAuth method
+          this.handleAuth(email, localId, idToken, +expiresIn);
+        })
+      );
+  }
 ```
 
-We are no longer dealing with the payload from firebase, we are dealing with the payload from the Book It API so we have to go ahead and make a few changes.
+We are no longer dealing with the payload from FireBase, we are dealing with the payload from the Book It API so we have to go ahead and make a few changes.
 
 Make `res` of type `any`.
 
-Grab `exipiry` and the token `value` from payload.
+Grab `expiry` and `value` from token in payload. Remember, when we send a request to sign in a user, our response body looks like this. 
 
-Convert the expiry value into JS date object and get the difference using `Date.now()` in milliseconds.
+(Retrieved response body from postman)
+```json
+{
+    "success": true,
+    "payload": {
+        "user": {
+            "id": 1,
+            "email": "test@test.com",
+            "first_name": null,
+            "last_name": null,
+            "name": " ",
+            "token": {
+                "id": 2,
+                "created_at": "2022-05-10T18:50:06.828Z",
+                "expiry": "2022-05-17T18:50:06.808Z",
+                "ip": null,
+                "revocation_date": null,
+                "updated_at": "2022-05-10T18:50:06.828Z",
+                "user_id": 1,
+                "value": "44a8f3f0e3300df62a0d781dfba472b827505ba0"
+            }
+        },
+        "token": {
+            "id": 2,
+            "created_at": "2022-05-10T18:50:06.828Z",
+            "expiry": "2022-05-17T18:50:06.808Z",
+            "ip": null,
+            "revocation_date": null,
+            "updated_at": "2022-05-10T18:50:06.828Z",
+            "user_id": 1,
+            "value": "44a8f3f0e3300df62a0d781dfba472b827505ba0"
+        }
+    }
+}
+```
 
-Convert the time
+Also get the `email` and `id` from `res.payload.user`.
+
+```ts
+      .pipe(
+        tap((res: any) => {
+          const { expiry, value } = res.payload.token;
+          const { email, id } = res.payload.user;
+          // Pass the response values into handleAuth method
+          this.handleAuth(email, localId, idToken, +expiresIn);
+        })
+      );
+```
+
+Convert `expiry` into JS date object and get the difference using `Date.now()` in milliseconds. Store this in a variable called `expiresIn`. This will give us the expiration time of the token. 
 
 ```ts
       .pipe(
@@ -91,24 +148,45 @@ Convert the time
           const { expiry, value } = res.payload.token;
           const { email, id } = res.payload.user;
 
-          const expirationTIme = new Date(expiry).getTime() - Date.now();
-          this.handleAuth(email, id, value, +expirationTIme);
+          const expiresIn = new Date(expiry).getTime() - Date.now();
+          this.handleAuth(email, id, value, +expiresIn);
         })
       );
 ```
 
-Test the sign in logic. After signing in, take a look at the api server and check to see if the request was successful. You can check whether or not a token was created upon login by going to the rails console and entering `User.first.tokens`.
+Thus, 
+```ts
+  //   Sign In!
+  signIn(email: string, password: string) {
+    return this.http
+      .post<AuthResponseData>(SIGN_IN_URL, {
+        email,
+        password,
+      })
+      .pipe(
+        tap((res) => {
+          const { expiry, value } = res.payload.token;
+          const { email, id } = res.payload.user;
 
-### Messags and Navigating The User Upon Login
+          const expiresIn = new Date(expiry).getTime() - Date.now();
+          this.handleAuth(email, id, value, +expiresIn);
+        })
+      );
+  }
+```
 
-Adding messages allows the user to know what to do next. Navigate to `auth.component.ts`. Let's go ahead and define a new property called `msg`that is of type`string`and set to`null`.
+Test the sign in logic. Check the console for a successful response after signing up.
+
+### Messages and Navigating The User Upon Login
+
+Adding messages allows the user to know what to do next. Navigate to `auth.component.ts`. Let's go ahead and define a new property called `msg` that is of type `string` and set to null.
 
 ```ts
 errMsg: string = null;
 msg: string = null;
 ```
 
-Within `authObsrv`'s subscribe method, check to see if `isLoginMode` is true, if so, navigate the user to bookshelf, otherwise set `msg` to `Thank you for signing up! Please login.`. Then set `isLoginMode` to `true`.
+In the `onAuthFormSubmit` method, within `authObsrv`'s subscribe method, check to see if `isLoginMode` is true, if so, navigate the user to bookshelf, otherwise set `msg` to `Thank you for signing up! Please login.`. Then set `isLoginMode` to `true`.
 
 ```ts
     this.authObsrv.subscribe(
@@ -119,19 +197,24 @@ Within `authObsrv`'s subscribe method, check to see if `isLoginMode` is true, if
         if (this.isLoginMode) {
           this.router.navigate(['bookshelf']);
         }else {
-          this.msg = "Thank you for siging up! Please login."
+          this.msg = "Thank you for signing up! Please login."
           this.isLoginMode = true;
         }
       },
 ```
 
-Navigate to _auth.component.html_, and include `msg`.
+Navigate to `auth.component.html` and include `msg`.
 
 ```html
-<p class="alert alert-success mt-3" *ngIf="msg">{{ msg }}</p>
+    <!-- ERROR -->
+    <p class="alert alert-danger mt-3" *ngIf="errMsg">{{ errMsg }}</p>
+    <!-- MESSAGE -->
+    <p class="alert alert-success mt-3" *ngIf="msg">{{ msg }}</p>
 ```
 
-We Have a bug, when the user logs in, the user isn't able to navigate to bookshelf. Navigate to `auth.service.ts`, under `handleAuth`: we no longer need to multiply the expiration time by 1000 because it is already in MS. Also, because `this.autoSignOut(expiresIn \*1000) includes the added multiplication, setTimeout will break because it's too big of a number. Either way, we don't want to multiply by 1000 because it's in MS already.
+Go ahead and try signing up. Then login. After logging in, notice how the user did not navigate to the bookshelf.
+
+We Have a bug, when the user logs in, the user isn't able to navigate to bookshelf. Navigate to `auth.service.ts`, under `handleAuth` method, we no longer need to multiply the expiration time by 1000 because it is already in MS. Also, because `this.autoSignOut(expiresIn *1000)` includes the added multiplication, setTimeout will break because it's too big of a number. Either way, we don't want to multiply by 1000 because it's in MS already. Update the following lines. 
 
 ```ts
     const expDate = new Date(new Date().getTime() + expiresIn);
@@ -141,40 +224,129 @@ We Have a bug, when the user logs in, the user isn't able to navigate to bookshe
     this.autoSignOut(expiresIn);
 ```
 
+Thus, 
+
+```ts
+  handleAuth(email: string, userId: string, token: string, expiresIn: number) {
+    // Create Expiration Date for Token
+    const expDate = new Date(new Date().getTime() + expiresIn);
+
+    // Create a new user based on the info passed in . . . and emit that user
+    const formUser = new User(email, userId, token, expDate);
+    this.currUser.next(formUser);
+
+    // Set a new timer for expiration token
+    this.autoSignOut(expiresIn);
+
+    // Save the new user to localStorage
+    localStorage.setItem('userData', JSON.stringify(formUser));
+  }
+```
+
+Now try to login. The user should be routed to the bookshelf path after logging in.
+
 <div id="auto-login-and-bugs"></div>
 
 ## Auto Login and Bugs
 
-Now that we have sign up and logging in handled. Let's go ahead and allow the user to auto login. After logging in and refreshing the page, we are redirected to the auth page. Let's create a guard to redirect the user if the user user has a token stored in local storage.
+Now that we have sign up and logging in handled, let's go ahead and allow the user to auto login. After logging in and refreshing the page, we are redirected to the auth view. Let's create a guard to redirect the user to the bookshelf view if the user has a token stored in local storage.
 
-Run `ng g shared/auth/session` and enter for `CanActivate`.
+Run `ng g guard shared/auth/session` and enter for `CanActivate`.
+
+We get 
+
+```ts 
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SessionGuard implements CanActivate {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return true;
+  }
+  
+}
+``` 
+
+Inject `Router` into the class.
+
+
+Within the can activate method, let's grab a hold of the user Data from localStorage. If there exists a value in localstorage, return a urlTree(basically navigate the user to the bookshelf view), otherwise return true. 
+
+Thus, 
 
 ```ts
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
   RouterStateSnapshot,
   UrlTree,
-} from "@angular/router";
-import { map, take } from "rxjs/operators";
-import { AuthService } from "./auth.service";
+} from '@angular/router';
+import { map, take } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class SessionGuard implements CanActivate {
+  constructor( private router: Router) {}
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    // If session was stored, navigate user to bookshelf
+    if ( userData) {
+      return this.router.createUrlTree(['bookshelf']);
+    } else {
+      // If session not found, allow access to auth view
+      return true;
+    }
+  }
+}
+
+```
+
+Navigate to `app-routing.module`. Include `SessionGuard` under the `auth` path.
+
+```ts
+  {
+    path: 'auth',
+    canActivate: [SessionGuard],
+    loadChildren: () =>
+      import('./shared/auth/auth.module').then((m) => m.AuthModule),
+  },
+```
+
+Because we included the `SessionGuard` under `auth`, we must then alter the `bookshelf` path and it's guard. Right now the guard (auth guard) will return the user to `auth` when `user` is null. Which, will create an infinite loop.
+
+Example 
+
+User who's sign in, refreshes the page on the bookshelf path. 
+The auth guard hits the bookshelf and will return the user to the auth view when the user is null. Initially the user will always be null. 
+
+Because of this logic, when the user navigates to the auth afterwords, the session guard will then navigate the user right back the bookshelf view because there is a session in local storage, and so on and so on in this infinite loop.
+
+Navigate to `auth.guard.ts`. Get the data from localstorage, if the userData exists as well as user, return true otherwise go back to the auth page. Let's change this to the following.
+
+```ts
+export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.authService.currUser.pipe(
       take(1),
       map((user) => {
         const userData = JSON.parse(localStorage.getItem("userData"));
-        if (userData) {
-          return this.router.createUrlTree(["bookshelf"]);
-        } else {
+        if (userData || user) {
+          this.authService.autoSignIn();
           return true;
+        } else {
+          return this.router.createUrlTree(["auth"]);
         }
       })
     );
@@ -182,39 +354,7 @@ export class SessionGuard implements CanActivate {
 }
 ```
 
-In the routing module, include SessionGuard under the `auth` path.
-
-```ts
-  {
-    path: 'auth',
-    canActivate: [SessionGuard],
-```
-
-Because we included the SessionGuard under auth, we must then alter the `bookshelf` path and it's guard. Right now the guard (auth guard) will return the user to `auth` when `user` is null. Which, will create an infinite loop.
-
-Navigate to `auth.guard.ts`. Get the data from localstorage, if the userData exists as well as user, return true otherwise go back to the auth page.
-
-```ts
-map((user) => {
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  if (userData || user) {
-    this.authService.autoSignIn();
-    return true;
-  } else {
-    return this.router.createUrlTree(["auth"]);
-  }
-});
-```
-
-When the user does exist, execute `autoSignIn` from `authService`. This will setup the user as well as the auto sign out.
-
-```ts
-        if (userData || user) {
-        this.authService.autoSignIn();
-          return true;
-```
-
-We can navigate to the `app.component.ts` file and get rid of the auto signin.
+Let's navigate to the `app.component.ts` file and get rid of the auto `signin`.
 
 ```ts
   ngOnInit() {
@@ -226,7 +366,7 @@ We can navigate to the `app.component.ts` file and get rid of the auto signin.
 
 In order for the user to send any other requests to the api, they must be authenticated first! That means, we have to attach their token to each request after logging in.
 
-Navigate to `shared/auth/auth-interceptor.service.ts`. Let's adjust the `modifiedReq` so that the token will be attached to each request.
+Navigate to `shared/auth/auth-interceptor.service.ts`. In the `intercept` method, let's adjust the `modifiedReq` so that the token will be attached to each request. 
 
 ```ts
 const modifiedReq = req.clone({
@@ -236,14 +376,42 @@ const modifiedReq = req.clone({
 });
 ```
 
-We don't want every request to attach the token, specifically when we want requests from `openlibrary`.
+We don't want every request to attach the token, such as the requests we send to `openlibrary`.
 ```ts
       exhaustMap((user) => {
         // Make sure we have a user
         if (!user || req.url.includes('http://openlibrary.org/search.json?q=')) return next.handle(req);
 ```
 
-Let's navigate to `auth.service.ts` and call `fetchBooks()` from `httpService`.
+Thus, 
+
+```ts
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    return this.authService.currUser.pipe(
+      take(1),
+      exhaustMap((user) => {
+        // Make sure we have a user
+        if (!user || req.url.includes('http://openlibrary.org/search.json?q=')) return next.handle(req);
+
+        // Modify the reqest to attach the access token
+        const modifiedReq = req.clone({
+          setHeaders: {
+            Authorization: "Bearer " + user.token,
+          },
+        });
+
+        // Return the modified request
+        return next.handle(modifiedReq);
+      })
+    );
+  }
+```
+
+<div id="auto-fetching-books"></div>
+
+## Auto Fetching books
+
+Let's navigate to `auth.service.ts`. Inject `HttpService`. In the `autoSignIn` method call `fetchBooks()`, a method we will define in a moment. If the token does in fact exist, we want to call `fetchBooks`.
 
 ```ts
 if (loadedUser.token) {
@@ -251,15 +419,13 @@ if (loadedUser.token) {
   const expDur =
     new Date(_tokenExpirationDate).getTime() - new Date().getTime();
   this.autoSignOut(expDur);
-  this.httpService.fetchBooks().subscribe();
+  this.httpService.fetchBooks().subscribe(); // <------------ Call fetchBooks() here
 }
 ```
 
-<div id="auto-fetching-books"></div>
+It'd be nice for the user to automatically see his books upon signing in or refreshing the page. Before doing this, let's create a few books in the Rails console
 
-## Auto Fetching books
-
-It'd be nice for the user to automatically see his books upon signing in or refreshing the page. Before doing this, let's create a few books in the rails console for the user.
+If you do have the book it app locally you can run this or you can do this on heroku in your very own app. If you are using the deployed link above, I wouldn't worry about creating a book, for now.
 
 ```
 User.first.books.create(title: "It", author: "Stephen King", genre: "Horror", coverImagePath: "https://images-na.ssl-images-amazon.com/images/I/71tFhdcC0XL.jpg" )
@@ -274,11 +440,31 @@ Navigate to `book.model.ts`, include an `id` property.
   ) {}
 ```
 
-In _shared/auth/auth.service.ts_, inject `httpService`. In `handleAuth`, let's call a method we have yet to define called `fetchBooks` from `httpService`. Be sure to call `subscribe`.
+In `shared/auth/auth.service.ts`, inject `httpService`. In `handleAuth`, let's call a method we have yet to define called `fetchBooks` from `httpService`. Be sure to call `subscribe`.
 
 ```ts
 this.currUser.next(formUser);
 this.httpService.fetchBooks().subscribe();
+```
+
+Thus, 
+
+```ts
+  handleAuth(email: string, userId: string, token: string, expiresIn: number) {
+    // Create Expiration Date for Token
+    const expDate = new Date(new Date().getTime() + expiresIn);
+
+    // Create a new user based on the info passed in . . . and emit that user
+    const formUser = new User(email, userId, token, expDate);
+    this.currUser.next(formUser);
+    this.httpService.fetchBooks().subscribe();
+
+    // Set a new timer for expiration token
+    this.autoSignOut(expiresIn);
+
+    // Save the new user to localStorage
+    localStorage.setItem('userData', JSON.stringify(formUser));
+  }
 ```
 
 Navigate to `shared/http/http.service.ts`. Let's redefine `fetchBooksFromFirebase` to `fetchBooks`. Instead of URL being firebase's url, change it to the correct url `my_books` endpoint from the book it api. Be sure to pass in the correct value of books from `res.payload`.
@@ -287,6 +473,7 @@ Navigate to `shared/http/http.service.ts`. Let's redefine `fetchBooksFromFirebas
   fetchBooks() {
     return this.http.get("https://paducah-bookit-api.herokuapp.com/api/v1/books/my_books", {}).pipe(
       tap((res: any) => {
+        console.log("Fetching books", res)
         this.bookshelfService.setBooks(res.payload);
       })
     );
@@ -295,7 +482,7 @@ Navigate to `shared/http/http.service.ts`. Let's redefine `fetchBooksFromFirebas
 
 ### Fixing errors
 
-We get an error, navigate to `shared/navigation/navigation.html.ts`. Get rid of `onSaveData` as well as `onFetchData`. Then get rid of the settings dropdown as we no longer need it.
+We get an error, navigate to `shared/navigation/navigation.component.html`. Get rid of the settings dropdown in as we no longer need it.
 
 While we are at it let's include the following to show the user's email in the navbar.
 
@@ -305,23 +492,26 @@ While we are at it let's include the following to show the user's email in the n
 </li>
 ```
 
+Navigate to `navigation.component.ts`. Define `user`.
 ```ts
 show = false;
 user = null;
 ```
 
+Within `ngOnInIt`, within the subscribe method, set the property user to the parameter user such as.
+
 ```ts
-console.log("user", user);
 this.user = user;
 this.isAuthenticated = !!user;
 ```
 
-The navigate to `bookshelf/book-resolver.service.ts`, replace `fetchBooksFromFirebase()` to `fetchBooks`.
+Get rid of methods `onFetchData` and `onSaveData` as we no longer need them.
+
+Then navigate to `bookshelf/book-resolver.service.ts`, replace `fetchBooksFromFirebase()` to `fetchBooks`.
 
 ```ts
   autoSignIn() {
     const userData: UserData = JSON.parse(localStorage.getItem('userData'));
-
 
     if (!userData) return;
 
@@ -334,24 +524,42 @@ The navigate to `bookshelf/book-resolver.service.ts`, replace `fetchBooksFromFir
       new Date(_tokenExpirationDate)
     );
 
-    this.router.navigate(['bookshelf']);
-
-    this.currUser.next(loadedUser);
-    const expDur =
-      new Date(_tokenExpirationDate).getTime() - new Date().getTime();
-    this.autoSignOut(expDur);
-    this.httpService.fetchBooks().subscribe();
+    if (loadedUser.token) {
+      this.currUser.next(loadedUser);
+      const expDur =
+        new Date(_tokenExpirationDate).getTime() - new Date().getTime();
+      this.autoSignOut(expDur);
+      this.httpService.fetchBooks().subscribe();
+    }
   }
 ```
 
-```ts
-    if (loadedUser.token) {
-    this.router.navigate(['bookshelf']);
-```
+<div id="logout"></div>
+
+## Logging Out User
+
+Logged out appears to work however, all we are doing is clearing localStorage. We aren't sending a request to the API to logout because when we do logout, that deletes the token for security reasons. 
+
+Navigate to `auth.service.ts` and let's refactor `signOut` to the following. 
 
 ```ts
-      this.signOut();
-    }, +expDuration);
+  // Sign Out!
+  signOut() {
+    this.http
+      .delete('https://paducah-bookit-api.herokuapp.com/api/v1/users/logout')
+      .subscribe((res: any) => {
+        console.log('Logged out', res);
+        if (res.success) {
+          this.currUser.next(null);
+
+          localStorage.removeItem('userData');
+
+          if (this.tokenExpTimer) clearTimeout(this.tokenExpTimer);
+
+          this.router.navigate(['auth']);
+        }
+      });
+  }
 ```
 
 <div id="saving-a-book-from-bookshelf"></div>
@@ -368,7 +576,7 @@ Let's navigate to `http.service.ts` and replace `saveBooksToFirebase` to `saveBo
   }
 ```
 
-Navigate to `bookshelf/bookshelf-editor.component.ts`, and call `saveBook` from `httpService`.
+Navigate to `bookshelf/bookshelf-editor.component.ts`, and call `saveBook` from `httpService`. Be sure to inject `HttpService`.
 
 ```ts
     } else {
@@ -378,12 +586,13 @@ Navigate to `bookshelf/bookshelf-editor.component.ts`, and call `saveBook` from 
 ```
 
 Now you can save books to the database from your bookshelf editor.
+Test by adding a book. When we try to add a book we get `prompted` successfully removed however, that's false and it's something we need to change later. Refresh the page and see if the book you added is still there.
 
 <div id="saving-a-book-from-open-library"></div>
 
-## Saving a Book from Open Library
+## Saving a Book from Open Library Api
 
-Saving a book from provided by open library is actually quite simple. Navigate to `book-results.component.ts`. Under `onSaveBook`, call `savebook` from `httpService`.
+Saving a book provided by the open library api is actually quite simple. Navigate to `book-results.component.ts`. Under `onSaveBook`, call `saveBook` from `httpService`. Be sure to inject `HttpService`.
 
 ```ts
   onSaveBook(book: Book) {
@@ -393,6 +602,8 @@ Saving a book from provided by open library is actually quite simple. Navigate t
     // this.bookshelfService.saveBook(book);
   }
 ```
+
+Test it out.
 
 <div id="deleting-books"></div>
 
@@ -406,7 +617,7 @@ Navigate to `http.service.ts` and define `deleteBook`. Send a delete request to 
   }
 ```
 
-Navigate to `book-list.component.ts` and call `deleteBook` from `httpService`. Instead of getting the index, get the id. Remember, we need the id of the book for the delete request.
+Navigate to `book-list.component.ts` and call `deleteBook` from `httpService`. Be sure to inject `HttpService`. Instead of getting the index, get the id. Remember, we need the id of the book for the delete request. Change the parameter `idx` to `id`
 
 Inject HttpService.
 
@@ -434,6 +645,7 @@ Let's also adjust `this.bookshelfService.removeBook(id)`. Navigate to `bookshelf
     return book;
   }
 ```
+Adjust removeBook. 
 
 ```ts
   removeBook(id: number) {
@@ -443,9 +655,10 @@ Let's also adjust `this.bookshelfService.removeBook(id)`. Navigate to `bookshelf
   }
 ```
 
-Let's Adjust `book-list.component.html`. Pass down the book id to the book component as well as to `onRemoveBook` as an argument. We no longer want to rely on the index to display information because it'll be redundant for us to navigate the id using the index. Also, our requests rely on ids rather than index.
+Let's Adjust `book-list.component.html`. Pass down the book id to the book component as well as to `onRemoveBook` as an argument. We no longer want to rely on the index to display information because it'll be redundant for us to navigate using the index. Also, our requests rely on ids rather than index.
 
 ```html
+<div class="row mb-3">
   <div
     class="col-md-12"
     *ngFor="let bookElement of myBooks | sortBooks: sortField"
@@ -462,11 +675,13 @@ Let's Adjust `book-list.component.html`. Pass down the book id to the book compo
 </div>
 ```
 
+Test out the remove button.
+
 <div id="display-book-details"></div>
 
 ## Display Book Details
 
-When display book details, it no longer works. We get `localhost:4200/bookshelf/undefined`. That's because in `book-list.component.html` we changed the name of the input from `idx` to `id`.
+When displaying book details, it no longer works. Try clicking on a book. We get `localhost:4200/bookshelf/undefined`. That's because in `book-list.component.html` we changed the name of the input from `idx` to `id`.
 
 ```html
 <app-book [book]="bookElement" [id]="bookElement.id"></app-book>
@@ -493,10 +708,10 @@ Navigate to `book.component.html` and adjust the router link.
   class="list-group-item clearfix"
   [routerLink]="[id]"
   routerLinkActive="active"
-></a>
+>
 ```
 
-We no longer get undefined, however, we still have to grab the book. Instead of using the index we are now using the id which makes it a lot easier to keep track of book records from the db.
+We no longer get undefined, however, choosing a book still appears to have a bug. Our book details component thinks we are getting the index and not the id. 
 
 Let's adjust `book-details.component.ts`. The file is configured to use the book index rather than the id.
 
@@ -532,11 +747,15 @@ export class BookDetailsComponent implements OnInit {
 }
 ```
 
+Test it out. 
+
 <div id="editing-books"></div>
 
 ## Editing Books
 
-Great, let's test this out. After doing so, let's do the same for `bookshelf-editor.component.ts`. Navigate to `bookshelf-editor.component.ts`.
+Let's do the same for `bookshelf-editor.component.ts`. Navigate to `bookshelf-editor.component.ts`.
+
+Replace `idx` property to `id` and all it's occurrences (replace all idx with id in this file).
 
 ```ts
 export class BookshelfEditorComponent implements OnInit {
@@ -544,6 +763,7 @@ export class BookshelfEditorComponent implements OnInit {
   isEditMode = false;
 ```
 
+In `ngOInIt`, within the subscribe call back function, replace `getBook` with `getBookById`.
 ```ts
  ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -558,11 +778,7 @@ export class BookshelfEditorComponent implements OnInit {
   }
 ```
 
-Instead of `getBook`, use `getBookById`.
-
-```ts
-this.bookDetails = this.bookshelfService.getBookById(this.id);
-```
+Test out whether you have the ability to view the book in edit mode.
 
 ### Updating Books from editor
 
@@ -572,7 +788,7 @@ Declare a variable called `updatedBook` and set that to `this.bookDetails`.
 
 Set `updatedBook.id` to `this.id`. This is because the bookDetails does not have info about the id of the book it's editing in the form.
 
-Call `updateBook` from httpService.We will define this after.
+Call `updateBook` from httpService. We will define this after.
 
 ```ts
     if (this.isEditMode) {
@@ -584,7 +800,7 @@ Call `updateBook` from httpService.We will define this after.
       this.bookshelfService.updateBook(idx, this.bookDetails);
 ```
 
-Navigate to `bookshelf.service.ts` and define `updateBook`.
+Navigate to `http.service.ts` and define `updateBook`.
 
 ```ts
   updateBook(book) {
@@ -592,9 +808,9 @@ Navigate to `bookshelf.service.ts` and define `updateBook`.
   }
 ```
 
-### Deleting Books from Editor
+### Deleting Books from Details
 
-Inject HttpService.
+Navigate to `book-details.component.ts` and inject HttpService.
 
 ```ts
   onRemoveBook() {
