@@ -8,7 +8,7 @@
 - <a href="#signing-up">Sign Up</a>
 - <a href="#signing-in">Sign In</a>
 - <a href="#auto-login-and-bugs">Auto Login and Bugs</a>
-- <a href="#authorizing-user-requests">Authorizing User Requests</a>
+- <a href="#authenticating-user-requests">Authenticating User Requests</a>
 - <a href="#auto-fetching-books">Auto Fetching books</a>
 - <a href="#logout">Logging out User</a>
 - <a href="#saving-a-book-from-bookshelf">Saving a Book from Bookshelf</a>
@@ -360,9 +360,9 @@ Let's navigate to the `app.component.ts` file and get rid of the auto `signin`.
   ngOnInit() {
   }
 ```
-<div id="authorizing-user-requests"></div>
+<div id="authenticating-user-requests"></div>
 
-## Authorizing User Requests
+## Authenticating User Requests
 
 In order for the user to send any other requests to the api, they must be authenticated first! That means, we have to attach their token to each request after logging in.
 
@@ -838,19 +838,11 @@ this.bookAlert(alertMsg);
 
 _Terminal_:
 
-- Install the latest version of the `@angular/cli@latest` and `@angular/compiler-cli` packages as developer dependencies.
-
 - Install "express" (a package for create nodeJS servers)
-
-- Check your version of "node" and "npm" by running two commands. Save these values for later.
-
+- 
 ```zsh
 # . . .
 npm install express 
-# . . .
-node -v
-# . . .
-npm -v
 ```
 
 ---
@@ -956,11 +948,23 @@ app.listen(process.env.PORT || 8080);
 ---
 
 ### STEP 4 - Hooking Up Heroku
+In the terminal, enter the follow
 
-Enter `heroku create` in the terminal. 
-Enter `heroku rename BookItApp`
-Enter `git push heroku main`
-Enter `heroku open`
+``` 
+heroku create
+```
+
+``` 
+heroku rename BookItApp
+```
+
+``` 
+git push heroku main
+```
+
+``` 
+heroku open
+```
 
 ---
 
