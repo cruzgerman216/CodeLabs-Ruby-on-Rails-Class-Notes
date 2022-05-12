@@ -21,7 +21,7 @@
 ---
 
 ## Videos 
--  <a href="https://youtu.be/COUOmu0uwso">Introduction</a>
+-  <a href="https://youtu.be/COUOmu0uwso" target="_blank" >Introduction</a>
 
 
 
