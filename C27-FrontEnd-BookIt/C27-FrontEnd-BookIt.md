@@ -4,7 +4,7 @@
 
 ### Table of Contents
 
-- <a href="#getting-started">Getting Started</a>
+- <a href="#getting-started">Setup Book It App</a>
 - <a href="#signing-up">Sign Up</a>
 - <a href="#signing-in">Sign In</a>
 - <a href="#auto-login-and-bugs">Auto Login and Bugs</a>
@@ -22,12 +22,13 @@
 
 ## Videos 
 -  <a href="https://youtu.be/COUOmu0uwso" target="_blank" >Introduction</a>
+-  <a href="https://youtu.be/C4jd6TEW8qU" target="_blank" >Setup</a>
 
 
 
 <div id="getting-started"></div>
 
-## Getting Started
+## Setup Book It App
 
 Navigate to the [Angular repo](https://github.com/cruzgerman216/Front-End-Book-It-Application)
 
