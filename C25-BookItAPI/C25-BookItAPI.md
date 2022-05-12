@@ -184,7 +184,7 @@ private
       end
 ```
 
-Notice how hard this is to read. The first 4 lines is devoted to ceating a book. And it might get more complicated, let's extract this logic into a service.
+Notice how hard this is to read. The first 4 lines is devoted to creating a book. And it might get more complicated, let's extract this logic into a service.
 
 Navigate to `app/services` and create `books.rb`.
 
