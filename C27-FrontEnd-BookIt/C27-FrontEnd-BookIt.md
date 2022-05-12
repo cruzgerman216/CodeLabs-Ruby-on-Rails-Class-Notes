@@ -20,12 +20,15 @@
 
 ---
 
-## Videos 
+## Videos(in order)
+
 -  <a href="https://youtu.be/COUOmu0uwso" target="_blank" >Introduction</a>
 -  <a href="https://youtu.be/C4jd6TEW8qU" target="_blank" >Setup</a>
 -  <a href="https://youtu.be/Vj52EDO0yV4" target="_blank" >User Sign Up</a>
 -  <a href="https://youtu.be/SWjFvMesH5w" target="_blank" >User Sign In</a>
 -  <a href="https://youtu.be/Rhf3tS3wIgY" target="_blank" >Auto Sign In and Bugs</a>
+-  <a href="https://youtu.be/VCsnCP-OloA" target="_blank" >Authenticating Requests</a>
+-  <a href="https://youtu.be/rUtLmN5zVZ8" target="_blank" >Auto Fetch books</a>
 
 
 
