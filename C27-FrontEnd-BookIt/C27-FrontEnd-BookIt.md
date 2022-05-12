@@ -23,7 +23,7 @@
 ## Videos 
 -  <a href="https://youtu.be/COUOmu0uwso" target="_blank" >Introduction</a>
 -  <a href="https://youtu.be/C4jd6TEW8qU" target="_blank" >Setup</a>
--  <a href="https://youtu.be/Vj52EDO0yV4" target="_blank" >User Sign in</a>
+-  <a href="https://youtu.be/Vj52EDO0yV4" target="_blank" >User Sign Up</a>
 
 
 
