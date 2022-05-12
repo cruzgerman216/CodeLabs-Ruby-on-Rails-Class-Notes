@@ -28,7 +28,7 @@
 -  <a href="https://youtu.be/SWjFvMesH5w" target="_blank" >User Sign In</a>
 -  <a href="https://youtu.be/Rhf3tS3wIgY" target="_blank" >Auto Sign In and Bugs</a>
 -  <a href="https://youtu.be/VCsnCP-OloA" target="_blank" >Authenticating Requests</a>
--  <a href="https://youtu.be/rUtLmN5zVZ8" target="_blank" >Auto Fetch books</a>
+-  <a href="https://youtu.be/xJd4pKKTN9I" target="_blank" >Auto Fetch books</a>
 
 
 
