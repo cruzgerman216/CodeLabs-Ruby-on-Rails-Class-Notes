@@ -25,6 +25,8 @@
 -  <a href="https://youtu.be/C4jd6TEW8qU" target="_blank" >Setup</a>
 -  <a href="https://youtu.be/Vj52EDO0yV4" target="_blank" >User Sign Up</a>
 -  <a href="https://youtu.be/SWjFvMesH5w" target="_blank" >User Sign In</a>
+-  <a href="https://youtu.be/Rhf3tS3wIgY" target="_blank" >Auto Sign In and Bugs</a>
+
 
 
 <div id="getting-started"></div>
