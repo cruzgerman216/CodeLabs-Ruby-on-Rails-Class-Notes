@@ -717,7 +717,7 @@ Let's adjust `book-details.component.ts`. The file is configured to use the book
 
 Change the property `idx` to `id` and all of it's occurrences.
 
-In `ngOnInit`, within the subject call back function, change `getBook` to `getBookById`.
+In `ngOnInit`, within the subscribe's call back function, change `getBook` to `getBookById`.
 
 ```ts
 export class BookDetailsComponent implements OnInit {
@@ -955,7 +955,7 @@ heroku create
 ```
 
 ``` 
-heroku rename BookItApp
+heroku rename bookitapp
 ```
 
 ``` 
