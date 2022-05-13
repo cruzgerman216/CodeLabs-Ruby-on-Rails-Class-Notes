@@ -88,7 +88,7 @@ In `shared/auth/auth.service.ts`, alter the `signIn` to the correct url and remo
       })
       .pipe(
         tap((res) => {
-          // Use "object destructuring" to get acess to all response values
+          // Use "object destructuring" to get access to all response values
           const { email, localId, idToken, expiresIn } = res;
           // Pass the response values into handleAuth method
           this.handleAuth(email, localId, idToken, +expiresIn);
@@ -364,7 +364,7 @@ export class AuthGuard implements CanActivate {
 }
 ```
 
-Let's navigate to the `app.component.ts` file and get rid of the auto `signin`.
+Let's navigate to the `app.component.ts` file and get rid of the auto `signIn`.
 
 ```ts
   ngOnInit() {
@@ -386,7 +386,7 @@ const modifiedReq = req.clone({
 });
 ```
 
-We don't want every request to attach the token, such as the requests we send to `openlibrary`.
+We don't want every request to attach the token, such as the requests we send to open library.
 ```ts
       exhaustMap((user) => {
         // Make sure we have a user
@@ -403,7 +403,7 @@ Thus,
         // Make sure we have a user
         if (!user || req.url.includes('http://openlibrary.org/search.json?q=')) return next.handle(req);
 
-        // Modify the reqest to attach the access token
+        // Modify the request to attach the access token
         const modifiedReq = req.clone({
           setHeaders: {
             Authorization: "Bearer " + user.token,
@@ -642,17 +642,7 @@ Let's also adjust `this.bookshelfService.removeBook(id)`. Navigate to `bookshelf
 
 ```ts
   getBookById(id){
-    let count = 0;
-    let book = null;
-    while(count < this.myBooks.length){
-
-      if(this.myBooks[count].id == id){
-        book = this.myBooks[count]
-        break;
-      }
-      count++;
-    }
-    return book;
+    return this.myBooks.find(book => book.id == id)
   }
 ```
 Adjust removeBook. 
