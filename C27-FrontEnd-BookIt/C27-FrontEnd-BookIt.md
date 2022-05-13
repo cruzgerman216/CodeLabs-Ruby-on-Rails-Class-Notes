@@ -301,7 +301,6 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { map, take } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
 @Injectable({
