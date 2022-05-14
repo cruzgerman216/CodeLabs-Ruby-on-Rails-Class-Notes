@@ -28,7 +28,13 @@
 -  <a href="https://youtu.be/SWjFvMesH5w" target="_blank" >User Sign In</a>
 -  <a href="https://youtu.be/Rhf3tS3wIgY" target="_blank" >Auto Sign In and Bugs</a>
 -  <a href="https://youtu.be/VCsnCP-OloA" target="_blank" >Authenticating Requests</a>
--  <a href="https://youtu.be/xJd4pKKTN9I" target="_blank" >Auto Fetch books</a>
+-  <a href="https://youtu.be/xJd4pKKTN9I" target="_blank" >Auto Fetch Books</a>
+-  <a href="https://youtu.be/sz0o6pAjgIQ" target="_blank" >Logging Out User</a>
+-  <a href="https://youtu.be/YwcK28mwNDg" target="_blank" >Saving Books</a>
+-  <a href="https://youtu.be/h2Ee37z9JUo" target="_blank" >Deleting Books</a>
+-  <a href="https://youtu.be/4nwl5umlqnU" target="_blank" >Displaying Books</a>
+-  <a href="https://youtu.be/pSJW_E9UIwA" target="_blank" >Updating Books</a>
+-  <a href="https://youtu.be/nElh_GhEcYM" target="_blank" >Deploying App</a>
 
 
 
