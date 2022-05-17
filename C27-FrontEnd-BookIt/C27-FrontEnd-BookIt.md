@@ -974,6 +974,9 @@ heroku open
 
 ---
 
+
+Code Repository 
+- https://github.com/cruzgerman216/video-demonstration-frontend-bookit
 ---
 
 :wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**!
