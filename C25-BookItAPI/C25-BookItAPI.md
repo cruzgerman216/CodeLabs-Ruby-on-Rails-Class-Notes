@@ -131,7 +131,7 @@ module Api
             def update 
             end
             # DELETE /api/v1/books:id
-            def delete 
+            def destroy 
             end
             # GET
             # user books - get current user books 
