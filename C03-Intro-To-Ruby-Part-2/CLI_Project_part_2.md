@@ -82,4 +82,4 @@ Go head and test this.
 
 ---
 
-Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

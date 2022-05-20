@@ -53,7 +53,7 @@ class Country
 end
 ```
 
-Upon instantiation, we like to set the country attributes. To do this, define the intialize method. 
+Upon instantiation, we like to set the country attributes. To do this, define the initialize method. 
 
 ```ruby
     def initialize()
@@ -75,7 +75,7 @@ Let's add parameters to `initialize` to set each instance variable upon instanti
 
 ## Basic Meta Programming using send
 
-Assigning values to each instance variable is redundant. Lets incorporate some meta programming. Meta programming can be referred to as "code that writes code for us". Include only one parameter called attributes. Get rid of the code lines within the method definition aswell.
+Assigning values to each instance variable is redundant. Lets incorporate some meta programming. Meta programming can be referred to as "code that writes code for us". Include only one parameter called attributes. Get rid of the code lines within the method definition as well.
 
 ```ruby
     # Attributes will be a hash
@@ -291,7 +291,7 @@ usa_confirmed_cases = country_main[0].text
 
 ## Regex
 
-We will use the built in string method `gsub` to get rid of any unecessary spacing and commas. 
+We will use the built in string method `gsub` to get rid of any unnecessary spacing and commas. 
 
 ```ruby
     usa_confirmed_cases = country_main[0].text.gsub(/[]/)

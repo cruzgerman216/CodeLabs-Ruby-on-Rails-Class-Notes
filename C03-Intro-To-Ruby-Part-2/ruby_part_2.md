@@ -47,7 +47,7 @@ Conditionals are one of the most important fundamental blocks in programming. Th
 ```ruby 
 purchase = 500
 # When purchase is greater than 2000, print "Insufficient funds"
-# When purchase is less than 2000, print "Successfull transaction"
+# When purchase is less than 2000, print "Successful transaction"
 ```
 
 ### If/else/elsif/end
@@ -63,7 +63,7 @@ end
 if false 
     puts "Will not print!!"
 end 
-# When purchase is less than 2000, print "Successfull transaction"
+# When purchase is less than 2000, print "Successful transaction"
 ```
 
 We can also refer to an `else` statement to execute if the conditional is false. 
@@ -89,7 +89,7 @@ else
 end 
 ```
 
-Because the compiler reads from top to bottom, the if block is satisfied once one condtional is true. Once satisfied, it will disregard other conditionals.
+Because the compiler reads from top to bottom, the if block is satisfied once one conditional is true. Once satisfied, it will disregard other conditionals.
 
 ### Comparison & Logical Operators
 How do we check to see if purchase is greater than 2000? We use what are called comparison operators. Comparison operators are the process in which compares two values in a certain fashion and result in either `true` or `false`. Here is a list of comparison operators. 
@@ -140,7 +140,7 @@ end
 <div id="Case-Statements"></div>
 
 ## Case Statements 
-When deciding to use if/else conditionals, you may want to consider case statements as they are similiar. Case statements start with the keyword `case` follow by a value. This value is check by each line containing `when` keywords. Each `when` line is followed by a value. If the value matches, the code block will get executed.
+When deciding to use if/else conditionals, you may want to consider case statements as they are similar. Case statements start with the keyword `case` follow by a value. This value is check by each line containing `when` keywords. Each `when` line is followed by a value. If the value matches, the code block will get executed.
 
 ```ruby
 name = "Delilah"
@@ -250,7 +250,7 @@ end
 ```
 
 ### do..while loop
-A `do..while` is similiar to the while loop, however, it executes the code block at least once.
+A `do..while` is similar to the while loop, however, it executes the code block at least once.
 
 ```ruby
 i = -100
@@ -298,4 +298,4 @@ end
 --- 
 - [Next Class](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C04-Intro-To-Ruby-Part-3/ruby_part_3.md)
 
-Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

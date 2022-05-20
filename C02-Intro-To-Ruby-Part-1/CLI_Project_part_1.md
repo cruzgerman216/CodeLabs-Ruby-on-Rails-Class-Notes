@@ -24,7 +24,7 @@ Ruby [gems](https://rubygems.org/) are simply open source libraries that contain
 <div id="creating-a-gem"></div>
 
 ## Creating a Gem
-Let's go ahead and create our own Gem. In this curriculumn, we won't be publishing the gem by any means but will give you a clear indication of how to create open source projects for other developers to use.
+Let's go ahead and create our own Gem. In this curriculum, we won't be publishing the gem by any means but will give you a clear indication of how to create open source projects for other developers to use.
 
 The project can be created in any Ruby environment. We will be using Replit or a local IDE to create this project. In order to create a Gem, we must use the bundler Gem. To check whether or not you have bundler already installed, you can simply type the following in the command line:
 
@@ -134,7 +134,7 @@ We want to be able to use the contents of other files. To do that, we are going 
 
 `require` and `require_relative` take in one argument string. This string represents a pathway to the specified file in the project folder. Both methods start at two different locations in the project folder. `require` starts at the **absolute path** or root directory. Let's use `require` to load <em>**bin/USA_COVID_19_Tracker.rb**</em>(USA_COVID_19_Tracker.rb is responsible for loading other files we will later create).
 
-The creation of these strings are simliar to the linux commands in the terminal. When creating/reading a path, we start from left to right. 
+The creation of these strings are similar to the linux commands in the terminal. When creating/reading a path, we start from left to right. 
 
 **bin/tracker.rb**
 ```ruby 
@@ -220,7 +220,7 @@ CLI.new
 ```
 
 ### Adding methods to the CLI Class
-Navigate to <em>**lib/USA_COVID_19_Tracker/cli.rb**</em>. In the scope of the cli class, between lines containing `class` and `end`, let's define what is referred to as an insance method. Call this method `run`.
+Navigate to <em>**lib/USA_COVID_19_Tracker/cli.rb**</em>. In the scope of the cli class, between lines containing `class` and `end`, let's define what is referred to as an instance method. Call this method `run`.
 
 **cli.rb**
 ```ruby
@@ -236,7 +236,7 @@ Navigate to <em>**tracker.rb**</em>. Because CLI.new is an instance of the CLI c
 ```ruby 
 CLI.new.run # Executes the run method in the CLI class
 ```
-Navigate back to <em>**cli.rb**</em>. Let's define a new method that prints out a welcome mesage to the terminal.
+Navigate back to <em>**cli.rb**</em>. Let's define a new method that prints out a welcome message to the terminal.
 
 **cli.rb**
 ```ruby

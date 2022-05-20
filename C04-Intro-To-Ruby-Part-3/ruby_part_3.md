@@ -13,13 +13,13 @@
 <div id="OOP"></div>
 
 ## Object Oriented Programming 
-Object Oriented Programming is a programming paradigm used to battle against complex systems and prevent large scale errors. To do this, OOP disects an application's code into logical bundles. Unforuntely, we don't have enough time to cover all the concepts of OOP other than inheritance, I recommend you to explore some starting points under <a href="#topics-to-explore">Topics to Explore</a>.
+Object Oriented Programming is a programming paradigm used to battle against complex systems and prevent large scale errors. To do this, OOP dissects an application's code into logical bundles. Unfortunately, we don't have enough time to cover all the concepts of OOP other than inheritance, I recommend you to explore some starting points under <a href="#topics-to-explore">Topics to Explore</a>.
 
 <div href="Classes"></div>
 
 ## Classes
 A class is a blueprint to create instances (objects). Objects are mistaken to be hashes. Keep in mind instances are created by a class. A class is defined by it's methods and attributes. To create a class, use the keyword `class` follow by the class name. Make 
-sure the class name is always capitlized. To end the class block, use the keyword `end`.
+sure the class name is always capitalized. To end the class block, use the keyword `end`.
 
 ```ruby 
 class Animal 
@@ -61,7 +61,7 @@ Animal.from_the_class # Prints Class Method
 ```
 
 ### Initialize Method 
-The initialize method is a reserved method in Ruby classes. If you have dealt with contructors in other languages, you will exactly understand what the initialize method will do. The initialize method is part of the instance-creation process where attributes can be set or execute some form of logic.
+The initialize method is a reserved method in Ruby classes. If you have dealt with contractors in other languages, you will exactly understand what the initialize method will do. The initialize method is part of the instance-creation process where attributes can be set or execute some form of logic.
 
 ```ruby 
 class Animal
@@ -231,7 +231,7 @@ class Animal
 end
 ```
 
-We can agree that a person and an animal both eat. They share that commonlity together but we don't necessarily want to create a class for this purpose. Modules sound perfect because you can't create instances with modules. When creating a module, start with the keyword `module` follow by the module name. To end the module definition, we use the keyword `end`.
+We can agree that a person and an animal both eat. They share that commonality together but we don't necessarily want to create a class for this purpose. Modules sound perfect because you can't create instances with modules. When creating a module, start with the keyword `module` follow by the module name. To end the module definition, we use the keyword `end`.
 
 ```ruby 
 module Eat 
@@ -287,4 +287,4 @@ Using the `include` method will add instance methods. If you like to add class m
 --- 
 - [Next Class](https://github.com/cruzgerman216/CodeLabs-Ruby-on-Rails-Class-Notes/blob/main/C04-Intro-To-Ruby-Part-3/ruby_part_3.md)
 
-:wave: Saw a mispelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 
+:wave: Saw a misspelled word? Want to improve the class notes? Create a **pull request** and **contribute**! 

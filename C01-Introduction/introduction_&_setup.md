@@ -9,7 +9,7 @@
 <div id="Introduction"></div>
 
 ## Introduction 
-The Back End portion of Code Labs will be similiar to the Front End in regards to structure and style. Students are expected to learn outside of class and apply that knowledge inside of class ([Flipped Class Room Model](https://omerad.msu.edu/teaching/teaching-skills-strategies/27-teaching/162-what-why-and-how-to-implement-a-flipped-classroom-model)). You will be asked to read documentation, watch assigned videos, complete exercises and build projects as well as commit your code to GitHub. Building projects are our main focus here at Code Labs as it challenges you to think.  
+The Back End portion of Code Labs will be similar to the Front End in regards to structure and style. Students are expected to learn outside of class and apply that knowledge inside of class ([Flipped Class Room Model](https://omerad.msu.edu/teaching/teaching-skills-strategies/27-teaching/162-what-why-and-how-to-implement-a-flipped-classroom-model)). You will be asked to read documentation, watch assigned videos, complete exercises and build projects as well as commit your code to GitHub. Building projects are our main focus here at Code Labs as it challenges you to think.  
 
 Class notes will be posted for students to use as a resource. Keep in mind these class notes are maintained. If something comes ambiguous or needs an update, please contact your code coach for adjustment or clarification. 
 
@@ -56,7 +56,7 @@ Live coding sessions will be spent creating a Ruby gem and building out a comman
 Students will have installed Rails and will be introduced to the basics of Rails. Rails 6 and Ruby 2.7 will be used during the live coding sessions. Keep in mind the video course pertains to Rails 5 and Rails 6.
 
 #### CRUD Operations in Rails 
-Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can, let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. We will also start a project in Rails similiar to what is built in the Front End. That's right, the [BookIt](https://bookit-codefi.herokuapp.com/) application but in Rails.
+Create, Read, Update, Delete or CRUD operations involve a specific process in which a user interacts with the application. For example, the user can, let's say, `create` a post in an application. The user can see or `read` the post they created in perhaps their homepage. The user can `update` the post. The user can also `delete` the post. CRUD operations is a standard convention commonly used in web development. We will also start a project in Rails similar to what is built in the Front End. That's right, the [BookIt](https://bookit-codefi.herokuapp.com/) application but in Rails.
 
 #### Styling in Rails
 In the course videos provided, it's important to note that Bootstrap 4 will be used. Since the release of [version 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) in May 2021, these notes will be based on Bootstrap 5.
@@ -70,10 +70,10 @@ Furthermore, we will explore authentication. Previously in the Front End, we use
 Many to Many associations involve the connection between multiple records of two specific models. The connection also involves a third model in which connects these two models. We also explore automated testing in Rails. Automated testing is great for when an application has many features and updates.
 
 #### Course Project
-During the Course Project section, students will create an MVP that follow specific requirements. This time spent will allow you to soley focus on a portfolio project.
+During the Course Project section, students will create an MVP that follow specific requirements. This time spent will allow you to solely focus on a portfolio project.
 
 #### Rails Base API
-The Base API, created by developers at Codefi, will be given to each student. This gives you a chance to add any additional features pertaining to your Front End Applications and learn more of an orginized workflow of that of the base API. 
+The Base API, created by developers at Codefi, will be given to each student. This gives you a chance to add any additional features pertaining to your Front End Applications and learn more of an organized workflow of that of the base API. 
 
 #### Employer Project
 Towards the end of the Back End, students connect with local employers to simulate a real world experience.
