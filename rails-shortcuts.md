@@ -3,8 +3,8 @@
 Long command | Short command
 
 ```
-$ rails server	        $ rails s
-$ rails console	        $ rails c
+$ rails server	      $ rails s
+$ rails console	     $ rails c
 $ rails generate	    $ rails g
 $ rails test	        $ rails t
 $ bundle install	    $ bundle
