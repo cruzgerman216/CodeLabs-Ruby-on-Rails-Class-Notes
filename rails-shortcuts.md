@@ -1,16 +1,26 @@
 # Shortcut commands
 
-Long command | Short command
+Long commands
 
 ```
-$ rails server	      $ rails s
-$ rails console	     $ rails c
-$ rails generate	    $ rails g
-$ rails test	        $ rails t
-$ bundle install	    $ bundle
+$ rails server	       
+$ rails console	        
+$ rails generate	    
+$ rails test	        
+$ bundle install	    
 ```
 
-Generate controller with the following actions and templates
+Short commands
+
+```
+ $ rails s
+ $ rails c
+ $ rails g
+ $ rails t
+ $ bundle
+```
+
+#### Generate controller with the following actions and templates
 
 ```
 rails generate controller StaticPages home help

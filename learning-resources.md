@@ -5,4 +5,6 @@ https://launchschool.com/books/oo_ruby/read/the_object_model#classesdefineobject
 https://www.learnenough.com/ruby-on-rails-7th-edition-tutorial
 https://www.learnenough.com/command-line
 https://www.learnenough.com/dev-environment
-https://www.learnenough.com/git
+
+## Does your code Smell?]
+https://en.wikipedia.org/wiki/Code_smell
