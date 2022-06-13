@@ -319,7 +319,7 @@ Before we run `rails db:migrate` in heroku, let's go ahead and set the master ke
 ### OPTION 1
 YOUR_MASTER_KEY - The value from master.key.
 
-In the command line, enter `heroku config:set RAILS_MASTER_KE2Y=YOUR_MASTER_KEY`
+In the command line, enter `heroku config:set RAILS_MASTER_KEY=YOUR_MASTER_KEY`
 
 ### OPTION 2
 1. Go to the app's dashboard on Heroku. 
